@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CodeInject.Actors
 {
-    public unsafe class  NPC: IActor
+    public unsafe class  NPC: IObject
     {
         public long* ObjectPointer { get; set; }
         public int* ID { get; set; }
@@ -32,7 +32,7 @@ namespace CodeInject.Actors
             Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
         }
 
-        public double CalcDistance(IActor actor)
+        public double CalcDistance(IObject actor)
         {
             return Math.Sqrt(Math.Pow(*actor.X - *this.X, 2) + Math.Pow(*actor.Y - *this.Y, 2)+Math.Pow(*actor.Z - *this.Z, 2));
         }

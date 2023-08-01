@@ -103,15 +103,19 @@ namespace CodeInject
         private void button1_Click_1(object sender, EventArgs e)
         {
             lNearItemsList.Items.Clear();
-            for (ushort i = 0xFFFF; i > 0; i--)
-            {
-                long* itemPointer = (long*)GameFunctionsAndObjects.DataFetch.GetItemPointer(i);
-                if ((long)itemPointer != 0)
-                {
-                    UsableItem nearItem = new UsableItem(itemPointer);
-                    lNearItemsList.Items.Add(nearItem);
-                }
-            }
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ((UsableItem)lNearItemsList.SelectedItem).Pickup();
+            lNearItemsList.Items.Clear();
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
         }
     }
 }

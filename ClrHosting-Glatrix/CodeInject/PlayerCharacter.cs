@@ -9,7 +9,7 @@ namespace CodeInject
 {
     class PlayerCharacter
     {
-        public static IActor PlayerInfo {
+        public static IObject PlayerInfo {
             get
             {
                 return GameFunctionsAndObjects.DataFetch.GetPlayer();

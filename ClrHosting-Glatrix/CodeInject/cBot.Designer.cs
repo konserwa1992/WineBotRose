@@ -43,13 +43,12 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.lNearItemsList = new System.Windows.Forms.ListBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -66,7 +65,7 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1311, 521);
+            this.tabControl1.Size = new System.Drawing.Size(498, 521);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -78,7 +77,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1303, 495);
+            this.tabPage1.Size = new System.Drawing.Size(490, 495);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -138,7 +137,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1303, 495);
+            this.tabPage2.Size = new System.Drawing.Size(490, 495);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Skill";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -194,10 +193,21 @@
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1303, 495);
+            this.tabPage3.Size = new System.Drawing.Size(490, 495);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.lNearItemsList);
+            this.groupBox2.Location = new System.Drawing.Point(6, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 474);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Near items";
             // 
             // button1
             // 
@@ -208,6 +218,15 @@
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // lNearItemsList
+            // 
+            this.lNearItemsList.FormattingEnabled = true;
+            this.lNearItemsList.Location = new System.Drawing.Point(6, 19);
+            this.lNearItemsList.Name = "lNearItemsList";
+            this.lNearItemsList.Size = new System.Drawing.Size(188, 407);
+            this.lNearItemsList.TabIndex = 2;
+            this.lNearItemsList.SelectedIndexChanged += new System.EventHandler(this.lNearItemsList_SelectedIndexChanged);
             // 
             // timer1
             // 
@@ -224,25 +243,6 @@
             // 
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
-            // 
-            // lNearItemsList
-            // 
-            this.lNearItemsList.FormattingEnabled = true;
-            this.lNearItemsList.Location = new System.Drawing.Point(6, 19);
-            this.lNearItemsList.Name = "lNearItemsList";
-            this.lNearItemsList.Size = new System.Drawing.Size(188, 407);
-            this.lNearItemsList.TabIndex = 2;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.lNearItemsList);
-            this.groupBox2.Location = new System.Drawing.Point(6, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 474);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Near items";
             // 
             // cBot
             // 
@@ -285,6 +285,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lNearItemsList;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

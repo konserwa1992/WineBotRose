@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actors\IActor.cs" />
     <Compile Include="Actors\IObject.cs" />
     <Compile Include="Actors\NPC.cs" />
     <Compile Include="Actors\UsableItem.cs" />

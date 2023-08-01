@@ -112,12 +112,16 @@ namespace CodeInject
         /// <typeparam name="T"></typeparam>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public IActor GetObject<T>(int ID)
+        public IObject GetObject<T>(int ID)
         {
             Process _proc = Process.GetCurrentProcess();
             long* wskObj = (long*)((*(long*)(BaseAddres + 0x111be28)) + (ID * 8) + 0x22078);
+
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
+
+            if (typeof(T) == typeof(UsableItem))
+                return new UsableItem(wskObj);
 
             return null;
         }
@@ -128,7 +132,7 @@ namespace CodeInject
         /// Pattern is that same as it is in GetNPCs because first element of entry is player
         /// </summary>
         /// <returns></returns>
-        public IActor GetPlayer()
+        public IObject GetPlayer()
         {
             Process _proc = Process.GetCurrentProcess();
 
@@ -142,11 +146,11 @@ namespace CodeInject
         /// Pattern 45 33 c0 8b 14 88
         /// </summary>
         /// <returns></returns>
-        public List<IActor> GetNPCs()
+        public List<IObject> GetNPCs()
         {
             Process _proc = Process.GetCurrentProcess();
 
-            List<IActor> wholeNpcList = new List<IActor>();
+            List<IObject> wholeNpcList = new List<IObject>();
             long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
             int* monsterIDList = (int*)*wsp;
             int* count = (int*)(*(long*)(BaseAddres + 0x111be28) + 0x0002A078);
@@ -163,27 +167,24 @@ namespace CodeInject
         }
 
         /// <summary>
-        /// DONT WORK
+        /// 
         /// </summary>
         /// <returns></returns>
-        public List<IActor> GetItems()
+        public List<IObject> GetItemsAroundPlayer()
         {
-            Process _proc = Process.GetCurrentProcess();
+            List<IObject> itemList = new List<IObject>();
 
-            List<IActor> wholeNpcList = new List<IActor>();
-            long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x2000A);
-            int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(BaseAddres + 0x111be28) + 0x0002A078);
-
-            for (int i = 0; i < *count; i++)
+            for (ushort i = 0xFFFF; i > 0; i--)
             {
-                wholeNpcList.Add(GetObject<NPC>(*monsterIDList));
-                monsterIDList++;
+                long* itemPointer = (long*)GameFunctionsAndObjects.DataFetch.GetItemPointer(i);
+                if ((long)itemPointer != 0)
+                {
+                    UsableItem nearItem = new UsableItem(i, itemPointer);
+                    itemList.Add(nearItem);
+                }
             }
 
-            var sortedList = wholeNpcList.OrderBy(x => x.CalcDistance(wholeNpcList[0]));
-
-            return sortedList.ToList();
+            return itemList;
         }
 
         /// <summary>
