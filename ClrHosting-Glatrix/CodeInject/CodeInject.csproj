@@ -50,6 +50,7 @@
     <Compile Include="Actors\IActor.cs" />
     <Compile Include="Actors\IObject.cs" />
     <Compile Include="Actors\NPC.cs" />
+    <Compile Include="Actors\UsableItem.cs" />
     <Compile Include="cBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +72,7 @@
   <ItemGroup>
     <None Include="CopyToRose\MonsterList.json" />
     <None Include="CopyToRose\SkillList.json" />
+    <None Include="CopyToRose\UseItemList.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -86,20 +86,30 @@ namespace CodeInject
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-           
-
         }
 
         private void pickUpTimer_Tick(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < 0xFFFF; i++)
+            for (ushort i = 0xFFFF; i >0; i--)
             {
                 if (GameFunctionsAndObjects.DataFetch.GetItemPointer(i) != 0)
                 {
                     GameFunctionsAndObjects.Actions.PickUp(i);
                     break;
+                }
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            lNearItemsList.Items.Clear();
+            for (ushort i = 0xFFFF; i > 0; i--)
+            {
+                long* itemPointer = (long*)GameFunctionsAndObjects.DataFetch.GetItemPointer(i);
+                if ((long)itemPointer != 0)
+                {
+                    UsableItem nearItem = new UsableItem(itemPointer);
+                    lNearItemsList.Items.Add(nearItem);
                 }
             }
         }

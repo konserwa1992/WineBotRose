@@ -21,18 +21,27 @@ namespace CodeInject
         public string Name = " ";
     }
 
+    public class UsableItemsInfo
+    {
+        public int ID;
+        public string Name = "";
+        public string DisplayName = "";
+    }
+
     public class DataBase
     {
         public static DataBase GameDataBase { get; private set; } = new DataBase();
 
         public List<MobInfo> MonsterDatabase = new List<MobInfo>();
         public List<SkillInfo> SkillDatabase = new List<SkillInfo>();
+        public List<UsableItemsInfo> UsableItmesDatabase = new List<UsableItemsInfo>();
 
 
         private DataBase()
         {
             LoadMonsterDataBase();
             LoadSkillDataBase();
+            LoadUsableItemDataBase();
 
         }
 
@@ -49,5 +58,12 @@ namespace CodeInject
             SkillDatabase = JsonConvert.DeserializeObject<List<SkillInfo>>(dataReade.ReadToEnd());
         }
 
+
+        private void LoadUsableItemDataBase()
+        {
+            StreamReader dataReade = new StreamReader("UseItemList.json");
+
+            UsableItmesDatabase = JsonConvert.DeserializeObject<List<UsableItemsInfo>>(dataReade.ReadToEnd());
+        }
     }
 }

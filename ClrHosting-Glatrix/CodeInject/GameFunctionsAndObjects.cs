@@ -21,22 +21,24 @@ namespace CodeInject
         public delegate Int64 AttackWithSkill(int skill, int enemy, int arg0);
         public delegate Int64 PickUpAction(long arg1, long arg2, int arg3, int arg4);
 
-        private PickUpAction PickUpFunc;// = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64() + 0x26e90), typeof(PickUpAction));
+        private PickUpAction PickUpFunc;
         private AttackWithSkill AttackWithSkillFunc;
+        private long BaseAddres;
+
         public Actions()
         {
             Init();
         }
         public void Init()
         {
-            Process _proc = Process.GetCurrentProcess();
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(_proc.MainModule.BaseAddress.ToInt64() + 0x26e90), typeof(PickUpAction));
-            AttackWithSkillFunc = (AttackWithSkill)Marshal.GetDelegateForFunctionPointer(new IntPtr(_proc.MainModule.BaseAddress.ToInt64() + 0x4260E), typeof(AttackWithSkill));
+            BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x26e90), typeof(PickUpAction));
+            AttackWithSkillFunc = (AttackWithSkill)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4260E), typeof(AttackWithSkill));
         }
         public void PickUp(int ItemID)
         {
             Process _proc = Process.GetCurrentProcess();
-            PickUpFunc((*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x1122EF0) + 0x16D8), *((long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x1118E60)), ItemID, 0);
+            PickUpFunc((*(long*)(BaseAddres + 0x1122EF0) + 0x16D8), *((long*)(BaseAddres + 0x1118E60)), ItemID, 0);
         }
 
         /// <summary>
@@ -51,6 +53,9 @@ namespace CodeInject
 
     }
 
+    /// <summary>
+    /// Methods to get game data
+    /// </summary>
     public unsafe class DataReader
     {
         private GetItemAdr getItemFunc;
@@ -67,7 +72,7 @@ namespace CodeInject
 
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
 
-            getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(_proc.MainModule.BaseAddress.ToInt64() + 0x40A89), typeof(GetItemAdr));
+            getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x40A89), typeof(GetItemAdr));
         }
 
         /// <summary>
@@ -80,7 +85,7 @@ namespace CodeInject
 
             Process _proc = Process.GetCurrentProcess();
 
-            ulong* adrPtr1 = (ulong*)(_proc.MainModule.BaseAddress.ToInt64() + 0x1118E90);
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x1118E90);
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)
             {
@@ -110,7 +115,7 @@ namespace CodeInject
         public IActor GetObject<T>(int ID)
         {
             Process _proc = Process.GetCurrentProcess();
-            long* wskObj = (long*)((*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x111be28)) + (ID * 8) + 0x22078);
+            long* wskObj = (long*)((*(long*)(BaseAddres + 0x111be28)) + (ID * 8) + 0x22078);
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
 
@@ -127,7 +132,7 @@ namespace CodeInject
         {
             Process _proc = Process.GetCurrentProcess();
 
-            long* wsp = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x111be28) + 0x22050);
+            long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
             int* monsterIDList = (int*)*wsp;
 
             return GetObject<NPC>(*monsterIDList);
@@ -142,9 +147,9 @@ namespace CodeInject
             Process _proc = Process.GetCurrentProcess();
 
             List<IActor> wholeNpcList = new List<IActor>();
-            long* wsp = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x111be28) + 0x22050);
+            long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
             int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x111be28) + 0x0002A078);
+            int* count = (int*)(*(long*)(BaseAddres + 0x111be28) + 0x0002A078);
 
             for (int i = 0; i < *count; i++)
             {
@@ -166,9 +171,9 @@ namespace CodeInject
             Process _proc = Process.GetCurrentProcess();
 
             List<IActor> wholeNpcList = new List<IActor>();
-            long* wsp = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x111be28) + 0x2000A);
+            long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x2000A);
             int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x111be28) + 0x0002A078);
+            int* count = (int*)(*(long*)(BaseAddres + 0x111be28) + 0x0002A078);
 
             for (int i = 0; i < *count; i++)
             {
@@ -189,7 +194,7 @@ namespace CodeInject
         /// <returns></returns>
         public delegate Int64 GetItemAdr(long arg1, int index);
 
-        public  Int64 GetItemPointer(int index)
+        public  Int64 GetItemPointer(ushort index)
         {
             Process _proc = Process.GetCurrentProcess();
    
