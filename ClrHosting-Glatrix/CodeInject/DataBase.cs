@@ -8,23 +8,35 @@ using System.Threading.Tasks;
 
 namespace CodeInject
 {
-
-    public class MobInfo
+    interface BasicInfo
     {
-        public int ID;
-        public string Name;
+         int ID { get; set; }
+         string Name { get; set; }
     }
 
-    public class SkillInfo
+    public class MobInfo: BasicInfo
     {
-        public int ID;
-        public string Name = " ";
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 
-    public class UsableItemsInfo
+    public class SkillInfo: BasicInfo
     {
-        public int ID;
-        public string Name = "";
+        public int ID { get; set; }
+        public string Name { get; set; } = " ";
+    }
+
+    public class WeaponInfo: BasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+    }
+
+
+    public class UsableItemsInfo: BasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } ="";
         public string DisplayName = "";
     }
 
@@ -34,36 +46,43 @@ namespace CodeInject
 
         public List<MobInfo> MonsterDatabase = new List<MobInfo>();
         public List<SkillInfo> SkillDatabase = new List<SkillInfo>();
-        public List<UsableItemsInfo> UsableItmesDatabase = new List<UsableItemsInfo>();
-
+        public List<UsableItemsInfo> UsableItemsDatabase = new List<UsableItemsInfo>();
+        public List<WeaponInfo> WeaponItemsDatabase = new List<WeaponInfo>();
 
         private DataBase()
         {
             LoadMonsterDataBase();
             LoadSkillDataBase();
             LoadUsableItemDataBase();
-
+            LoadWeaponDataBase();
         }
 
+        private void LoadWeaponDataBase()
+        {
+            StreamReader dataReade = new StreamReader("WeaponList.json");
+
+            WeaponItemsDatabase = JsonConvert.DeserializeObject<List<WeaponInfo>>(dataReade.ReadToEnd());
+            dataReade.Close();
+        }
         private void LoadMonsterDataBase()
         {
             StreamReader dataReade = new StreamReader("MonsterList.json");
             MonsterDatabase = JsonConvert.DeserializeObject<List<MobInfo>>(dataReade.ReadToEnd());
+            dataReade.Close();
         }
-
         private void LoadSkillDataBase()
         {
             StreamReader dataReade = new StreamReader("SkillList.json");
 
             SkillDatabase = JsonConvert.DeserializeObject<List<SkillInfo>>(dataReade.ReadToEnd());
+            dataReade.Close();
         }
-
-
         private void LoadUsableItemDataBase()
         {
             StreamReader dataReade = new StreamReader("UseItemList.json");
 
-            UsableItmesDatabase = JsonConvert.DeserializeObject<List<UsableItemsInfo>>(dataReade.ReadToEnd());
+            UsableItemsDatabase = JsonConvert.DeserializeObject<List<UsableItemsInfo>>(dataReade.ReadToEnd());
+            dataReade.Close();
         }
     }
 }

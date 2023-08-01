@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Actors\IObject.cs" />
     <Compile Include="Actors\NPC.cs" />
-    <Compile Include="Actors\UsableItem.cs" />
+    <Compile Include="Actors\Item.cs" />
     <Compile Include="cBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +76,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="CopyToRose\UseItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CopyToRose\WeaponList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

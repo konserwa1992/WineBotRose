@@ -113,7 +113,8 @@ namespace CodeInject
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ((UsableItem)lNearItemsList.SelectedItem).Pickup();
+            textBox2.Text = ((long)((Item)lNearItemsList.SelectedItem).ObjectPointer).ToString("X");
+         //   ((UsableItem)lNearItemsList.SelectedItem).Pickup();
             lNearItemsList.Items.Clear();
             lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
         }

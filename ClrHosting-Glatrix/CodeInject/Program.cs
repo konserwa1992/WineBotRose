@@ -77,13 +77,9 @@ namespace ISpace
 
         public static int IMain(string args)
         {
-
             cBot cBot = new cBot();
             cBot.ShowDialog();
-          //  AllocConsole(); //Open a console window from the same process.
-
-
-
+  
             return 0;
         }
 

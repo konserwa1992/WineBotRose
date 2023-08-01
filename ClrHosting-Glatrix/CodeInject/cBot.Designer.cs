@@ -49,6 +49,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -190,6 +191,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -244,6 +246,13 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(212, 31);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 4;
+            // 
             // cBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +267,7 @@
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -285,5 +295,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lNearItemsList;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

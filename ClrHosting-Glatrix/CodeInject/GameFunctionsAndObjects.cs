@@ -120,8 +120,8 @@ namespace CodeInject
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
 
-            if (typeof(T) == typeof(UsableItem))
-                return new UsableItem(wskObj);
+            if (typeof(T) == typeof(Item))
+                return new Item(wskObj);
 
             return null;
         }
@@ -179,7 +179,7 @@ namespace CodeInject
                 long* itemPointer = (long*)GameFunctionsAndObjects.DataFetch.GetItemPointer(i);
                 if ((long)itemPointer != 0)
                 {
-                    UsableItem nearItem = new UsableItem(i, itemPointer);
+                    Item nearItem = new Item(i, itemPointer);
                     itemList.Add(nearItem);
                 }
             }
