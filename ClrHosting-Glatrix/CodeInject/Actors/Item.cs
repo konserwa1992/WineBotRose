@@ -80,6 +80,24 @@ namespace CodeInject.Actors
                         temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
                         return $"{(temp != null ? ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
                     }
+
+                case 0x03:
+                    {
+                        temp = DataBase.GameDataBase.BodyItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                    }
+
+                case 0x05:
+                    {
+                        temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                    }
+
+                case 0x04:
+                    {
+                        temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                    }
                 default:
                     {
                         return $"Unknow type:{(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";

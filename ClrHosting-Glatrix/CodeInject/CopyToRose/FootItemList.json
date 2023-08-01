@@ -1,0 +1,6242 @@
+[
+  {
+    "ID": 0,
+    "Name": "Bare Feet Male"
+  },
+  {
+    "ID": 1,
+    "Name": "Bare Feet Female"
+  },
+  {
+    "ID": 2,
+    "Name": "Red Shoes"
+  },
+  {
+    "ID": 3,
+    "Name": "Waterproof Shoes"
+  },
+  {
+    "ID": 4,
+    "Name": "Leather Shoes"
+  },
+  {
+    "ID": 5,
+    "Name": "Dash Shoes"
+  },
+  {
+    "ID": 6,
+    "Name": "Shoes of Iguje"
+  },
+  {
+    "ID": 7,
+    "Name": "Islamic Shoes"
+  },
+  {
+    "ID": 8,
+    "Name": "Field Walkers"
+  },
+  {
+    "ID": 9,
+    "Name": "Wild Walkers"
+  },
+  {
+    "ID": 10,
+    "Name": "Land Walkers"
+  },
+  {
+    "ID": 11,
+    "Name": "Earth Walkers"
+  },
+  {
+    "ID": 12,
+    "Name": "Marble Shoes"
+  },
+  {
+    "ID": 13,
+    "Name": "Luxurious Marble Shoes"
+  },
+  {
+    "ID": 14,
+    "Name": "Junior Shoes"
+  },
+  {
+    "ID": 15,
+    "Name": "Senior Shoes"
+  },
+  {
+    "ID": 16,
+    "Name": "Redfield Green Shoes"
+  },
+  {
+    "ID": 17,
+    "Name": "Redfield Black Shoes"
+  },
+  {
+    "ID": 29,
+    "Name": "Visitor Sandals"
+  },
+  {
+    "ID": 30,
+    "Name": "Visitor Sandals"
+  },
+  {
+    "ID": 31,
+    "Name": "Soldier Boots"
+  },
+  {
+    "ID": 32,
+    "Name": "Iron Boots"
+  },
+  {
+    "ID": 33,
+    "Name": "Trunket Boots"
+  },
+  {
+    "ID": 34,
+    "Name": "Chrome Boots"
+  },
+  {
+    "ID": 35,
+    "Name": "Mighty Boots"
+  },
+  {
+    "ID": 36,
+    "Name": "Kurash Boots"
+  },
+  {
+    "ID": 37,
+    "Name": "Plate Boots"
+  },
+  {
+    "ID": 38,
+    "Name": "Durable Boots"
+  },
+  {
+    "ID": 39,
+    "Name": "Cedric Boots"
+  },
+  {
+    "ID": 40,
+    "Name": "Execution Boots"
+  },
+  {
+    "ID": 41,
+    "Name": "Abyss Plate Boots"
+  },
+  {
+    "ID": 42,
+    "Name": "Righteous Plate Boots"
+  },
+  {
+    "ID": 43,
+    "Name": "Jabberwock Boots"
+  },
+  {
+    "ID": 44,
+    "Name": "Obsidian Plate Boots"
+  },
+  {
+    "ID": 45,
+    "Name": "Aurum Plate Boots"
+  },
+  {
+    "ID": 46,
+    "Name": "Legionnaire Greaves"
+  },
+  {
+    "ID": 47,
+    "Name": "Royal Guardian Boots"
+  },
+  {
+    "ID": 49,
+    "Name": "Crackerjack Shoes"
+  },
+  {
+    "ID": 50,
+    "Name": "Stalwart Boots"
+  },
+  {
+    "ID": 51,
+    "Name": "Enigmatic Sandals"
+  },
+  {
+    "ID": 52,
+    "Name": "Swift-heart Boots"
+  },
+  {
+    "ID": 53,
+    "Name": "Enterprising Boots"
+  },
+  {
+    "ID": 61,
+    "Name": "Spiritual Shoes"
+  },
+  {
+    "ID": 62,
+    "Name": "Green Sandals of Witch"
+  },
+  {
+    "ID": 63,
+    "Name": "Purple Sandals of Witch"
+  },
+  {
+    "ID": 64,
+    "Name": "Violet Boots"
+  },
+  {
+    "ID": 65,
+    "Name": "Boots of Shadow"
+  },
+  {
+    "ID": 66,
+    "Name": "Velvet Boots of Witch"
+  },
+  {
+    "ID": 67,
+    "Name": "Heaven's Shoes"
+  },
+  {
+    "ID": 68,
+    "Name": "Fairy Shoes"
+  },
+  {
+    "ID": 69,
+    "Name": "Joker Shoes"
+  },
+  {
+    "ID": 70,
+    "Name": "Mystic Weaver Shoes"
+  },
+  {
+    "ID": 71,
+    "Name": "Serenity Shoes"
+  },
+  {
+    "ID": 72,
+    "Name": "Archmage Shoes"
+  },
+  {
+    "ID": 73,
+    "Name": "Dimple Shoes"
+  },
+  {
+    "ID": 74,
+    "Name": "Royal Sage Shoes"
+  },
+  {
+    "ID": 75,
+    "Name": "Orlean Shoes"
+  },
+  {
+    "ID": 76,
+    "Name": "Spitfire Shoes"
+  },
+  {
+    "ID": 77,
+    "Name": "Sun Prophet Boots"
+  },
+  {
+    "ID": 91,
+    "Name": "Hunter Boots"
+  },
+  {
+    "ID": 92,
+    "Name": "Criker Boots"
+  },
+  {
+    "ID": 93,
+    "Name": "Ranger Boots"
+  },
+  {
+    "ID": 94,
+    "Name": "Black Pirate Boots"
+  },
+  {
+    "ID": 95,
+    "Name": "Mariner's Boots"
+  },
+  {
+    "ID": 96,
+    "Name": "Jaguar Boots"
+  },
+  {
+    "ID": 97,
+    "Name": "Wild Hawker Boots"
+  },
+  {
+    "ID": 98,
+    "Name": "Pirate Sandals"
+  },
+  {
+    "ID": 99,
+    "Name": "Silentwalker Boots"
+  },
+  {
+    "ID": 100,
+    "Name": "Triggerman Boots"
+  },
+  {
+    "ID": 101,
+    "Name": "Captain Hawker Boots"
+  },
+  {
+    "ID": 102,
+    "Name": "Netherworld Boots"
+  },
+  {
+    "ID": 103,
+    "Name": "Steel Resolve Boots"
+  },
+  {
+    "ID": 104,
+    "Name": "Shadow Fall Shoes"
+  },
+  {
+    "ID": 105,
+    "Name": "Raptor Boots"
+  },
+  {
+    "ID": 106,
+    "Name": "Spinosaur Boots"
+  },
+  {
+    "ID": 107,
+    "Name": "Jackal Bandit Boots"
+  },
+  {
+    "ID": 121,
+    "Name": "Brown Shoes"
+  },
+  {
+    "ID": 122,
+    "Name": "Vibe Shoes"
+  },
+  {
+    "ID": 123,
+    "Name": "Tamiya Shoes"
+  },
+  {
+    "ID": 124,
+    "Name": "Semiya Shoes"
+  },
+  {
+    "ID": 125,
+    "Name": "Merchant Boots"
+  },
+  {
+    "ID": 126,
+    "Name": "Rich Merchant Boots"
+  },
+  {
+    "ID": 127,
+    "Name": "Redfield Chairman Shoes"
+  },
+  {
+    "ID": 128,
+    "Name": "Fisherman Sandals"
+  },
+  {
+    "ID": 129,
+    "Name": "Bomber Shoes"
+  },
+  {
+    "ID": 130,
+    "Name": "Cart Racer Shoes"
+  },
+  {
+    "ID": 131,
+    "Name": "Bourgeois Shoes"
+  },
+  {
+    "ID": 132,
+    "Name": "Noble Lord Shoes"
+  },
+  {
+    "ID": 133,
+    "Name": "Mana Steam Shoes"
+  },
+  {
+    "ID": 134,
+    "Name": "Mana Fusion Boots"
+  },
+  {
+    "ID": 135,
+    "Name": "Mercenary Boots"
+  },
+  {
+    "ID": 136,
+    "Name": "Assailant Boots"
+  },
+  {
+    "ID": 137,
+    "Name": "Serpent Trader Boots"
+  },
+  {
+    "ID": 141,
+    "Name": "Ocean Breeze Wooden Shoes"
+  },
+  {
+    "ID": 142,
+    "Name": "Noble Koi Wooden Shoes"
+  },
+  {
+    "ID": 143,
+    "Name": "Hopping Grasshopper Wooden Shoes"
+  },
+  {
+    "ID": 144,
+    "Name": "Gliding Dragonfly Wooden Shoes"
+  },
+  {
+    "ID": 145,
+    "Name": "Daring Rabbit Wooden Shoes"
+  },
+  {
+    "ID": 146,
+    "Name": "Falling Leaf Wooden Shoes"
+  },
+  {
+    "ID": 147,
+    "Name": "Ms ROSE Blue Heels"
+  },
+  {
+    "ID": 148,
+    "Name": "Noble Brawler Boots"
+  },
+  {
+    "ID": 149,
+    "Name": "Crucible Gladiator Boots"
+  },
+  {
+    "ID": 150,
+    "Name": ""
+  },
+  {
+    "ID": 151,
+    "Name": ""
+  },
+  {
+    "ID": 152,
+    "Name": "Santa Boots"
+  },
+  {
+    "ID": 153,
+    "Name": "Plastic Shoes"
+  },
+  {
+    "ID": 154,
+    "Name": "Adventurer's Shoes"
+  },
+  {
+    "ID": 157,
+    "Name": "Beach Flipflops"
+  },
+  {
+    "ID": 158,
+    "Name": "Leopold Partywear Boots"
+  },
+  {
+    "ID": 160,
+    "Name": ""
+  },
+  {
+    "ID": 161,
+    "Name": ""
+  },
+  {
+    "ID": 163,
+    "Name": "Superfighter Boots"
+  },
+  {
+    "ID": 164,
+    "Name": "White Santa Boots"
+  },
+  {
+    "ID": 165,
+    "Name": "Pink Santa Boots"
+  },
+  {
+    "ID": 166,
+    "Name": "Fairy Gift Shoes"
+  },
+  {
+    "ID": 167,
+    "Name": "Fairy Bless Shoes"
+  },
+  {
+    "ID": 169,
+    "Name": "Snowboard Boots"
+  },
+  {
+    "ID": 170,
+    "Name": "Soccer Cleats"
+  },
+  {
+    "ID": 171,
+    "Name": "KROSE Soccer Cleats"
+  },
+  {
+    "ID": 172,
+    "Name": "JROSE Soccer Cleats"
+  },
+  {
+    "ID": 173,
+    "Name": "ROSE NA Soccer Cleats"
+  },
+  {
+    "ID": 174,
+    "Name": "PROSE Soccer Cleats"
+  },
+  {
+    "ID": 175,
+    "Name": "Clan War School Shoes"
+  },
+  {
+    "ID": 176,
+    "Name": "Rudolph Boots"
+  },
+  {
+    "ID": 177,
+    "Name": "Black Santa Boots"
+  },
+  {
+    "ID": 178,
+    "Name": "Leprechaun Shoes"
+  },
+  {
+    "ID": 180,
+    "Name": "Blue Santa Boots"
+  },
+  {
+    "ID": 181,
+    "Name": "Navy Blue Magic School Shoes"
+  },
+  {
+    "ID": 182,
+    "Name": "Yellow Rubber Boots"
+  },
+  {
+    "ID": 183,
+    "Name": "Wooden Shoes"
+  },
+  {
+    "ID": 184,
+    "Name": "New Abyss Plate Boots"
+  },
+  {
+    "ID": 185,
+    "Name": "New Serenity Shoes"
+  },
+  {
+    "ID": 186,
+    "Name": "New Captain Boots"
+  },
+  {
+    "ID": 187,
+    "Name": "New Bourgeois Shoes"
+  },
+  {
+    "ID": 188,
+    "Name": "White Magic School Shoes"
+  },
+  {
+    "ID": 189,
+    "Name": "Servant's Boots"
+  },
+  {
+    "ID": 190,
+    "Name": "Boxing Shoes"
+  },
+  {
+    "ID": 191,
+    "Name": "Jolly Santa Boots"
+  },
+  {
+    "ID": 192,
+    "Name": "Santa's Helper Boots"
+  },
+  {
+    "ID": 193,
+    "Name": "Santa Look Boots"
+  },
+  {
+    "ID": 194,
+    "Name": "Christmas Cheer Boots"
+  },
+  {
+    "ID": 195,
+    "Name": "Soccer Cleats"
+  },
+  {
+    "ID": 201,
+    "Name": "Dark Dash Shoes"
+  },
+  {
+    "ID": 202,
+    "Name": "Dark Shoes of Iguje"
+  },
+  {
+    "ID": 203,
+    "Name": "Demon Shoes of Iguje"
+  },
+  {
+    "ID": 204,
+    "Name": "Dark Islamic Shoes"
+  },
+  {
+    "ID": 205,
+    "Name": "Demon Islamic Shoes"
+  },
+  {
+    "ID": 206,
+    "Name": "Grand Islamic Shoes"
+  },
+  {
+    "ID": 207,
+    "Name": "Dark Field Walkers"
+  },
+  {
+    "ID": 208,
+    "Name": "Demon Field Walkers"
+  },
+  {
+    "ID": 209,
+    "Name": "Grand Field Walkers"
+  },
+  {
+    "ID": 210,
+    "Name": "Dark Wild Walkers"
+  },
+  {
+    "ID": 211,
+    "Name": "Demon Wild Walkers"
+  },
+  {
+    "ID": 212,
+    "Name": "Grand Wild Walkers"
+  },
+  {
+    "ID": 213,
+    "Name": "Dark Land Walkers"
+  },
+  {
+    "ID": 214,
+    "Name": "Demon Land Walkers"
+  },
+  {
+    "ID": 215,
+    "Name": "Grand Land Walkers"
+  },
+  {
+    "ID": 216,
+    "Name": "Dark Earth Walkers"
+  },
+  {
+    "ID": 217,
+    "Name": "Demon Earth Walkers"
+  },
+  {
+    "ID": 218,
+    "Name": "Grand Earth Walkers"
+  },
+  {
+    "ID": 219,
+    "Name": "Dark Marble Shoes"
+  },
+  {
+    "ID": 220,
+    "Name": "Demon Marble Shoes"
+  },
+  {
+    "ID": 221,
+    "Name": "Grand Marble Shoes"
+  },
+  {
+    "ID": 222,
+    "Name": "Dark Luxurious Marble Shoes"
+  },
+  {
+    "ID": 223,
+    "Name": "Demon Luxurious Marble Shoes"
+  },
+  {
+    "ID": 224,
+    "Name": "Grand Luxurious Marble Shoes"
+  },
+  {
+    "ID": 225,
+    "Name": "Dark Junior Shoes"
+  },
+  {
+    "ID": 226,
+    "Name": "Demon Junior Shoes"
+  },
+  {
+    "ID": 227,
+    "Name": "Grand Junior Shoes"
+  },
+  {
+    "ID": 228,
+    "Name": "Dark Senior Shoes"
+  },
+  {
+    "ID": 229,
+    "Name": "Demon Senior Shoes"
+  },
+  {
+    "ID": 230,
+    "Name": "Grand Senior Shoes"
+  },
+  {
+    "ID": 231,
+    "Name": "Golden Senior Shoes"
+  },
+  {
+    "ID": 232,
+    "Name": "Dark Redfield Green Shoes"
+  },
+  {
+    "ID": 233,
+    "Name": "Demon Redfield Green Shoes"
+  },
+  {
+    "ID": 234,
+    "Name": "Grand Redfield Green Shoes"
+  },
+  {
+    "ID": 235,
+    "Name": "Golden Redfield Green Shoes"
+  },
+  {
+    "ID": 236,
+    "Name": "Dark Redfield Black Shoes"
+  },
+  {
+    "ID": 237,
+    "Name": "Demon Redfield Black Shoes"
+  },
+  {
+    "ID": 238,
+    "Name": "Grand Redfield Black Shoes"
+  },
+  {
+    "ID": 239,
+    "Name": "Golden Redfield Black Shoes"
+  },
+  {
+    "ID": 240,
+    "Name": ""
+  },
+  {
+    "ID": 241,
+    "Name": ""
+  },
+  {
+    "ID": 242,
+    "Name": ""
+  },
+  {
+    "ID": 243,
+    "Name": ""
+  },
+  {
+    "ID": 244,
+    "Name": ""
+  },
+  {
+    "ID": 245,
+    "Name": ""
+  },
+  {
+    "ID": 246,
+    "Name": ""
+  },
+  {
+    "ID": 247,
+    "Name": ""
+  },
+  {
+    "ID": 248,
+    "Name": ""
+  },
+  {
+    "ID": 249,
+    "Name": ""
+  },
+  {
+    "ID": 250,
+    "Name": ""
+  },
+  {
+    "ID": 251,
+    "Name": ""
+  },
+  {
+    "ID": 252,
+    "Name": ""
+  },
+  {
+    "ID": 253,
+    "Name": ""
+  },
+  {
+    "ID": 254,
+    "Name": ""
+  },
+  {
+    "ID": 255,
+    "Name": ""
+  },
+  {
+    "ID": 256,
+    "Name": ""
+  },
+  {
+    "ID": 257,
+    "Name": ""
+  },
+  {
+    "ID": 258,
+    "Name": ""
+  },
+  {
+    "ID": 259,
+    "Name": ""
+  },
+  {
+    "ID": 260,
+    "Name": ""
+  },
+  {
+    "ID": 261,
+    "Name": ""
+  },
+  {
+    "ID": 262,
+    "Name": ""
+  },
+  {
+    "ID": 263,
+    "Name": ""
+  },
+  {
+    "ID": 264,
+    "Name": ""
+  },
+  {
+    "ID": 265,
+    "Name": ""
+  },
+  {
+    "ID": 266,
+    "Name": ""
+  },
+  {
+    "ID": 267,
+    "Name": ""
+  },
+  {
+    "ID": 268,
+    "Name": ""
+  },
+  {
+    "ID": 269,
+    "Name": ""
+  },
+  {
+    "ID": 270,
+    "Name": ""
+  },
+  {
+    "ID": 271,
+    "Name": ""
+  },
+  {
+    "ID": 272,
+    "Name": ""
+  },
+  {
+    "ID": 273,
+    "Name": ""
+  },
+  {
+    "ID": 274,
+    "Name": ""
+  },
+  {
+    "ID": 275,
+    "Name": ""
+  },
+  {
+    "ID": 276,
+    "Name": ""
+  },
+  {
+    "ID": 277,
+    "Name": ""
+  },
+  {
+    "ID": 278,
+    "Name": ""
+  },
+  {
+    "ID": 279,
+    "Name": ""
+  },
+  {
+    "ID": 280,
+    "Name": ""
+  },
+  {
+    "ID": 281,
+    "Name": ""
+  },
+  {
+    "ID": 282,
+    "Name": ""
+  },
+  {
+    "ID": 283,
+    "Name": ""
+  },
+  {
+    "ID": 284,
+    "Name": ""
+  },
+  {
+    "ID": 285,
+    "Name": ""
+  },
+  {
+    "ID": 286,
+    "Name": ""
+  },
+  {
+    "ID": 287,
+    "Name": ""
+  },
+  {
+    "ID": 288,
+    "Name": "Dark Visitor Sandals"
+  },
+  {
+    "ID": 289,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 290,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 291,
+    "Name": "Elven Visitor Sandals"
+  },
+  {
+    "ID": 292,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 293,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 294,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 295,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 296,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 297,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 298,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 299,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 300,
+    "Name": "Golden Visitor Sandals"
+  },
+  {
+    "ID": 301,
+    "Name": "Dark Soldier Boots"
+  },
+  {
+    "ID": 302,
+    "Name": "Demon Soldier Boots"
+  },
+  {
+    "ID": 303,
+    "Name": "Grand Soldier Boots"
+  },
+  {
+    "ID": 304,
+    "Name": "Golden Soldier Boots"
+  },
+  {
+    "ID": 305,
+    "Name": "Legend Soldier Boots"
+  },
+  {
+    "ID": 306,
+    "Name": "Elven Soldier Boots"
+  },
+  {
+    "ID": 307,
+    "Name": "Dark Iron Boots"
+  },
+  {
+    "ID": 308,
+    "Name": "Demon Iron Boots"
+  },
+  {
+    "ID": 309,
+    "Name": "Grand Iron Boots"
+  },
+  {
+    "ID": 310,
+    "Name": "Golden Iron Boots"
+  },
+  {
+    "ID": 311,
+    "Name": "Legend Iron Boots"
+  },
+  {
+    "ID": 312,
+    "Name": "Elven Iron Boots"
+  },
+  {
+    "ID": 313,
+    "Name": "Saint Iron Boots"
+  },
+  {
+    "ID": 314,
+    "Name": "Dark Trunket Boots"
+  },
+  {
+    "ID": 315,
+    "Name": "Demon Trunket Boots"
+  },
+  {
+    "ID": 316,
+    "Name": "Grand Trunket Boots"
+  },
+  {
+    "ID": 317,
+    "Name": "Golden Trunket Boots"
+  },
+  {
+    "ID": 318,
+    "Name": "Legend Trunket Boots"
+  },
+  {
+    "ID": 319,
+    "Name": "Elven Trunket Boots"
+  },
+  {
+    "ID": 320,
+    "Name": "Saint Trunket Boots"
+  },
+  {
+    "ID": 321,
+    "Name": "Dark Chrome Boots"
+  },
+  {
+    "ID": 322,
+    "Name": "Demon Chrome Boots"
+  },
+  {
+    "ID": 323,
+    "Name": "Grand Chrome Boots"
+  },
+  {
+    "ID": 324,
+    "Name": "Golden Chrome Boots"
+  },
+  {
+    "ID": 325,
+    "Name": "Legend Chrome Boots"
+  },
+  {
+    "ID": 326,
+    "Name": "Elven Chrome Boots"
+  },
+  {
+    "ID": 327,
+    "Name": "Saint Chrome Boots"
+  },
+  {
+    "ID": 328,
+    "Name": "Dark Mighty Boots"
+  },
+  {
+    "ID": 329,
+    "Name": "Demon Mighty Boots"
+  },
+  {
+    "ID": 330,
+    "Name": "Grand Mighty Boots"
+  },
+  {
+    "ID": 331,
+    "Name": "Golden Mighty Boots"
+  },
+  {
+    "ID": 332,
+    "Name": "Legend Mighty Boots"
+  },
+  {
+    "ID": 333,
+    "Name": "Elven Mighty Boots"
+  },
+  {
+    "ID": 334,
+    "Name": "Saint Mighty Boots"
+  },
+  {
+    "ID": 335,
+    "Name": "Dark Kurash Boots"
+  },
+  {
+    "ID": 336,
+    "Name": "Demon Kurash Boots"
+  },
+  {
+    "ID": 337,
+    "Name": "Grand Kurash Boots"
+  },
+  {
+    "ID": 338,
+    "Name": "Golden Kurash Boots"
+  },
+  {
+    "ID": 339,
+    "Name": "Legend Kurash Boots"
+  },
+  {
+    "ID": 340,
+    "Name": "Elven Kurash Boots"
+  },
+  {
+    "ID": 341,
+    "Name": "Saint Kurash Boots"
+  },
+  {
+    "ID": 342,
+    "Name": "Dark Plate Boots"
+  },
+  {
+    "ID": 343,
+    "Name": "Demon Plate Boots"
+  },
+  {
+    "ID": 344,
+    "Name": "Grand Plate Boots"
+  },
+  {
+    "ID": 345,
+    "Name": "Golden Plate Boots"
+  },
+  {
+    "ID": 346,
+    "Name": "Legend Plate Boots"
+  },
+  {
+    "ID": 347,
+    "Name": "Elven Plate Boots"
+  },
+  {
+    "ID": 348,
+    "Name": "Saint Plate Boots"
+  },
+  {
+    "ID": 349,
+    "Name": "Durable Boots"
+  },
+  {
+    "ID": 350,
+    "Name": "Durable Boots"
+  },
+  {
+    "ID": 351,
+    "Name": "Durable Boots"
+  },
+  {
+    "ID": 352,
+    "Name": "Golden Durable Boots"
+  },
+  {
+    "ID": 353,
+    "Name": "Elven Durable Boots"
+  },
+  {
+    "ID": 354,
+    "Name": "Saint Durable Boots"
+  },
+  {
+    "ID": 355,
+    "Name": "Legend Durable Boots"
+  },
+  {
+    "ID": 356,
+    "Name": "Cedric Boots"
+  },
+  {
+    "ID": 357,
+    "Name": "Cedric Boots"
+  },
+  {
+    "ID": 358,
+    "Name": "Cedric Boots"
+  },
+  {
+    "ID": 359,
+    "Name": "Golden Cedric Boots"
+  },
+  {
+    "ID": 360,
+    "Name": "Elven Cedric Boots"
+  },
+  {
+    "ID": 361,
+    "Name": "Saint Cedric Boots"
+  },
+  {
+    "ID": 362,
+    "Name": "Legend Cedric Boots"
+  },
+  {
+    "ID": 363,
+    "Name": "Execution Boots"
+  },
+  {
+    "ID": 364,
+    "Name": "Execution Boots"
+  },
+  {
+    "ID": 365,
+    "Name": "Execution Boots"
+  },
+  {
+    "ID": 366,
+    "Name": "Golden Execution Boots"
+  },
+  {
+    "ID": 367,
+    "Name": "Elven Execution Boots"
+  },
+  {
+    "ID": 368,
+    "Name": "Saint Execution Boots"
+  },
+  {
+    "ID": 369,
+    "Name": "Saint Execution Boots"
+  },
+  {
+    "ID": 370,
+    "Name": "Abyss Plate Boots"
+  },
+  {
+    "ID": 371,
+    "Name": "Abyss Plate Boots"
+  },
+  {
+    "ID": 372,
+    "Name": "Abyss Plate Boots"
+  },
+  {
+    "ID": 373,
+    "Name": "Golden Abyss Plate Boots"
+  },
+  {
+    "ID": 374,
+    "Name": "Elven Abyss Plate Boots"
+  },
+  {
+    "ID": 375,
+    "Name": "Saint Abyss Plate Boots"
+  },
+  {
+    "ID": 376,
+    "Name": "Saint Abyss Plate Boots"
+  },
+  {
+    "ID": 377,
+    "Name": "Righteous Plate Boots"
+  },
+  {
+    "ID": 378,
+    "Name": "Saint Righteous Plate Boots"
+  },
+  {
+    "ID": 379,
+    "Name": "Righteous Plate Boots"
+  },
+  {
+    "ID": 380,
+    "Name": "Dark Jabberwock Boots"
+  },
+  {
+    "ID": 381,
+    "Name": "Grand Jabberwock Boots"
+  },
+  {
+    "ID": 382,
+    "Name": "Demon Obsidian Plate Boots"
+  },
+  {
+    "ID": 383,
+    "Name": "Dark Obsidian Plate Boots"
+  },
+  {
+    "ID": 384,
+    "Name": "Grand Obsidian Plate Boots"
+  },
+  {
+    "ID": 385,
+    "Name": "Golden Obsidian Plate Boots"
+  },
+  {
+    "ID": 386,
+    "Name": "Elven Obsidian Plate Boots"
+  },
+  {
+    "ID": 387,
+    "Name": "Demon Aurum Plate Boots"
+  },
+  {
+    "ID": 388,
+    "Name": "Dark Aurum Plate Boots"
+  },
+  {
+    "ID": 389,
+    "Name": "Grand Aurum Plate Boots"
+  },
+  {
+    "ID": 390,
+    "Name": "Golden Aurum Plate Boots"
+  },
+  {
+    "ID": 391,
+    "Name": "Elven Aurum Plate Boots"
+  },
+  {
+    "ID": 401,
+    "Name": "Dark Spiritual Shoes"
+  },
+  {
+    "ID": 402,
+    "Name": "Demon Spiritual Shoes"
+  },
+  {
+    "ID": 403,
+    "Name": "Grand Spiritual Shoes"
+  },
+  {
+    "ID": 404,
+    "Name": "Golden Spiritual Shoes"
+  },
+  {
+    "ID": 405,
+    "Name": "Legend Spiritual Shoes"
+  },
+  {
+    "ID": 406,
+    "Name": "Elven Spiritual Shoes"
+  },
+  {
+    "ID": 407,
+    "Name": "Dark Green Sandals of Witch"
+  },
+  {
+    "ID": 408,
+    "Name": "Demon Green Sandals of Witch"
+  },
+  {
+    "ID": 409,
+    "Name": "Grand Green Sandals of Witch"
+  },
+  {
+    "ID": 410,
+    "Name": "Golden Green Sandals of Witch"
+  },
+  {
+    "ID": 411,
+    "Name": "Legend Green Sandals of Witch"
+  },
+  {
+    "ID": 412,
+    "Name": "Elven Green Sandals of Witch"
+  },
+  {
+    "ID": 413,
+    "Name": "Saint Green Sandals of Witch"
+  },
+  {
+    "ID": 414,
+    "Name": "Dark Purple Sandals of Witch"
+  },
+  {
+    "ID": 415,
+    "Name": "Demon Purple Sandals of Witch"
+  },
+  {
+    "ID": 416,
+    "Name": "Grand Purple Sandals of Witch"
+  },
+  {
+    "ID": 417,
+    "Name": "Golden Purple Sandals of Witch"
+  },
+  {
+    "ID": 418,
+    "Name": "Legend Purple Sandals of Witch"
+  },
+  {
+    "ID": 419,
+    "Name": "Elven Purple Sandals of Witch"
+  },
+  {
+    "ID": 420,
+    "Name": "Saint Purple Sandals of Witch"
+  },
+  {
+    "ID": 421,
+    "Name": "Dark Violet Boots"
+  },
+  {
+    "ID": 422,
+    "Name": "Demon Violet Boots"
+  },
+  {
+    "ID": 423,
+    "Name": "Grand Violet Boots"
+  },
+  {
+    "ID": 424,
+    "Name": "Golden Violet Boots"
+  },
+  {
+    "ID": 425,
+    "Name": "Legend Violet Boots"
+  },
+  {
+    "ID": 426,
+    "Name": "Elven Violet Boots"
+  },
+  {
+    "ID": 427,
+    "Name": "Saint Violet Boots"
+  },
+  {
+    "ID": 428,
+    "Name": "Dark Boots of Shadow"
+  },
+  {
+    "ID": 429,
+    "Name": "Demon Boots of Shadow"
+  },
+  {
+    "ID": 430,
+    "Name": "Grand Boots of Shadow"
+  },
+  {
+    "ID": 431,
+    "Name": "Golden Boots of Shadow"
+  },
+  {
+    "ID": 432,
+    "Name": "Legend Boots of Shadow"
+  },
+  {
+    "ID": 433,
+    "Name": "Elven Boots of Shadow"
+  },
+  {
+    "ID": 434,
+    "Name": "Saint Boots of Shadow"
+  },
+  {
+    "ID": 435,
+    "Name": "Dark Velvet Boots of Witch"
+  },
+  {
+    "ID": 436,
+    "Name": "Demon Velvet Boots of Witch"
+  },
+  {
+    "ID": 437,
+    "Name": "Grand Velvet Boots of Witch"
+  },
+  {
+    "ID": 438,
+    "Name": "Golden Velvet Boots of Witch"
+  },
+  {
+    "ID": 439,
+    "Name": "Legend Velvet Boots of Witch"
+  },
+  {
+    "ID": 440,
+    "Name": "Elven Velvet Boots of Witch"
+  },
+  {
+    "ID": 441,
+    "Name": "Saint Velvet Boots of Witch"
+  },
+  {
+    "ID": 442,
+    "Name": "Dark Heaven's Shoes"
+  },
+  {
+    "ID": 443,
+    "Name": "Demon Heaven's Shoes"
+  },
+  {
+    "ID": 444,
+    "Name": "Grand Heaven's Shoes"
+  },
+  {
+    "ID": 445,
+    "Name": "Golden Heaven's Shoes"
+  },
+  {
+    "ID": 446,
+    "Name": "Legend Heaven's Shoes"
+  },
+  {
+    "ID": 447,
+    "Name": "Elven Heaven's Shoes"
+  },
+  {
+    "ID": 448,
+    "Name": "Saint Heaven's Shoes"
+  },
+  {
+    "ID": 449,
+    "Name": "Fairy Shoes"
+  },
+  {
+    "ID": 450,
+    "Name": "Fairy Shoes"
+  },
+  {
+    "ID": 451,
+    "Name": "Fairy Shoes"
+  },
+  {
+    "ID": 452,
+    "Name": "Golden Fairy Shoes"
+  },
+  {
+    "ID": 453,
+    "Name": "Elven Fairy Shoes"
+  },
+  {
+    "ID": 454,
+    "Name": "Saint Fairy Shoes"
+  },
+  {
+    "ID": 455,
+    "Name": "Legend Fairy Shoes"
+  },
+  {
+    "ID": 456,
+    "Name": "Joker Shoes"
+  },
+  {
+    "ID": 457,
+    "Name": "Joker Shoes"
+  },
+  {
+    "ID": 458,
+    "Name": "Joker Shoes"
+  },
+  {
+    "ID": 459,
+    "Name": "Golden Joker Shoes"
+  },
+  {
+    "ID": 460,
+    "Name": "Elven Joker Shoes"
+  },
+  {
+    "ID": 461,
+    "Name": "Saint Joker Shoes"
+  },
+  {
+    "ID": 462,
+    "Name": "Legend Joker Shoes"
+  },
+  {
+    "ID": 463,
+    "Name": "Mystic Weaver Shoes"
+  },
+  {
+    "ID": 464,
+    "Name": "Mystic Weaver Shoes"
+  },
+  {
+    "ID": 465,
+    "Name": "Mystic Weaver Shoes"
+  },
+  {
+    "ID": 466,
+    "Name": "Golden Mystic Weaver Shoes"
+  },
+  {
+    "ID": 467,
+    "Name": "Elven Mystic Weaver Shoes"
+  },
+  {
+    "ID": 468,
+    "Name": "Saint Mystic Weaver Shoes"
+  },
+  {
+    "ID": 469,
+    "Name": "Saint Mystic Weaver Shoes"
+  },
+  {
+    "ID": 470,
+    "Name": "Serenity Shoes"
+  },
+  {
+    "ID": 471,
+    "Name": "Serenity Shoes"
+  },
+  {
+    "ID": 472,
+    "Name": "Serenity Shoes"
+  },
+  {
+    "ID": 473,
+    "Name": "Golden Serenity Shoes"
+  },
+  {
+    "ID": 474,
+    "Name": "Elven Serenity Shoes"
+  },
+  {
+    "ID": 475,
+    "Name": "Saint Serenity Shoes"
+  },
+  {
+    "ID": 476,
+    "Name": "Saint Serenity Shoes"
+  },
+  {
+    "ID": 477,
+    "Name": "Archmage Shoes"
+  },
+  {
+    "ID": 478,
+    "Name": "Saint Archmage Shoes"
+  },
+  {
+    "ID": 479,
+    "Name": "Archmage Shoes"
+  },
+  {
+    "ID": 480,
+    "Name": "Elven Dimple Shoes"
+  },
+  {
+    "ID": 481,
+    "Name": "Golden Dimple Shoes"
+  },
+  {
+    "ID": 482,
+    "Name": "Demon Royal Sage Shoes"
+  },
+  {
+    "ID": 483,
+    "Name": "Dark Royal Sage Shoes"
+  },
+  {
+    "ID": 484,
+    "Name": "Grand Royal Sage Shoes"
+  },
+  {
+    "ID": 485,
+    "Name": "Golden Royal Sage Shoes"
+  },
+  {
+    "ID": 486,
+    "Name": "Elven Royal Sage Shoes"
+  },
+  {
+    "ID": 487,
+    "Name": "Demon Orlean Shoes"
+  },
+  {
+    "ID": 488,
+    "Name": "Dark Orlean Shoes"
+  },
+  {
+    "ID": 489,
+    "Name": "Grand Orlean Shoes"
+  },
+  {
+    "ID": 490,
+    "Name": "Golden Orlean Shoes"
+  },
+  {
+    "ID": 491,
+    "Name": "Elven Orlean Shoes"
+  },
+  {
+    "ID": 501,
+    "Name": "Dark Hunter Boots"
+  },
+  {
+    "ID": 502,
+    "Name": "Demon Hunter Boots"
+  },
+  {
+    "ID": 503,
+    "Name": "Grand Hunter Boots"
+  },
+  {
+    "ID": 504,
+    "Name": "Golden Hunter Boots"
+  },
+  {
+    "ID": 505,
+    "Name": "Legend Hunter Boots"
+  },
+  {
+    "ID": 506,
+    "Name": "Elven Hunter Boots"
+  },
+  {
+    "ID": 507,
+    "Name": "Dark Criker Boots"
+  },
+  {
+    "ID": 508,
+    "Name": "Demon Criker Boots"
+  },
+  {
+    "ID": 509,
+    "Name": "Grand Criker Boots"
+  },
+  {
+    "ID": 510,
+    "Name": "Golden Criker Boots"
+  },
+  {
+    "ID": 511,
+    "Name": "Legend Criker Boots"
+  },
+  {
+    "ID": 512,
+    "Name": "Elven Criker Boots"
+  },
+  {
+    "ID": 513,
+    "Name": "Saint Criker Boots"
+  },
+  {
+    "ID": 514,
+    "Name": "Dark Ranger Boots"
+  },
+  {
+    "ID": 515,
+    "Name": "Demon Ranger Boots"
+  },
+  {
+    "ID": 516,
+    "Name": "Grand Ranger Boots"
+  },
+  {
+    "ID": 517,
+    "Name": "Golden Ranger Boots"
+  },
+  {
+    "ID": 518,
+    "Name": "Legend Ranger Boots"
+  },
+  {
+    "ID": 519,
+    "Name": "Elven Ranger Boots"
+  },
+  {
+    "ID": 520,
+    "Name": "Saint Ranger Boots"
+  },
+  {
+    "ID": 521,
+    "Name": "Dark Black Pirate Boots"
+  },
+  {
+    "ID": 522,
+    "Name": "Demon Black Pirate Boots"
+  },
+  {
+    "ID": 523,
+    "Name": "Grand Black Pirate Boots"
+  },
+  {
+    "ID": 524,
+    "Name": "Golden Black Pirate Boots"
+  },
+  {
+    "ID": 525,
+    "Name": "Legend Black Pirate Boots"
+  },
+  {
+    "ID": 526,
+    "Name": "Elven Black Pirate Boots"
+  },
+  {
+    "ID": 527,
+    "Name": "Saint Black Pirate Boots"
+  },
+  {
+    "ID": 528,
+    "Name": "Dark Mariner's Boots"
+  },
+  {
+    "ID": 529,
+    "Name": "Demon Mariner's Boots"
+  },
+  {
+    "ID": 530,
+    "Name": "Grand Mariner's Boots"
+  },
+  {
+    "ID": 531,
+    "Name": "Golden Mariner's Boots"
+  },
+  {
+    "ID": 532,
+    "Name": "Legend Mariner's Boots"
+  },
+  {
+    "ID": 533,
+    "Name": "Elven Mariner's Boots"
+  },
+  {
+    "ID": 534,
+    "Name": "Saint Mariner's Boots"
+  },
+  {
+    "ID": 535,
+    "Name": "Dark Jaguar Boots"
+  },
+  {
+    "ID": 536,
+    "Name": "Demon Jaguar Boots"
+  },
+  {
+    "ID": 537,
+    "Name": "Grand Jaguar Boots"
+  },
+  {
+    "ID": 538,
+    "Name": "Golden Jaguar Boots"
+  },
+  {
+    "ID": 539,
+    "Name": "Legend Jaguar Boots"
+  },
+  {
+    "ID": 540,
+    "Name": "Elven Jaguar Boots"
+  },
+  {
+    "ID": 541,
+    "Name": "Saint Jaguar Boots"
+  },
+  {
+    "ID": 542,
+    "Name": "Dark Wild Hawker Boots"
+  },
+  {
+    "ID": 543,
+    "Name": "Demon Wild Hawker Boots"
+  },
+  {
+    "ID": 544,
+    "Name": "Grand Wild Hawker Boots"
+  },
+  {
+    "ID": 545,
+    "Name": "Golden Wild Hawker Boots"
+  },
+  {
+    "ID": 546,
+    "Name": "Legend Wild Hawker Boots"
+  },
+  {
+    "ID": 547,
+    "Name": "Elven Wild Hawker Boots"
+  },
+  {
+    "ID": 548,
+    "Name": "Saint Wild Hawker Boots"
+  },
+  {
+    "ID": 549,
+    "Name": "Pirate Sandals"
+  },
+  {
+    "ID": 550,
+    "Name": "Pirate Sandals"
+  },
+  {
+    "ID": 551,
+    "Name": "Pirate Sandals"
+  },
+  {
+    "ID": 552,
+    "Name": "Golden Pirate Sandals"
+  },
+  {
+    "ID": 553,
+    "Name": "Elven Pirate Sandals"
+  },
+  {
+    "ID": 554,
+    "Name": "Saint Pirate Sandals"
+  },
+  {
+    "ID": 555,
+    "Name": "Legend Pirate Sandals"
+  },
+  {
+    "ID": 556,
+    "Name": "Silentwalker Boots"
+  },
+  {
+    "ID": 557,
+    "Name": "Silentwalker Boots"
+  },
+  {
+    "ID": 558,
+    "Name": "Silentwalker Boots"
+  },
+  {
+    "ID": 559,
+    "Name": "Golden Silentwalker Boots"
+  },
+  {
+    "ID": 560,
+    "Name": "Elven Silentwalker Boots"
+  },
+  {
+    "ID": 561,
+    "Name": "Saint Silentwalker Boots"
+  },
+  {
+    "ID": 562,
+    "Name": "Legend Silentwalker Boots"
+  },
+  {
+    "ID": 563,
+    "Name": "Triggerman Boots"
+  },
+  {
+    "ID": 564,
+    "Name": "Triggerman Boots"
+  },
+  {
+    "ID": 565,
+    "Name": "Triggerman Boots"
+  },
+  {
+    "ID": 566,
+    "Name": "Golden Triggerman Boots"
+  },
+  {
+    "ID": 567,
+    "Name": "Elven Triggerman Boots"
+  },
+  {
+    "ID": 568,
+    "Name": "Saint Triggerman Boots"
+  },
+  {
+    "ID": 569,
+    "Name": "Saint Triggerman Boots"
+  },
+  {
+    "ID": 570,
+    "Name": "Captain Hawker Boots"
+  },
+  {
+    "ID": 571,
+    "Name": "Captain Hawker Boots"
+  },
+  {
+    "ID": 572,
+    "Name": "Captain Hawker Boots"
+  },
+  {
+    "ID": 573,
+    "Name": "Golden Captain Hawker Boots"
+  },
+  {
+    "ID": 574,
+    "Name": "Elven Captain Hawker Boots"
+  },
+  {
+    "ID": 575,
+    "Name": "Saint Captain Hawker Boots"
+  },
+  {
+    "ID": 576,
+    "Name": "Saint Captain Hawker Boots"
+  },
+  {
+    "ID": 577,
+    "Name": "Netherworld Boots"
+  },
+  {
+    "ID": 578,
+    "Name": "Saint Netherworld Boots"
+  },
+  {
+    "ID": 579,
+    "Name": "Netherworld Boots"
+  },
+  {
+    "ID": 580,
+    "Name": "Saint Steel Resolve Boots"
+  },
+  {
+    "ID": 581,
+    "Name": "Legend Steel Resolve Boots"
+  },
+  {
+    "ID": 582,
+    "Name": "Demon Shadow Fall Shoes"
+  },
+  {
+    "ID": 583,
+    "Name": "Dark Shadow Fall Shoes"
+  },
+  {
+    "ID": 584,
+    "Name": "Grand Shadow Fall Shoes"
+  },
+  {
+    "ID": 585,
+    "Name": "Golden Shadow Fall Shoes"
+  },
+  {
+    "ID": 586,
+    "Name": "Elven Shadow Fall Shoes"
+  },
+  {
+    "ID": 587,
+    "Name": "Demon Raptor Boots"
+  },
+  {
+    "ID": 588,
+    "Name": "Dark Raptor Boots"
+  },
+  {
+    "ID": 589,
+    "Name": "Grand Raptor Boots"
+  },
+  {
+    "ID": 590,
+    "Name": "Golden Raptor Boots"
+  },
+  {
+    "ID": 591,
+    "Name": "Elven Raptor Boots"
+  },
+  {
+    "ID": 601,
+    "Name": "Dark Brown Shoes"
+  },
+  {
+    "ID": 602,
+    "Name": "Demon Brown Shoes"
+  },
+  {
+    "ID": 603,
+    "Name": "Grand Brown Shoes"
+  },
+  {
+    "ID": 604,
+    "Name": "Golden Brown Shoes"
+  },
+  {
+    "ID": 605,
+    "Name": "Legend Brown Shoes"
+  },
+  {
+    "ID": 606,
+    "Name": "Elven Brown Shoes"
+  },
+  {
+    "ID": 607,
+    "Name": "Dark Vibe Shoes"
+  },
+  {
+    "ID": 608,
+    "Name": "Demon Vibe Shoes"
+  },
+  {
+    "ID": 609,
+    "Name": "Grand Vibe Shoes"
+  },
+  {
+    "ID": 610,
+    "Name": "Golden Vibe Shoes"
+  },
+  {
+    "ID": 611,
+    "Name": "Legend Vibe Shoes"
+  },
+  {
+    "ID": 612,
+    "Name": "Elven Vibe Shoes"
+  },
+  {
+    "ID": 613,
+    "Name": "Saint Vibe Shoes"
+  },
+  {
+    "ID": 614,
+    "Name": "Dark Tamiya Shoes"
+  },
+  {
+    "ID": 615,
+    "Name": "Demon Tamiya Shoes"
+  },
+  {
+    "ID": 616,
+    "Name": "Grand Tamiya Shoes"
+  },
+  {
+    "ID": 617,
+    "Name": "Golden Tamiya Shoes"
+  },
+  {
+    "ID": 618,
+    "Name": "Legend Tamiya Shoes"
+  },
+  {
+    "ID": 619,
+    "Name": "Elven Tamiya Shoes"
+  },
+  {
+    "ID": 620,
+    "Name": "Saint Tamiya Shoes"
+  },
+  {
+    "ID": 621,
+    "Name": "Dark Semiya Shoes"
+  },
+  {
+    "ID": 622,
+    "Name": "Demon Semiya Shoes"
+  },
+  {
+    "ID": 623,
+    "Name": "Grand Semiya Shoes"
+  },
+  {
+    "ID": 624,
+    "Name": "Golden Semiya Shoes"
+  },
+  {
+    "ID": 625,
+    "Name": "Legend Semiya Shoes"
+  },
+  {
+    "ID": 626,
+    "Name": "Elven Semiya Shoes"
+  },
+  {
+    "ID": 627,
+    "Name": "Saint Semiya Shoes"
+  },
+  {
+    "ID": 628,
+    "Name": "Dark Merchant Boots"
+  },
+  {
+    "ID": 629,
+    "Name": "Demon Merchant Boots"
+  },
+  {
+    "ID": 630,
+    "Name": "Grand Merchant Boots"
+  },
+  {
+    "ID": 631,
+    "Name": "Golden Merchant Boots"
+  },
+  {
+    "ID": 632,
+    "Name": "Legend Merchant Boots"
+  },
+  {
+    "ID": 633,
+    "Name": "Elven Merchant Boots"
+  },
+  {
+    "ID": 634,
+    "Name": "Saint Merchant Boots"
+  },
+  {
+    "ID": 635,
+    "Name": "Dark Rich Merchant Boots"
+  },
+  {
+    "ID": 636,
+    "Name": "Demon Rich Merchant Boots"
+  },
+  {
+    "ID": 637,
+    "Name": "Grand Rich Merchant Boots"
+  },
+  {
+    "ID": 638,
+    "Name": "Golden Rich Merchant Boots"
+  },
+  {
+    "ID": 639,
+    "Name": "Legend Rich Merchant Boots"
+  },
+  {
+    "ID": 640,
+    "Name": "Elven Rich Merchant Boots"
+  },
+  {
+    "ID": 641,
+    "Name": "Saint Rich Merchant Boots"
+  },
+  {
+    "ID": 642,
+    "Name": "Dark Redfield Chairman Shoes"
+  },
+  {
+    "ID": 643,
+    "Name": "Demon Redfield Chairman Shoes"
+  },
+  {
+    "ID": 644,
+    "Name": "Grand Redfield Chairman Shoes"
+  },
+  {
+    "ID": 645,
+    "Name": "Golden Redfield Chairman Shoes"
+  },
+  {
+    "ID": 646,
+    "Name": "Legend Redfield Chairman Shoes"
+  },
+  {
+    "ID": 647,
+    "Name": "Elven Redfield Chairman Shoes"
+  },
+  {
+    "ID": 648,
+    "Name": "Saint Redfield Chairman Shoes"
+  },
+  {
+    "ID": 649,
+    "Name": "Fisherman Sandals"
+  },
+  {
+    "ID": 650,
+    "Name": "Fisherman Sandals"
+  },
+  {
+    "ID": 651,
+    "Name": "Fisherman Sandals"
+  },
+  {
+    "ID": 652,
+    "Name": "Golden Fisherman Sandals"
+  },
+  {
+    "ID": 653,
+    "Name": "Elven Fisherman Sandals"
+  },
+  {
+    "ID": 654,
+    "Name": "Saint Fisherman Sandals"
+  },
+  {
+    "ID": 655,
+    "Name": "Legend Fisherman Sandals"
+  },
+  {
+    "ID": 656,
+    "Name": "Bomber Shoes"
+  },
+  {
+    "ID": 657,
+    "Name": "Bomber Shoes"
+  },
+  {
+    "ID": 658,
+    "Name": "Bomber Shoes"
+  },
+  {
+    "ID": 659,
+    "Name": "Golden Bomber Shoes"
+  },
+  {
+    "ID": 660,
+    "Name": "Elven Bomber Shoes"
+  },
+  {
+    "ID": 661,
+    "Name": "Saint Bomber Shoes"
+  },
+  {
+    "ID": 662,
+    "Name": "Legend Bomber Shoes"
+  },
+  {
+    "ID": 663,
+    "Name": "Cart Racer Shoes"
+  },
+  {
+    "ID": 664,
+    "Name": "Cart Racer Shoes"
+  },
+  {
+    "ID": 665,
+    "Name": "Cart Racer Shoes"
+  },
+  {
+    "ID": 666,
+    "Name": "Golden Cart Racer Shoes"
+  },
+  {
+    "ID": 667,
+    "Name": "Elven Cart Racer Shoes"
+  },
+  {
+    "ID": 668,
+    "Name": "Saint Cart Racer Shoes"
+  },
+  {
+    "ID": 669,
+    "Name": "Saint Cart Racer Shoes"
+  },
+  {
+    "ID": 670,
+    "Name": "Bourgeois Shoes"
+  },
+  {
+    "ID": 671,
+    "Name": "Bourgeois Shoes"
+  },
+  {
+    "ID": 672,
+    "Name": "Bourgeois Shoes"
+  },
+  {
+    "ID": 673,
+    "Name": "Golden Bourgeois Shoes"
+  },
+  {
+    "ID": 674,
+    "Name": "Elven Bourgeois Shoes"
+  },
+  {
+    "ID": 675,
+    "Name": "Saint Bourgeois Shoes"
+  },
+  {
+    "ID": 676,
+    "Name": "Saint Bourgeois Shoes"
+  },
+  {
+    "ID": 677,
+    "Name": "Noble Lord Shoes"
+  },
+  {
+    "ID": 678,
+    "Name": "Saint Noble Lord Shoes"
+  },
+  {
+    "ID": 679,
+    "Name": "Noble Lord Shoes"
+  },
+  {
+    "ID": 680,
+    "Name": "Saint Mana Steam Shoes"
+  },
+  {
+    "ID": 681,
+    "Name": "Legend Mana Steam Shoes"
+  },
+  {
+    "ID": 682,
+    "Name": "Demon Mana Fusion Boots"
+  },
+  {
+    "ID": 683,
+    "Name": "Dark Mana Fusion Boots"
+  },
+  {
+    "ID": 684,
+    "Name": "Grand Mana Fusion Boots"
+  },
+  {
+    "ID": 685,
+    "Name": "Golden Mana Fusion Boots"
+  },
+  {
+    "ID": 686,
+    "Name": "Elven Mana Fusion Boots"
+  },
+  {
+    "ID": 687,
+    "Name": "Demon Mercenary Boots"
+  },
+  {
+    "ID": 688,
+    "Name": "Dark Mercenary Boots"
+  },
+  {
+    "ID": 689,
+    "Name": "Grand Mercenary Boots"
+  },
+  {
+    "ID": 690,
+    "Name": "Golden Mercenary Boots"
+  },
+  {
+    "ID": 691,
+    "Name": "Elven Mercenary Boots"
+  },
+  {
+    "ID": 720,
+    "Name": "Legendary Soldier Boots"
+  },
+  {
+    "ID": 721,
+    "Name": "Legendary Iron Boots"
+  },
+  {
+    "ID": 722,
+    "Name": "Legendary Trunket Boots"
+  },
+  {
+    "ID": 723,
+    "Name": "Legendary Chrome Boots"
+  },
+  {
+    "ID": 724,
+    "Name": "Legendary Mighty Boots"
+  },
+  {
+    "ID": 725,
+    "Name": "Legendary Kurash Boots"
+  },
+  {
+    "ID": 726,
+    "Name": "Legendary Plate Boots"
+  },
+  {
+    "ID": 727,
+    "Name": "Legendary Execution Boots"
+  },
+  {
+    "ID": 728,
+    "Name": "Legendary Abyss Plate Boots"
+  },
+  {
+    "ID": 729,
+    "Name": "Legendary Righteous Plate Boots"
+  },
+  {
+    "ID": 730,
+    "Name": "Legendary Jabberwock Boots"
+  },
+  {
+    "ID": 731,
+    "Name": "Legendary Obsidian Plate Boots"
+  },
+  {
+    "ID": 732,
+    "Name": "Legendary Aurum Plate Boots"
+  },
+  {
+    "ID": 733,
+    "Name": "Legendary Spiritual Shoes"
+  },
+  {
+    "ID": 734,
+    "Name": "Legendary Green Sandals of Witch"
+  },
+  {
+    "ID": 735,
+    "Name": "Legendary Purple Sandals of Witch"
+  },
+  {
+    "ID": 736,
+    "Name": "Legendary Violet Boots"
+  },
+  {
+    "ID": 737,
+    "Name": "Legendary Boots of Shadow"
+  },
+  {
+    "ID": 738,
+    "Name": "Legendary Velvet Boots of Witch"
+  },
+  {
+    "ID": 739,
+    "Name": "Legendary Heaven's Shoes"
+  },
+  {
+    "ID": 740,
+    "Name": "Legendary Mystic Weaver Shoes"
+  },
+  {
+    "ID": 741,
+    "Name": "Legendary Serenity Shoes"
+  },
+  {
+    "ID": 742,
+    "Name": "Legendary Archmage Shoes"
+  },
+  {
+    "ID": 743,
+    "Name": "Legendary Dimple Shoes"
+  },
+  {
+    "ID": 744,
+    "Name": "Legendary Royal Sage Shoes"
+  },
+  {
+    "ID": 745,
+    "Name": "Legendary Orlean Shoes"
+  },
+  {
+    "ID": 746,
+    "Name": "Legendary Hunter Boots"
+  },
+  {
+    "ID": 747,
+    "Name": "Legendary Criker Boots"
+  },
+  {
+    "ID": 748,
+    "Name": "Legendary Ranger Boots"
+  },
+  {
+    "ID": 749,
+    "Name": "Legendary Black Pirate Boots"
+  },
+  {
+    "ID": 750,
+    "Name": "Legendary Mariner's Boots"
+  },
+  {
+    "ID": 751,
+    "Name": "Legendary Jaguar Boots"
+  },
+  {
+    "ID": 752,
+    "Name": "Legendary Wild Hawker Boots"
+  },
+  {
+    "ID": 753,
+    "Name": "Legendary Silentwalker Boots"
+  },
+  {
+    "ID": 754,
+    "Name": "Legendary Captain Hawker Boots"
+  },
+  {
+    "ID": 755,
+    "Name": "Legendary Netherworld Boots"
+  },
+  {
+    "ID": 756,
+    "Name": "Legendary Steel Resolve Boots"
+  },
+  {
+    "ID": 757,
+    "Name": "Legendary Shadow Fall Shoes"
+  },
+  {
+    "ID": 758,
+    "Name": "Legendary Raptor Boots"
+  },
+  {
+    "ID": 759,
+    "Name": "Legendary Brown Shoes"
+  },
+  {
+    "ID": 760,
+    "Name": "Legendary Vibe Shoes"
+  },
+  {
+    "ID": 761,
+    "Name": "Legendary Tamiya Shoes"
+  },
+  {
+    "ID": 762,
+    "Name": "Legendary Semiya Shoes"
+  },
+  {
+    "ID": 763,
+    "Name": "Legendary Merchant Boots"
+  },
+  {
+    "ID": 764,
+    "Name": "Legendary Rich Merchant Boots"
+  },
+  {
+    "ID": 765,
+    "Name": "Legendary Redfield Chairman Shoes"
+  },
+  {
+    "ID": 766,
+    "Name": "Legendary Bomber Shoes"
+  },
+  {
+    "ID": 767,
+    "Name": "Legendary Bourgeois Shoes"
+  },
+  {
+    "ID": 768,
+    "Name": "Legendary Noble Lord Shoes"
+  },
+  {
+    "ID": 769,
+    "Name": "Legendary Mana Steam Shoes"
+  },
+  {
+    "ID": 770,
+    "Name": "Legendary Mana Fusion Boots"
+  },
+  {
+    "ID": 771,
+    "Name": "Legendary Mercenary Boots"
+  },
+  {
+    "ID": 787,
+    "Name": "Love Story Shoes"
+  },
+  {
+    "ID": 788,
+    "Name": "Devil Feet"
+  },
+  {
+    "ID": 789,
+    "Name": "Frankenfeet"
+  },
+  {
+    "ID": 790,
+    "Name": "Mummy Feet"
+  },
+  {
+    "ID": 791,
+    "Name": "Vampire Feet"
+  },
+  {
+    "ID": 792,
+    "Name": "Werewolf Paws"
+  },
+  {
+    "ID": 793,
+    "Name": "Wicked Boots"
+  },
+  {
+    "ID": 794,
+    "Name": "Zombie Feet"
+  },
+  {
+    "ID": 795,
+    "Name": "Storybook Shoes"
+  },
+  {
+    "ID": 796,
+    "Name": "Tea Party Footgear"
+  },
+  {
+    "ID": 797,
+    "Name": "Fable Shoes"
+  },
+  {
+    "ID": 798,
+    "Name": "Fairy Tale Shoes"
+  },
+  {
+    "ID": 799,
+    "Name": "Frozen Corpse Shoes"
+  },
+  {
+    "ID": 801,
+    "Name": "Beach Flipflops"
+  },
+  {
+    "ID": 802,
+    "Name": ""
+  },
+  {
+    "ID": 803,
+    "Name": ""
+  },
+  {
+    "ID": 805,
+    "Name": "Happy Holiday Party Shoes"
+  },
+  {
+    "ID": 807,
+    "Name": "Rocket Boots"
+  },
+  {
+    "ID": 821,
+    "Name": "Arumic Uniform Shoes"
+  },
+  {
+    "ID": 841,
+    "Name": "Junon Order Uniform Shoes"
+  },
+  {
+    "ID": 861,
+    "Name": "Righteous Crusaders Uniform Shoes"
+  },
+  {
+    "ID": 881,
+    "Name": "Ferrell Guild Uniform Shoes"
+  },
+  {
+    "ID": 901,
+    "Name": "Brave Mighty Boots"
+  },
+  {
+    "ID": 902,
+    "Name": "Brave Boots of Shadow"
+  },
+  {
+    "ID": 903,
+    "Name": "Brave Mariner's Boots"
+  },
+  {
+    "ID": 904,
+    "Name": "Brave Merchant Boots"
+  },
+  {
+    "ID": 905,
+    "Name": "Brave Plate Boots"
+  },
+  {
+    "ID": 906,
+    "Name": "Brave Heaven's Shoes"
+  },
+  {
+    "ID": 907,
+    "Name": "Brave Wild Hawker Boots"
+  },
+  {
+    "ID": 908,
+    "Name": "Brave Redfield Chairman Shoes"
+  },
+  {
+    "ID": 909,
+    "Name": "Brave Righteous Plate Boots"
+  },
+  {
+    "ID": 910,
+    "Name": "Brave Archmage Shoes"
+  },
+  {
+    "ID": 911,
+    "Name": "Brave Netherworld Boots"
+  },
+  {
+    "ID": 912,
+    "Name": "Brave Noble Lord Shoes"
+  },
+  {
+    "ID": 913,
+    "Name": "Brave Jabberwock Boots"
+  },
+  {
+    "ID": 914,
+    "Name": "Brave Dimple Shoes"
+  },
+  {
+    "ID": 915,
+    "Name": "Brave Steel Resolve Boots"
+  },
+  {
+    "ID": 916,
+    "Name": "Brave Mana Steam Shoes"
+  },
+  {
+    "ID": 917,
+    "Name": "Brave Jabberwock Boots"
+  },
+  {
+    "ID": 918,
+    "Name": "Brave Dimple Shoes"
+  },
+  {
+    "ID": 919,
+    "Name": "Brave Steel Resolve Boots"
+  },
+  {
+    "ID": 920,
+    "Name": "Brave Mana Steam Shoes"
+  },
+  {
+    "ID": 921,
+    "Name": "Brave Jabberwock Boots"
+  },
+  {
+    "ID": 922,
+    "Name": "Brave Dimple Shoes"
+  },
+  {
+    "ID": 923,
+    "Name": "Brave Steel Resolve Boots"
+  },
+  {
+    "ID": 924,
+    "Name": "Brave Mana Steam Shoes"
+  },
+  {
+    "ID": 1000,
+    "Name": "Reinforced Soldier Boots"
+  },
+  {
+    "ID": 1001,
+    "Name": "Endowed Soldier Boots"
+  },
+  {
+    "ID": 1004,
+    "Name": "Reinforced Iron Boots"
+  },
+  {
+    "ID": 1005,
+    "Name": "Endowed Iron Boots"
+  },
+  {
+    "ID": 1008,
+    "Name": "Reinforced Trunket Boots"
+  },
+  {
+    "ID": 1009,
+    "Name": "Endowed Trunket Boots"
+  },
+  {
+    "ID": 1012,
+    "Name": "Reinforced Chrome Boots"
+  },
+  {
+    "ID": 1013,
+    "Name": "Endowed Chrome Boots"
+  },
+  {
+    "ID": 1014,
+    "Name": "Reinforced Mighty Boots"
+  },
+  {
+    "ID": 1015,
+    "Name": "Endowed Mighty Boots"
+  },
+  {
+    "ID": 1016,
+    "Name": "Reinforced Kurash Boots"
+  },
+  {
+    "ID": 1017,
+    "Name": "Endowed Kurash Boots"
+  },
+  {
+    "ID": 1018,
+    "Name": "Reinforced Durable Boots"
+  },
+  {
+    "ID": 1019,
+    "Name": "Endowed Durable Boots"
+  },
+  {
+    "ID": 1020,
+    "Name": "Reinforced Plate Boots"
+  },
+  {
+    "ID": 1021,
+    "Name": "Endowed Plate Boots"
+  },
+  {
+    "ID": 1022,
+    "Name": "Reinforced Righteous Plate Boots"
+  },
+  {
+    "ID": 1023,
+    "Name": "Endowed Righteous Plate Boots"
+  },
+  {
+    "ID": 1024,
+    "Name": "Reinforced Obsidian Plate Boots"
+  },
+  {
+    "ID": 1025,
+    "Name": "Endowed Obsidian Plate Boots"
+  },
+  {
+    "ID": 1026,
+    "Name": "Reinforced Cedric Boots"
+  },
+  {
+    "ID": 1027,
+    "Name": "Endowed Cedric Boots"
+  },
+  {
+    "ID": 1030,
+    "Name": "Reinforced Jabberwock Boots"
+  },
+  {
+    "ID": 1031,
+    "Name": "Endowed Jabberwock Boots"
+  },
+  {
+    "ID": 1032,
+    "Name": "Reinforced Execution Boots"
+  },
+  {
+    "ID": 1033,
+    "Name": "Endowed Execution Boots"
+  },
+  {
+    "ID": 1034,
+    "Name": "Reinforced Abyss Plate Boots"
+  },
+  {
+    "ID": 1035,
+    "Name": "Endowed Abyss Plate Boots"
+  },
+  {
+    "ID": 1036,
+    "Name": "Reinforced Spiritual Shoes"
+  },
+  {
+    "ID": 1037,
+    "Name": "Endowed Spiritual Shoes"
+  },
+  {
+    "ID": 1040,
+    "Name": "Reinforced Green Sandals of Witch"
+  },
+  {
+    "ID": 1041,
+    "Name": "Endowed Green Sandals of Witch"
+  },
+  {
+    "ID": 1044,
+    "Name": "Reinforced Purple Sandals of Witch"
+  },
+  {
+    "ID": 1045,
+    "Name": "Endowed Purple Sandals of Witch"
+  },
+  {
+    "ID": 1048,
+    "Name": "Reinforced Violet Boots"
+  },
+  {
+    "ID": 1049,
+    "Name": "Endowed Violet Boots"
+  },
+  {
+    "ID": 1050,
+    "Name": "Reinforced Boots of Shadow"
+  },
+  {
+    "ID": 1051,
+    "Name": "Endowed Boots of Shadow"
+  },
+  {
+    "ID": 1052,
+    "Name": "Reinforced Velvet Boots of Witch"
+  },
+  {
+    "ID": 1053,
+    "Name": "Endowed Velvet Boots of Witch"
+  },
+  {
+    "ID": 1054,
+    "Name": "Reinforced Fairy Shoes"
+  },
+  {
+    "ID": 1055,
+    "Name": "Endowed Fairy Shoes"
+  },
+  {
+    "ID": 1056,
+    "Name": "Reinforced Heaven's Shoes"
+  },
+  {
+    "ID": 1057,
+    "Name": "Endowed Heaven's Shoes"
+  },
+  {
+    "ID": 1058,
+    "Name": "Reinforced Archmage Shoes"
+  },
+  {
+    "ID": 1059,
+    "Name": "Endowed Archmage Shoes"
+  },
+  {
+    "ID": 1060,
+    "Name": "Reinforced Royal Sage Shoes"
+  },
+  {
+    "ID": 1061,
+    "Name": "Endowed Royal Sage Shoes"
+  },
+  {
+    "ID": 1062,
+    "Name": "Reinforced Joker Shoes"
+  },
+  {
+    "ID": 1063,
+    "Name": "Endowed Joker Shoes"
+  },
+  {
+    "ID": 1066,
+    "Name": "Reinforced Dimple Shoes"
+  },
+  {
+    "ID": 1067,
+    "Name": "Endowed Dimple Shoes"
+  },
+  {
+    "ID": 1068,
+    "Name": "Reinforced Mystic Weaver Shoes"
+  },
+  {
+    "ID": 1069,
+    "Name": "Endowed Mystic Weaver Shoes"
+  },
+  {
+    "ID": 1070,
+    "Name": "Reinforced Serenity Shoes"
+  },
+  {
+    "ID": 1071,
+    "Name": "Endowed Serenity Shoes"
+  },
+  {
+    "ID": 1072,
+    "Name": "Reinforced Hunter Boots"
+  },
+  {
+    "ID": 1073,
+    "Name": "Endowed Hunter Boots"
+  },
+  {
+    "ID": 1074,
+    "Name": "Reinforced Criker Boots"
+  },
+  {
+    "ID": 1075,
+    "Name": "Endowed Criker Boots"
+  },
+  {
+    "ID": 1078,
+    "Name": "Reinforced Ranger Boots"
+  },
+  {
+    "ID": 1079,
+    "Name": "Endowed Ranger Boots"
+  },
+  {
+    "ID": 1082,
+    "Name": "Reinforced Black Pirate Boots"
+  },
+  {
+    "ID": 1083,
+    "Name": "Endowed Black Pirate Boots"
+  },
+  {
+    "ID": 1084,
+    "Name": "Reinforced Mariner's Boots"
+  },
+  {
+    "ID": 1085,
+    "Name": "Endowed Mariner's Boots"
+  },
+  {
+    "ID": 1088,
+    "Name": "Reinforced Jaguar Boots"
+  },
+  {
+    "ID": 1089,
+    "Name": "Endowed Jaguar Boots"
+  },
+  {
+    "ID": 1092,
+    "Name": "Reinforced Pirate Sandals"
+  },
+  {
+    "ID": 1093,
+    "Name": "Endowed Pirate Sandals"
+  },
+  {
+    "ID": 1094,
+    "Name": "Reinforced Wild Hawker Boots"
+  },
+  {
+    "ID": 1095,
+    "Name": "Endowed Wild Hawker Boots"
+  },
+  {
+    "ID": 1096,
+    "Name": "Reinforced Netherworld Boots"
+  },
+  {
+    "ID": 1097,
+    "Name": "Endowed Netherworld Boots"
+  },
+  {
+    "ID": 1098,
+    "Name": "Reinforced Silentwalker Boots"
+  },
+  {
+    "ID": 1099,
+    "Name": "Endowed Silentwalker Boots"
+  },
+  {
+    "ID": 1100,
+    "Name": "Reinforced Steel Resolve Boots"
+  },
+  {
+    "ID": 1101,
+    "Name": "Endowed Steel Resolve Boots"
+  },
+  {
+    "ID": 1102,
+    "Name": "Reinforced Triggerman Boots"
+  },
+  {
+    "ID": 1103,
+    "Name": "Endowed Triggerman Boots"
+  },
+  {
+    "ID": 1104,
+    "Name": "Reinforced Shadow Fall Shoes"
+  },
+  {
+    "ID": 1105,
+    "Name": "Endowed Shadow Fall Shoes"
+  },
+  {
+    "ID": 1106,
+    "Name": "Reinforced Captain Hawker Boots"
+  },
+  {
+    "ID": 1107,
+    "Name": "Endowed Captain Hawker Boots"
+  },
+  {
+    "ID": 1108,
+    "Name": "Reinforced Brown Shoes"
+  },
+  {
+    "ID": 1109,
+    "Name": "Endowed Brown Shoes"
+  },
+  {
+    "ID": 1110,
+    "Name": "Reinforced Vibe Shoes"
+  },
+  {
+    "ID": 1111,
+    "Name": "Endowed Vibe Shoes"
+  },
+  {
+    "ID": 1114,
+    "Name": "Reinforced Tamiya Shoes"
+  },
+  {
+    "ID": 1115,
+    "Name": "Endowed Tamiya Shoes"
+  },
+  {
+    "ID": 1118,
+    "Name": "Reinforced Semiya Shoes"
+  },
+  {
+    "ID": 1119,
+    "Name": "Endowed Semiya Shoes"
+  },
+  {
+    "ID": 1120,
+    "Name": "Reinforced Merchant Boots"
+  },
+  {
+    "ID": 1121,
+    "Name": "Endowed Merchant Boots"
+  },
+  {
+    "ID": 1124,
+    "Name": "Reinforced Rich Merchant Boots"
+  },
+  {
+    "ID": 1125,
+    "Name": "Endowed Rich Merchant Boots"
+  },
+  {
+    "ID": 1128,
+    "Name": "Reinforced Fisherman Sandals"
+  },
+  {
+    "ID": 1129,
+    "Name": "Endowed Fisherman Sandals"
+  },
+  {
+    "ID": 1130,
+    "Name": "Reinforced Redfield Chairman Shoes"
+  },
+  {
+    "ID": 1131,
+    "Name": "Endowed Redfield Chairman Shoes"
+  },
+  {
+    "ID": 1132,
+    "Name": "Reinforced Noble Lord Shoes"
+  },
+  {
+    "ID": 1133,
+    "Name": "Endowed Noble Lord Shoes"
+  },
+  {
+    "ID": 1134,
+    "Name": "Reinforced Bomber Shoes"
+  },
+  {
+    "ID": 1135,
+    "Name": "Endowed Bomber Shoes"
+  },
+  {
+    "ID": 1136,
+    "Name": "Reinforced Mana Steam Shoes"
+  },
+  {
+    "ID": 1137,
+    "Name": "Endowed Mana Steam Shoes"
+  },
+  {
+    "ID": 1138,
+    "Name": "Reinforced Cart Racer Shoes"
+  },
+  {
+    "ID": 1139,
+    "Name": "Endowed Cart Racer Shoes"
+  },
+  {
+    "ID": 1140,
+    "Name": "Reinforced Mana Fusion Boots"
+  },
+  {
+    "ID": 1141,
+    "Name": "Endowed Mana Fusion Boots"
+  },
+  {
+    "ID": 1142,
+    "Name": "Reinforced Bourgeois Shoes"
+  },
+  {
+    "ID": 1143,
+    "Name": "Endowed Bourgeois Shoes"
+  },
+  {
+    "ID": 1144,
+    "Name": "Reinforced Red Shoes"
+  },
+  {
+    "ID": 1145,
+    "Name": "Endowed Red Shoes"
+  },
+  {
+    "ID": 1146,
+    "Name": "Reinforced Waterproof Shoes"
+  },
+  {
+    "ID": 1147,
+    "Name": "Endowed Waterproof Shoes"
+  },
+  {
+    "ID": 1148,
+    "Name": "Reinforced Leather Shoes"
+  },
+  {
+    "ID": 1149,
+    "Name": "Endowed Leather Shoes"
+  },
+  {
+    "ID": 1150,
+    "Name": "Reinforced Dash Shoes"
+  },
+  {
+    "ID": 1151,
+    "Name": "Endowed Dash Shoes"
+  },
+  {
+    "ID": 1152,
+    "Name": "Reinforced Shoes of Iguje"
+  },
+  {
+    "ID": 1153,
+    "Name": "Endowed Shoes of Iguje"
+  },
+  {
+    "ID": 1154,
+    "Name": "Reinforced Islamic Shoes"
+  },
+  {
+    "ID": 1155,
+    "Name": "Endowed Islamic Shoes"
+  },
+  {
+    "ID": 1156,
+    "Name": "Reinforced Field Walkers"
+  },
+  {
+    "ID": 1157,
+    "Name": "Endowed Field Walkers"
+  },
+  {
+    "ID": 1158,
+    "Name": "Reinforced Wild Walkers"
+  },
+  {
+    "ID": 1159,
+    "Name": "Endowed Wild Walkers"
+  },
+  {
+    "ID": 1160,
+    "Name": "Reinforced Land Walkers"
+  },
+  {
+    "ID": 1161,
+    "Name": "Endowed Land Walkers"
+  },
+  {
+    "ID": 1162,
+    "Name": "Reinforced Earth Walkers"
+  },
+  {
+    "ID": 1163,
+    "Name": "Endowed Earth Walkers"
+  },
+  {
+    "ID": 1164,
+    "Name": "Reinforced Marble Shoes"
+  },
+  {
+    "ID": 1165,
+    "Name": "Endowed Marble Shoes"
+  },
+  {
+    "ID": 1166,
+    "Name": "Reinforced Luxurious Marble Shoes"
+  },
+  {
+    "ID": 1167,
+    "Name": "Endowed Luxurious Marble Shoes"
+  },
+  {
+    "ID": 1168,
+    "Name": "Reinforced Junior Shoes"
+  },
+  {
+    "ID": 1169,
+    "Name": "Endowed Junior Shoes"
+  },
+  {
+    "ID": 1170,
+    "Name": "Reinforced Senior Shoes"
+  },
+  {
+    "ID": 1171,
+    "Name": "Endowed Senior Shoes"
+  },
+  {
+    "ID": 1172,
+    "Name": "Reinforced Redfield Green Shoes"
+  },
+  {
+    "ID": 1173,
+    "Name": "Endowed Redfield Green Shoes"
+  },
+  {
+    "ID": 1174,
+    "Name": "Reinforced Redfield Black Shoes"
+  },
+  {
+    "ID": 1175,
+    "Name": "Endowed Redfield Black Shoes"
+  },
+  {
+    "ID": 1180,
+    "Name": "Reinforced Aurum Plate Boots"
+  },
+  {
+    "ID": 1181,
+    "Name": "Endowed Aurum Plate Boots"
+  },
+  {
+    "ID": 1182,
+    "Name": "Reinforced Orlean Shoes"
+  },
+  {
+    "ID": 1183,
+    "Name": "Endowed Orlean Shoes"
+  },
+  {
+    "ID": 1184,
+    "Name": "Reinforced Raptor Boots"
+  },
+  {
+    "ID": 1185,
+    "Name": "Endowed Raptor Boots"
+  },
+  {
+    "ID": 1186,
+    "Name": "Reinforced Mercenary Boots"
+  },
+  {
+    "ID": 1187,
+    "Name": "Endowed Mercenary Boots"
+  },
+  {
+    "ID": 1194,
+    "Name": "13th Anniversary Celebration Shoes"
+  },
+  {
+    "ID": 1195,
+    "Name": "12th Anniversary Celebration Shoes"
+  },
+  {
+    "ID": 1196,
+    "Name": "11th Anniversary Celebration Shoes"
+  },
+  {
+    "ID": 1197,
+    "Name": "10th Anniversary Celebration Shoes"
+  },
+  {
+    "ID": 1203,
+    "Name": "Lox Feet"
+  },
+  {
+    "ID": 1204,
+    "Name": "Flor Feet"
+  },
+  {
+    "ID": 1205,
+    "Name": "Sparky Feet"
+  },
+  {
+    "ID": 1206,
+    "Name": "Pogo Feet"
+  },
+  {
+    "ID": 1207,
+    "Name": "Flow Feet"
+  },
+  {
+    "ID": 1209,
+    "Name": "Valentine Shoes"
+  },
+  {
+    "ID": 1210,
+    "Name": "Blue Snowboard Boots"
+  },
+  {
+    "ID": 1211,
+    "Name": "Purple Snowboard Boots"
+  },
+  {
+    "ID": 1212,
+    "Name": "Black Ski Boots"
+  },
+  {
+    "ID": 1213,
+    "Name": "Yellow Ski Boots"
+  },
+  {
+    "ID": 1214,
+    "Name": "Red Ski Boots"
+  },
+  {
+    "ID": 1215,
+    "Name": "Blue Ski Boots"
+  },
+  {
+    "ID": 1216,
+    "Name": "Eclipse Ice Skates"
+  },
+  {
+    "ID": 1217,
+    "Name": "Undersea Ice Skates"
+  },
+  {
+    "ID": 1218,
+    "Name": "Exotic Ice Skates"
+  },
+  {
+    "ID": 1219,
+    "Name": "Floral Ice Skates"
+  },
+  {
+    "ID": 1220,
+    "Name": "Snowmobile Boots"
+  },
+  {
+    "ID": 1221,
+    "Name": "Noble's Shoes"
+  },
+  {
+    "ID": 1222,
+    "Name": "Pink Slippers"
+  },
+  {
+    "ID": 1223,
+    "Name": "Nurse Shoes"
+  },
+  {
+    "ID": 1224,
+    "Name": "Beach Flippers"
+  },
+  {
+    "ID": 1225,
+    "Name": "ROSE Summer Games 2017 Cleats"
+  },
+  {
+    "ID": 1226,
+    "Name": "Aura Clan Cleats"
+  },
+  {
+    "ID": 1227,
+    "Name": "ROSE Summer Games 2018 Cleats"
+  },
+  {
+    "ID": 1228,
+    "Name": "Aura Clan Cleats"
+  },
+  {
+    "ID": 1233,
+    "Name": "Argentina Cleats"
+  },
+  {
+    "ID": 1234,
+    "Name": "Australia Cleats"
+  },
+  {
+    "ID": 1235,
+    "Name": "Brazil Cleats"
+  },
+  {
+    "ID": 1236,
+    "Name": "Canada Cleats"
+  },
+  {
+    "ID": 1237,
+    "Name": "England Cleats"
+  },
+  {
+    "ID": 1238,
+    "Name": "France Cleats"
+  },
+  {
+    "ID": 1239,
+    "Name": "Germany Cleats"
+  },
+  {
+    "ID": 1240,
+    "Name": "Italy Cleats"
+  },
+  {
+    "ID": 1241,
+    "Name": "Japan Cleats"
+  },
+  {
+    "ID": 1242,
+    "Name": "South Korea Cleats"
+  },
+  {
+    "ID": 1243,
+    "Name": "Mexico Cleats"
+  },
+  {
+    "ID": 1244,
+    "Name": "Netherlands Cleats"
+  },
+  {
+    "ID": 1245,
+    "Name": "Philippine Cleats"
+  },
+  {
+    "ID": 1246,
+    "Name": "Spain Cleats"
+  },
+  {
+    "ID": 1247,
+    "Name": "USA Cleats"
+  },
+  {
+    "ID": 1248,
+    "Name": "Peg Leg"
+  },
+  {
+    "ID": 1300,
+    "Name": ""
+  },
+  {
+    "ID": 1301,
+    "Name": ""
+  },
+  {
+    "ID": 1341,
+    "Name": ""
+  },
+  {
+    "ID": 1361,
+    "Name": ""
+  },
+  {
+    "ID": 1381,
+    "Name": ""
+  },
+  {
+    "ID": 1401,
+    "Name": "Mr. ROSE Shoes"
+  },
+  {
+    "ID": 1900,
+    "Name": "Sandals"
+  },
+  {
+    "ID": 1901,
+    "Name": "Exalted Sandals"
+  },
+  {
+    "ID": 1902,
+    "Name": "Heavy Frost Boots"
+  },
+  {
+    "ID": 1903,
+    "Name": "Leather Frost Boots"
+  },
+  {
+    "ID": 1904,
+    "Name": "Sturdy Frost Boots"
+  },
+  {
+    "ID": 1905,
+    "Name": "Light Frost Boots"
+  },
+  {
+    "ID": 1906,
+    "Name": "Exalted Heavy Frost Boots"
+  },
+  {
+    "ID": 1907,
+    "Name": "Exalted Leather Frost Boots"
+  },
+  {
+    "ID": 1908,
+    "Name": "Exalted Sturdy Frost Boots"
+  },
+  {
+    "ID": 1909,
+    "Name": "Exalted Light Frost Boots"
+  },
+  {
+    "ID": 1910,
+    "Name": "Heavy Winter Boots"
+  },
+  {
+    "ID": 1911,
+    "Name": "Heavy Frozen Boots"
+  },
+  {
+    "ID": 1912,
+    "Name": "Heavy Frigid Boots"
+  },
+  {
+    "ID": 1913,
+    "Name": "Heavy Glacial Boots"
+  },
+  {
+    "ID": 1914,
+    "Name": "Leather Winter Boots"
+  },
+  {
+    "ID": 1915,
+    "Name": "Leather Frozen Boots"
+  },
+  {
+    "ID": 1916,
+    "Name": "Leather Frigid Boots"
+  },
+  {
+    "ID": 1917,
+    "Name": "Leather Glacial Boots"
+  },
+  {
+    "ID": 1918,
+    "Name": "Sturdy Winter Boots"
+  },
+  {
+    "ID": 1919,
+    "Name": "Sturdy Frozen Boots"
+  },
+  {
+    "ID": 1920,
+    "Name": "Sturdy Frigid Boots"
+  },
+  {
+    "ID": 1921,
+    "Name": "Sturdy Glacial Boots"
+  },
+  {
+    "ID": 1922,
+    "Name": "Light Winter Boots"
+  },
+  {
+    "ID": 1923,
+    "Name": "Light Frozen Boots"
+  },
+  {
+    "ID": 1924,
+    "Name": "Light Frigid Boots"
+  },
+  {
+    "ID": 1925,
+    "Name": "Light Glacial Boots"
+  },
+  {
+    "ID": 1926,
+    "Name": "Exalted Heavy Winter Boots"
+  },
+  {
+    "ID": 1927,
+    "Name": "Exalted Heavy Frozen Boots"
+  },
+  {
+    "ID": 1928,
+    "Name": "Exalted Heavy Frigid Boots"
+  },
+  {
+    "ID": 1929,
+    "Name": "Exalted Heavy Glacial Boots"
+  },
+  {
+    "ID": 1930,
+    "Name": "Exalted Leather Winter Boots"
+  },
+  {
+    "ID": 1931,
+    "Name": "Exalted Leather Frozen Boots"
+  },
+  {
+    "ID": 1932,
+    "Name": "Exalted Leather Frigid Boots"
+  },
+  {
+    "ID": 1933,
+    "Name": "Exalted Leather Glacial Boots"
+  },
+  {
+    "ID": 1934,
+    "Name": "Exalted Sturdy Winter Boots"
+  },
+  {
+    "ID": 1935,
+    "Name": "Exalted Sturdy Frozen Boots"
+  },
+  {
+    "ID": 1936,
+    "Name": "Exalted Sturdy Frigid Boots"
+  },
+  {
+    "ID": 1937,
+    "Name": "Exalted Sturdy Glacial Boots"
+  },
+  {
+    "ID": 1938,
+    "Name": "Exalted Light Winter Boots"
+  },
+  {
+    "ID": 1939,
+    "Name": "Exalted Light Frozen Boots"
+  },
+  {
+    "ID": 1940,
+    "Name": "Exalted Light Frigid Boots"
+  },
+  {
+    "ID": 1941,
+    "Name": "Exalted Light Glacial Boots"
+  },
+  {
+    "ID": 1942,
+    "Name": "Legionnaire Guard Greaves"
+  },
+  {
+    "ID": 1943,
+    "Name": "Legionnaire Sentinel Greaves"
+  },
+  {
+    "ID": 1944,
+    "Name": "Legionnaire Evocatus Greaves"
+  },
+  {
+    "ID": 1945,
+    "Name": "Legionnaire Signifer Greaves"
+  },
+  {
+    "ID": 1946,
+    "Name": "Wild Spinosaur Boots"
+  },
+  {
+    "ID": 1947,
+    "Name": "Vicious Spinosaur Boots"
+  },
+  {
+    "ID": 1948,
+    "Name": "Thorned Spinosaur Boots"
+  },
+  {
+    "ID": 1949,
+    "Name": "Cunning Spinosaur Boots"
+  },
+  {
+    "ID": 1950,
+    "Name": "Lethal Assailant Boots"
+  },
+  {
+    "ID": 1951,
+    "Name": "Heavy Assailant Boots"
+  },
+  {
+    "ID": 1952,
+    "Name": "Sharp Assailant Boots"
+  },
+  {
+    "ID": 1953,
+    "Name": "Focused Assailant Boots"
+  },
+  {
+    "ID": 1954,
+    "Name": "Maddened Spitfire Shoes"
+  },
+  {
+    "ID": 1955,
+    "Name": "Crazed Spitfire Shoes"
+  },
+  {
+    "ID": 1956,
+    "Name": "Blazing Spitfire Shoes"
+  },
+  {
+    "ID": 1957,
+    "Name": "Raging Spitfire Shoes"
+  },
+  {
+    "ID": 2000,
+    "Name": "Shoes Test"
+  },
+  {
+    "ID": 3901,
+    "Name": "Akram Kingdom Boots"
+  },
+  {
+    "ID": 3902,
+    "Name": "Ancient Royal Shoes"
+  },
+  {
+    "ID": 3999,
+    "Name": ""
+  },
+  {
+    "ID": 4001,
+    "Name": "Jellybean Shoes"
+  },
+  {
+    "ID": 4006,
+    "Name": "Blue Aqua Flippers"
+  },
+  {
+    "ID": 4007,
+    "Name": "Moldie Footpads"
+  },
+  {
+    "ID": 4008,
+    "Name": "Rackie Footpads"
+  },
+  {
+    "ID": 4009,
+    "Name": "Woopie Chef Footpads"
+  },
+  {
+    "ID": 4011,
+    "Name": "Aqua King Flippers"
+  },
+  {
+    "ID": 4012,
+    "Name": "Manager Moldie Footpads"
+  },
+  {
+    "ID": 4013,
+    "Name": "Vagabond Rackie Footpads"
+  },
+  {
+    "ID": 4014,
+    "Name": "Woopie King Footpads"
+  },
+  {
+    "ID": 4016,
+    "Name": "Elite Pomic Soldier Boots"
+  },
+  {
+    "ID": 4017,
+    "Name": "Candle Ghost \"Feet\""
+  },
+  {
+    "ID": 4024,
+    "Name": "Easter Bunny Feet"
+  },
+  {
+    "ID": 4025,
+    "Name": "Easter Bunny Feet"
+  },
+  {
+    "ID": 4026,
+    "Name": "Captain Zack Boots"
+  },
+  {
+    "ID": 4028,
+    "Name": "Black Power Suit Boots"
+  },
+  {
+    "ID": 4029,
+    "Name": "Pink Power Suit Boots"
+  },
+  {
+    "ID": 4030,
+    "Name": "Blue Power Suit Boots"
+  },
+  {
+    "ID": 4031,
+    "Name": "White Power Suit Boots"
+  },
+  {
+    "ID": 4032,
+    "Name": "Red Power Suit Boots"
+  },
+  {
+    "ID": 4033,
+    "Name": "Green Power Suit Boots"
+  },
+  {
+    "ID": 4034,
+    "Name": "Yellow Power Suit Boots"
+  },
+  {
+    "ID": 4036,
+    "Name": "Raijin Shoes"
+  },
+  {
+    "ID": 4037,
+    "Name": "Tenjin Shoes"
+  },
+  {
+    "ID": 4038,
+    "Name": "Kojin Shoes"
+  },
+  {
+    "ID": 4040,
+    "Name": "Cute School Paws"
+  },
+  {
+    "ID": 4041,
+    "Name": "Blue Cute School Paws"
+  },
+  {
+    "ID": 4043,
+    "Name": "Purple Magician Shoes"
+  },
+  {
+    "ID": 4044,
+    "Name": "Red Magician Shoes"
+  },
+  {
+    "ID": 4046,
+    "Name": "Black Ninja Shoes"
+  },
+  {
+    "ID": 4047,
+    "Name": "White Ninja Shoes"
+  },
+  {
+    "ID": 4048,
+    "Name": "Truck Bot Boots"
+  },
+  {
+    "ID": 4049,
+    "Name": "Sport Bot Boots"
+  },
+  {
+    "ID": 4056,
+    "Name": "Wizard's Shoes"
+  },
+  {
+    "ID": 4057,
+    "Name": "Brown Cadet Shoes"
+  },
+  {
+    "ID": 4058,
+    "Name": "Blue Cadet Shoes"
+  },
+  {
+    "ID": 4059,
+    "Name": "Black Cadet Shoes"
+  },
+  {
+    "ID": 4060,
+    "Name": "Green Cadet Shoes"
+  },
+  {
+    "ID": 4081,
+    "Name": "Red Samurai Greaves"
+  },
+  {
+    "ID": 4082,
+    "Name": "Blue Samurai Greaves"
+  },
+  {
+    "ID": 4083,
+    "Name": "White Samurai Greaves"
+  },
+  {
+    "ID": 4084,
+    "Name": "Black Samurai Greaves"
+  },
+  {
+    "ID": 4085,
+    "Name": "Gold Samurai Greaves"
+  },
+  {
+    "ID": 4100,
+    "Name": "Inmate Shoes"
+  },
+  {
+    "ID": 4101,
+    "Name": "Prisoner Shoes"
+  },
+  {
+    "ID": 4102,
+    "Name": "Police Boots"
+  },
+  {
+    "ID": 4103,
+    "Name": "Highway Patrol Boots"
+  },
+  {
+    "ID": 4104,
+    "Name": "Fire Rescue Boots"
+  },
+  {
+    "ID": 4105,
+    "Name": "Fire Fighter Boots"
+  },
+  {
+    "ID": 4106,
+    "Name": "Cowboy Boots"
+  },
+  {
+    "ID": 4107,
+    "Name": "Indian Shoes"
+  },
+  {
+    "ID": 4108,
+    "Name": "Doctor Shoes"
+  },
+  {
+    "ID": 4109,
+    "Name": "Hunter Boots"
+  },
+  {
+    "ID": 4110,
+    "Name": "Warlock Shoes"
+  },
+  {
+    "ID": 4111,
+    "Name": "Alien Feet"
+  },
+  {
+    "ID": 4112,
+    "Name": "Caveman Slippers"
+  },
+  {
+    "ID": 4113,
+    "Name": "Hippie Sandals"
+  },
+  {
+    "ID": 4114,
+    "Name": "Gingerbread Feet"
+  },
+  {
+    "ID": 4115,
+    "Name": "Black Baseball Cleats"
+  },
+  {
+    "ID": 4116,
+    "Name": "Blue Baseball Cleats"
+  },
+  {
+    "ID": 4117,
+    "Name": "Red Baseball Cleats"
+  },
+  {
+    "ID": 4118,
+    "Name": "Purple Baseball Cleats"
+  },
+  {
+    "ID": 4119,
+    "Name": "Shark Fins"
+  },
+  {
+    "ID": 4120,
+    "Name": "Red Basketball Shoes"
+  },
+  {
+    "ID": 4121,
+    "Name": "Blue Basketball Shoes"
+  },
+  {
+    "ID": 4122,
+    "Name": "Purple Basketball Shoes"
+  },
+  {
+    "ID": 4123,
+    "Name": "Yellow Basketball Shoes"
+  },
+  {
+    "ID": 4124,
+    "Name": "Black Football Cleats"
+  },
+  {
+    "ID": 4125,
+    "Name": "Blue Football Cleats"
+  },
+  {
+    "ID": 4126,
+    "Name": "Red Football Cleats"
+  },
+  {
+    "ID": 4127,
+    "Name": "Purple Football Cleats"
+  },
+  {
+    "ID": 4128,
+    "Name": "White Football Cleats"
+  },
+  {
+    "ID": 4134,
+    "Name": "Construction Boots"
+  },
+  {
+    "ID": 4135,
+    "Name": "Dark ROSE Boots"
+  },
+  {
+    "ID": 4136,
+    "Name": "Super ROSE Boots"
+  },
+  {
+    "ID": 4137,
+    "Name": "Tribal Footwear"
+  },
+  {
+    "ID": 4138,
+    "Name": "Vintage Autumn Boots"
+  },
+  {
+    "ID": 4139,
+    "Name": "Festive Christmas Boots"
+  },
+  {
+    "ID": 4140,
+    "Name": "Cocoa Gingerbread Boots"
+  },
+  {
+    "ID": 4141,
+    "Name": "Vanilla Gingerbread Boots"
+  },
+  {
+    "ID": 4142,
+    "Name": "Rudolph Boots"
+  },
+  {
+    "ID": 4143,
+    "Name": "Snowman Boots"
+  },
+  {
+    "ID": 4145,
+    "Name": "Karate Footwraps"
+  },
+  {
+    "ID": 4146,
+    "Name": "Black Karate Footwraps"
+  },
+  {
+    "ID": 4147,
+    "Name": "Blue Karate Footwraps"
+  },
+  {
+    "ID": 4148,
+    "Name": "Green Karate Footwraps"
+  },
+  {
+    "ID": 4149,
+    "Name": "Pink Karate Footwraps"
+  },
+  {
+    "ID": 4150,
+    "Name": "Purple Karate Footwraps"
+  },
+  {
+    "ID": 4151,
+    "Name": "Red Karate Footwraps"
+  },
+  {
+    "ID": 4152,
+    "Name": "White Karate Footwraps"
+  },
+  {
+    "ID": 4153,
+    "Name": "Yellow Karate Footwraps"
+  },
+  {
+    "ID": 4155,
+    "Name": "HipHop Shoes"
+  },
+  {
+    "ID": 4156,
+    "Name": "Traditional Chinese Shoes"
+  },
+  {
+    "ID": 4158,
+    "Name": "White Formal Shoes"
+  },
+  {
+    "ID": 4159,
+    "Name": "Black Formal Shoes"
+  },
+  {
+    "ID": 4161,
+    "Name": "White Tuxedo Shoes"
+  },
+  {
+    "ID": 4162,
+    "Name": "Black Tuxedo Shoes"
+  },
+  {
+    "ID": 4164,
+    "Name": "Shakespearean Shoes"
+  },
+  {
+    "ID": 4165,
+    "Name": "Spartan Sandals"
+  },
+  {
+    "ID": 4167,
+    "Name": "Traditional Red Chinese Shoes"
+  },
+  {
+    "ID": 4168,
+    "Name": "Traditional Black Chinese Shoes"
+  },
+  {
+    "ID": 4169,
+    "Name": "Traditional Blue Chinese Shoes"
+  },
+  {
+    "ID": 4170,
+    "Name": "Traditional Yellow Chinese Shoes"
+  },
+  {
+    "ID": 4171,
+    "Name": "Traditional white Chinese Shoes"
+  },
+  {
+    "ID": 4172,
+    "Name": "Traditional Pink Chinese Shoes"
+  },
+  {
+    "ID": 4173,
+    "Name": "Traditional Green Chinese Shoes"
+  },
+  {
+    "ID": 4180,
+    "Name": "Gel-lined Moccasins"
+  },
+  {
+    "ID": 4181,
+    "Name": "Combat Jambeau"
+  },
+  {
+    "ID": 4182,
+    "Name": "Adventuring Brogan"
+  },
+  {
+    "ID": 4183,
+    "Name": "Experimental Penny Loafers"
+  },
+  {
+    "ID": 4199,
+    "Name": "Narwhal Flippers"
+  },
+  {
+    "ID": 4200,
+    "Name": "Fox Pads"
+  },
+  {
+    "ID": 4201,
+    "Name": "Explorer Rascal's Boots"
+  },
+  {
+    "ID": 4202,
+    "Name": "Heavenly Soldier's Boots"
+  },
+  {
+    "ID": 4204,
+    "Name": "Merry Holiday Party Shoes"
+  },
+  {
+    "ID": 4205,
+    "Name": "Jolly Holiday Party Shoes"
+  },
+  {
+    "ID": 4206,
+    "Name": "Charming School Shoes"
+  },
+  {
+    "ID": 4207,
+    "Name": "Lolita Shoes"
+  },
+  {
+    "ID": 4208,
+    "Name": "Viking Boots"
+  },
+  {
+    "ID": 4210,
+    "Name": "Black Ronin Waraji"
+  },
+  {
+    "ID": 4211,
+    "Name": "Blue Ronin Waraji"
+  },
+  {
+    "ID": 4212,
+    "Name": "Green Ronin Waraji"
+  },
+  {
+    "ID": 4213,
+    "Name": "Purple Ronin Waraji"
+  },
+  {
+    "ID": 4214,
+    "Name": "Red Ronin Waraji"
+  },
+  {
+    "ID": 4216,
+    "Name": "Cat Pads"
+  },
+  {
+    "ID": 4217,
+    "Name": "Cow Legs"
+  },
+  {
+    "ID": 4218,
+    "Name": "Dog Pads"
+  },
+  {
+    "ID": 4219,
+    "Name": "Bear Pads"
+  },
+  {
+    "ID": 4220,
+    "Name": "Dragon Talons"
+  },
+  {
+    "ID": 4221,
+    "Name": "JellyBean Shoes"
+  },
+  {
+    "ID": 4222,
+    "Name": "Lion Pads"
+  },
+  {
+    "ID": 4223,
+    "Name": "Moldie Pads"
+  },
+  {
+    "ID": 4224,
+    "Name": "Penguin Flippers"
+  },
+  {
+    "ID": 4225,
+    "Name": "Woopie Pads"
+  },
+  {
+    "ID": 4227,
+    "Name": "Royal Winter Footwear"
+  },
+  {
+    "ID": 4229,
+    "Name": "Pop Idol Pink Shoes"
+  },
+  {
+    "ID": 4230,
+    "Name": "Pop Idol Blue Shoes"
+  },
+  {
+    "ID": 4231,
+    "Name": "Pop Idol Green Shoes"
+  },
+  {
+    "ID": 4233,
+    "Name": "Military Leader's Boots"
+  },
+  {
+    "ID": 4235,
+    "Name": "T-100 Rosenator Boots"
+  },
+  {
+    "ID": 4237,
+    "Name": "Monarch Butterfly Boots"
+  },
+  {
+    "ID": 4238,
+    "Name": "Blue Monarch Butterfly Boots"
+  },
+  {
+    "ID": 4239,
+    "Name": "Green Monarch Butterfly Boots"
+  },
+  {
+    "ID": 4240,
+    "Name": "Red Monarch Butterfly Boots"
+  },
+  {
+    "ID": 4242,
+    "Name": "Fox Pads"
+  },
+  {
+    "ID": 4243,
+    "Name": "Dragon Talons"
+  },
+  {
+    "ID": 4244,
+    "Name": "Lolita Shoes"
+  },
+  {
+    "ID": 4245,
+    "Name": "Blue Baseball Cleats"
+  },
+  {
+    "ID": 4246,
+    "Name": "Red Football Cleats"
+  },
+  {
+    "ID": 4247,
+    "Name": "Hunter Boots"
+  },
+  {
+    "ID": 4248,
+    "Name": "Truck Bot Boots"
+  },
+  {
+    "ID": 4249,
+    "Name": "Sport Bot Boots"
+  },
+  {
+    "ID": 4250,
+    "Name": "Combat Jambeau"
+  },
+  {
+    "ID": 4251,
+    "Name": "Heavenly Soldiers Boots"
+  },
+  {
+    "ID": 4252,
+    "Name": "Noblesse Oblige Greaves"
+  },
+  {
+    "ID": 4253,
+    "Name": "Noblesse Tyrant Greaves"
+  },
+  {
+    "ID": 4255,
+    "Name": "Winter Walker Feet"
+  },
+  {
+    "ID": 4256,
+    "Name": "Adam & Eve Feet"
+  },
+  {
+    "ID": 4257,
+    "Name": "Badass Love Shoes"
+  },
+  {
+    "ID": 4258,
+    "Name": "Tango Shoes"
+  },
+  {
+    "ID": 4259,
+    "Name": "Beekeeper Shoes"
+  },
+  {
+    "ID": 4260,
+    "Name": "Eggbird Shoes"
+  },
+  {
+    "ID": 4261,
+    "Name": "Rosadeer Shoes"
+  },
+  {
+    "ID": 4262,
+    "Name": "Heroic Meanie Boots"
+  },
+  {
+    "ID": 4263,
+    "Name": "Heroic Punk Boots"
+  },
+  {
+    "ID": 4264,
+    "Name": "Guardian Behemoth Boots"
+  },
+  {
+    "ID": 4265,
+    "Name": "Summer Day Shoes"
+  },
+  {
+    "ID": 4266,
+    "Name": "Shining Blue Shoes"
+  },
+  {
+    "ID": 4267,
+    "Name": "Fancy in Red Shoes"
+  },
+  {
+    "ID": 4268,
+    "Name": "Royal Flare Shoes"
+  },
+  {
+    "ID": 4269,
+    "Name": "Hot Blaze Shoes"
+  },
+  {
+    "ID": 4270,
+    "Name": "Disastrous Flame Shoes"
+  },
+  {
+    "ID": 4271,
+    "Name": "Splash Down Shoes"
+  },
+  {
+    "ID": 4272,
+    "Name": "Beach Walk Shoes"
+  },
+  {
+    "ID": 4273,
+    "Name": "Luau Raver Shoes"
+  },
+  {
+    "ID": 4274,
+    "Name": "Dragon Tamer Boots"
+  },
+  {
+    "ID": 4275,
+    "Name": "S Class High School Shoes"
+  },
+  {
+    "ID": 4276,
+    "Name": "Magical Wisezard Shoes"
+  },
+  {
+    "ID": 4277,
+    "Name": "Royal Fortune Boots"
+  },
+  {
+    "ID": 4278,
+    "Name": "Royal Corsair Shoes"
+  },
+  {
+    "ID": 4279,
+    "Name": "Outlaw Punk Boots"
+  },
+  {
+    "ID": 4280,
+    "Name": "Pumpkin Knight Boots"
+  },
+  {
+    "ID": 4281,
+    "Name": "Black Widow Shoes"
+  },
+  {
+    "ID": 4282,
+    "Name": "Fallin Luv Shoes"
+  },
+  {
+    "ID": 4283,
+    "Name": "Autumn Blossom Shoes"
+  },
+  {
+    "ID": 4284,
+    "Name": "Winter Polar Shoes"
+  },
+  {
+    "ID": 4285,
+    "Name": "Elegant Winter Shoes"
+  },
+  {
+    "ID": 4286,
+    "Name": "Nice Winter Shoes"
+  },
+  {
+    "ID": 4287,
+    "Name": "Winter Spirits Shoes"
+  },
+  {
+    "ID": 4288,
+    "Name": "Hip Hopper Shoes"
+  },
+  {
+    "ID": 4289,
+    "Name": "Crazy Twenties Shoes"
+  },
+  {
+    "ID": 4290,
+    "Name": "Rockabilly Shoes"
+  },
+  {
+    "ID": 4291,
+    "Name": "Glam Flamingo Shoes"
+  },
+  {
+    "ID": 4292,
+    "Name": "Ruler Shoes"
+  },
+  {
+    "ID": 4293,
+    "Name": "Sea Glitz Shoes"
+  },
+  {
+    "ID": 4294,
+    "Name": "Mystic Shoes"
+  },
+  {
+    "ID": 4295,
+    "Name": "Protector Shoes"
+  },
+  {
+    "ID": 4296,
+    "Name": "Royal Deities Shoes"
+  },
+  {
+    "ID": 4297,
+    "Name": "Mythical Atlantian Shoes"
+  },
+  {
+    "ID": 4298,
+    "Name": "Traditional Shoes"
+  },
+  {
+    "ID": 4299,
+    "Name": "Sunshine Moonlight Shoes"
+  },
+  {
+    "ID": 4300,
+    "Name": "Blue Eclipse Shoes"
+  },
+  {
+    "ID": 4301,
+    "Name": "Black Eclipse Shoes"
+  },
+  {
+    "ID": 4302,
+    "Name": "Skykeeper Shoes"
+  },
+  {
+    "ID": 4303,
+    "Name": "Star Seeker Shoes"
+  },
+  {
+    "ID": 4304,
+    "Name": "Rock Your Body Shoes"
+  },
+  {
+    "ID": 4305,
+    "Name": "School of Rock Shoes"
+  },
+  {
+    "ID": 4306,
+    "Name": "Angelic Demon Shoes"
+  },
+  {
+    "ID": 4307,
+    "Name": "Spooky Scarecrow Shoes"
+  },
+  {
+    "ID": 4308,
+    "Name": "Cute Eater Shoes"
+  },
+  {
+    "ID": 4309,
+    "Name": "Comfy Buns Shoes"
+  },
+  {
+    "ID": 4310,
+    "Name": "Cozy Sweethearts Shoes"
+  },
+  {
+    "ID": 4311,
+    "Name": "Icy Dance Shoes"
+  },
+  {
+    "ID": 4312,
+    "Name": "Trendy Winter Shoes"
+  },
+  {
+    "ID": 4313,
+    "Name": "Goto Asian Shoes"
+  },
+  {
+    "ID": 4314,
+    "Name": "Chosen Shoes"
+  },
+  {
+    "ID": 4315,
+    "Name": "Fantasy Heroine Drama Shoes"
+  },
+  {
+    "ID": 4316,
+    "Name": "Jam On It Shoes"
+  },
+  {
+    "ID": 4317,
+    "Name": "Ethereal Deceiver Shoes"
+  },
+  {
+    "ID": 4318,
+    "Name": "Sailor School Shoes"
+  },
+  {
+    "ID": 4319,
+    "Name": "Sleeping Cloud Shoes"
+  },
+  {
+    "ID": 4320,
+    "Name": "Crimson Revel Shoes"
+  },
+  {
+    "ID": 4321,
+    "Name": "Huntereed Shoes"
+  },
+  {
+    "ID": 5000,
+    "Name": ""
+  },
+  {
+    "ID": 5001,
+    "Name": "Chivalrous Iron Boots"
+  },
+  {
+    "ID": 5002,
+    "Name": "Chivalrous Trunket Boots"
+  },
+  {
+    "ID": 5003,
+    "Name": "Chivalrous Chrome Boots"
+  },
+  {
+    "ID": 5004,
+    "Name": "Chivalrous Mighty Boots"
+  },
+  {
+    "ID": 5011,
+    "Name": "Chivalrous Kurash Boots"
+  },
+  {
+    "ID": 5012,
+    "Name": "Chivalrous Plate Boots"
+  },
+  {
+    "ID": 5013,
+    "Name": "Chivalrous Righteous Plate Boots"
+  },
+  {
+    "ID": 5014,
+    "Name": "Chivalrous Jabberwock Boots"
+  },
+  {
+    "ID": 5015,
+    "Name": "Chivalrous Obsidian Plate Boots"
+  },
+  {
+    "ID": 5016,
+    "Name": "Chivalrous Aurum Plate Boots"
+  },
+  {
+    "ID": 5017,
+    "Name": "Chivalrous Legionnaire Greaves"
+  },
+  {
+    "ID": 5018,
+    "Name": "Chivalrous Royal Guardian Boots"
+  },
+  {
+    "ID": 5021,
+    "Name": "Chivalrous Kurash Boots"
+  },
+  {
+    "ID": 5022,
+    "Name": "Chivalrous Plate Boots"
+  },
+  {
+    "ID": 5023,
+    "Name": "Chivalrous Righteous Plate Boots"
+  },
+  {
+    "ID": 5024,
+    "Name": "Chivalrous Jabberwock Boots"
+  },
+  {
+    "ID": 5025,
+    "Name": "Chivalrous Obsidian Plate Boots"
+  },
+  {
+    "ID": 5031,
+    "Name": "Chivalrous Green Sandals of Witch"
+  },
+  {
+    "ID": 5032,
+    "Name": "Chivalrous Purple Sandals of Witch"
+  },
+  {
+    "ID": 5033,
+    "Name": "Chivalrous Violet Boots"
+  },
+  {
+    "ID": 5034,
+    "Name": "Chivalrous Boots of Shadow"
+  },
+  {
+    "ID": 5041,
+    "Name": "Chivalrous Velvet Boots of Witch"
+  },
+  {
+    "ID": 5042,
+    "Name": "Chivalrous Heaven's Shoes"
+  },
+  {
+    "ID": 5043,
+    "Name": "Chivalrous Archmage Shoes"
+  },
+  {
+    "ID": 5044,
+    "Name": "Chivalrous Dimple Shoes"
+  },
+  {
+    "ID": 5045,
+    "Name": "Chivalrous Royal Sage Shoes"
+  },
+  {
+    "ID": 5046,
+    "Name": "Chivalrous Orlean Shoes"
+  },
+  {
+    "ID": 5047,
+    "Name": "Chivalrous Spitfire Shoes"
+  },
+  {
+    "ID": 5048,
+    "Name": "Chivalrous Sun Prophet Boots"
+  },
+  {
+    "ID": 5051,
+    "Name": "Chivalrous Velvet Boots of Witch"
+  },
+  {
+    "ID": 5052,
+    "Name": "Chivalrous Heaven's Shoes"
+  },
+  {
+    "ID": 5053,
+    "Name": "Chivalrous Archmage Shoes"
+  },
+  {
+    "ID": 5054,
+    "Name": "Chivalrous Dimple Shoes"
+  },
+  {
+    "ID": 5055,
+    "Name": "Chivalrous Royal Sage Shoes"
+  },
+  {
+    "ID": 5061,
+    "Name": "Chivalrous Criker Boots"
+  },
+  {
+    "ID": 5062,
+    "Name": "Chivalrous Ranger Boots"
+  },
+  {
+    "ID": 5063,
+    "Name": "Chivalrous Black Pirate Boots"
+  },
+  {
+    "ID": 5064,
+    "Name": "Chivalrous Mariner's Boots"
+  },
+  {
+    "ID": 5071,
+    "Name": "Chivalrous Jaguar Boots"
+  },
+  {
+    "ID": 5072,
+    "Name": "Chivalrous Wild Hawker Boots"
+  },
+  {
+    "ID": 5073,
+    "Name": "Chivalrous Netherworld Boots"
+  },
+  {
+    "ID": 5074,
+    "Name": "Chivalrous Steel Resolve Boots"
+  },
+  {
+    "ID": 5075,
+    "Name": "Chivalrous Shadow Fall Shoes"
+  },
+  {
+    "ID": 5076,
+    "Name": "Chivalrous Raptor Boots"
+  },
+  {
+    "ID": 5077,
+    "Name": "Chivalrous Spinosaur Boots"
+  },
+  {
+    "ID": 5078,
+    "Name": "Chivalrous Jackal Bandit Boots"
+  },
+  {
+    "ID": 5081,
+    "Name": "Chivalrous Jaguar Boots"
+  },
+  {
+    "ID": 5082,
+    "Name": "Chivalrous Wild Hawker Boots"
+  },
+  {
+    "ID": 5083,
+    "Name": "Chivalrous Netherworld Boots"
+  },
+  {
+    "ID": 5084,
+    "Name": "Chivalrous Steel Resolve Boots"
+  },
+  {
+    "ID": 5085,
+    "Name": "Chivalrous Shadow Fall Shoes"
+  },
+  {
+    "ID": 5091,
+    "Name": "Chivalrous Vibe Shoes"
+  },
+  {
+    "ID": 5092,
+    "Name": "Chivalrous Tamiya Shoes"
+  },
+  {
+    "ID": 5093,
+    "Name": "Chivalrous Semiya Shoes"
+  },
+  {
+    "ID": 5094,
+    "Name": "Chivalrous Merchant Boots"
+  },
+  {
+    "ID": 5101,
+    "Name": "Chivalrous Rich Merchant Boots"
+  },
+  {
+    "ID": 5102,
+    "Name": "Chivalrous Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5103,
+    "Name": "Chivalrous Noble Lord Shoes"
+  },
+  {
+    "ID": 5104,
+    "Name": "Chivalrous Mana Steam Shoes"
+  },
+  {
+    "ID": 5105,
+    "Name": "Chivalrous Mana Fusion Boots"
+  },
+  {
+    "ID": 5106,
+    "Name": "Chivalrous Mercenary Boots"
+  },
+  {
+    "ID": 5107,
+    "Name": "Chivalrous Assailant Boots"
+  },
+  {
+    "ID": 5108,
+    "Name": "Chivalrous Serpent Trader Boots"
+  },
+  {
+    "ID": 5111,
+    "Name": "Chivalrous Rich Merchant Boots"
+  },
+  {
+    "ID": 5112,
+    "Name": "Chivalrous Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5113,
+    "Name": "Chivalrous Noble Lord Shoes"
+  },
+  {
+    "ID": 5114,
+    "Name": "Chivalrous Mana Steam Shoes"
+  },
+  {
+    "ID": 5115,
+    "Name": "Chivalrous Mana Fusion Boots"
+  },
+  {
+    "ID": 5201,
+    "Name": "Glorious Iron Boots"
+  },
+  {
+    "ID": 5202,
+    "Name": "Glorious Trunket Boots"
+  },
+  {
+    "ID": 5203,
+    "Name": "Glorious Chrome Boots"
+  },
+  {
+    "ID": 5204,
+    "Name": "Glorious Mighty Boots"
+  },
+  {
+    "ID": 5211,
+    "Name": "Glorious Kurash Boots"
+  },
+  {
+    "ID": 5212,
+    "Name": "Glorious Plate Boots"
+  },
+  {
+    "ID": 5213,
+    "Name": "Glorious Righteous Plate Boots"
+  },
+  {
+    "ID": 5214,
+    "Name": "Glorious Jabberwock Boots"
+  },
+  {
+    "ID": 5215,
+    "Name": "Glorious Obsidian Plate Boots"
+  },
+  {
+    "ID": 5216,
+    "Name": "Glorious Aurum Plate Boots"
+  },
+  {
+    "ID": 5217,
+    "Name": "Glorious Legionnaire Greaves"
+  },
+  {
+    "ID": 5218,
+    "Name": "Glorious Royal Guardian Boots"
+  },
+  {
+    "ID": 5221,
+    "Name": "Glorious Kurash Boots"
+  },
+  {
+    "ID": 5222,
+    "Name": "Glorious Plate Boots"
+  },
+  {
+    "ID": 5223,
+    "Name": "Glorious Righteous Plate Boots"
+  },
+  {
+    "ID": 5224,
+    "Name": "Glorious Jabberwock Boots"
+  },
+  {
+    "ID": 5225,
+    "Name": "Glorious Obsidian Plate Boots"
+  },
+  {
+    "ID": 5231,
+    "Name": "Glorious Green Sandals of Witch"
+  },
+  {
+    "ID": 5232,
+    "Name": "Glorious Purple Sandals of Witch"
+  },
+  {
+    "ID": 5233,
+    "Name": "Glorious Violet Boots"
+  },
+  {
+    "ID": 5234,
+    "Name": "Glorious Boots of Shadow"
+  },
+  {
+    "ID": 5241,
+    "Name": "Glorious Velvet Boots of Witch"
+  },
+  {
+    "ID": 5242,
+    "Name": "Glorious Heaven's Shoes"
+  },
+  {
+    "ID": 5243,
+    "Name": "Glorious Archmage Shoes"
+  },
+  {
+    "ID": 5244,
+    "Name": "Glorious Dimple Shoes"
+  },
+  {
+    "ID": 5245,
+    "Name": "Glorious Royal Sage Shoes"
+  },
+  {
+    "ID": 5246,
+    "Name": "Glorious Orlean Shoes"
+  },
+  {
+    "ID": 5247,
+    "Name": "Glorious Spitfire Shoes"
+  },
+  {
+    "ID": 5248,
+    "Name": "Glorious Sun Prophet Boots"
+  },
+  {
+    "ID": 5251,
+    "Name": "Glorious Velvet Boots of Witch"
+  },
+  {
+    "ID": 5252,
+    "Name": "Glorious Heaven's Shoes"
+  },
+  {
+    "ID": 5253,
+    "Name": "Glorious Archmage Shoes"
+  },
+  {
+    "ID": 5254,
+    "Name": "Glorious Dimple Shoes"
+  },
+  {
+    "ID": 5255,
+    "Name": "Glorious Royal Sage Shoes"
+  },
+  {
+    "ID": 5261,
+    "Name": "Glorious Criker Boots"
+  },
+  {
+    "ID": 5262,
+    "Name": "Glorious Ranger Boots"
+  },
+  {
+    "ID": 5263,
+    "Name": "Glorious Black Pirate Boots"
+  },
+  {
+    "ID": 5264,
+    "Name": "Glorious Mariner's Boots"
+  },
+  {
+    "ID": 5271,
+    "Name": "Glorious Jaguar Boots"
+  },
+  {
+    "ID": 5272,
+    "Name": "Glorious Wild Hawker Boots"
+  },
+  {
+    "ID": 5273,
+    "Name": "Glorious Netherworld Boots"
+  },
+  {
+    "ID": 5274,
+    "Name": "Glorious Steel Resolve Boots"
+  },
+  {
+    "ID": 5275,
+    "Name": "Glorious Shadow Fall Shoes"
+  },
+  {
+    "ID": 5276,
+    "Name": "Glorious Raptor Boots"
+  },
+  {
+    "ID": 5277,
+    "Name": "Glorious Spinosaur Boots"
+  },
+  {
+    "ID": 5278,
+    "Name": "Glorious Jackal Bandit Boots"
+  },
+  {
+    "ID": 5281,
+    "Name": "Glorious Jaguar Boots"
+  },
+  {
+    "ID": 5282,
+    "Name": "Glorious Wild Hawker Boots"
+  },
+  {
+    "ID": 5283,
+    "Name": "Glorious Netherworld Boots"
+  },
+  {
+    "ID": 5284,
+    "Name": "Glorious Steel Resolve Boots"
+  },
+  {
+    "ID": 5285,
+    "Name": "Glorious Shadow Fall Shoes"
+  },
+  {
+    "ID": 5291,
+    "Name": "Glorious Vibe Shoes"
+  },
+  {
+    "ID": 5292,
+    "Name": "Glorious Tamiya Shoes"
+  },
+  {
+    "ID": 5293,
+    "Name": "Glorious Semiya Shoes"
+  },
+  {
+    "ID": 5294,
+    "Name": "Glorious Merchant Boots"
+  },
+  {
+    "ID": 5301,
+    "Name": "Glorious Rich Merchant Boots"
+  },
+  {
+    "ID": 5302,
+    "Name": "Glorious Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5303,
+    "Name": "Glorious Noble Lord Shoes"
+  },
+  {
+    "ID": 5304,
+    "Name": "Glorious Mana Steam Shoes"
+  },
+  {
+    "ID": 5305,
+    "Name": "Glorious Mana Fusion Boots"
+  },
+  {
+    "ID": 5306,
+    "Name": "Glorious Mercenary Boots"
+  },
+  {
+    "ID": 5307,
+    "Name": "Glorious Assailant Boots"
+  },
+  {
+    "ID": 5308,
+    "Name": "Glorious Serpent Trader Boots"
+  },
+  {
+    "ID": 5311,
+    "Name": "Glorious Rich Merchant Boots"
+  },
+  {
+    "ID": 5312,
+    "Name": "Glorious Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5313,
+    "Name": "Glorious Noble Lord Shoes"
+  },
+  {
+    "ID": 5314,
+    "Name": "Glorious Mana Steam Shoes"
+  },
+  {
+    "ID": 5315,
+    "Name": "Glorious Mana Fusion Boots"
+  },
+  {
+    "ID": 5401,
+    "Name": "Precious Iron Boots"
+  },
+  {
+    "ID": 5402,
+    "Name": "Precious Trunket Boots"
+  },
+  {
+    "ID": 5403,
+    "Name": "Precious Chrome Boots"
+  },
+  {
+    "ID": 5404,
+    "Name": "Precious Mighty Boots"
+  },
+  {
+    "ID": 5411,
+    "Name": "Precious Kurash Boots"
+  },
+  {
+    "ID": 5412,
+    "Name": "Precious Plate Boots"
+  },
+  {
+    "ID": 5413,
+    "Name": "Precious Righteous Plate Boots"
+  },
+  {
+    "ID": 5414,
+    "Name": "Precious Jabberwock Boots"
+  },
+  {
+    "ID": 5415,
+    "Name": "Precious Obsidian Plate Boots"
+  },
+  {
+    "ID": 5416,
+    "Name": "Precious Aurum Plate Boots"
+  },
+  {
+    "ID": 5417,
+    "Name": "Precious Legionnaire Greaves"
+  },
+  {
+    "ID": 5418,
+    "Name": "Precious Royal Guardian Boots"
+  },
+  {
+    "ID": 5421,
+    "Name": "Precious Kurash Boots"
+  },
+  {
+    "ID": 5422,
+    "Name": "Precious Plate Boots"
+  },
+  {
+    "ID": 5423,
+    "Name": "Precious Righteous Plate Boots"
+  },
+  {
+    "ID": 5424,
+    "Name": "Precious Jabberwock Boots"
+  },
+  {
+    "ID": 5425,
+    "Name": "Precious Obsidian Plate Boots"
+  },
+  {
+    "ID": 5431,
+    "Name": "Precious Green Sandals of Witch"
+  },
+  {
+    "ID": 5432,
+    "Name": "Precious Purple Sandals of Witch"
+  },
+  {
+    "ID": 5433,
+    "Name": "Precious Violet Boots"
+  },
+  {
+    "ID": 5434,
+    "Name": "Precious Boots of Shadow"
+  },
+  {
+    "ID": 5441,
+    "Name": "Precious Velvet Boots of Witch"
+  },
+  {
+    "ID": 5442,
+    "Name": "Precious Heaven's Shoes"
+  },
+  {
+    "ID": 5443,
+    "Name": "Precious Archmage Shoes"
+  },
+  {
+    "ID": 5444,
+    "Name": "Precious Dimple Shoes"
+  },
+  {
+    "ID": 5445,
+    "Name": "Precious Royal Sage Shoes"
+  },
+  {
+    "ID": 5446,
+    "Name": "Precious Orlean Shoes"
+  },
+  {
+    "ID": 5447,
+    "Name": "Precious Spitfire Shoes"
+  },
+  {
+    "ID": 5448,
+    "Name": "Precious Sun Prophet Boots"
+  },
+  {
+    "ID": 5451,
+    "Name": "Precious Velvet Boots of Witch"
+  },
+  {
+    "ID": 5452,
+    "Name": "Precious Heaven's Shoes"
+  },
+  {
+    "ID": 5453,
+    "Name": "Precious Archmage Shoes"
+  },
+  {
+    "ID": 5454,
+    "Name": "Precious Dimple Shoes"
+  },
+  {
+    "ID": 5455,
+    "Name": "Precious Royal Sage Shoes"
+  },
+  {
+    "ID": 5461,
+    "Name": "Precious Criker Boots"
+  },
+  {
+    "ID": 5462,
+    "Name": "Precious Ranger Boots"
+  },
+  {
+    "ID": 5463,
+    "Name": "Precious Black Pirate Boots"
+  },
+  {
+    "ID": 5464,
+    "Name": "Precious Mariner's Boots"
+  },
+  {
+    "ID": 5471,
+    "Name": "Precious Jaguar Boots"
+  },
+  {
+    "ID": 5472,
+    "Name": "Precious Wild Hawker Boots"
+  },
+  {
+    "ID": 5473,
+    "Name": "Precious Netherworld Boots"
+  },
+  {
+    "ID": 5474,
+    "Name": "Precious Steel Resolve Boots"
+  },
+  {
+    "ID": 5475,
+    "Name": "Precious Shadow Fall Shoes"
+  },
+  {
+    "ID": 5476,
+    "Name": "Precious Raptor Boots"
+  },
+  {
+    "ID": 5477,
+    "Name": "Precious Spinosaur Boots"
+  },
+  {
+    "ID": 5478,
+    "Name": "Precious Jackal Bandit Boots"
+  },
+  {
+    "ID": 5481,
+    "Name": "Precious Jaguar Boots"
+  },
+  {
+    "ID": 5482,
+    "Name": "Precious Wild Hawker Boots"
+  },
+  {
+    "ID": 5483,
+    "Name": "Precious Netherworld Boots"
+  },
+  {
+    "ID": 5484,
+    "Name": "Precious Steel Resolve Boots"
+  },
+  {
+    "ID": 5485,
+    "Name": "Precious Shadow Fall Shoes"
+  },
+  {
+    "ID": 5491,
+    "Name": "Precious Vibe Shoes"
+  },
+  {
+    "ID": 5492,
+    "Name": "Precious Tamiya Shoes"
+  },
+  {
+    "ID": 5493,
+    "Name": "Precious Semiya Shoes"
+  },
+  {
+    "ID": 5494,
+    "Name": "Precious Merchant Boots"
+  },
+  {
+    "ID": 5501,
+    "Name": "Precious Rich Merchant Boots"
+  },
+  {
+    "ID": 5502,
+    "Name": "Precious Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5503,
+    "Name": "Precious Noble Lord Shoes"
+  },
+  {
+    "ID": 5504,
+    "Name": "Precious Mana Steam Shoes"
+  },
+  {
+    "ID": 5505,
+    "Name": "Precious Mana Fusion Boots"
+  },
+  {
+    "ID": 5506,
+    "Name": "Precious Mercenary Boots"
+  },
+  {
+    "ID": 5507,
+    "Name": "Precious Assailant Boots"
+  },
+  {
+    "ID": 5508,
+    "Name": "Precious Serpent Trader Boots"
+  },
+  {
+    "ID": 5511,
+    "Name": "Precious Rich Merchant Boots"
+  },
+  {
+    "ID": 5512,
+    "Name": "Precious Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5513,
+    "Name": "Precious Noble Lord Shoes"
+  },
+  {
+    "ID": 5514,
+    "Name": "Precious Mana Steam Shoes"
+  },
+  {
+    "ID": 5515,
+    "Name": "Precious Mana Fusion Boots"
+  },
+  {
+    "ID": 5601,
+    "Name": "Luminous Iron Boots"
+  },
+  {
+    "ID": 5602,
+    "Name": "Luminous Trunket Boots"
+  },
+  {
+    "ID": 5603,
+    "Name": "Luminous Chrome Boots"
+  },
+  {
+    "ID": 5604,
+    "Name": "Luminous Mighty Boots"
+  },
+  {
+    "ID": 5611,
+    "Name": "Luminous Kurash Boots"
+  },
+  {
+    "ID": 5612,
+    "Name": "Luminous Plate Boots"
+  },
+  {
+    "ID": 5613,
+    "Name": "Luminous Righteous Plate Boots"
+  },
+  {
+    "ID": 5614,
+    "Name": "Luminous Jabberwock Boots"
+  },
+  {
+    "ID": 5615,
+    "Name": "Luminous Obsidian Plate Boots"
+  },
+  {
+    "ID": 5616,
+    "Name": "Luminous Aurum Plate Boots"
+  },
+  {
+    "ID": 5617,
+    "Name": "Luminous Legionnaire Greaves"
+  },
+  {
+    "ID": 5618,
+    "Name": "Luminous Royal Guardian Boots"
+  },
+  {
+    "ID": 5621,
+    "Name": "Luminous Kurash Boots"
+  },
+  {
+    "ID": 5622,
+    "Name": "Luminous Plate Boots"
+  },
+  {
+    "ID": 5623,
+    "Name": "Luminous Righteous Plate Boots"
+  },
+  {
+    "ID": 5624,
+    "Name": "Luminous Jabberwock Boots"
+  },
+  {
+    "ID": 5625,
+    "Name": "Luminous Obsidian Plate Boots"
+  },
+  {
+    "ID": 5631,
+    "Name": "Luminous Green Sandals of Witch"
+  },
+  {
+    "ID": 5632,
+    "Name": "Luminous Purple Sandals of Witch"
+  },
+  {
+    "ID": 5633,
+    "Name": "Luminous Violet Boots"
+  },
+  {
+    "ID": 5634,
+    "Name": "Luminous Boots of Shadow"
+  },
+  {
+    "ID": 5641,
+    "Name": "Luminous Velvet Boots of Witch"
+  },
+  {
+    "ID": 5642,
+    "Name": "Luminous Heaven's Shoes"
+  },
+  {
+    "ID": 5643,
+    "Name": "Luminous Archmage Shoes"
+  },
+  {
+    "ID": 5644,
+    "Name": "Luminous Dimple Shoes"
+  },
+  {
+    "ID": 5645,
+    "Name": "Luminous Royal Sage Shoes"
+  },
+  {
+    "ID": 5646,
+    "Name": "Luminous Orlean Shoes"
+  },
+  {
+    "ID": 5647,
+    "Name": "Luminous Spitfire Shoes"
+  },
+  {
+    "ID": 5648,
+    "Name": "Luminous Sun Prophet Boots"
+  },
+  {
+    "ID": 5651,
+    "Name": "Luminous Velvet Boots of Witch"
+  },
+  {
+    "ID": 5652,
+    "Name": "Luminous Heaven's Shoes"
+  },
+  {
+    "ID": 5653,
+    "Name": "Luminous Archmage Shoes"
+  },
+  {
+    "ID": 5654,
+    "Name": "Luminous Dimple Shoes"
+  },
+  {
+    "ID": 5655,
+    "Name": "Luminous Royal Sage Shoes"
+  },
+  {
+    "ID": 5661,
+    "Name": "Luminous Criker Boots"
+  },
+  {
+    "ID": 5662,
+    "Name": "Luminous Ranger Boots"
+  },
+  {
+    "ID": 5663,
+    "Name": "Luminous Black Pirate Boots"
+  },
+  {
+    "ID": 5664,
+    "Name": "Luminous Mariner's Boots"
+  },
+  {
+    "ID": 5671,
+    "Name": "Luminous Jaguar Boots"
+  },
+  {
+    "ID": 5672,
+    "Name": "Luminous Wild Hawker Boots"
+  },
+  {
+    "ID": 5673,
+    "Name": "Luminous Netherworld Boots"
+  },
+  {
+    "ID": 5674,
+    "Name": "Luminous Steel Resolve Boots"
+  },
+  {
+    "ID": 5675,
+    "Name": "Luminous Shadow Fall Shoes"
+  },
+  {
+    "ID": 5676,
+    "Name": "Luminous Raptor Boots"
+  },
+  {
+    "ID": 5677,
+    "Name": "Luminous Spinosaur Boots"
+  },
+  {
+    "ID": 5678,
+    "Name": "Luminous Jackal Bandit Boots"
+  },
+  {
+    "ID": 5681,
+    "Name": "Luminous Jaguar Boots"
+  },
+  {
+    "ID": 5682,
+    "Name": "Luminous Wild Hawker Boots"
+  },
+  {
+    "ID": 5683,
+    "Name": "Luminous Netherworld Boots"
+  },
+  {
+    "ID": 5684,
+    "Name": "Luminous Steel Resolve Boots"
+  },
+  {
+    "ID": 5685,
+    "Name": "Luminous Shadow Fall Shoes"
+  },
+  {
+    "ID": 5691,
+    "Name": "Luminous Vibe Shoes"
+  },
+  {
+    "ID": 5692,
+    "Name": "Luminous Tamiya Shoes"
+  },
+  {
+    "ID": 5693,
+    "Name": "Luminous Semiya Shoes"
+  },
+  {
+    "ID": 5694,
+    "Name": "Luminous Merchant Boots"
+  },
+  {
+    "ID": 5701,
+    "Name": "Luminous Rich Merchant Boots"
+  },
+  {
+    "ID": 5702,
+    "Name": "Luminous Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5703,
+    "Name": "Luminous Noble Lord Shoes"
+  },
+  {
+    "ID": 5704,
+    "Name": "Luminous Mana Steam Shoes"
+  },
+  {
+    "ID": 5705,
+    "Name": "Luminous Mana Fusion Boots"
+  },
+  {
+    "ID": 5706,
+    "Name": "Luminous Mercenary Boots"
+  },
+  {
+    "ID": 5707,
+    "Name": "Luminous Assailant Boots"
+  },
+  {
+    "ID": 5708,
+    "Name": "Luminous Serpent Trader Boots"
+  },
+  {
+    "ID": 5711,
+    "Name": "Luminous Rich Merchant Boots"
+  },
+  {
+    "ID": 5712,
+    "Name": "Luminous Redfield Chairman Shoes"
+  },
+  {
+    "ID": 5713,
+    "Name": "Luminous Noble Lord Shoes"
+  },
+  {
+    "ID": 5714,
+    "Name": "Luminous Mana Steam Shoes"
+  },
+  {
+    "ID": 5715,
+    "Name": "Luminous Mana Fusion Boots"
+  },
+  {
+    "ID": 6001,
+    "Name": "Courage Iron Boots"
+  },
+  {
+    "ID": 6002,
+    "Name": "Courage Trunket Boots"
+  },
+  {
+    "ID": 6003,
+    "Name": "Courage Chrome Boots"
+  },
+  {
+    "ID": 6004,
+    "Name": "Courage Mighty Boots"
+  },
+  {
+    "ID": 6005,
+    "Name": "Courage Kurash Boots"
+  },
+  {
+    "ID": 6006,
+    "Name": "Courage Plate Boots"
+  },
+  {
+    "ID": 6007,
+    "Name": "Courage Righteous Plate Boots"
+  },
+  {
+    "ID": 6008,
+    "Name": "Courage Jabberwock Boots"
+  },
+  {
+    "ID": 6009,
+    "Name": "Courage Obsidian Plate Boots"
+  },
+  {
+    "ID": 6010,
+    "Name": "Courage Aurum Plate Boots"
+  },
+  {
+    "ID": 6011,
+    "Name": "Courage Legionnaire Greaves"
+  },
+  {
+    "ID": 6012,
+    "Name": "Courage Royal Guardian Boots"
+  },
+  {
+    "ID": 6021,
+    "Name": "Courage Green Sandals of Witch"
+  },
+  {
+    "ID": 6022,
+    "Name": "Courage Purple Sandals of Witch"
+  },
+  {
+    "ID": 6023,
+    "Name": "Courage Violet Boots"
+  },
+  {
+    "ID": 6024,
+    "Name": "Courage Boots of Shadow"
+  },
+  {
+    "ID": 6025,
+    "Name": "Courage Velvet Boots of Witch"
+  },
+  {
+    "ID": 6026,
+    "Name": "Courage Heaven's Shoes"
+  },
+  {
+    "ID": 6027,
+    "Name": "Courage Archmage Shoes"
+  },
+  {
+    "ID": 6028,
+    "Name": "Courage Dimple Shoes"
+  },
+  {
+    "ID": 6029,
+    "Name": "Courage Royal Sage Shoes"
+  },
+  {
+    "ID": 6030,
+    "Name": "Courage Orlean Shoes"
+  },
+  {
+    "ID": 6031,
+    "Name": "Courage Spitfire Shoes"
+  },
+  {
+    "ID": 6032,
+    "Name": "Courage Sun Prophet Boots"
+  },
+  {
+    "ID": 6041,
+    "Name": "Courage Criker Boots"
+  },
+  {
+    "ID": 6042,
+    "Name": "Courage Ranger Boots"
+  },
+  {
+    "ID": 6043,
+    "Name": "Courage Black Pirate Boots"
+  },
+  {
+    "ID": 6044,
+    "Name": "Courage Mariner's Boots"
+  },
+  {
+    "ID": 6045,
+    "Name": "Courage Jaguar Boots"
+  },
+  {
+    "ID": 6046,
+    "Name": "Courage Wild Hawker Boots"
+  },
+  {
+    "ID": 6047,
+    "Name": "Courage Netherworld Boots"
+  },
+  {
+    "ID": 6048,
+    "Name": "Courage Steel Resolve Boots"
+  },
+  {
+    "ID": 6049,
+    "Name": "Courage Shadow Fall Shoes"
+  },
+  {
+    "ID": 6050,
+    "Name": "Courage Raptor Boots"
+  },
+  {
+    "ID": 6051,
+    "Name": "Courage Spinosaur Boots"
+  },
+  {
+    "ID": 6052,
+    "Name": "Courage Jackal Bandit Boots"
+  },
+  {
+    "ID": 6061,
+    "Name": "Courage Vibe Shoes"
+  },
+  {
+    "ID": 6062,
+    "Name": "Courage Tamiya Shoes"
+  },
+  {
+    "ID": 6063,
+    "Name": "Courage Semiya Shoes"
+  },
+  {
+    "ID": 6064,
+    "Name": "Courage Merchant Boots"
+  },
+  {
+    "ID": 6065,
+    "Name": "Courage Rich Merchant Boots"
+  },
+  {
+    "ID": 6066,
+    "Name": "Courage Redfield Chairman Shoes"
+  },
+  {
+    "ID": 6067,
+    "Name": "Courage Noble Lord Shoes"
+  },
+  {
+    "ID": 6068,
+    "Name": "Courage Mana Steam Shoes"
+  },
+  {
+    "ID": 6069,
+    "Name": "Courage Mana Fusion Boots"
+  },
+  {
+    "ID": 6070,
+    "Name": "Courage Mercenary Boots"
+  },
+  {
+    "ID": 6071,
+    "Name": "Courage Assailant Boots"
+  },
+  {
+    "ID": 6072,
+    "Name": "Courage Serpent Trader Boots"
+  },
+  {
+    "ID": 6081,
+    "Name": "Brave Iron Boots"
+  },
+  {
+    "ID": 6082,
+    "Name": "Brave Trunket Boots"
+  },
+  {
+    "ID": 6083,
+    "Name": "Brave Chrome Boots"
+  },
+  {
+    "ID": 6084,
+    "Name": "Brave Mighty Boots"
+  },
+  {
+    "ID": 6085,
+    "Name": "Brave Kurash Boots"
+  },
+  {
+    "ID": 6086,
+    "Name": "Brave Plate Boots"
+  },
+  {
+    "ID": 6087,
+    "Name": "Brave Righteous Plate Boots"
+  },
+  {
+    "ID": 6088,
+    "Name": "Brave Jabberwock Boots"
+  },
+  {
+    "ID": 6089,
+    "Name": "Brave Obsidian Plate Boots"
+  },
+  {
+    "ID": 6090,
+    "Name": "Brave Aurum Plate Boots"
+  },
+  {
+    "ID": 6091,
+    "Name": "Brave Legionnaire Greaves"
+  },
+  {
+    "ID": 6092,
+    "Name": "Brave Royal Guardian Boots"
+  },
+  {
+    "ID": 6101,
+    "Name": "Brave Green Sandals of Witch"
+  },
+  {
+    "ID": 6102,
+    "Name": "Brave Purple Sandals of Witch"
+  },
+  {
+    "ID": 6103,
+    "Name": "Brave Violet Boots"
+  },
+  {
+    "ID": 6104,
+    "Name": "Brave Boots of Shadow"
+  },
+  {
+    "ID": 6105,
+    "Name": "Brave Velvet Boots of Witch"
+  },
+  {
+    "ID": 6106,
+    "Name": "Brave Heaven's Shoes"
+  },
+  {
+    "ID": 6107,
+    "Name": "Brave Archmage Shoes"
+  },
+  {
+    "ID": 6108,
+    "Name": "Brave Dimple Shoes"
+  },
+  {
+    "ID": 6109,
+    "Name": "Brave Royal Sage Shoes"
+  },
+  {
+    "ID": 6110,
+    "Name": "Brave Orlean Shoes"
+  },
+  {
+    "ID": 6111,
+    "Name": "Brave Spitfire Shoes"
+  },
+  {
+    "ID": 6112,
+    "Name": "Brave Sun Prophet Boots"
+  },
+  {
+    "ID": 6121,
+    "Name": "Brave Criker Boots"
+  },
+  {
+    "ID": 6122,
+    "Name": "Brave Ranger Boots"
+  },
+  {
+    "ID": 6123,
+    "Name": "Brave Black Pirate Boots"
+  },
+  {
+    "ID": 6124,
+    "Name": "Brave Mariner's Boots"
+  },
+  {
+    "ID": 6125,
+    "Name": "Brave Jaguar Boots"
+  },
+  {
+    "ID": 6126,
+    "Name": "Brave Wild Hawker Boots"
+  },
+  {
+    "ID": 6127,
+    "Name": "Brave Netherworld Boots"
+  },
+  {
+    "ID": 6128,
+    "Name": "Brave Steel Resolve Boots"
+  },
+  {
+    "ID": 6129,
+    "Name": "Brave Shadow Fall Shoes"
+  },
+  {
+    "ID": 6130,
+    "Name": "Brave Raptor Boots"
+  },
+  {
+    "ID": 6131,
+    "Name": "Brave Spinosaur Boots"
+  },
+  {
+    "ID": 6132,
+    "Name": "Brave Jackal Bandit Boots"
+  },
+  {
+    "ID": 6141,
+    "Name": "Brave Vibe Shoes"
+  },
+  {
+    "ID": 6142,
+    "Name": "Brave Tamiya Shoes"
+  },
+  {
+    "ID": 6143,
+    "Name": "Brave Semiya Shoes"
+  },
+  {
+    "ID": 6144,
+    "Name": "Brave Merchant Boots"
+  },
+  {
+    "ID": 6145,
+    "Name": "Brave Rich Merchant Boots"
+  },
+  {
+    "ID": 6146,
+    "Name": "Brave Redfield Chairman Shoes"
+  },
+  {
+    "ID": 6147,
+    "Name": "Brave Noble Lord Shoes"
+  },
+  {
+    "ID": 6148,
+    "Name": "Brave Mana Steam Shoes"
+  },
+  {
+    "ID": 6149,
+    "Name": "Brave Mana Fusion Boots"
+  },
+  {
+    "ID": 6150,
+    "Name": "Brave Mercenary Boots"
+  },
+  {
+    "ID": 6151,
+    "Name": "Brave Assailant Boots"
+  },
+  {
+    "ID": 6152,
+    "Name": "Brave Serpent Trader Boots"
+  }
+]

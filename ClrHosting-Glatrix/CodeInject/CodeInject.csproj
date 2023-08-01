@@ -69,6 +69,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CopyToRose\ArmItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CopyToRose\BodyItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CopyToRose\FootItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="CopyToRose\MonsterList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
