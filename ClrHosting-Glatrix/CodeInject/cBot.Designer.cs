@@ -42,16 +42,14 @@
             this.lUseSkill = new System.Windows.Forms.ListBox();
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -185,6 +183,15 @@
             this.lSkillList.Size = new System.Drawing.Size(120, 134);
             this.lSkillList.TabIndex = 2;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1303, 495);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Pick UP";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -196,33 +203,10 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // tabPage3
+            // pickUpTimer
             // 
-            this.tabPage3.Controls.Add(this.textBox2);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1303, 495);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Pick UP";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(26, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(26, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.pickUpTimer.Interval = 150;
+            this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
             // cBot
             // 
@@ -237,8 +221,6 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -261,7 +243,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button bHuntToggle;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer pickUpTimer;
     }
 }

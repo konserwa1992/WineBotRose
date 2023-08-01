@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace CodeInject
@@ -44,6 +45,7 @@ namespace CodeInject
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
         {
+            lSkillList.Items.Clear();
             lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
         }
 
@@ -76,6 +78,7 @@ namespace CodeInject
 
         private void bHuntToggle_Click(object sender, EventArgs e)
         {
+            pickUpTimer.Enabled = !pickUpTimer.Enabled;
             timer2.Enabled = !timer2.Enabled;
 
             bHuntToggle.Text = timer2.Enabled == true? "STOP":"START";
@@ -83,7 +86,22 @@ namespace CodeInject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GameFunctionsAndObjects.Actions.PickUp(int.Parse(textBox2.Text));
+
+           
+
+        }
+
+        private void pickUpTimer_Tick(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < 0xFFFF; i++)
+            {
+                if (GameFunctionsAndObjects.DataFetch.GetItemPointer(i) != 0)
+                {
+                    GameFunctionsAndObjects.Actions.PickUp(i);
+                    break;
+                }
+            }
         }
     }
 }
