@@ -1,19 +1,9 @@
 ﻿using CodeInject.Actors;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace CodeInject
 {
@@ -22,6 +12,7 @@ namespace CodeInject
         public cBot()
         {
             InitializeComponent();
+            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x => x.Name != "").ToArray());
         }
 
 
@@ -29,7 +20,7 @@ namespace CodeInject
         private unsafe void timer1_Tick(object sender, EventArgs e)
         {
             lNPClist.Items.Clear();
-            lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+            lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x=> lMonster2Attack.Items.Cast<MobInfo>().Any(y=> ((NPC)x).Info!=null && y.ID == ((NPC)x).Info.ID)).ToArray());
         }
 
         private  void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,7 +42,7 @@ namespace CodeInject
 
         private void bSkillAdd_Click(object sender, EventArgs e)
         {
-            if(!lUseSkill.Items.Contains(lSkillList.SelectedItem))
+            if(!lUseSkill.Items.Cast<Skills>().Any(x=>x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
             lUseSkill.Items.Add(lSkillList.SelectedItem);
         }
 
@@ -72,7 +63,7 @@ namespace CodeInject
                 lUseSkill.SelectedIndex++;
             }
 
-            lNPClist.SelectedItem = lNPClist.Items[1];
+            lNPClist.SelectedItem = lNPClist.Items[0];
             GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
         }
 
@@ -117,6 +108,18 @@ namespace CodeInject
          //   ((UsableItem)lNearItemsList.SelectedItem).Pickup();
             lNearItemsList.Items.Clear();
             lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            lFullMonsterList.Items.Clear();
+            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x =>x.Name!="" && x.Name.Contains(tSearchMobTextBox.Text)).ToArray());
+        }
+
+        private void bAddMonster2Attack_Click(object sender, EventArgs e)
+        {
+            if(lMonster2Attack.Items.Cast<MobInfo>().FirstOrDefault(x=>x.ID==((MobInfo)lFullMonsterList.SelectedItem).ID)==null)
+            lMonster2Attack.Items.Add(lFullMonsterList.SelectedItem);
         }
     }
 }
