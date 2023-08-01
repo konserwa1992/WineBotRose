@@ -53,7 +53,6 @@ namespace ISpace
                     if (i == bytesArray.Length - 1)
                     {
                         foundAdresses = new IntPtr(modulePointer);
-                        Console.WriteLine("Found: " + ((Int64)modulePointer).ToString("X") + " / " + ((Int64)proc.MainModule.BaseAddress.ToInt64() + proc.MainModule.ModuleMemorySize).ToString("X"));
                     }
 
                     if (bytesArray[i] == "??")

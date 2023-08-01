@@ -84,14 +84,6 @@ namespace CodeInject
 
         private void pickUpTimer_Tick(object sender, EventArgs e)
         {
-            for (ushort i = 0xFFFF; i >0; i--)
-            {
-                if (GameFunctionsAndObjects.DataFetch.GetItemPointer(i) != 0)
-                {
-                    GameFunctionsAndObjects.Actions.PickUp(i);
-                    break;
-                }
-            }
 
             lNearItemsList.Items.Clear();
             float maxDistance;
@@ -109,7 +101,14 @@ namespace CodeInject
         private void button1_Click_1(object sender, EventArgs e)
         {
             lNearItemsList.Items.Clear();
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
+            float maxDistance;
+            if (!float.TryParse(tPickupRadius.Text, out maxDistance))
+            {
+                maxDistance = 100f;
+            }
+            IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x => x.CalcDistance(player)).ToArray());
+
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

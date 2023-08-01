@@ -34,7 +34,7 @@ namespace CodeInject.Actors
 
         public double CalcDistance(IObject actor)
         {
-            return Math.Sqrt(Math.Pow(*actor.X - *this.X, 2) + Math.Pow(*actor.Y - *this.Y, 2)+Math.Pow(*actor.Z - *this.Z, 2));
+            return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
         }
 
         public override string ToString()
