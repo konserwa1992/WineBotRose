@@ -1,4 +1,4 @@
-Copy json files to game folder, inject ClrBootstrap.dll after choose character.
+Copy json files to game folder, inject ClrBootstrap.dll after selection character.
 
 
 
