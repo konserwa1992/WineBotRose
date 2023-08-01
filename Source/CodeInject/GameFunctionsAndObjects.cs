@@ -37,7 +37,6 @@ namespace CodeInject
         }
         public void PickUp(int ItemID)
         {
-            Process _proc = Process.GetCurrentProcess();
             PickUpFunc((*(long*)(BaseAddres + 0x1122EF0) + 0x16D8), *((long*)(BaseAddres + 0x1118E60)), ItemID, 0);
         }
 
@@ -83,8 +82,6 @@ namespace CodeInject
         {
             List<Skills> skillList = new List<Skills>();
 
-            Process _proc = Process.GetCurrentProcess();
-
             ulong* adrPtr1 = (ulong*)(BaseAddres + 0x1118E90);
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)
@@ -114,7 +111,6 @@ namespace CodeInject
         /// <returns></returns>
         public IObject GetObject<T>(int ID)
         {
-            Process _proc = Process.GetCurrentProcess();
             long* wskObj = (long*)((*(long*)(BaseAddres + 0x111be28)) + (ID * 8) + 0x22078);
 
             if (typeof(T) == typeof(NPC))
@@ -134,8 +130,6 @@ namespace CodeInject
         /// <returns></returns>
         public IObject GetPlayer()
         {
-            Process _proc = Process.GetCurrentProcess();
-
             long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
             int* monsterIDList = (int*)*wsp;
 
@@ -148,7 +142,6 @@ namespace CodeInject
         /// <returns></returns>
         public List<IObject> GetNPCs()
         {
-            Process _proc = Process.GetCurrentProcess();
 
             List<IObject> wholeNpcList = new List<IObject>();
             long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
@@ -197,8 +190,6 @@ namespace CodeInject
 
         public  Int64 GetItemPointer(ushort index)
         {
-            Process _proc = Process.GetCurrentProcess();
-   
             return getItemFunc(new IntPtr(BaseAddres + 0x111BE28).ToInt64(), *(int*)(*(long*)(BaseAddres + 0x111BE28) + (2 * index) + 0x0c));
         }
 
@@ -208,7 +199,6 @@ namespace CodeInject
     {
         public static Actions Actions { get; private set; } = new Actions();
         public static DataReader DataFetch { get; private set; } = new DataReader();
-
         private GameFunctionsAndObjects() { }
     }
 }

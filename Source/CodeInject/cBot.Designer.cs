@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bRemoveMonster2Attack = new System.Windows.Forms.Button();
+            this.bAddMonster2Attack = new System.Windows.Forms.Button();
+            this.lMonster2Attack = new System.Windows.Forms.ListBox();
+            this.lFullMonsterList = new System.Windows.Forms.ListBox();
             this.bHuntToggle = new System.Windows.Forms.Button();
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,18 +48,14 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tPickupRadius = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.lFullMonsterList = new System.Windows.Forms.ListBox();
-            this.lMonster2Attack = new System.Windows.Forms.ListBox();
-            this.bAddMonster2Attack = new System.Windows.Forms.Button();
-            this.bRemoveMonster2Attack = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -93,6 +94,50 @@
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(212, 198);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 7;
+            // 
+            // bRemoveMonster2Attack
+            // 
+            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(359, 168);
+            this.bRemoveMonster2Attack.Name = "bRemoveMonster2Attack";
+            this.bRemoveMonster2Attack.Size = new System.Drawing.Size(75, 23);
+            this.bRemoveMonster2Attack.TabIndex = 6;
+            this.bRemoveMonster2Attack.Text = "Remove";
+            this.bRemoveMonster2Attack.UseVisualStyleBackColor = true;
+            this.bRemoveMonster2Attack.Click += new System.EventHandler(this.bRemoveMonster2Attack_Click);
+            // 
+            // bAddMonster2Attack
+            // 
+            this.bAddMonster2Attack.Location = new System.Drawing.Point(235, 168);
+            this.bAddMonster2Attack.Name = "bAddMonster2Attack";
+            this.bAddMonster2Attack.Size = new System.Drawing.Size(75, 23);
+            this.bAddMonster2Attack.TabIndex = 5;
+            this.bAddMonster2Attack.Text = "Add";
+            this.bAddMonster2Attack.UseVisualStyleBackColor = true;
+            this.bAddMonster2Attack.Click += new System.EventHandler(this.bAddMonster2Attack_Click);
+            // 
+            // lMonster2Attack
+            // 
+            this.lMonster2Attack.FormattingEnabled = true;
+            this.lMonster2Attack.Location = new System.Drawing.Point(215, 198);
+            this.lMonster2Attack.Name = "lMonster2Attack";
+            this.lMonster2Attack.Size = new System.Drawing.Size(257, 147);
+            this.lMonster2Attack.TabIndex = 4;
+            // 
+            // lFullMonsterList
+            // 
+            this.lFullMonsterList.FormattingEnabled = true;
+            this.lFullMonsterList.Location = new System.Drawing.Point(215, 67);
+            this.lFullMonsterList.Name = "lFullMonsterList";
+            this.lFullMonsterList.Size = new System.Drawing.Size(257, 95);
+            this.lFullMonsterList.TabIndex = 3;
+            // 
             // bHuntToggle
             // 
             this.bHuntToggle.Location = new System.Drawing.Point(381, 463);
@@ -116,9 +161,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(212, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Search monster";
+            this.label1.Text = "Search monster:";
             // 
             // groupBox1
             // 
@@ -202,7 +247,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.tPickupRadius);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -211,12 +257,22 @@
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // label3
             // 
-            this.textBox2.Location = new System.Drawing.Point(212, 31);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(212, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Pick up radius";
+            // 
+            // tPickupRadius
+            // 
+            this.tPickupRadius.Location = new System.Drawing.Point(212, 31);
+            this.tPickupRadius.Name = "tPickupRadius";
+            this.tPickupRadius.Size = new System.Drawing.Size(100, 20);
+            this.tPickupRadius.TabIndex = 4;
+            this.tPickupRadius.Text = "10,0";
             // 
             // groupBox2
             // 
@@ -264,55 +320,13 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
-            // lFullMonsterList
-            // 
-            this.lFullMonsterList.FormattingEnabled = true;
-            this.lFullMonsterList.Location = new System.Drawing.Point(215, 67);
-            this.lFullMonsterList.Name = "lFullMonsterList";
-            this.lFullMonsterList.Size = new System.Drawing.Size(257, 95);
-            this.lFullMonsterList.TabIndex = 3;
-            // 
-            // lMonster2Attack
-            // 
-            this.lMonster2Attack.FormattingEnabled = true;
-            this.lMonster2Attack.Location = new System.Drawing.Point(215, 198);
-            this.lMonster2Attack.Name = "lMonster2Attack";
-            this.lMonster2Attack.Size = new System.Drawing.Size(257, 147);
-            this.lMonster2Attack.TabIndex = 4;
-            // 
-            // bAddMonster2Attack
-            // 
-            this.bAddMonster2Attack.Location = new System.Drawing.Point(235, 168);
-            this.bAddMonster2Attack.Name = "bAddMonster2Attack";
-            this.bAddMonster2Attack.Size = new System.Drawing.Size(75, 23);
-            this.bAddMonster2Attack.TabIndex = 5;
-            this.bAddMonster2Attack.Text = "Add";
-            this.bAddMonster2Attack.UseVisualStyleBackColor = true;
-            this.bAddMonster2Attack.Click += new System.EventHandler(this.bAddMonster2Attack_Click);
-            // 
-            // bRemoveMonster2Attack
-            // 
-            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(359, 168);
-            this.bRemoveMonster2Attack.Name = "bRemoveMonster2Attack";
-            this.bRemoveMonster2Attack.Size = new System.Drawing.Size(75, 23);
-            this.bRemoveMonster2Attack.TabIndex = 6;
-            this.bRemoveMonster2Attack.Text = "Remove";
-            this.bRemoveMonster2Attack.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(212, 198);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 7;
-            // 
             // cBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 522);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "cBot";
             this.Text = "cBot";
             this.tabControl1.ResumeLayout(false);
@@ -349,11 +363,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lNearItemsList;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tPickupRadius;
         private System.Windows.Forms.ListBox lFullMonsterList;
         private System.Windows.Forms.Button bAddMonster2Attack;
         private System.Windows.Forms.ListBox lMonster2Attack;
         private System.Windows.Forms.Button bRemoveMonster2Attack;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

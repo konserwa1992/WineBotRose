@@ -54,7 +54,7 @@ namespace CodeInject
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if(lUseSkill.SelectedIndex == lUseSkill.Items.Count)
+            if(lUseSkill.SelectedIndex > lUseSkill.Items.Count)
             { 
                 lUseSkill.SelectedIndex = 0;
             }
@@ -63,8 +63,11 @@ namespace CodeInject
                 lUseSkill.SelectedIndex++;
             }
 
-            lNPClist.SelectedItem = lNPClist.Items[0];
-            GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
+            if (lNPClist.Items.Count > 0)
+            {
+                lNPClist.SelectedItem = lNPClist.Items[0];
+                GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
+            }
         }
 
         private void bHuntToggle_Click(object sender, EventArgs e)
@@ -89,6 +92,18 @@ namespace CodeInject
                     break;
                 }
             }
+
+            lNearItemsList.Items.Clear();
+            float maxDistance;
+            if(!float.TryParse(tPickupRadius.Text,out maxDistance))
+            {
+                maxDistance = 100f;
+            }
+            IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x=>x.CalcDistance(player)).ToArray());
+
+            if (lNearItemsList.Items.Count > 0)
+                ((Item)lNearItemsList.Items[0]).Pickup();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -104,7 +119,7 @@ namespace CodeInject
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBox2.Text = ((long)((Item)lNearItemsList.SelectedItem).ObjectPointer).ToString("X");
+            tPickupRadius.Text = ((long)((Item)lNearItemsList.SelectedItem).ObjectPointer).ToString("X");
          //   ((UsableItem)lNearItemsList.SelectedItem).Pickup();
             lNearItemsList.Items.Clear();
             lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
@@ -113,13 +128,19 @@ namespace CodeInject
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             lFullMonsterList.Items.Clear();
-            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x =>x.Name!="" && x.Name.Contains(tSearchMobTextBox.Text)).ToArray());
+            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x =>x.Name!="" && x.Name.ToUpper().Contains(tSearchMobTextBox.Text.ToUpper())).ToArray());
         }
 
         private void bAddMonster2Attack_Click(object sender, EventArgs e)
         {
             if(lMonster2Attack.Items.Cast<MobInfo>().FirstOrDefault(x=>x.ID==((MobInfo)lFullMonsterList.SelectedItem).ID)==null)
             lMonster2Attack.Items.Add(lFullMonsterList.SelectedItem);
+        }
+
+        private void bRemoveMonster2Attack_Click(object sender, EventArgs e)
+        {
+            if(lMonster2Attack.SelectedIndex!=-1)
+                lMonster2Attack.Items.Remove(lFullMonsterList.SelectedItem);
         }
     }
 }
