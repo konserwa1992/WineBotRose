@@ -17,6 +17,7 @@ namespace CodeInject.MemoryTools
         private PickUpAction PickUpFunc;
         private AttackWithSkillAction AttackWithSkillFunc;
         private long BaseAddres;
+        private long BaseNetworkClass;
 
         public GameActions()
         {
@@ -25,14 +26,15 @@ namespace CodeInject.MemoryTools
         public void Init()
         {
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x26e90), typeof(PickUpAction));
+            BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();
 
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ?? 45 33 C9 44 8B 47 38 48 81 C1 D8 16 00 00 48 8B D7 E8 ?? ?? ?? ??"), typeof(PickUpAction));
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
         }
 
         public void PickUp(int ItemID)
         {
-            PickUpFunc((*(long*)(BaseAddres + 0x1122EF0) + 0x16D8), *((long*)(BaseAddres + 0x1118E60)), ItemID, 0);
+            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16D8), *((long*)(BaseAddres + 0x1118E60)), ItemID, 0);
         }
 
         /// <summary>

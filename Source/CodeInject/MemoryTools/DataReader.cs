@@ -36,8 +36,7 @@ namespace CodeInject.MemoryTools
 
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64();
-
-            getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x40A89), typeof(GetItemAdr));
+            getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));
         }
 
         /// <summary>
