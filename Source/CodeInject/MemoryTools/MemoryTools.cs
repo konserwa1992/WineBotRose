@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CodeInject.MemoryTools
 {
-    internal unsafe  class Tools
+    internal unsafe class MemoryTools
     {
-       public static IntPtr? GetSignatureAddreses(string pattern)
+        public static IntPtr? GetSignatureAddreses(string pattern)
         {
             Process proc = Process.GetCurrentProcess();
 
@@ -65,5 +65,34 @@ namespace CodeInject.MemoryTools
 
             return foundAdresses;
         }
+
+
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <param name="pattern">Pattern have to be completed whole asm instruction with function call</param>
+        /// <returns></returns>
+        public static IntPtr GetCallAddress(string pattern)
+        {
+          
+              IntPtr? Addresses = GetSignatureAddreses(pattern);
+              IntPtr nextInstructionAddres = new IntPtr(Addresses.Value.ToInt64() + pattern.Split(' ').Length);
+              int* jumpOffset = (int*)new IntPtr(nextInstructionAddres.ToInt64() - 4).ToPointer();
+              return new IntPtr((Addresses.Value.ToInt64() + (long)(pattern.Split(' ')).Length) + (long)*jumpOffset);
+        }
+
+
+        public static IntPtr GetVariableAddres(string pattern)
+        {
+            IntPtr? Addresses = GetSignatureAddreses(pattern);
+
+            int* addrThisOffset = (int*)new IntPtr(Addresses.Value.ToInt64() - 4).ToPointer();
+
+
+
+            IntPtr ptr = new IntPtr(Addresses.Value.ToInt64() + *addrThisOffset);
+            return ptr;
+        }
     }
 }
+

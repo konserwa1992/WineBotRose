@@ -60,7 +60,7 @@
     <Compile Include="MemoryTools\DataReader.cs" />
     <Compile Include="MemoryTools\GameActions.cs" />
     <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
-    <Compile Include="MemoryTools\Tools.cs" />
+    <Compile Include="MemoryTools\MemoryTools.cs" />
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

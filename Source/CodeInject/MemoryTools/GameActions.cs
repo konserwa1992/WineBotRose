@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
@@ -25,7 +26,7 @@ namespace CodeInject.MemoryTools
         {
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
             PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x26e90), typeof(PickUpAction));
-            AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4260E), typeof(AttackWithSkillAction));
+            AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
         }
 
         public void PickUp(int ItemID)
