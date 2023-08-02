@@ -3,59 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using static CodeInject.Actions;
 
-namespace CodeInject
+namespace CodeInject.MemoryTools
 {
-    /// <summary>
-    /// Game Methods to use.
-    /// </summary>
-    public unsafe class Actions
-    {
-        public delegate Int64 AttackWithSkill(int skill, int enemy, int arg0);
-        public delegate Int64 PickUpAction(long arg1, long arg2, int arg3, int arg4);
-
-        private PickUpAction PickUpFunc;
-        private AttackWithSkill AttackWithSkillFunc;
-        private long BaseAddres;
-
-        public Actions()
-        {
-            Init();
-        }
-        public void Init()
-        {
-            BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x26e90), typeof(PickUpAction));
-            AttackWithSkillFunc = (AttackWithSkill)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4260E), typeof(AttackWithSkill));
-        }
-        public void PickUp(int ItemID)
-        {
-            PickUpFunc((*(long*)(BaseAddres + 0x1122EF0) + 0x16D8), *((long*)(BaseAddres + 0x1118E60)), ItemID, 0);
-        }
-
-        /// <summary>
-        /// Pattern: 4c 8d 44 24 20 8b d0
-        /// </summary>
-        /// <param name="TargedID"></param>
-        /// <param name="SkillIndex"></param>
-        public void Attack(int TargedID,int SkillIndex)
-        {
-            AttackWithSkillFunc(SkillIndex, TargedID, 0);
-        }
-
-    }
-
-    /// <summary>
-    /// Methods to get game data
-    /// </summary>
-    public unsafe class DataReader
+    internal unsafe class DataReader
     {
         private GetItemAdr getItemFunc;
         private long BaseAddres;
@@ -188,17 +142,10 @@ namespace CodeInject
         /// <returns></returns>
         public delegate Int64 GetItemAdr(long arg1, int index);
 
-        public  Int64 GetItemPointer(ushort index)
+        public Int64 GetItemPointer(ushort index)
         {
             return getItemFunc(new IntPtr(BaseAddres + 0x111BE28).ToInt64(), *(int*)(*(long*)(BaseAddres + 0x111BE28) + (2 * index) + 0x0c));
         }
 
-    }
-
-    internal class GameFunctionsAndObjects
-    {
-        public static Actions Actions { get; private set; } = new Actions();
-        public static DataReader DataFetch { get; private set; } = new DataReader();
-        private GameFunctionsAndObjects() { }
     }
 }

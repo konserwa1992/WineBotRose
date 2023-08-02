@@ -57,7 +57,10 @@
       <DependentUpon>cBot.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
-    <Compile Include="GameFunctionsAndObjects.cs" />
+    <Compile Include="MemoryTools\DataReader.cs" />
+    <Compile Include="MemoryTools\GameActions.cs" />
+    <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
+    <Compile Include="MemoryTools\Tools.cs" />
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

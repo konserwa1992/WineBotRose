@@ -37,6 +37,14 @@ namespace CodeInject.Actors
             return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
         }
 
+        public double CalcDistance(float x,float y,float z)
+        {
+            return Math.Sqrt(
+                  Math.Pow((x / 100) - (*this.X / 100), 2) 
+                + Math.Pow((y / 100) - (*this.Y / 100), 2) 
+                + Math.Pow((z / 100) - (*this.Z / 100), 2));
+        }
+
         public override string ToString()
         {
             return $"{(*ID).ToString("X")} {(Info != null ? Info.Name :"Unknow")}";

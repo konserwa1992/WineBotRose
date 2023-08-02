@@ -1,4 +1,5 @@
 ﻿using CodeInject.Actors;
+using CodeInject.MemoryTools;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,19 @@ namespace CodeInject
         private unsafe void timer1_Tick(object sender, EventArgs e)
         {
             lNPClist.Items.Clear();
-            lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x=> lMonster2Attack.Items.Cast<MobInfo>().Any(y=> ((NPC)x).Info!=null && y.ID == ((NPC)x).Info.ID)).ToArray());
+            if (cEnableHuntingArea.Checked)
+            {
+                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs()
+                    .Where(x =>lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
+                    .Where(x=>((NPC)x).CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text))<float.Parse(tHuntRadius.Text))
+                    .ToArray());
+                return;
+            }
+         
+            if(lMonster2Attack.Items.Count!=0)
+               lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID)).ToArray());
+            else
+                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
         }
 
         private  void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,19 +67,22 @@ namespace CodeInject
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if(lUseSkill.SelectedIndex > lUseSkill.Items.Count)
-            { 
-                lUseSkill.SelectedIndex = 0;
-            }
-            else
+            if (lNearItemsList.Items.Count == 0)
             {
-                lUseSkill.SelectedIndex++;
-            }
+                if (lUseSkill.SelectedIndex > lUseSkill.Items.Count)
+                {
+                    lUseSkill.SelectedIndex = 0;
+                }
+                else
+                {
+                    lUseSkill.SelectedIndex++;
+                }
 
-            if (lNPClist.Items.Count > 0)
-            {
-                lNPClist.SelectedItem = lNPClist.Items[0];
-                GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
+                if (lNPClist.Items.Count > 0)
+                {
+                    lNPClist.SelectedItem = lNPClist.Items[0];
+                    GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
+                }
             }
         }
 
@@ -92,7 +108,11 @@ namespace CodeInject
                 maxDistance = 100f;
             }
             IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x=>x.CalcDistance(player)).ToArray());
+
+            if(!cPickupnOnlyHuntArea.Enabled)
+                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x=>x.CalcDistance(player)).ToArray());
+            else
+                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
 
             if (lNearItemsList.Items.Count > 0)
                 ((Item)lNearItemsList.Items[0]).Pickup();
@@ -140,6 +160,15 @@ namespace CodeInject
         {
             if(lMonster2Attack.SelectedIndex!=-1)
                 lMonster2Attack.Items.Remove(lFullMonsterList.SelectedItem);
+        }
+
+        private void bSetArea_Click(object sender, EventArgs e)
+        {
+            IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
+
+            tXHuntArea.Text = (*player.X).ToString();
+            tYHuntArea.Text = (*player.Y).ToString();
+            tZHuntArea.Text = (*player.Z).ToString();
         }
     }
 }

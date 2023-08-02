@@ -1,4 +1,5 @@
 ﻿using CodeInject.Actors;
+using CodeInject.MemoryTools;
 using System;
 using System.Collections.Generic;
 using System.Linq;

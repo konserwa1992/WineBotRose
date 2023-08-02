@@ -15,5 +15,6 @@ namespace CodeInject.Actors
          float* Z { get; set; }
 
          double CalcDistance(IObject actor);
+         double CalcDistance(float x, float y, float z);
     }
 }
