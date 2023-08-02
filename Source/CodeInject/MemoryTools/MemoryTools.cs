@@ -84,14 +84,7 @@ namespace CodeInject.MemoryTools
 
         public static IntPtr GetVariableAddres(string pattern)
         {
-            IntPtr? Addresses = GetSignatureAddreses(pattern);
-
-            int* addrThisOffset = (int*)new IntPtr(Addresses.Value.ToInt64() - 4).ToPointer();
-
-
-
-            IntPtr ptr = new IntPtr(Addresses.Value.ToInt64() + *addrThisOffset);
-            return ptr;
+            return GetCallAddress(pattern);
         }
     }
 }

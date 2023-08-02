@@ -26,6 +26,7 @@ namespace CodeInject.MemoryTools
         {
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
             PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x26e90), typeof(PickUpAction));
+
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
         }
 

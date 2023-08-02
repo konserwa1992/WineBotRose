@@ -6,13 +6,24 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
     internal unsafe class DataReader
     {
+        /// <summary>
+        /// Im not sure what kind of index is. Propobly some kind index of clickable object?
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="idObj"></param>
+        /// <returns></returns>
+        public delegate Int64 GetItemAdr(long arg1, int index);
         private GetItemAdr getItemFunc;
+
+
         private long BaseAddres;
+        private long GameBaseAddres;
 
         public DataReader()
         {
@@ -24,6 +35,7 @@ namespace CodeInject.MemoryTools
             Process _proc = Process.GetCurrentProcess();
 
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
+            GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64();
 
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x40A89), typeof(GetItemAdr));
         }
@@ -65,7 +77,7 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public IObject GetObject<T>(int ID)
         {
-            long* wskObj = (long*)((*(long*)(BaseAddres + 0x111be28)) + (ID * 8) + 0x22078);
+            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (ID * 8) + 0x22078);
 
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
@@ -84,7 +96,7 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public IObject GetPlayer()
         {
-            long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
+            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);
             int* monsterIDList = (int*)*wsp;
 
             return GetObject<NPC>(*monsterIDList);
@@ -98,9 +110,9 @@ namespace CodeInject.MemoryTools
         {
 
             List<IObject> wholeNpcList = new List<IObject>();
-            long* wsp = (long*)(*(long*)(BaseAddres + 0x111be28) + 0x22050);
+            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);
             int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(BaseAddres + 0x111be28) + 0x0002A078);
+            int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A078);
 
             for (int i = 0; i < *count; i++)
             {
@@ -134,17 +146,11 @@ namespace CodeInject.MemoryTools
             return itemList;
         }
 
-        /// <summary>
-        /// Im not sure what kind of index is. Propobly some kind index of clickable object?
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="idObj"></param>
-        /// <returns></returns>
-        public delegate Int64 GetItemAdr(long arg1, int index);
+
 
         public Int64 GetItemPointer(ushort index)
         {
-            return getItemFunc(new IntPtr(BaseAddres + 0x111BE28).ToInt64(), *(int*)(*(long*)(BaseAddres + 0x111BE28) + (2 * index) + 0x0c));
+            return getItemFunc(new IntPtr(GameBaseAddres).ToInt64(), *(int*)(*(long*)(GameBaseAddres) + (2 * index) + 0x0c));
         }
 
     }
