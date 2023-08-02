@@ -107,7 +107,7 @@ namespace CodeInject
             {
                 maxDistance = 100f;
             }
-            IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
+            IObject player = PlayerCharacter.PlayerInfo;
 
             if(!cPickupnOnlyHuntArea.Enabled)
                 lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x=>x.CalcDistance(player)).ToArray());
@@ -126,7 +126,7 @@ namespace CodeInject
             {
                 maxDistance = 100f;
             }
-            IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
+            IObject player = PlayerCharacter.PlayerInfo;
             lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x => x.CalcDistance(player)).ToArray());
 
         }
@@ -164,7 +164,7 @@ namespace CodeInject
 
         private void bSetArea_Click(object sender, EventArgs e)
         {
-            IObject player = GameFunctionsAndObjects.DataFetch.GetNPCs()[0];
+            IObject player = PlayerCharacter.PlayerInfo;
 
             tXHuntArea.Text = (*player.X).ToString();
             tYHuntArea.Text = (*player.Y).ToString();
