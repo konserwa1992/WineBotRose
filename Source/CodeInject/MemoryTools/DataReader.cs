@@ -132,7 +132,7 @@ namespace CodeInject.MemoryTools
         {
             List<IObject> itemList = new List<IObject>();
 
-            for (ushort i = 0xFFFF; i > 0; i--)
+            for (ushort i = 0; i < 0xFFFF; i++)
             {
                 long* itemPointer = (long*)GameFunctionsAndObjects.DataFetch.GetItemPointer(i);
                 if ((long)itemPointer != 0)
@@ -149,7 +149,7 @@ namespace CodeInject.MemoryTools
 
         public Int64 GetItemPointer(ushort index)
         {
-            return getItemFunc(new IntPtr(GameBaseAddres).ToInt64(), *(int*)(*(long*)(GameBaseAddres) + (2 * index) + 0x0c));
+            return getItemFunc(GameBaseAddres, *(int*)(*(long*)(GameBaseAddres) + (2 * index) + 0x0c));
         }
 
     }

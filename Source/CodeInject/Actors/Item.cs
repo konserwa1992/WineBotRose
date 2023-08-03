@@ -19,6 +19,7 @@ namespace CodeInject.Actors
 
         /// <summary>
         /// 0x08 Weapon
+        /// 0x09 Shield
         /// 0xA - usable items potions etc
         /// 0x02 - hat
         /// 0x03 - chest armor
@@ -84,6 +85,7 @@ namespace CodeInject.Actors
                         temp = DataBase.GameDataBase.WeaponItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
                         return $"{(temp != null ? temp.Name : "Unknow")}";
                     }
+
                 case 0x0A:
                     {
                         temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
@@ -107,6 +109,12 @@ namespace CodeInject.Actors
                         temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
                         return $"{(temp != null ? temp.Name : "Unknow")}";
                     }
+                case 0x09:
+                    {
+                        temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                    }
+
                 default:
                     {
                         return $"Unknow type:{(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";

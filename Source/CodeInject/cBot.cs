@@ -32,8 +32,6 @@ namespace CodeInject
          
             if(lMonster2Attack.Items.Count!=0)
                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID)).ToArray());
-            else
-                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
         }
 
         private  void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,19 +67,20 @@ namespace CodeInject
         {
             if (lNearItemsList.Items.Count == 0)
             {
-                if (lUseSkill.SelectedIndex > lUseSkill.Items.Count)
+                if (lUseSkill.SelectedIndex < lUseSkill.Items.Count-1)
                 {
-                    lUseSkill.SelectedIndex = 0;
+                    lUseSkill.SelectedIndex++;
                 }
                 else
                 {
-                    lUseSkill.SelectedIndex++;
+                    lUseSkill.SelectedIndex = 0;
                 }
 
                 if (lNPClist.Items.Count > 0)
                 {
                     lNPClist.SelectedItem = lNPClist.Items[0];
                     GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
+   
                 }
             }
         }

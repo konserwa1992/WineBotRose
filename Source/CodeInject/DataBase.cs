@@ -59,7 +59,11 @@ namespace CodeInject
         public int ID { get; set; }
         public string Name { get; set; } = "";
     }
-
+    public class ShieldItemsInfo : BasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+    }
 
 
     public class DataBase
@@ -73,6 +77,7 @@ namespace CodeInject
         public List<BodyItemsInfo> BodyItemsDatabase = new List<BodyItemsInfo>();
         public List<ArmItemsInfo> ArmItemsDatabase = new List<ArmItemsInfo>();
         public List<FootItemsInfo> FootItemsDatabase = new List<FootItemsInfo>();
+        public List<ShieldItemsInfo> SheildItemsDatabase = new List<ShieldItemsInfo>();
 
         private DataBase()
         {
@@ -83,6 +88,7 @@ namespace CodeInject
             LoadBodyDataBase();
             LoadArmDataBase();
             LoadFootDataBase();
+            LoadShieldItemDataBase();
         }
         private void LoadBodyDataBase()
         {
@@ -130,6 +136,13 @@ namespace CodeInject
             StreamReader dataReade = new StreamReader("UseItemList.json");
 
             UsableItemsDatabase = JsonConvert.DeserializeObject<List<UsableItemsInfo>>(dataReade.ReadToEnd());
+            dataReade.Close();
+        }
+        private void LoadShieldItemDataBase()
+        {
+            StreamReader dataReade = new StreamReader("ShieldItemList.json");
+
+            SheildItemsDatabase = JsonConvert.DeserializeObject<List<ShieldItemsInfo>>(dataReade.ReadToEnd());
             dataReade.Close();
         }
     }

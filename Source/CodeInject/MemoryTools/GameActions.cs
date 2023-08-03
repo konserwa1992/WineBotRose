@@ -32,7 +32,7 @@ namespace CodeInject.MemoryTools
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
         }
 
-        public void PickUp(int ItemID)
+        public void PickUp(ushort ItemID)
         {
             PickUpFunc((*(long*)(BaseNetworkClass) + 0x16D8), *((long*)(BaseAddres + 0x1118E60)), ItemID, 0);
         }
