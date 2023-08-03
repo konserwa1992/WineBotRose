@@ -31,6 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tZHuntArea = new System.Windows.Forms.TextBox();
+            this.bSetArea = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tHuntRadius = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tYHuntArea = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tXHuntArea = new System.Windows.Forms.TextBox();
+            this.cEnableHuntingArea = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bRemoveMonster2Attack = new System.Windows.Forms.Button();
             this.bAddMonster2Attack = new System.Windows.Forms.Button();
@@ -48,6 +59,7 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cPickupnOnlyHuntArea = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tPickupRadius = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -56,25 +68,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cEnableHuntingArea = new System.Windows.Forms.CheckBox();
-            this.tXHuntArea = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tYHuntArea = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tHuntRadius = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.bSetArea = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tZHuntArea = new System.Windows.Forms.TextBox();
-            this.cPickupnOnlyHuntArea = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -107,6 +109,113 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.tZHuntArea);
+            this.groupBox3.Controls.Add(this.bSetArea);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.tHuntRadius);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.tYHuntArea);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.tXHuntArea);
+            this.groupBox3.Controls.Add(this.cEnableHuntingArea);
+            this.groupBox3.Location = new System.Drawing.Point(215, 351);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(269, 135);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Hunting Area";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(122, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Z:";
+            // 
+            // tZHuntArea
+            // 
+            this.tZHuntArea.Location = new System.Drawing.Point(144, 71);
+            this.tZHuntArea.Name = "tZHuntArea";
+            this.tZHuntArea.Size = new System.Drawing.Size(100, 20);
+            this.tZHuntArea.TabIndex = 8;
+            this.tZHuntArea.Text = "1";
+            // 
+            // bSetArea
+            // 
+            this.bSetArea.Location = new System.Drawing.Point(10, 106);
+            this.bSetArea.Name = "bSetArea";
+            this.bSetArea.Size = new System.Drawing.Size(234, 23);
+            this.bSetArea.TabIndex = 7;
+            this.bSetArea.Text = "Set";
+            this.bSetArea.UseVisualStyleBackColor = true;
+            this.bSetArea.Click += new System.EventHandler(this.bSetArea_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Radius: ";
+            // 
+            // tHuntRadius
+            // 
+            this.tHuntRadius.Location = new System.Drawing.Point(10, 64);
+            this.tHuntRadius.Name = "tHuntRadius";
+            this.tHuntRadius.Size = new System.Drawing.Size(100, 20);
+            this.tHuntRadius.TabIndex = 5;
+            this.tHuntRadius.Text = "50";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(122, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Y:";
+            // 
+            // tYHuntArea
+            // 
+            this.tYHuntArea.Location = new System.Drawing.Point(144, 45);
+            this.tYHuntArea.Name = "tYHuntArea";
+            this.tYHuntArea.Size = new System.Drawing.Size(100, 20);
+            this.tYHuntArea.TabIndex = 3;
+            this.tYHuntArea.Text = "1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(121, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "X:";
+            // 
+            // tXHuntArea
+            // 
+            this.tXHuntArea.Location = new System.Drawing.Point(144, 19);
+            this.tXHuntArea.Name = "tXHuntArea";
+            this.tXHuntArea.Size = new System.Drawing.Size(100, 20);
+            this.tXHuntArea.TabIndex = 1;
+            this.tXHuntArea.Text = "1";
+            // 
+            // cEnableHuntingArea
+            // 
+            this.cEnableHuntingArea.AutoSize = true;
+            this.cEnableHuntingArea.Location = new System.Drawing.Point(6, 19);
+            this.cEnableHuntingArea.Name = "cEnableHuntingArea";
+            this.cEnableHuntingArea.Size = new System.Drawing.Size(104, 17);
+            this.cEnableHuntingArea.TabIndex = 0;
+            this.cEnableHuntingArea.Text = "Set hunting area";
+            this.cEnableHuntingArea.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -261,6 +370,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.cPickupnOnlyHuntArea);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.tPickupRadius);
@@ -271,6 +382,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // cPickupnOnlyHuntArea
+            // 
+            this.cPickupnOnlyHuntArea.AutoSize = true;
+            this.cPickupnOnlyHuntArea.Location = new System.Drawing.Point(215, 17);
+            this.cPickupnOnlyHuntArea.Name = "cPickupnOnlyHuntArea";
+            this.cPickupnOnlyHuntArea.Size = new System.Drawing.Size(148, 17);
+            this.cPickupnOnlyHuntArea.TabIndex = 6;
+            this.cPickupnOnlyHuntArea.Text = "Pick up only in Hunt area:";
+            this.cPickupnOnlyHuntArea.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -335,122 +456,22 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
-            // groupBox3
+            // textBox1
             // 
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.tZHuntArea);
-            this.groupBox3.Controls.Add(this.bSetArea);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.tHuntRadius);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.tYHuntArea);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.tXHuntArea);
-            this.groupBox3.Controls.Add(this.cEnableHuntingArea);
-            this.groupBox3.Location = new System.Drawing.Point(215, 351);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(269, 135);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hunting Area";
+            this.textBox1.Location = new System.Drawing.Point(301, 218);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
             // 
-            // cEnableHuntingArea
+            // button2
             // 
-            this.cEnableHuntingArea.AutoSize = true;
-            this.cEnableHuntingArea.Location = new System.Drawing.Point(6, 19);
-            this.cEnableHuntingArea.Name = "cEnableHuntingArea";
-            this.cEnableHuntingArea.Size = new System.Drawing.Size(104, 17);
-            this.cEnableHuntingArea.TabIndex = 0;
-            this.cEnableHuntingArea.Text = "Set hunting area";
-            this.cEnableHuntingArea.UseVisualStyleBackColor = true;
-            // 
-            // tXHuntArea
-            // 
-            this.tXHuntArea.Location = new System.Drawing.Point(144, 19);
-            this.tXHuntArea.Name = "tXHuntArea";
-            this.tXHuntArea.Size = new System.Drawing.Size(100, 20);
-            this.tXHuntArea.TabIndex = 1;
-            this.tXHuntArea.Text = "1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(121, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "X:";
-            // 
-            // tYHuntArea
-            // 
-            this.tYHuntArea.Location = new System.Drawing.Point(144, 45);
-            this.tYHuntArea.Name = "tYHuntArea";
-            this.tYHuntArea.Size = new System.Drawing.Size(100, 20);
-            this.tYHuntArea.TabIndex = 3;
-            this.tYHuntArea.Text = "1";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(122, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Y:";
-            // 
-            // tHuntRadius
-            // 
-            this.tHuntRadius.Location = new System.Drawing.Point(10, 64);
-            this.tHuntRadius.Name = "tHuntRadius";
-            this.tHuntRadius.Size = new System.Drawing.Size(100, 20);
-            this.tHuntRadius.TabIndex = 5;
-            this.tHuntRadius.Text = "50";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Radius: ";
-            // 
-            // bSetArea
-            // 
-            this.bSetArea.Location = new System.Drawing.Point(10, 106);
-            this.bSetArea.Name = "bSetArea";
-            this.bSetArea.Size = new System.Drawing.Size(234, 23);
-            this.bSetArea.TabIndex = 7;
-            this.bSetArea.Text = "Set";
-            this.bSetArea.UseVisualStyleBackColor = true;
-            this.bSetArea.Click += new System.EventHandler(this.bSetArea_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 74);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Z:";
-            // 
-            // tZHuntArea
-            // 
-            this.tZHuntArea.Location = new System.Drawing.Point(144, 71);
-            this.tZHuntArea.Name = "tZHuntArea";
-            this.tZHuntArea.Size = new System.Drawing.Size(100, 20);
-            this.tZHuntArea.TabIndex = 8;
-            this.tZHuntArea.Text = "1";
-            // 
-            // cPickupnOnlyHuntArea
-            // 
-            this.cPickupnOnlyHuntArea.AutoSize = true;
-            this.cPickupnOnlyHuntArea.Location = new System.Drawing.Point(215, 17);
-            this.cPickupnOnlyHuntArea.Name = "cPickupnOnlyHuntArea";
-            this.cPickupnOnlyHuntArea.Size = new System.Drawing.Size(148, 17);
-            this.cPickupnOnlyHuntArea.TabIndex = 6;
-            this.cPickupnOnlyHuntArea.Text = "Pick up only in Hunt area:";
-            this.cPickupnOnlyHuntArea.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(301, 244);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cBot
             // 
@@ -464,13 +485,13 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -516,5 +537,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tZHuntArea;
         private System.Windows.Forms.CheckBox cPickupnOnlyHuntArea;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -169,5 +169,10 @@ namespace CodeInject
             tYHuntArea.Text = (*player.Y).ToString();
             tZHuntArea.Text = (*player.Z).ToString();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GameFunctionsAndObjects.Actions.UseItem(long.Parse(textBox1.Text, System.Globalization.NumberStyles.HexNumber));
+        }
     }
 }

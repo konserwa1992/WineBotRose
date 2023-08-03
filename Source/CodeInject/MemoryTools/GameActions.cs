@@ -13,7 +13,11 @@ namespace CodeInject.MemoryTools
     {
         public delegate Int64 AttackWithSkillAction(int skill, int enemy, int arg0);
         public delegate Int64 PickUpAction(long arg1, long arg2, int itemIndex, int arg4);
+        public delegate void UseItemAction(long* IcoAdr);
+        public delegate void UseItemAction2(long rcx,long wskrcx,int ebx);
 
+        private UseItemAction UseItemFunc;
+        private UseItemAction2 UseItemFunc2;
         private PickUpAction PickUpFunc;
         private AttackWithSkillAction AttackWithSkillFunc;
         private long BaseAddres;
@@ -47,5 +51,13 @@ namespace CodeInject.MemoryTools
             AttackWithSkillFunc(SkillIndex, TargedID, 0);
         }
 
+
+
+        //0x000000F8 mamy cItem
+        public void UseItemByIco(long* IconAdr)
+        {
+            UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(*(long*)(*IconAdr + 0x18)), typeof(UseItemAction));
+            UseItemFunc(IconAdr);
+        }
     }
 }
