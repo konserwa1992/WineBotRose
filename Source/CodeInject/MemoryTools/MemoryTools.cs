@@ -66,7 +66,6 @@ namespace CodeInject.MemoryTools
             return foundAdresses;
         }
 
-
         /// <summary>
         ///     
         /// </summary>

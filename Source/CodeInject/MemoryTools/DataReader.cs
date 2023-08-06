@@ -19,11 +19,16 @@ namespace CodeInject.MemoryTools
         /// <param name="idObj"></param>
         /// <returns></returns>
         public delegate Int64 GetItemAdr(long arg1, int index);
-        private GetItemAdr getItemFunc;
+        public delegate long GetInventoryItemDetailsAdr(long cItemAddr);
 
+        private GetItemAdr getItemFunc;
+        private GetInventoryItemDetailsAdr getInventoryItemDetailsFunc;
 
         private long BaseAddres;
         private long GameBaseAddres;
+
+
+
 
         public DataReader()
         {
@@ -37,6 +42,7 @@ namespace CodeInject.MemoryTools
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64();
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x1339E0), typeof(GetInventoryItemDetailsAdr));
         }
 
         /// <summary>
@@ -84,6 +90,10 @@ namespace CodeInject.MemoryTools
             if (typeof(T) == typeof(Item))
                 return new Item(wskObj);
 
+
+            if (typeof(T) == typeof(Player))
+                return new Player(wskObj);
+
             return null;
         }
 
@@ -93,12 +103,12 @@ namespace CodeInject.MemoryTools
         /// Pattern is that same as it is in GetNPCs because first element of entry is player
         /// </summary>
         /// <returns></returns>
-        public IObject GetPlayer()
+        public Player GetPlayer()
         {
             long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);
             int* monsterIDList = (int*)*wsp;
 
-            return GetObject<NPC>(*monsterIDList);
+            return (Player)GetObject<Player>(*monsterIDList);
         }
 
         /// <summary>
@@ -122,6 +132,54 @@ namespace CodeInject.MemoryTools
             var sortedList = wholeNpcList.OrderBy(x => x.CalcDistance(wholeNpcList[0]));
 
             return sortedList.ToList();
+        }
+
+        public long GetInventoryItemDetails(long cItemAddres)
+        {
+            return getInventoryItemDetailsFunc(cItemAddres);
+        }
+
+
+        public List<IntPtr> getInventoryItems()
+        {
+
+            List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
+            //movsxd rax, dword ptr [rdi+000001B0]
+            long* startList = (long*)(*(long*)(*(long*)(BaseAddres + 0x1118E90) + 0x6a78 + 0x18));
+
+            for (long itemIndex = 0; itemIndex < 60; itemIndex++)
+            {
+                long slotAddres = *startList;
+                inventorySlotAddrs.Add(new IntPtr(slotAddres));
+                startList++;
+            }
+            return inventorySlotAddrs;
+        }
+
+        /// <summary>
+        /// trose.exe+21CA3D 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="DialogBoxAdr"></param>
+        /// <returns></returns>
+        public List<IntPtr> getInventorySlots(int page,long DialogBoxAdr)
+        {
+
+            List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
+            //movsxd rax, dword ptr [rdi+000001B0]
+            int itemIndexStart = page * 0x1e; //0x1e max page Size
+
+            long i = 0;
+            for (long itemIndex = itemIndexStart; itemIndex < itemIndexStart + 0x1e; itemIndex++)
+            {
+                long slotAddres = (itemIndexStart + i) * 0x168;
+                slotAddres += 0x2d78;
+                slotAddres += DialogBoxAdr;
+                Console.WriteLine($"{itemIndex.ToString("X")} {slotAddres.ToString("X")}");
+                inventorySlotAddrs.Add(new IntPtr(slotAddres));
+                i++;
+            }
+            return inventorySlotAddrs;
         }
 
         /// <summary>

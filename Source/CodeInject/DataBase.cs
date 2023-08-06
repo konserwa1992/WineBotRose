@@ -113,7 +113,7 @@ namespace CodeInject
         }
         private void LoadWeaponDataBase()
         {
-            StreamReader dataReade = new StreamReader("WeaponList.json");
+            StreamReader dataReade = new StreamReader("WeaponItemList.json");
 
             WeaponItemsDatabase = JsonConvert.DeserializeObject<List<WeaponItemsInfo>>(dataReade.ReadToEnd());
             dataReade.Close();

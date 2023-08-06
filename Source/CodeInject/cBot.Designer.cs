@@ -59,17 +59,26 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cPickupnOnlyHuntArea = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tPickupRadius = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.cAutoPotionEnabled = new System.Windows.Forms.CheckBox();
+            this.cbHealMPItem = new System.Windows.Forms.ComboBox();
+            this.cbHealHPItem = new System.Windows.Forms.ComboBox();
+            this.tMPPotionUseProc = new System.Windows.Forms.TextBox();
+            this.tHPPotionUseProc = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,6 +86,7 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -84,6 +94,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -383,6 +394,23 @@
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(301, 244);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(301, 218);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
+            // 
             // cPickupnOnlyHuntArea
             // 
             this.cPickupnOnlyHuntArea.AutoSize = true;
@@ -440,6 +468,91 @@
             this.lNearItemsList.TabIndex = 2;
             this.lNearItemsList.SelectedIndexChanged += new System.EventHandler(this.lNearItemsList_SelectedIndexChanged);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.button4);
+            this.tabPage5.Controls.Add(this.cAutoPotionEnabled);
+            this.tabPage5.Controls.Add(this.cbHealMPItem);
+            this.tabPage5.Controls.Add(this.cbHealHPItem);
+            this.tabPage5.Controls.Add(this.tMPPotionUseProc);
+            this.tabPage5.Controls.Add(this.tHPPotionUseProc);
+            this.tabPage5.Controls.Add(this.label9);
+            this.tabPage5.Controls.Add(this.label8);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(490, 495);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Auto-Potion";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(145, 78);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(121, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Refresh heal items";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // cAutoPotionEnabled
+            // 
+            this.cAutoPotionEnabled.AutoSize = true;
+            this.cAutoPotionEnabled.Location = new System.Drawing.Point(9, 77);
+            this.cAutoPotionEnabled.Name = "cAutoPotionEnabled";
+            this.cAutoPotionEnabled.Size = new System.Drawing.Size(116, 17);
+            this.cAutoPotionEnabled.TabIndex = 6;
+            this.cAutoPotionEnabled.Text = "Enable Auto-potion";
+            this.cAutoPotionEnabled.UseVisualStyleBackColor = true;
+            // 
+            // cbHealMPItem
+            // 
+            this.cbHealMPItem.FormattingEnabled = true;
+            this.cbHealMPItem.Location = new System.Drawing.Point(145, 51);
+            this.cbHealMPItem.Name = "cbHealMPItem";
+            this.cbHealMPItem.Size = new System.Drawing.Size(121, 21);
+            this.cbHealMPItem.TabIndex = 5;
+            // 
+            // cbHealHPItem
+            // 
+            this.cbHealHPItem.FormattingEnabled = true;
+            this.cbHealHPItem.Location = new System.Drawing.Point(145, 22);
+            this.cbHealHPItem.Name = "cbHealHPItem";
+            this.cbHealHPItem.Size = new System.Drawing.Size(121, 21);
+            this.cbHealHPItem.TabIndex = 4;
+            // 
+            // tMPPotionUseProc
+            // 
+            this.tMPPotionUseProc.Location = new System.Drawing.Point(39, 51);
+            this.tMPPotionUseProc.Name = "tMPPotionUseProc";
+            this.tMPPotionUseProc.Size = new System.Drawing.Size(100, 20);
+            this.tMPPotionUseProc.TabIndex = 3;
+            // 
+            // tHPPotionUseProc
+            // 
+            this.tHPPotionUseProc.Location = new System.Drawing.Point(39, 22);
+            this.tHPPotionUseProc.Name = "tHPPotionUseProc";
+            this.tHPPotionUseProc.Size = new System.Drawing.Size(100, 20);
+            this.tHPPotionUseProc.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 54);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Mp %: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Hp %: ";
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -455,23 +568,6 @@
             // 
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(301, 218);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(301, 244);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cBot
             // 
@@ -492,6 +588,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -539,5 +637,14 @@
         private System.Windows.Forms.CheckBox cPickupnOnlyHuntArea;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.ComboBox cbHealMPItem;
+        private System.Windows.Forms.ComboBox cbHealHPItem;
+        private System.Windows.Forms.TextBox tMPPotionUseProc;
+        private System.Windows.Forms.TextBox tHPPotionUseProc;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox cAutoPotionEnabled;
+        private System.Windows.Forms.Button button4;
     }
 }
