@@ -12,6 +12,9 @@ namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
+        Potion mp;
+        Potion hp;
+
         public cBot()
         {
             InitializeComponent();
@@ -19,28 +22,6 @@ namespace CodeInject
         }
 
 
-
-        private unsafe void timer1_Tick(object sender, EventArgs e)
-        {
-            lNPClist.Items.Clear();
-
-            if (cEnableHuntingArea.Checked)
-            {
-                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs()
-                    .Where(x =>lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
-                    .Where(x=>((NPC)x).CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text))<float.Parse(tHuntRadius.Text))
-                    .ToArray());
-                return;
-            }
-         
-            if(lMonster2Attack.Items.Count!=0)
-               lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID)).ToArray());
-
-
-
-
- 
-        }
 
         private  void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -73,6 +54,25 @@ namespace CodeInject
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            lNPClist.Items.Clear();
+
+            if (cEnableHuntingArea.Checked)
+            {
+                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs()
+                    .Where(x => lMonster2Attack.Items.Count==0 || lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
+                    .Where(x => ((NPC)x).CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text))
+                    .ToArray());
+
+            }
+            else
+            {
+                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs()
+               .Where(x => lMonster2Attack.Items.Count == 0 ||  lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
+               .ToArray());
+            }
+
+
+
             if (lNearItemsList.Items.Count == 0)
             {
                 if (lUseSkill.SelectedIndex < lUseSkill.Items.Count-1)
@@ -100,9 +100,6 @@ namespace CodeInject
 
         }
 
-
-        Potion mp = new Potion(15);
-        Potion hp = new Potion(15);
         private void AutoPotionFunction()
         {
             int procHP = int.Parse(tHPPotionUseProc.Text);
@@ -125,11 +122,12 @@ namespace CodeInject
             timer2.Enabled = !timer2.Enabled;
 
             bHuntToggle.Text = timer2.Enabled == true? "STOP":"START";
+
+
+            hp = new Potion(int.Parse(tHpDurr.Text));
+            mp = new Potion(int.Parse(tMpDurr.Text));
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
 
         private void pickUpTimer_Tick(object sender, EventArgs e)
         {
@@ -140,12 +138,17 @@ namespace CodeInject
             {
                 maxDistance = 100f;
             }
+
             IObject player = PlayerCharacter.PlayerInfo;
 
-            if(!cPickupnOnlyHuntArea.Enabled)
-                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x=>x.CalcDistance(player)).ToArray());
+            if (!cPickupnOnlyHuntArea.Enabled)
+            {
+                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < int.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
+            }
             else
+            {
                 lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
+            }
 
             if (lNearItemsList.Items.Count > 0)
                 ((Item)lNearItemsList.Items[0]).Pickup();
@@ -164,10 +167,6 @@ namespace CodeInject
 
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -204,15 +203,29 @@ namespace CodeInject
             tZHuntArea.Text = (*player.Z).ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            GameFunctionsAndObjects.Actions.UseItemByIco((long*)long.Parse(textBox1.Text, System.Globalization.NumberStyles.HexNumber));
-        }
 
-
-        private void button4_Click_1(object sender, EventArgs e)
+        private void cbHealHPItem_DropDown(object sender, EventArgs e)
         {
             cbHealHPItem.Items.Clear();
+            List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
+
+            foreach (IntPtr item in items)
+            {
+                if (item.ToInt64() != 0x0)
+                {
+                    InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
+
+
+                    if (*inv.ItemType == 0xA)
+                    {
+                        cbHealHPItem.Items.Add(inv);
+                    }
+                }
+            }
+        }
+
+        private void cbHealMPItem_DropDown(object sender, EventArgs e)
+        {
             cbHealMPItem.Items.Clear();
             List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
 
@@ -221,15 +234,15 @@ namespace CodeInject
                 if (item.ToInt64() != 0x0)
                 {
                     InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
-          
+
 
                     if (*inv.ItemType == 0xA)
                     {
-                        cbHealHPItem.Items.Add(inv);
                         cbHealMPItem.Items.Add(inv);
                     }
                 }
             }
         }
+
     }
 }

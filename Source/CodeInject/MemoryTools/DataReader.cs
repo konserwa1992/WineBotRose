@@ -147,7 +147,7 @@ namespace CodeInject.MemoryTools
             //movsxd rax, dword ptr [rdi+000001B0]
             long* startList = (long*)(*(long*)(*(long*)(BaseAddres + 0x1118E90) + 0x6a78 + 0x18));
 
-            for (long itemIndex = 0; itemIndex < 60; itemIndex++)
+            for (long itemIndex = 0; itemIndex < 139; itemIndex++)
             {
                 long slotAddres = *startList;
                 inventorySlotAddrs.Add(new IntPtr(slotAddres));

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +21,17 @@ namespace CodeInject.Actors
 
         public NPC(long* Entry)
         {
+       
             ObjectPointer = (long*)*Entry;
 
        
             X = (float*)(*Entry + 0x10);
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
-            ID = (int*)(*((long*)(*Entry + 0x20)));
-            Hp = (int*)(*Entry + 0xE8);
+            if((long*)(*Entry + 0x20) != null)
+             ID = (int*)(*((long*)(*Entry + 0x20)));
+             Hp = (int*)(*Entry + 0xE8);
+ 
 
             Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
         }
