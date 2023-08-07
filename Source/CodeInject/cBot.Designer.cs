@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -66,6 +67,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tMpDurr = new System.Windows.Forms.TextBox();
+            this.tHpDurr = new System.Windows.Forms.TextBox();
             this.cAutoPotionEnabled = new System.Windows.Forms.CheckBox();
             this.cbHealMPItem = new System.Windows.Forms.ComboBox();
             this.cbHealHPItem = new System.Windows.Forms.ComboBox();
@@ -75,10 +80,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.tHpDurr = new System.Windows.Forms.TextBox();
-            this.tMpDurr = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -469,6 +470,40 @@
             this.tabPage5.Text = "Auto-Potion";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(272, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Duration";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(272, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Duration";
+            // 
+            // tMpDurr
+            // 
+            this.tMpDurr.Location = new System.Drawing.Point(319, 52);
+            this.tMpDurr.Name = "tMpDurr";
+            this.tMpDurr.Size = new System.Drawing.Size(100, 20);
+            this.tMpDurr.TabIndex = 8;
+            this.tMpDurr.Text = "15";
+            // 
+            // tHpDurr
+            // 
+            this.tHpDurr.Location = new System.Drawing.Point(319, 22);
+            this.tHpDurr.Name = "tHpDurr";
+            this.tHpDurr.Size = new System.Drawing.Size(100, 20);
+            this.tHpDurr.TabIndex = 7;
+            this.tHpDurr.Text = "15";
+            // 
             // cAutoPotionEnabled
             // 
             this.cAutoPotionEnabled.AutoSize = true;
@@ -541,40 +576,6 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
-            // tHpDurr
-            // 
-            this.tHpDurr.Location = new System.Drawing.Point(319, 22);
-            this.tHpDurr.Name = "tHpDurr";
-            this.tHpDurr.Size = new System.Drawing.Size(100, 20);
-            this.tHpDurr.TabIndex = 7;
-            this.tHpDurr.Text = "15";
-            // 
-            // tMpDurr
-            // 
-            this.tMpDurr.Location = new System.Drawing.Point(319, 52);
-            this.tMpDurr.Name = "tMpDurr";
-            this.tMpDurr.Size = new System.Drawing.Size(100, 20);
-            this.tMpDurr.TabIndex = 8;
-            this.tMpDurr.Text = "15";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(272, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Duration";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(272, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Duration";
-            // 
             // cBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,6 +583,7 @@
             this.ClientSize = new System.Drawing.Size(502, 522);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "cBot";
             this.Text = "cBot";
             this.tabControl1.ResumeLayout(false);
