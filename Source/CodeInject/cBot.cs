@@ -1,5 +1,6 @@
 ﻿using CodeInject.Actors;
 using CodeInject.MemoryTools;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,22 +74,25 @@ namespace CodeInject
 
 
 
-            if (lNearItemsList.Items.Count == 0)
+            if (cHuntEnable.Checked)
             {
-                if (lUseSkill.SelectedIndex < lUseSkill.Items.Count-1)
+                if (cPickUpEnable.Checked == false || lNearItemsList.Items.Count == 0)
                 {
-                    lUseSkill.SelectedIndex++;
-                }
-                else
-                {
-                    lUseSkill.SelectedIndex = 0;
-                }
+                    if (lUseSkill.SelectedIndex < lUseSkill.Items.Count - 1)
+                    {
+                        lUseSkill.SelectedIndex++;
+                    }
+                    else
+                    {
+                        lUseSkill.SelectedIndex = 0;
+                    }
 
-                if (lNPClist.Items.Count > 0)
-                {
-                    lNPClist.SelectedItem = lNPClist.Items[0];
-                    GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
-   
+                    if (lNPClist.Items.Count > 0)
+                    {
+                        lNPClist.SelectedItem = lNPClist.Items[0];
+                        GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
+
+                    }
                 }
             }
 
@@ -96,8 +100,6 @@ namespace CodeInject
             {
                 AutoPotionFunction();
             }
-
-
         }
 
         private void AutoPotionFunction()
@@ -115,18 +117,6 @@ namespace CodeInject
             }
         }
 
-
-        private void bHuntToggle_Click(object sender, EventArgs e)
-        {
-            pickUpTimer.Enabled = !pickUpTimer.Enabled;
-            timer2.Enabled = !timer2.Enabled;
-
-            bHuntToggle.Text = timer2.Enabled == true? "STOP":"START";
-
-
-            hp = new Potion(int.Parse(tHpDurr.Text));
-            mp = new Potion(int.Parse(tMpDurr.Text));
-        }
 
 
         private void pickUpTimer_Tick(object sender, EventArgs e)
@@ -150,8 +140,9 @@ namespace CodeInject
                 lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
             }
 
-            if (lNearItemsList.Items.Count > 0)
-                ((Item)lNearItemsList.Items[0]).Pickup();
+
+            if (cPickUpEnable.Checked && lNearItemsList.Items.Count > 0)
+                   ((Item)lNearItemsList.Items[0]).Pickup();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -242,6 +233,18 @@ namespace CodeInject
                     }
                 }
             }
+        }
+
+        private void bHuntToggle_Click_1(object sender, EventArgs e)
+        {
+            pickUpTimer.Enabled = !pickUpTimer.Enabled;
+            timer2.Enabled = !timer2.Enabled;
+
+            bHuntToggle.Text = timer2.Enabled == true ? "STOP" : "START";
+
+
+            hp = new Potion(int.Parse(tHpDurr.Text));
+            mp = new Potion(int.Parse(tMpDurr.Text));
         }
 
     }

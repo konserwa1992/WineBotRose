@@ -48,7 +48,6 @@
             this.bAddMonster2Attack = new System.Windows.Forms.Button();
             this.lMonster2Attack = new System.Windows.Forms.ListBox();
             this.lFullMonsterList = new System.Windows.Forms.ListBox();
-            this.bHuntToggle = new System.Windows.Forms.Button();
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -80,6 +79,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
+            this.cHuntEnable = new System.Windows.Forms.CheckBox();
+            this.cPickUpEnable = new System.Windows.Forms.CheckBox();
+            this.bHuntToggle = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -104,13 +106,15 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bHuntToggle);
+            this.tabPage1.Controls.Add(this.cPickUpEnable);
+            this.tabPage1.Controls.Add(this.cHuntEnable);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.bRemoveMonster2Attack);
             this.tabPage1.Controls.Add(this.bAddMonster2Attack);
             this.tabPage1.Controls.Add(this.lMonster2Attack);
             this.tabPage1.Controls.Add(this.lFullMonsterList);
-            this.tabPage1.Controls.Add(this.bHuntToggle);
             this.tabPage1.Controls.Add(this.tSearchMobTextBox);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -239,7 +243,7 @@
             // 
             // bRemoveMonster2Attack
             // 
-            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(359, 168);
+            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(359, 195);
             this.bRemoveMonster2Attack.Name = "bRemoveMonster2Attack";
             this.bRemoveMonster2Attack.Size = new System.Drawing.Size(75, 23);
             this.bRemoveMonster2Attack.TabIndex = 6;
@@ -249,7 +253,7 @@
             // 
             // bAddMonster2Attack
             // 
-            this.bAddMonster2Attack.Location = new System.Drawing.Point(235, 168);
+            this.bAddMonster2Attack.Location = new System.Drawing.Point(235, 195);
             this.bAddMonster2Attack.Name = "bAddMonster2Attack";
             this.bAddMonster2Attack.Size = new System.Drawing.Size(75, 23);
             this.bAddMonster2Attack.TabIndex = 5;
@@ -260,32 +264,22 @@
             // lMonster2Attack
             // 
             this.lMonster2Attack.FormattingEnabled = true;
-            this.lMonster2Attack.Location = new System.Drawing.Point(215, 198);
+            this.lMonster2Attack.Location = new System.Drawing.Point(215, 224);
             this.lMonster2Attack.Name = "lMonster2Attack";
-            this.lMonster2Attack.Size = new System.Drawing.Size(257, 147);
+            this.lMonster2Attack.Size = new System.Drawing.Size(257, 121);
             this.lMonster2Attack.TabIndex = 4;
             // 
             // lFullMonsterList
             // 
             this.lFullMonsterList.FormattingEnabled = true;
-            this.lFullMonsterList.Location = new System.Drawing.Point(215, 67);
+            this.lFullMonsterList.Location = new System.Drawing.Point(215, 94);
             this.lFullMonsterList.Name = "lFullMonsterList";
             this.lFullMonsterList.Size = new System.Drawing.Size(257, 95);
             this.lFullMonsterList.TabIndex = 3;
             // 
-            // bHuntToggle
-            // 
-            this.bHuntToggle.Location = new System.Drawing.Point(375, 12);
-            this.bHuntToggle.Name = "bHuntToggle";
-            this.bHuntToggle.Size = new System.Drawing.Size(103, 23);
-            this.bHuntToggle.TabIndex = 1;
-            this.bHuntToggle.Text = "Start";
-            this.bHuntToggle.UseVisualStyleBackColor = true;
-            this.bHuntToggle.Click += new System.EventHandler(this.bHuntToggle_Click);
-            // 
             // tSearchMobTextBox
             // 
-            this.tSearchMobTextBox.Location = new System.Drawing.Point(215, 41);
+            this.tSearchMobTextBox.Location = new System.Drawing.Point(215, 68);
             this.tSearchMobTextBox.Name = "tSearchMobTextBox";
             this.tSearchMobTextBox.Size = new System.Drawing.Size(257, 20);
             this.tSearchMobTextBox.TabIndex = 2;
@@ -294,7 +288,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(212, 25);
+            this.label1.Location = new System.Drawing.Point(212, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
@@ -576,6 +570,36 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
+            // cHuntEnable
+            // 
+            this.cHuntEnable.AutoSize = true;
+            this.cHuntEnable.Location = new System.Drawing.Point(215, 6);
+            this.cHuntEnable.Name = "cHuntEnable";
+            this.cHuntEnable.Size = new System.Drawing.Size(85, 17);
+            this.cHuntEnable.TabIndex = 9;
+            this.cHuntEnable.Text = "Enable Hunt";
+            this.cHuntEnable.UseVisualStyleBackColor = true;
+            // 
+            // cPickUpEnable
+            // 
+            this.cPickUpEnable.AutoSize = true;
+            this.cPickUpEnable.Location = new System.Drawing.Point(215, 25);
+            this.cPickUpEnable.Name = "cPickUpEnable";
+            this.cPickUpEnable.Size = new System.Drawing.Size(62, 17);
+            this.cPickUpEnable.TabIndex = 10;
+            this.cPickUpEnable.Text = "Pick up";
+            this.cPickUpEnable.UseVisualStyleBackColor = true;
+            // 
+            // bHuntToggle
+            // 
+            this.bHuntToggle.Location = new System.Drawing.Point(381, 15);
+            this.bHuntToggle.Name = "bHuntToggle";
+            this.bHuntToggle.Size = new System.Drawing.Size(103, 23);
+            this.bHuntToggle.TabIndex = 11;
+            this.bHuntToggle.Text = "Start";
+            this.bHuntToggle.UseVisualStyleBackColor = true;
+            this.bHuntToggle.Click += new System.EventHandler(this.bHuntToggle_Click_1);
+            // 
             // cBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,7 +641,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tSearchMobTextBox;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Button bHuntToggle;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Timer pickUpTimer;
         private System.Windows.Forms.Button button1;
@@ -654,5 +677,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tMpDurr;
         private System.Windows.Forms.TextBox tHpDurr;
+        private System.Windows.Forms.CheckBox cHuntEnable;
+        private System.Windows.Forms.Button bHuntToggle;
+        private System.Windows.Forms.CheckBox cPickUpEnable;
     }
 }
