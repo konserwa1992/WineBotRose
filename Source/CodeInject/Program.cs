@@ -18,7 +18,6 @@ namespace ISpace
 
         public static int IMain(string args)
         {
-            MessageBox.Show("INIT");
             cBot cBot = new cBot();
             cBot.ShowDialog();
   

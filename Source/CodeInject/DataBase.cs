@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace CodeInject
 {
-    interface BasicInfo
+    interface IBasicInfo
     {
          int ID { get; set; }
          string Name { get; set; }
+
+         string ToString();
     }
 
-    public class MobInfo: BasicInfo
+    public class MobInfo: IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
@@ -25,44 +27,55 @@ namespace CodeInject
         }
     }
 
-    public class SkillInfo: BasicInfo
+    public class SkillInfo: IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = " ";
+        public override string ToString() { return Name; }
     }
 
-    public class WeaponItemsInfo: BasicInfo
+    public class WeaponItemsInfo: IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
+
+
+        public override string ToString() { return Name; }
     }
 
-    public class UsableItemsInfo: BasicInfo
+    public class UsableItemsInfo: IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } ="";
         public string DisplayName = "";
+        public override string ToString() { return DisplayName; }
+
     }
 
-    public class BodyItemsInfo : BasicInfo
+    public class BodyItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
     }
-    public class FootItemsInfo : BasicInfo
+    public class FootItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
     }
-    public class ArmItemsInfo : BasicInfo
+
+    public class ArmItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
     }
-    public class ShieldItemsInfo : BasicInfo
+    public class ShieldItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
     }
 
 
@@ -78,6 +91,30 @@ namespace CodeInject
         public List<ArmItemsInfo> ArmItemsDatabase = new List<ArmItemsInfo>();
         public List<FootItemsInfo> FootItemsDatabase = new List<FootItemsInfo>();
         public List<ShieldItemsInfo> SheildItemsDatabase = new List<ShieldItemsInfo>();
+
+
+        public List<T> GetList<T>() where T : class
+        {
+            if(typeof(T) == typeof(MobInfo))
+                return (MonsterDatabase as List<T>);
+            if (typeof(T) == typeof(SkillInfo))
+                return (SkillDatabase as List<T>);
+            if (typeof(T) == typeof(UsableItemsInfo))
+                return (UsableItemsDatabase as List<T>);
+            if (typeof(T) == typeof(WeaponItemsInfo))
+                return (WeaponItemsDatabase as List<T>);
+            if (typeof(T) == typeof(BodyItemsInfo))
+                return (BodyItemsDatabase as List<T>);
+            if (typeof(T) == typeof(ArmItemsInfo))
+                return (ArmItemsDatabase as List<T>);
+            if (typeof(T) == typeof(FootItemsInfo))
+                return (FootItemsDatabase as List<T>);
+            if (typeof(T) == typeof(ShieldItemsInfo))
+                return (SheildItemsDatabase as List<T>);
+
+            return null;
+        }
+
 
         private DataBase()
         {

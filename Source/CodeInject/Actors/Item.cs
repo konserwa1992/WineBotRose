@@ -31,6 +31,7 @@ namespace CodeInject.Actors
 
         private void Init(long* Entry)
         {
+       
             ObjectPointer = Entry;
 
 
@@ -41,6 +42,7 @@ namespace CodeInject.Actors
             ItemData = (short*)((long)Entry + 0x6c);
 
             ItemType = (short*)((long)Entry + 0x68);
+
         }
 
         public Item(long* Entry)
@@ -75,7 +77,7 @@ namespace CodeInject.Actors
 
         public override string ToString()
         {
-            BasicInfo temp;
+            IBasicInfo temp;
 
 
             switch (*ItemType)

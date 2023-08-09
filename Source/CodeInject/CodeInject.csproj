@@ -25,11 +25,12 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -51,6 +52,12 @@
     <Compile Include="Actors\NPC.cs" />
     <Compile Include="Actors\Item.cs" />
     <Compile Include="Actors\Player.cs" />
+    <Compile Include="AdvancedFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedFilterForm.Designer.cs">
+      <DependentUpon>AdvancedFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="cBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,10 +66,14 @@
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Inventory\InvItem.cs" />
+    <Compile Include="ItemTypes.cs" />
     <Compile Include="MemoryTools\DataReader.cs" />
     <Compile Include="MemoryTools\GameActions.cs" />
     <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
     <Compile Include="MemoryTools\MemoryTools.cs" />
+    <Compile Include="PickupFilters\AdvancedFilter.cs" />
+    <Compile Include="PickupFilters\QuickFilter.cs" />
+    <Compile Include="PickupFilters\IFilter.cs" />
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Program.cs" />
@@ -70,6 +81,9 @@
     <Compile Include="Skills.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdvancedFilterForm.resx">
+      <DependentUpon>AdvancedFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cBot.resx">
       <DependentUpon>cBot.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,7 +101,9 @@
     <None Include="CopyToRose\MonsterList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\ShieldItemList.json" />
+    <None Include="CopyToRose\ShieldItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="CopyToRose\SkillList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

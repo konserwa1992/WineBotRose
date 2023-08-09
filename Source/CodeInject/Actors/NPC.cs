@@ -21,19 +21,21 @@ namespace CodeInject.Actors
 
         public NPC(long* Entry)
         {
-       
-            ObjectPointer = (long*)*Entry;
+            try//Walk around for error TODO:Fix it
+            {
+                ObjectPointer = (long*)*Entry;
 
-       
-            X = (float*)(*Entry + 0x10);
-            Y = (float*)(*Entry + 0x14);
-            Z = (float*)(*Entry + 0x18);
-            if((long*)(*Entry + 0x20) != null)
-             ID = (int*)(*((long*)(*Entry + 0x20)));
-             Hp = (int*)(*Entry + 0xE8);
- 
 
-            Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
+                X = (float*)(*Entry + 0x10);
+                Y = (float*)(*Entry + 0x14);
+                Z = (float*)(*Entry + 0x18);
+                if ((long*)(*Entry + 0x20) != null)
+                    ID = (int*)(*((long*)(*Entry + 0x20)));
+                Hp = (int*)(*Entry + 0xE8);
+
+
+                Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
+            }catch (Exception) { }
         }
 
         public double CalcDistance(IObject actor)

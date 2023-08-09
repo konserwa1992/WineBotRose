@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bHuntToggle = new System.Windows.Forms.Button();
+            this.cPickUpEnable = new System.Windows.Forms.CheckBox();
+            this.cHuntEnable = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tZHuntArea = new System.Windows.Forms.TextBox();
@@ -59,11 +62,20 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.bAdvancedFilter = new System.Windows.Forms.Button();
+            this.SimpleFilterGroup = new System.Windows.Forms.GroupBox();
+            this.cFilterShield = new System.Windows.Forms.CheckBox();
+            this.cFilterShoes = new System.Windows.Forms.CheckBox();
+            this.cFilterUsable = new System.Windows.Forms.CheckBox();
+            this.cFilterWeapon = new System.Windows.Forms.CheckBox();
+            this.cFilterHat = new System.Windows.Forms.CheckBox();
+            this.cFilterGloves = new System.Windows.Forms.CheckBox();
+            this.cFilterArmor = new System.Windows.Forms.CheckBox();
+            this.cFilterMaterials = new System.Windows.Forms.CheckBox();
             this.cPickupnOnlyHuntArea = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tPickupRadius = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
@@ -79,15 +91,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.cHuntEnable = new System.Windows.Forms.CheckBox();
-            this.cPickUpEnable = new System.Windows.Forms.CheckBox();
-            this.bHuntToggle = new System.Windows.Forms.Button();
+            this.cAdvanceEnable = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.SimpleFilterGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.SuspendLayout();
@@ -125,6 +136,36 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // bHuntToggle
+            // 
+            this.bHuntToggle.Location = new System.Drawing.Point(381, 15);
+            this.bHuntToggle.Name = "bHuntToggle";
+            this.bHuntToggle.Size = new System.Drawing.Size(103, 23);
+            this.bHuntToggle.TabIndex = 11;
+            this.bHuntToggle.Text = "Start";
+            this.bHuntToggle.UseVisualStyleBackColor = true;
+            this.bHuntToggle.Click += new System.EventHandler(this.bHuntToggle_Click_1);
+            // 
+            // cPickUpEnable
+            // 
+            this.cPickUpEnable.AutoSize = true;
+            this.cPickUpEnable.Location = new System.Drawing.Point(215, 25);
+            this.cPickUpEnable.Name = "cPickUpEnable";
+            this.cPickUpEnable.Size = new System.Drawing.Size(62, 17);
+            this.cPickUpEnable.TabIndex = 10;
+            this.cPickUpEnable.Text = "Pick up";
+            this.cPickUpEnable.UseVisualStyleBackColor = true;
+            // 
+            // cHuntEnable
+            // 
+            this.cHuntEnable.AutoSize = true;
+            this.cHuntEnable.Location = new System.Drawing.Point(215, 6);
+            this.cHuntEnable.Name = "cHuntEnable";
+            this.cHuntEnable.Size = new System.Drawing.Size(85, 17);
+            this.cHuntEnable.TabIndex = 9;
+            this.cHuntEnable.Text = "Enable Hunt";
+            this.cHuntEnable.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -376,6 +417,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.cAdvanceEnable);
+            this.tabPage3.Controls.Add(this.bAdvancedFilter);
+            this.tabPage3.Controls.Add(this.SimpleFilterGroup);
             this.tabPage3.Controls.Add(this.cPickupnOnlyHuntArea);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.tPickupRadius);
@@ -386,6 +430,122 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // bAdvancedFilter
+            // 
+            this.bAdvancedFilter.Enabled = false;
+            this.bAdvancedFilter.Location = new System.Drawing.Point(6, 257);
+            this.bAdvancedFilter.Name = "bAdvancedFilter";
+            this.bAdvancedFilter.Size = new System.Drawing.Size(198, 23);
+            this.bAdvancedFilter.TabIndex = 7;
+            this.bAdvancedFilter.Text = "Advanced filter";
+            this.bAdvancedFilter.UseVisualStyleBackColor = true;
+            this.bAdvancedFilter.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // SimpleFilterGroup
+            // 
+            this.SimpleFilterGroup.Controls.Add(this.cFilterShield);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterShoes);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterUsable);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterWeapon);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterHat);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterGloves);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterArmor);
+            this.SimpleFilterGroup.Controls.Add(this.cFilterMaterials);
+            this.SimpleFilterGroup.Location = new System.Drawing.Point(6, 107);
+            this.SimpleFilterGroup.Name = "SimpleFilterGroup";
+            this.SimpleFilterGroup.Size = new System.Drawing.Size(200, 124);
+            this.SimpleFilterGroup.TabIndex = 4;
+            this.SimpleFilterGroup.TabStop = false;
+            this.SimpleFilterGroup.Text = "SimpleFilter";
+            // 
+            // cFilterShield
+            // 
+            this.cFilterShield.AutoSize = true;
+            this.cFilterShield.Location = new System.Drawing.Point(92, 88);
+            this.cFilterShield.Name = "cFilterShield";
+            this.cFilterShield.Size = new System.Drawing.Size(60, 17);
+            this.cFilterShield.TabIndex = 14;
+            this.cFilterShield.Text = "Shields";
+            this.cFilterShield.UseVisualStyleBackColor = true;
+            this.cFilterShield.CheckedChanged += new System.EventHandler(this.cFilterShield_CheckedChanged);
+            // 
+            // cFilterShoes
+            // 
+            this.cFilterShoes.AutoSize = true;
+            this.cFilterShoes.Location = new System.Drawing.Point(92, 19);
+            this.cFilterShoes.Name = "cFilterShoes";
+            this.cFilterShoes.Size = new System.Drawing.Size(56, 17);
+            this.cFilterShoes.TabIndex = 13;
+            this.cFilterShoes.Text = "Shoes";
+            this.cFilterShoes.UseVisualStyleBackColor = true;
+            this.cFilterShoes.CheckedChanged += new System.EventHandler(this.cFilterShoes_CheckedChanged);
+            // 
+            // cFilterUsable
+            // 
+            this.cFilterUsable.AutoSize = true;
+            this.cFilterUsable.Location = new System.Drawing.Point(92, 42);
+            this.cFilterUsable.Name = "cFilterUsable";
+            this.cFilterUsable.Size = new System.Drawing.Size(70, 17);
+            this.cFilterUsable.TabIndex = 12;
+            this.cFilterUsable.Text = "Consume";
+            this.cFilterUsable.UseVisualStyleBackColor = true;
+            this.cFilterUsable.CheckedChanged += new System.EventHandler(this.cFilterUsable_CheckedChanged);
+            // 
+            // cFilterWeapon
+            // 
+            this.cFilterWeapon.AutoSize = true;
+            this.cFilterWeapon.Location = new System.Drawing.Point(92, 65);
+            this.cFilterWeapon.Name = "cFilterWeapon";
+            this.cFilterWeapon.Size = new System.Drawing.Size(72, 17);
+            this.cFilterWeapon.TabIndex = 11;
+            this.cFilterWeapon.Text = "Weapons";
+            this.cFilterWeapon.UseVisualStyleBackColor = true;
+            this.cFilterWeapon.CheckedChanged += new System.EventHandler(this.cFilterWeapon_CheckedChanged);
+            // 
+            // cFilterHat
+            // 
+            this.cFilterHat.AutoSize = true;
+            this.cFilterHat.Location = new System.Drawing.Point(6, 88);
+            this.cFilterHat.Name = "cFilterHat";
+            this.cFilterHat.Size = new System.Drawing.Size(43, 17);
+            this.cFilterHat.TabIndex = 10;
+            this.cFilterHat.Text = "Hat";
+            this.cFilterHat.UseVisualStyleBackColor = true;
+            this.cFilterHat.CheckedChanged += new System.EventHandler(this.cFilterHat_CheckedChanged);
+            // 
+            // cFilterGloves
+            // 
+            this.cFilterGloves.AutoSize = true;
+            this.cFilterGloves.Location = new System.Drawing.Point(6, 65);
+            this.cFilterGloves.Name = "cFilterGloves";
+            this.cFilterGloves.Size = new System.Drawing.Size(59, 17);
+            this.cFilterGloves.TabIndex = 9;
+            this.cFilterGloves.Text = "Gloves";
+            this.cFilterGloves.UseVisualStyleBackColor = true;
+            this.cFilterGloves.CheckedChanged += new System.EventHandler(this.cFilterGloves_CheckedChanged);
+            // 
+            // cFilterArmor
+            // 
+            this.cFilterArmor.AutoSize = true;
+            this.cFilterArmor.Location = new System.Drawing.Point(6, 42);
+            this.cFilterArmor.Name = "cFilterArmor";
+            this.cFilterArmor.Size = new System.Drawing.Size(53, 17);
+            this.cFilterArmor.TabIndex = 8;
+            this.cFilterArmor.Text = "Armor";
+            this.cFilterArmor.UseVisualStyleBackColor = true;
+            this.cFilterArmor.CheckedChanged += new System.EventHandler(this.cFilterArmor_CheckedChanged);
+            // 
+            // cFilterMaterials
+            // 
+            this.cFilterMaterials.AutoSize = true;
+            this.cFilterMaterials.Location = new System.Drawing.Point(6, 19);
+            this.cFilterMaterials.Name = "cFilterMaterials";
+            this.cFilterMaterials.Size = new System.Drawing.Size(68, 17);
+            this.cFilterMaterials.TabIndex = 7;
+            this.cFilterMaterials.Text = "Materials";
+            this.cFilterMaterials.UseVisualStyleBackColor = true;
+            this.cFilterMaterials.CheckedChanged += new System.EventHandler(this.cFilterMaterials_CheckedChanged);
             // 
             // cPickupnOnlyHuntArea
             // 
@@ -416,31 +576,20 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.lNearItemsList);
             this.groupBox2.Location = new System.Drawing.Point(6, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 474);
+            this.groupBox2.Size = new System.Drawing.Size(200, 89);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Near items";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 445);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // lNearItemsList
             // 
             this.lNearItemsList.FormattingEnabled = true;
             this.lNearItemsList.Location = new System.Drawing.Point(6, 19);
             this.lNearItemsList.Name = "lNearItemsList";
-            this.lNearItemsList.Size = new System.Drawing.Size(188, 407);
+            this.lNearItemsList.Size = new System.Drawing.Size(188, 56);
             this.lNearItemsList.TabIndex = 2;
             this.lNearItemsList.SelectedIndexChanged += new System.EventHandler(this.lNearItemsList_SelectedIndexChanged);
             // 
@@ -570,35 +719,16 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
-            // cHuntEnable
+            // cAdvanceEnable
             // 
-            this.cHuntEnable.AutoSize = true;
-            this.cHuntEnable.Location = new System.Drawing.Point(215, 6);
-            this.cHuntEnable.Name = "cHuntEnable";
-            this.cHuntEnable.Size = new System.Drawing.Size(85, 17);
-            this.cHuntEnable.TabIndex = 9;
-            this.cHuntEnable.Text = "Enable Hunt";
-            this.cHuntEnable.UseVisualStyleBackColor = true;
-            // 
-            // cPickUpEnable
-            // 
-            this.cPickUpEnable.AutoSize = true;
-            this.cPickUpEnable.Location = new System.Drawing.Point(215, 25);
-            this.cPickUpEnable.Name = "cPickUpEnable";
-            this.cPickUpEnable.Size = new System.Drawing.Size(62, 17);
-            this.cPickUpEnable.TabIndex = 10;
-            this.cPickUpEnable.Text = "Pick up";
-            this.cPickUpEnable.UseVisualStyleBackColor = true;
-            // 
-            // bHuntToggle
-            // 
-            this.bHuntToggle.Location = new System.Drawing.Point(381, 15);
-            this.bHuntToggle.Name = "bHuntToggle";
-            this.bHuntToggle.Size = new System.Drawing.Size(103, 23);
-            this.bHuntToggle.TabIndex = 11;
-            this.bHuntToggle.Text = "Start";
-            this.bHuntToggle.UseVisualStyleBackColor = true;
-            this.bHuntToggle.Click += new System.EventHandler(this.bHuntToggle_Click_1);
+            this.cAdvanceEnable.AutoSize = true;
+            this.cAdvanceEnable.Location = new System.Drawing.Point(6, 237);
+            this.cAdvanceEnable.Name = "cAdvanceEnable";
+            this.cAdvanceEnable.Size = new System.Drawing.Size(110, 17);
+            this.cAdvanceEnable.TabIndex = 8;
+            this.cAdvanceEnable.Text = "Enable advanced";
+            this.cAdvanceEnable.UseVisualStyleBackColor = true;
+            this.cAdvanceEnable.CheckedChanged += new System.EventHandler(this.cAdvanceEnable_CheckedChanged);
             // 
             // cBot
             // 
@@ -619,6 +749,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.SimpleFilterGroup.ResumeLayout(false);
+            this.SimpleFilterGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
@@ -643,7 +775,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Timer pickUpTimer;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lNearItemsList;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tPickupRadius;
@@ -680,5 +811,16 @@
         private System.Windows.Forms.CheckBox cHuntEnable;
         private System.Windows.Forms.Button bHuntToggle;
         private System.Windows.Forms.CheckBox cPickUpEnable;
+        private System.Windows.Forms.GroupBox SimpleFilterGroup;
+        private System.Windows.Forms.CheckBox cFilterShoes;
+        private System.Windows.Forms.CheckBox cFilterUsable;
+        private System.Windows.Forms.CheckBox cFilterWeapon;
+        private System.Windows.Forms.CheckBox cFilterHat;
+        private System.Windows.Forms.CheckBox cFilterGloves;
+        private System.Windows.Forms.CheckBox cFilterArmor;
+        private System.Windows.Forms.CheckBox cFilterMaterials;
+        private System.Windows.Forms.CheckBox cFilterShield;
+        private System.Windows.Forms.Button bAdvancedFilter;
+        private System.Windows.Forms.CheckBox cAdvanceEnable;
     }
 }

@@ -44,7 +44,7 @@ namespace CodeInject
 
         public override string ToString()
         {
-            BasicInfo temp;
+            IBasicInfo temp;
 
 
             switch (*ItemType)

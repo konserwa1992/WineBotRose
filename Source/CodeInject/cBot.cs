@@ -1,5 +1,6 @@
 ﻿using CodeInject.Actors;
 using CodeInject.MemoryTools;
+using CodeInject.PickupFilters;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,9 @@ namespace CodeInject
     {
         Potion mp;
         Potion hp;
+        IFilter filter = new QuickFilter();
+
+
 
         public cBot()
         {
@@ -133,29 +137,16 @@ namespace CodeInject
 
             if (!cPickupnOnlyHuntArea.Enabled)
             {
-                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < int.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
+                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x) && x.CalcDistance(player) < int.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
             }
             else
             {
-                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
+                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x) && x.CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
             }
 
 
             if (cPickUpEnable.Checked && lNearItemsList.Items.Count > 0)
                    ((Item)lNearItemsList.Items[0]).Pickup();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            lNearItemsList.Items.Clear();
-            float maxDistance;
-            if (!float.TryParse(tPickupRadius.Text, out maxDistance))
-            {
-                maxDistance = 100f;
-            }
-            IObject player = PlayerCharacter.PlayerInfo;
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => x.CalcDistance(player) < maxDistance).OrderBy(x => x.CalcDistance(player)).ToArray());
-
         }
 
 
@@ -182,7 +173,7 @@ namespace CodeInject
         private void bRemoveMonster2Attack_Click(object sender, EventArgs e)
         {
             if(lMonster2Attack.SelectedIndex!=-1)
-                lMonster2Attack.Items.Remove(lFullMonsterList.SelectedItem);
+                lMonster2Attack.Items.Remove(lMonster2Attack.SelectedItem);
         }
 
         private void bSetArea_Click(object sender, EventArgs e)
@@ -247,5 +238,121 @@ namespace CodeInject
             mp = new Potion(int.Parse(tMpDurr.Text));
         }
 
+        private void cFilterMaterials_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cFilterMaterials.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.Material);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.Material);
+            }
+        }
+
+        private void cFilterArmor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterArmor.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.ChestArmor);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.ChestArmor);
+            }
+        }
+
+        private void cFilterGloves_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterGloves.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.Gloves);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.Gloves);
+            }
+        }
+
+        private void cFilterHat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterHat.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.Hat);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.Hat);
+            }
+        }
+
+        private void cFilterShoes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterShoes.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.Shoes);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.Shoes);
+            }
+        }
+
+        private void cFilterUsable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterUsable.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.UsableItem);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.UsableItem);
+            }
+        }
+
+        private void cFilterWeapon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterWeapon.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.Weapon);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.Weapon);
+            }
+        }
+
+        private void cFilterShield_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cFilterShield.Checked)
+            {
+                ((QuickFilter)filter).AddToPick(ItemType.Shield);
+            }
+            else
+            {
+                ((QuickFilter)filter).RemoveFromPick(ItemType.Shield);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(filter);
+            advFilterWindow.ShowDialog();
+        }
+
+        private void cAdvanceEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cAdvanceEnable.Checked)
+            {
+                filter = new QuickFilter();
+                SimpleFilterGroup.Controls.OfType<CheckBox>().ToList().ForEach(c => c.Checked = false);
+            }
+            else
+            {
+                filter = new AdvancedFilter();
+            }
+            SimpleFilterGroup.Enabled = !cAdvanceEnable.Checked;
+            bAdvancedFilter.Enabled = cAdvanceEnable.Checked;
+        }
     }
 }
