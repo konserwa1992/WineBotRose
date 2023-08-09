@@ -78,6 +78,12 @@ namespace CodeInject
         public override string ToString() { return Name; }
     }
 
+    public class MaterialItemsInfo : IBasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
+    }
 
     public class DataBase
     {
@@ -91,6 +97,7 @@ namespace CodeInject
         public List<ArmItemsInfo> ArmItemsDatabase = new List<ArmItemsInfo>();
         public List<FootItemsInfo> FootItemsDatabase = new List<FootItemsInfo>();
         public List<ShieldItemsInfo> SheildItemsDatabase = new List<ShieldItemsInfo>();
+        public List<MaterialItemsInfo> MaterialItemsDatabase = new List<MaterialItemsInfo>();
 
 
         public List<T> GetList<T>() where T : class
@@ -111,6 +118,8 @@ namespace CodeInject
                 return (FootItemsDatabase as List<T>);
             if (typeof(T) == typeof(ShieldItemsInfo))
                 return (SheildItemsDatabase as List<T>);
+            if (typeof(T) == typeof(MaterialItemsInfo))
+                return (MaterialItemsDatabase as List<T>);
 
             return null;
         }
@@ -126,7 +135,18 @@ namespace CodeInject
             LoadArmDataBase();
             LoadFootDataBase();
             LoadShieldItemDataBase();
+            LoadMaterialItemDataBase();
         }
+
+
+        private void LoadMaterialItemDataBase()
+        {
+            StreamReader dataReade = new StreamReader("MaterialItemList.json");
+
+            MaterialItemsDatabase = JsonConvert.DeserializeObject<List<MaterialItemsInfo>>(dataReade.ReadToEnd());
+            dataReade.Close();
+        }
+
         private void LoadBodyDataBase()
         {
             StreamReader dataReade = new StreamReader("BodyItemList.json");

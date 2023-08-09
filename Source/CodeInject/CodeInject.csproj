@@ -98,6 +98,9 @@
     <None Include="CopyToRose\FootItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="CopyToRose\MaterialItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="CopyToRose\MonsterList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

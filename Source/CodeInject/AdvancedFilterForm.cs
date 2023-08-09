@@ -92,5 +92,29 @@ namespace CodeInject
         {
             SetSearchList<FootItemsInfo>();
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            SetSearchList<MaterialItemsInfo>();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            foreach (var selectedElement in listBox1.Items)
+            {
+                if(listBox2.Items.IndexOf(selectedElement)==-1)
+                 Filter.PickWeapon.Add((IBasicInfo)selectedElement);
+            }
+
+            listBox2.Items.Clear();
+            listBox2.Items.AddRange(Filter.PickWeapon.ToArray());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Filter.PickWeapon.Remove((IBasicInfo)listBox2.SelectedItem);
+            listBox2.Items.Clear();
+            listBox2.Items.AddRange(Filter.PickWeapon.ToArray());
+        }
     }
 }

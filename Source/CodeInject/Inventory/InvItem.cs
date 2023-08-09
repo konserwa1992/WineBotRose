@@ -84,6 +84,11 @@ namespace CodeInject
                         return $"{(temp != null ? temp.Name : "Unknow")}";
                     }
 
+                case 0x0C:
+                    {
+                        temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                    }
                 default:
                     {
                         return $"Unknow type:{(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";

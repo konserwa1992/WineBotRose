@@ -62,6 +62,8 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cAdvanceEnable = new System.Windows.Forms.CheckBox();
             this.bAdvancedFilter = new System.Windows.Forms.Button();
             this.SimpleFilterGroup = new System.Windows.Forms.GroupBox();
             this.cFilterShield = new System.Windows.Forms.CheckBox();
@@ -91,7 +93,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.cAdvanceEnable = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -117,6 +119,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.bHuntToggle);
             this.tabPage1.Controls.Add(this.cPickUpEnable);
             this.tabPage1.Controls.Add(this.cHuntEnable);
@@ -284,7 +287,7 @@
             // 
             // bRemoveMonster2Attack
             // 
-            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(359, 195);
+            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(397, 195);
             this.bRemoveMonster2Attack.Name = "bRemoveMonster2Attack";
             this.bRemoveMonster2Attack.Size = new System.Drawing.Size(75, 23);
             this.bRemoveMonster2Attack.TabIndex = 6;
@@ -294,7 +297,7 @@
             // 
             // bAddMonster2Attack
             // 
-            this.bAddMonster2Attack.Location = new System.Drawing.Point(235, 195);
+            this.bAddMonster2Attack.Location = new System.Drawing.Point(218, 195);
             this.bAddMonster2Attack.Name = "bAddMonster2Attack";
             this.bAddMonster2Attack.Size = new System.Drawing.Size(75, 23);
             this.bAddMonster2Attack.TabIndex = 5;
@@ -417,6 +420,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.cAdvanceEnable);
             this.tabPage3.Controls.Add(this.bAdvancedFilter);
             this.tabPage3.Controls.Add(this.SimpleFilterGroup);
@@ -430,6 +434,27 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(315, 237);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // cAdvanceEnable
+            // 
+            this.cAdvanceEnable.AutoSize = true;
+            this.cAdvanceEnable.Location = new System.Drawing.Point(6, 237);
+            this.cAdvanceEnable.Name = "cAdvanceEnable";
+            this.cAdvanceEnable.Size = new System.Drawing.Size(110, 17);
+            this.cAdvanceEnable.TabIndex = 8;
+            this.cAdvanceEnable.Text = "Enable advanced";
+            this.cAdvanceEnable.UseVisualStyleBackColor = true;
+            this.cAdvanceEnable.CheckedChanged += new System.EventHandler(this.cAdvanceEnable_CheckedChanged);
             // 
             // bAdvancedFilter
             // 
@@ -719,16 +744,15 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
-            // cAdvanceEnable
+            // button2
             // 
-            this.cAdvanceEnable.AutoSize = true;
-            this.cAdvanceEnable.Location = new System.Drawing.Point(6, 237);
-            this.cAdvanceEnable.Name = "cAdvanceEnable";
-            this.cAdvanceEnable.Size = new System.Drawing.Size(110, 17);
-            this.cAdvanceEnable.TabIndex = 8;
-            this.cAdvanceEnable.Text = "Enable advanced";
-            this.cAdvanceEnable.UseVisualStyleBackColor = true;
-            this.cAdvanceEnable.CheckedChanged += new System.EventHandler(this.cAdvanceEnable_CheckedChanged);
+            this.button2.Location = new System.Drawing.Point(299, 195);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(92, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Add searched";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cBot
             // 
@@ -822,5 +846,7 @@
         private System.Windows.Forms.CheckBox cFilterShield;
         private System.Windows.Forms.Button bAdvancedFilter;
         private System.Windows.Forms.CheckBox cAdvanceEnable;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

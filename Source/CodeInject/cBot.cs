@@ -145,6 +145,8 @@ namespace CodeInject
             }
 
 
+
+
             if (cPickUpEnable.Checked && lNearItemsList.Items.Count > 0)
                    ((Item)lNearItemsList.Items[0]).Pickup();
         }
@@ -353,6 +355,21 @@ namespace CodeInject
             }
             SimpleFilterGroup.Enabled = !cAdvanceEnable.Checked;
             bAdvancedFilter.Enabled = cAdvanceEnable.Checked;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x)).ToArray());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (MobInfo mob in  lFullMonsterList.Items)
+            {
+                if (!lMonster2Attack.Items.Cast<MobInfo>().Any(x => x.ID == mob.ID))
+                    lMonster2Attack.Items.Add(mob);
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace CodeInject.PickupFilters
                 case ItemType.Hat:
                     return false;// PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(UsableItemsInfo));
                 case ItemType.Material:
-                    return false;// PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(UsableItemsInfo));
+                    return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(MaterialItemsInfo));
                 case ItemType.Shield:
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(ShieldItemsInfo));
                 case ItemType.Shoes:
@@ -33,6 +33,7 @@ namespace CodeInject.PickupFilters
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(ArmItemsInfo));
                 case ItemType.ChestArmor:
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(BodyItemsInfo));
+       
                 default: 
                     return false;
             }
