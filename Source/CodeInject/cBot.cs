@@ -359,8 +359,8 @@ namespace CodeInject
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x)).ToArray());
+            lNearItemsList.Items.Clear();
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
         }
 
         private void button2_Click(object sender, EventArgs e)

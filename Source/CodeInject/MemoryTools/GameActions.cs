@@ -34,8 +34,8 @@ namespace CodeInject.MemoryTools
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
             BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();
             QuickActionFunc = (UseQuickAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x87c4), typeof(UseQuickAction));
-            UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x133200), typeof(UseItemAction));
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ?? 45 33 C9 44 8B 47 38 48 81 C1 D8 16 00 00 48 8B D7 E8 ?? ?? ?? ??"), typeof(PickUpAction));
+            UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x133200), typeof(UseItemAction)); //MSG#INV5
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ?? 45 33 C9 44 8B 47 38 48 81 C1 D8 16 00 00 48 8B D7 E8 ?? ?? ?? ??"), typeof(PickUpAction)); //MSG#INV4
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
         }
 

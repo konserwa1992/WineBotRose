@@ -40,9 +40,9 @@ namespace CodeInject.MemoryTools
             Process _proc = Process.GetCurrentProcess();
 
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
-            GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64();
-            getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x1339E0), typeof(GetInventoryItemDetailsAdr));
+            GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
+            getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x1339E0), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace CodeInject.MemoryTools
 
             ulong* adrPtr1 = (ulong*)(BaseAddres + 0x1118E90);
             int s = 0;
-            while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)
+            while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)//OBS#S2
             {
                 short skillID = *(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0);
                 SkillInfo skill = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == skillID);
@@ -82,7 +82,7 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public IObject GetObject<T>(int ID)
         {
-            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (ID * 8) + 0x22078);
+            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (ID * 8) + 0x22078); //OBS#N3
 
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
@@ -119,9 +119,9 @@ namespace CodeInject.MemoryTools
         {
 
             List<IObject> wholeNpcList = new List<IObject>();
-            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);
+            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);//OBS#S3
             int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A078);
+            int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A078);//OBS#S4
 
             for (int i = 0; i < *count; i++)
             {
@@ -142,10 +142,9 @@ namespace CodeInject.MemoryTools
 
         public List<IntPtr> getInventoryItems()
         {
-
             List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
             //movsxd rax, dword ptr [rdi+000001B0]
-            long* startList = (long*)(*(long*)(*(long*)(BaseAddres + 0x1118E90) + 0x6a78 + 0x18));
+            long* startList = (long*)(*(long*)(*(long*)(BaseAddres + 0x1118E90) + 0x6a78 + 0x18));//MSG#INV4
 
             for (long itemIndex = 0; itemIndex < 139; itemIndex++)
             {
