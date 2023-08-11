@@ -10,20 +10,20 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
+
 namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
         Potion mp;
         Potion hp;
-        IFilter filter = new QuickFilter();
-
+        CodeInject.WineBot.WineBot WineBotInstance;
 
 
         public cBot()
         {
             InitializeComponent();
-            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x => x.Name != "").ToArray());
+            WineBotInstance = new CodeInject.WineBot.WineBot();
         }
 
 
@@ -49,12 +49,24 @@ namespace CodeInject
         {
             if(!lUseSkill.Items.Cast<Skills>().Any(x=>x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
             lUseSkill.Items.Add(lSkillList.SelectedItem);
+
+
+            if(!WineBotInstance.BotSkills.Any(x=>x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
+            {
+                WineBotInstance.BotSkills.Add((Skills)lSkillList.SelectedItem);
+            }
+
+            lUseSkill.Items.Clear();
+            lUseSkill.Items.AddRange(WineBotInstance.BotSkills.ToArray());
         }
 
         private void bSkillRemove_Click(object sender, EventArgs e)
         {
             if (lUseSkill.SelectedItem!=null)
-                lUseSkill.Items.Remove(lUseSkill.SelectedItem);
+                WineBotInstance.BotSkills.Remove((Skills)lUseSkill.SelectedItem);
+
+            lUseSkill.Items.Clear();
+            lUseSkill.Items.AddRange(WineBotInstance.BotSkills.ToArray());
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -63,17 +75,19 @@ namespace CodeInject
 
             if (cEnableHuntingArea.Checked)
             {
-                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs()
-                    .Where(x => lMonster2Attack.Items.Count==0 || lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
-                    .Where(x => ((NPC)x).CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text))
-                    .ToArray());
+                WineBotInstance.NpcAround = GameFunctionsAndObjects.DataFetch.GetNPCs()
+                    .Where(x => lMonster2Attack.Items.Count == 0 || lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
+                    .Where(x => ((NPC)x).CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).ToList();
 
+
+                lNPClist.Items.AddRange(WineBotInstance.NpcAround.ToArray());
             }
             else
             {
-                lNPClist.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs()
-               .Where(x => lMonster2Attack.Items.Count == 0 ||  lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
-               .ToArray());
+                WineBotInstance.NpcAround = GameFunctionsAndObjects.DataFetch.GetNPCs()
+               .Where(x => lMonster2Attack.Items.Count == 0 || lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID)).ToList();
+
+                lNPClist.Items.AddRange(WineBotInstance.NpcAround.ToArray());
             }
 
 
@@ -82,44 +96,16 @@ namespace CodeInject
             {
                 if (cPickUpEnable.Checked == false || lNearItemsList.Items.Count == 0)
                 {
-                    if (lUseSkill.SelectedIndex < lUseSkill.Items.Count - 1)
-                    {
-                        lUseSkill.SelectedIndex++;
-                    }
-                    else
-                    {
-                        lUseSkill.SelectedIndex = 0;
-                    }
-
-                    if (lNPClist.Items.Count > 0)
-                    {
-                        lNPClist.SelectedItem = lNPClist.Items[0];
-                        GameFunctionsAndObjects.Actions.Attack(PlayerCharacter.GetPlayerSkills.IndexOf(PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID)), *((NPC)lNPClist.SelectedItem).ID);
-
-                    }
+                    WineBotInstance.AttackClosestMonster();
                 }
             }
 
             if (cAutoPotionEnabled.Checked)
             {
-                AutoPotionFunction();
+                WineBotInstance.AutoPotionFunction(int.Parse(tHPPotionUseProc.Text),int.Parse(tMPPotionUseProc.Text));
             }
         }
 
-        private void AutoPotionFunction()
-        {
-            int procHP = int.Parse(tHPPotionUseProc.Text);
-
-            if((((float)*(GameFunctionsAndObjects.DataFetch.GetPlayer()).Hp / *(GameFunctionsAndObjects.DataFetch.GetPlayer()).MaxHp)*100)<procHP)
-            {
-                hp.Use((InvItem)cbHealHPItem.SelectedItem);
-            }
-
-            if ((((float)*(GameFunctionsAndObjects.DataFetch.GetPlayer()).Mp / *(GameFunctionsAndObjects.DataFetch.GetPlayer()).MaxMp) * 100) < procHP)
-            {
-                mp.Use((InvItem)cbHealMPItem.SelectedItem);
-            }
-        }
 
 
 
@@ -127,28 +113,12 @@ namespace CodeInject
         {
 
             lNearItemsList.Items.Clear();
-            float maxDistance;
-            if(!float.TryParse(tPickupRadius.Text,out maxDistance))
-            {
-                maxDistance = 100f;
-            }
 
-            IObject player = PlayerCharacter.PlayerInfo;
-
-            if (!cPickupnOnlyHuntArea.Enabled)
-            {
-                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x) && x.CalcDistance(player) < int.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
-            }
-            else
-            {
-                lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x) && x.CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).OrderBy(x => x.CalcDistance(player)).ToArray());
-            }
+            lNearItemsList.Items.AddRange(WineBotInstance.UpdateItemsAroundPlayer(int.Parse(tPickupRadius.Text)).ToArray());
 
 
-
-
-            if (cPickUpEnable.Checked && lNearItemsList.Items.Count > 0)
-                   ((Item)lNearItemsList.Items[0]).Pickup();
+            if (cPickUpEnable.Checked)
+                WineBotInstance.PickClosestItem();
         }
 
 
@@ -191,41 +161,13 @@ namespace CodeInject
         private void cbHealHPItem_DropDown(object sender, EventArgs e)
         {
             cbHealHPItem.Items.Clear();
-            List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
-
-            foreach (IntPtr item in items)
-            {
-                if (item.ToInt64() != 0x0)
-                {
-                    InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
-
-
-                    if (*inv.ItemType == 0xA)
-                    {
-                        cbHealHPItem.Items.Add(inv);
-                    }
-                }
-            }
+            cbHealHPItem.Items.AddRange(WineBotInstance.UpdateConsumeList().ToArray());
         }
 
         private void cbHealMPItem_DropDown(object sender, EventArgs e)
         {
             cbHealMPItem.Items.Clear();
-            List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
-
-            foreach (IntPtr item in items)
-            {
-                if (item.ToInt64() != 0x0)
-                {
-                    InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
-
-
-                    if (*inv.ItemType == 0xA)
-                    {
-                        cbHealMPItem.Items.Add(inv);
-                    }
-                }
-            }
+            cbHealMPItem.Items.AddRange(WineBotInstance.UpdateConsumeList().ToArray());
         }
 
         private void bHuntToggle_Click_1(object sender, EventArgs e)
@@ -235,20 +177,17 @@ namespace CodeInject
 
             bHuntToggle.Text = timer2.Enabled == true ? "STOP" : "START";
 
-
-            hp = new Potion(int.Parse(tHpDurr.Text));
-            mp = new Potion(int.Parse(tMpDurr.Text));
         }
 
         private void cFilterMaterials_CheckedChanged(object sender, EventArgs e)
         {
             if(cFilterMaterials.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.Material);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.Material);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.Material);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.Material);
             }
         }
 
@@ -256,11 +195,11 @@ namespace CodeInject
         {
             if (cFilterArmor.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.ChestArmor);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.ChestArmor);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.ChestArmor);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.ChestArmor);
             }
         }
 
@@ -268,11 +207,11 @@ namespace CodeInject
         {
             if (cFilterGloves.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.Gloves);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.Gloves);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.Gloves);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.Gloves);
             }
         }
 
@@ -280,11 +219,11 @@ namespace CodeInject
         {
             if (cFilterHat.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.Hat);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.Hat);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.Hat);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.Hat);
             }
         }
 
@@ -292,11 +231,11 @@ namespace CodeInject
         {
             if (cFilterShoes.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.Shoes);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.Shoes);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.Shoes);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.Shoes);
             }
         }
 
@@ -304,11 +243,11 @@ namespace CodeInject
         {
             if (cFilterUsable.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.UsableItem);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.UsableItem);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.UsableItem);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.UsableItem);
             }
         }
 
@@ -316,11 +255,11 @@ namespace CodeInject
         {
             if (cFilterWeapon.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.Weapon);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.Weapon);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.Weapon);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.Weapon);
             }
         }
 
@@ -328,17 +267,17 @@ namespace CodeInject
         {
             if (cFilterShield.Checked)
             {
-                ((QuickFilter)filter).AddToPick(ItemType.Shield);
+                ((QuickFilter)WineBotInstance.filter).AddToPick(ItemType.Shield);
             }
             else
             {
-                ((QuickFilter)filter).RemoveFromPick(ItemType.Shield);
+                ((QuickFilter)WineBotInstance.filter).RemoveFromPick(ItemType.Shield);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(filter);
+            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(WineBotInstance.filter);
             advFilterWindow.ShowDialog();
         }
 
@@ -346,12 +285,12 @@ namespace CodeInject
         {
             if (!cAdvanceEnable.Checked)
             {
-                filter = new QuickFilter();
+                WineBotInstance.filter = new QuickFilter();
                 SimpleFilterGroup.Controls.OfType<CheckBox>().ToList().ForEach(c => c.Checked = false);
             }
             else
             {
-                filter = new AdvancedFilter();
+                WineBotInstance.filter = new AdvancedFilter();
             }
             SimpleFilterGroup.Enabled = !cAdvanceEnable.Checked;
             bAdvancedFilter.Enabled = cAdvanceEnable.Checked;
@@ -375,6 +314,18 @@ namespace CodeInject
         private void button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer).ToString("X"));
+        }
+
+        private void cAutoPotionEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbHealHPItem.SelectedIndex!=-1 && cbHealMPItem.SelectedIndex!= -1)
+            {
+                WineBotInstance.SetAutoHPpotion(int.Parse(tHpDurr.Text), (InvItem)cbHealHPItem.SelectedItem);
+                WineBotInstance.SetAutoMPpotion(int.Parse(tMpDurr.Text), (InvItem)cbHealMPItem.SelectedItem);
+            }else
+            {
+                throw new Exception("Please Select Both item in Autopotion option if you want to have it enabled");
+            }
         }
     }
 }

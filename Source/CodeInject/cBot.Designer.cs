@@ -75,7 +75,6 @@
             this.cFilterGloves = new System.Windows.Forms.CheckBox();
             this.cFilterArmor = new System.Windows.Forms.CheckBox();
             this.cFilterMaterials = new System.Windows.Forms.CheckBox();
-            this.cPickupnOnlyHuntArea = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tPickupRadius = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -435,7 +434,6 @@
             this.tabPage3.Controls.Add(this.cAdvanceEnable);
             this.tabPage3.Controls.Add(this.bAdvancedFilter);
             this.tabPage3.Controls.Add(this.SimpleFilterGroup);
-            this.tabPage3.Controls.Add(this.cPickupnOnlyHuntArea);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.tPickupRadius);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -583,20 +581,10 @@
             this.cFilterMaterials.UseVisualStyleBackColor = true;
             this.cFilterMaterials.CheckedChanged += new System.EventHandler(this.cFilterMaterials_CheckedChanged);
             // 
-            // cPickupnOnlyHuntArea
-            // 
-            this.cPickupnOnlyHuntArea.AutoSize = true;
-            this.cPickupnOnlyHuntArea.Location = new System.Drawing.Point(215, 17);
-            this.cPickupnOnlyHuntArea.Name = "cPickupnOnlyHuntArea";
-            this.cPickupnOnlyHuntArea.Size = new System.Drawing.Size(148, 17);
-            this.cPickupnOnlyHuntArea.TabIndex = 6;
-            this.cPickupnOnlyHuntArea.Text = "Pick up only in Hunt area:";
-            this.cPickupnOnlyHuntArea.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 37);
+            this.label3.Location = new System.Drawing.Point(212, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 5;
@@ -604,7 +592,7 @@
             // 
             // tPickupRadius
             // 
-            this.tPickupRadius.Location = new System.Drawing.Point(212, 53);
+            this.tPickupRadius.Location = new System.Drawing.Point(212, 31);
             this.tPickupRadius.Name = "tPickupRadius";
             this.tPickupRadius.Size = new System.Drawing.Size(100, 20);
             this.tPickupRadius.TabIndex = 4;
@@ -703,6 +691,7 @@
             this.cAutoPotionEnabled.TabIndex = 6;
             this.cAutoPotionEnabled.Text = "Enable Auto-potion";
             this.cAutoPotionEnabled.UseVisualStyleBackColor = true;
+            this.cAutoPotionEnabled.CheckedChanged += new System.EventHandler(this.cAutoPotionEnabled_CheckedChanged);
             // 
             // cbHealMPItem
             // 
@@ -831,7 +820,6 @@
         private System.Windows.Forms.TextBox tHuntRadius;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tZHuntArea;
-        private System.Windows.Forms.CheckBox cPickupnOnlyHuntArea;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ComboBox cbHealMPItem;
         private System.Windows.Forms.ComboBox cbHealHPItem;

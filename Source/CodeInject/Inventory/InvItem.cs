@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CodeInject
 {
-    unsafe class InvItem
+    public unsafe class InvItem
     {
         public long* ObjectPointer { get; set; }
         public long* CItemAddr { get; set; }

@@ -8,28 +8,30 @@ using System.Threading.Tasks;
 
 namespace CodeInject
 {
-    class Potion
+    public class Potion
     {
         public int ColdDown { get; set; }
         private Stopwatch stopWatch = new Stopwatch();
+        public InvItem Item2Cast { get; set; }
 
-        public Potion(int coldDown)
+        public Potion(int coldDown, InvItem item)
         {
             this.ColdDown = coldDown;
+            this.Item2Cast = item;
         }
 
 
-        public void Use(InvItem item)
+        public void Use()
         {
             if (stopWatch.IsRunning == false)
             {
                 stopWatch.Start();
-                item.UseItem();
+                Item2Cast.UseItem();
             }
 
             if (stopWatch.Elapsed.Seconds > ColdDown)
             {
-                item.UseItem();
+                Item2Cast.UseItem();
                 stopWatch.Reset();
             }
         }
