@@ -144,7 +144,7 @@ namespace CodeInject.MemoryTools
         {
             List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
             //movsxd rax, dword ptr [rdi+000001B0]
-            long* startList = (long*)(*(long*)(*(long*)(BaseAddres + 0x11b5740) + 0x6a78 + 0x18));//MSG#INV4
+            long* startList = (long*)(*(long*)((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer + 0x6a78 + 0x18));//MSG#INV4
 
             for (long itemIndex = 0; itemIndex < 139; itemIndex++)
             {

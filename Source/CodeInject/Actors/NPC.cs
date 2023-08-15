@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeInject.WebServ.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -16,7 +17,8 @@ namespace CodeInject.Actors
         public float* X { get; set; }
         public float* Y { get; set; }
         public float* Z { get; set; }
-        public int* Hp { get; set; }
+        public short* Hp { get; set; }
+        public short* MaxHp { get; set; }
         public int* modelNaME { get; set; }
 
         public NPC(long* Entry)
@@ -31,8 +33,8 @@ namespace CodeInject.Actors
                 Z = (float*)(*Entry + 0x18);
                 if ((long*)(*Entry + 0x20) != null)
                     ID = (int*)(*((long*)(*Entry + 0x20)));
-                Hp = (int*)(*Entry + 0xE8);
-
+                Hp = (short*)(*Entry + 0xE8);
+                MaxHp = (short*)(*Entry + 0xF0);
 
                 Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
             }catch (Exception) { }
@@ -42,6 +44,21 @@ namespace CodeInject.Actors
         {
             return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
         }
+
+
+        public NPCModel ToWSObject()
+        {
+            return new NPCModel
+            {
+                Hp = *Hp,
+                MaxHp = *MaxHp,
+                X = *X,
+                Y = *Y,
+                Z = *Z,
+                Name = ToString()
+            };
+        }
+
 
         public double CalcDistance(float x,float y,float z)
         {

@@ -1,0 +1,27 @@
+﻿@model List<NpcViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<style>
+    .custom-underline {
+        border-bottom: 1px solid #000; 
+        display: inline-block; 
+        padding-bottom: 2px; 
+    }
+</style>
+
+<div class=" form-control-sm">
+    @foreach (NpcViewModel t in Model)
+    {
+        <div >
+            <div style ="width:100%" class="custom-underline"><b>@t.Name</b></div><br>
+             Hp: @t.Hp / @t.MaxHp<br> 
+             <br>
+            X: @(t.X/100)<br>
+            Y: @(t.Y / 100)<br>
+            Z: @(t.Z / 100)<br>
+            <br>
+    </div>
+    }
+
+</div>

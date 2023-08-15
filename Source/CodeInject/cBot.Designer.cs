@@ -765,6 +765,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "cBot";
             this.Text = "WineBot RoseOnline (20230811)";
+            this.Load += new System.EventHandler(this.cBot_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

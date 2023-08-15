@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClrBootstrap", "ClrBootstra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeInject", "CodeInject\CodeInject.csproj", "{A1AE32E7-7892-4B1F-8E98-9F578648D3F3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web Menu", "Web Menu\Web Menu.csproj", "{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{A1AE32E7-7892-4B1F-8E98-9F578648D3F3}.Release|x64.Build.0 = Release|Any CPU
 		{A1AE32E7-7892-4B1F-8E98-9F578648D3F3}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1AE32E7-7892-4B1F-8E98-9F578648D3F3}.Release|x86.Build.0 = Release|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Debug|x64.Build.0 = Debug|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Debug|x86.Build.0 = Debug|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Release|x64.ActiveCfg = Release|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Release|x64.Build.0 = Release|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Release|x86.ActiveCfg = Release|Any CPU
+		{67D3BC73-A171-4C5C-A2FC-DBFD27A3505F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,23 @@
+﻿@model PlayerInfoViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <div class="info">
+    <p>Name: <b>@Model.Name</b></p>
+        <div class="progress-bar">
+        <div class="progress" style="width: @Model.getPrecHP()%"></div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <p>MP: @Model.Mp / @Model.MaxMp</p>
+    <div class="progress-bar">
+        <div class="progress" style="background-color: blue; width: @Model.getPrecMP()%"></div>
+        </div>
+    </div>
+
+<p>Position:  <pre class="tab1">X: @(Model.X / 100)</br>Y: @(Model.Y / 100)</br>Z: @(Model.Z / 100)</pre></p><br />
+
+<p>Position:  <pre class="tab1">Buffs :@Model.BuffCount</pre></p>
+

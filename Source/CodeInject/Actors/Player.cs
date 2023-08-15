@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +19,8 @@ namespace CodeInject.Actors
         public int* Hp { get; set; }
         public int* MaxMp { get; set; }
         public int* Mp { get; set; }
+        public string* Name { get; set; }
+        public short* BuffCount { get; set; }
         public int* modelNaME { get; set; }
 
         public Player(long* Entry)
@@ -32,6 +36,12 @@ namespace CodeInject.Actors
             MaxHp = (int*)(*Entry + 0x3C94);
             Mp = (int*)(*Entry + 0x3AEC);
             MaxMp = (int*)(*Entry + 0x4624);
+
+            MaxMp = (int*)(*Entry + 0x4624);
+
+            BuffCount = (short*)(*Entry + 0x7b0);
+
+            Name = (string*)(*Entry + 0xb10);
         }
 
         public double CalcDistance(IObject actor)
@@ -46,10 +56,23 @@ namespace CodeInject.Actors
                 + Math.Pow((y / 100) - (*this.Y / 100), 2)
                 + Math.Pow((z / 100) - (*this.Z / 100), 2));
         }
-
         public override string ToString()
         {
-            return "Player";
+            string playerJson =
+                JsonConvert.SerializeObject(new
+                {
+                    Hp = *Hp,
+                    MaxHp = *MaxHp,
+                    Mp = *Mp,
+                    MaxMp = *MaxMp,
+                    X = *X,
+                    Y = *Y,
+                    Z = *Z,
+                    BuffCount = *BuffCount,
+                    Name = Marshal.PtrToStringAnsi(new IntPtr(Name))
+                }, Formatting.Indented); 
+
+            return playerJson;
         }
     }
 }

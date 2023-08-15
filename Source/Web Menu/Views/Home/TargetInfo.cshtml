@@ -1,0 +1,15 @@
+﻿@model NpcViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="info">
+    <h3>Target:</h3>
+    <p>Name: @Model.Name</p>
+    <p>HP: @Model.Hp / @Model.MaxHp</p>
+    <div class="progress-bar">
+        <div class="progress" style="width: @Model.GetProcHP()%"></div>
+    </div>
+</div>
+
+<p>Position:  <pre class="tab1">X: @(Model.X / 100)</br>Y: @(Model.Y / 100)</br>Z: @(Model.Z / 100)</pre></p>

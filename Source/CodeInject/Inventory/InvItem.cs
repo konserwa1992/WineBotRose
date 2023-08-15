@@ -1,4 +1,5 @@
 ﻿using CodeInject.MemoryTools;
+using CodeInject.WebServ.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,16 @@ namespace CodeInject
             ItemType = (short*)((long)ItemDBAddr + 0x08);
             CItemAddr = cItemAddr;
         }
+
+        public ItemModel ToWSObject()
+        {
+            return new ItemModel()
+            {
+                Id = (long)ObjectPointer,
+                Name = ToString()
+            };
+        }
+
 
         public void UseItem()
         {

@@ -12,6 +12,8 @@ namespace CodeInject.WineBot
 {
    public unsafe class WineBot
     {
+        public static WineBot Instance { get; private set; } = new WineBot();
+
         public List<IObject> NpcAround = new List<IObject>();
         public List<Skills> BotSkills = new List<Skills>(); //Skills what gonna be used by bot
         public List<InvItem> ConsumeItems = new List<InvItem>();
@@ -22,10 +24,10 @@ namespace CodeInject.WineBot
         public int SkillIndex = 0;
         public IObject Target;
 
-        Potion AutoHp;
-        Potion AutoMp;
+        public ItemExecutor AutoHp;
+        public ItemExecutor AutoMp;
 
-        public WineBot() 
+        private WineBot() 
         {
       
         }
@@ -59,14 +61,16 @@ namespace CodeInject.WineBot
             return ConsumeItems;
         }
 
-        public void SetAutoHPpotion(int colddawn,InvItem item)
+        public void SetAutoHPpotion(int minHelathProc,int colddawn, InvItem item)
         {
-            AutoHp = new Potion(colddawn, item);
+   
+            AutoHp = new ItemExecutor(colddawn, minHelathProc, item);
         }
 
-        public void SetAutoMPpotion(int colddawn, InvItem item)
+
+        public void SetAutoMPpotion(int minManaProc, int colddawn, InvItem item)
         {
-            AutoMp = new Potion(colddawn, item);
+            AutoMp = new ItemExecutor(colddawn, minManaProc, item);
         }
 
         public void AttackClosestMonster()
@@ -92,17 +96,8 @@ namespace CodeInject.WineBot
 
         public void AutoPotionFunction(int minHpp,int minMpp)
         {
-      
-
-            if ((((float)*(GameFunctionsAndObjects.DataFetch.GetPlayer()).Hp / *(GameFunctionsAndObjects.DataFetch.GetPlayer()).MaxHp) * 100) < minHpp)
-            {
-                AutoHp.Use();
-            }
-
-            if ((((float)*(GameFunctionsAndObjects.DataFetch.GetPlayer()).Mp / *(GameFunctionsAndObjects.DataFetch.GetPlayer()).MaxMp) * 100) < minMpp)
-            {
-                AutoMp.Use();
-            }
+                AutoHp.Use((((float)*(GameFunctionsAndObjects.DataFetch.GetPlayer()).Hp / *(GameFunctionsAndObjects.DataFetch.GetPlayer()).MaxHp) * 100));
+                AutoMp.Use((((float)*(GameFunctionsAndObjects.DataFetch.GetPlayer()).Mp / *(GameFunctionsAndObjects.DataFetch.GetPlayer()).MaxMp) * 100));
         }
 
         public void PickClosestItem()
