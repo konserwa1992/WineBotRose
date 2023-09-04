@@ -6,11 +6,12 @@ namespace Bot_Menu.Mods
 {
     public class PlayerInfo : IMod
     {
-       public WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/CharacterInfo");
+        public WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/CharacterInfo");
         public WebSocketSharp.WebSocket webSocket2 = new WebSocketSharp.WebSocket("ws://localhost:8080/AutoPotion");
         public  WebSocketSharp.WebSocket webSocket3 = new WebSocketSharp.WebSocket("ws://localhost:8080/NpcList");
         public WebSocketSharp.WebSocket webSkillSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/SkillList");
 
+        public WebSocketSharp.WebSocket webPickUpSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/Filter");
 
         public NpcViewModel AttackedNpc {  get; set; }
 
@@ -65,8 +66,16 @@ namespace Bot_Menu.Mods
                 this.Skills = JsonConvert.DeserializeObject<SkillsListsModel>(e.Data);
             };
 
+
             webSkillSocket.Connect();
 
+
+
+            webPickUpSocket.OnMessage += (sender, e) =>
+            {
+                Console.WriteLine(e.Data);
+            };
+            webPickUpSocket.Connect();
         }
 
 
@@ -77,6 +86,7 @@ namespace Bot_Menu.Mods
             webSocket2.Send("GetAutoPotionSettings");
             webSocket3.Send("GetItems");
             webSkillSocket.Send("GetItems");
+            webPickUpSocket.Send("GetFilter");
         }
     }
 }

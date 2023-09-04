@@ -2,11 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Bot_Menu.Mods;
-using NuGet.Protocol;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Newtonsoft.Json;
-using System;
 
 namespace Bot_Menu.Controllers
 {
@@ -109,6 +105,20 @@ namespace Bot_Menu.Controllers
         {
             return View();
         }
+
+
+        public IActionResult SimpleFilter()
+        {
+            return View();
+        }
+
+        public IActionResult PickupFilter()
+        {
+
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

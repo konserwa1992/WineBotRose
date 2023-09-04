@@ -1,15 +1,12 @@
 ﻿using CodeInject.Actors;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CodeInject.PickupFilters
 {
     public class QuickFilter : IFilter
     {
-        private List<ItemType> pickTypeList = new List<ItemType>();
+        public List<ItemType> pickTypeList { get; private set; } = new List<ItemType>();
 
         public QuickFilter() { }
 

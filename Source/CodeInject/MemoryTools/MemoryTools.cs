@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CodeInject.MemoryTools
 {
@@ -78,6 +75,15 @@ namespace CodeInject.MemoryTools
               IntPtr nextInstructionAddres = new IntPtr(Addresses.Value.ToInt64() + pattern.Split(' ').Length);
               int* jumpOffset = (int*)new IntPtr(nextInstructionAddres.ToInt64() - 4).ToPointer();
               return new IntPtr((Addresses.Value.ToInt64() + (long)(pattern.Split(' ')).Length) + (long)*jumpOffset);
+        }
+
+
+        public static IntPtr? GetFunctionAddress(string functionBeginPattern)
+        {
+
+            IntPtr? Addresses = GetSignatureAddreses(functionBeginPattern);
+
+            return Addresses;
         }
 
 

@@ -1,11 +1,8 @@
 ﻿using CodeInject.WebServ.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CodeInject.Actors
 {
@@ -21,6 +18,8 @@ namespace CodeInject.Actors
         public short* MaxHp { get; set; }
         public int* modelNaME { get; set; }
 
+        public string* Name { get; set; }
+
         public NPC(long* Entry)
         {
             try//Walk around for error TODO:Fix it
@@ -35,6 +34,8 @@ namespace CodeInject.Actors
                     ID = (int*)(*((long*)(*Entry + 0x20)));
                 Hp = (short*)(*Entry + 0xE8);
                 MaxHp = (short*)(*Entry + 0xF0);
+
+                Name = (string*)(*Entry + 0xb10);
 
                 Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
             }catch (Exception) { }
@@ -70,7 +71,10 @@ namespace CodeInject.Actors
 
         public override string ToString()
         {
-            return $"{(*ID).ToString("X")} {(Info != null ? Info.Name :"Unknow")}";
+            if(Info != null)
+              return $"[{(*ID).ToString("X")}] {Info.Name}";
+            else
+              return $"[{(*ID).ToString("X")}] {Marshal.PtrToStringAnsi(new IntPtr(Name))}";
         }
     }
 }

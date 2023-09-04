@@ -9,40 +9,42 @@ using System.Windows.Forms;
 using WebSocketSharp.Server;
 using static CodeInject.WebSocketServices;
 
+
+
 namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
         ItemExecutor mp;
         ItemExecutor hp;
-        WebSocketServer server = new WebSocketServer("ws://localhost:8080");
+        WebSocketServer server;
 
 
+
+        private void SetupWebSocketServer(int port = 8080)
+        {
+             server = new WebSocketServer($"ws://localhost:{port}");
+
+            server.AddWebSocketService<MyWebSocketService>("/CharacterInfo");
+            server.AddWebSocketService<AutoPotionService>("/AutoPotion");
+            server.AddWebSocketService<NPCService>("/NpcList");
+            server.AddWebSocketService<SkillService>("/SkillList");
+            server.AddWebSocketService<PickUpFilterService>("/Filter");
+
+            server.Start();
+        }
 
         public cBot()
         {
             InitializeComponent();
- 
-
-            server.AddWebSocketService<MyWebSocketService>("/CharacterInfo");
-            server.AddWebSocketService<AutoPotionService>("/AutoPotion");
-            server.AddWebSocketService<NPCService>("/NpcList"); 
-                 server.AddWebSocketService<SkillService>("/SkillList");
-
-            server.Start();
+            SetupWebSocketServer();
         }
 
 
 
         private  void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lUseSkill.SelectedItem = lUseSkill.Items[new Random().Next(0, lUseSkill.Items.Count-1)];
-
-            int skillIndex = PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == ((Skills)lUseSkill.SelectedItem).skillInfo.ID);
-
-            GameFunctionsAndObjects.Actions.Attack(*((NPC)lNPClist.SelectedItem).ID,
-                skillIndex
-                );
+            MessageBox.Show($"{((long)((NPC)lNPClist.SelectedItem).ObjectPointer).ToString("X")}");
         }
 
         private void bSkillRefresh_Click(object sender, EventArgs e)

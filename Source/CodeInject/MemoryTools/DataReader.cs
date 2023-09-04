@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
@@ -42,7 +40,7 @@ namespace CodeInject.MemoryTools
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x13b050), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x13b280), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
         }
 
         /// <summary>
@@ -53,7 +51,8 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x11b5740);
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x11ba820);
+
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)//OBS#S2
             {
@@ -201,8 +200,6 @@ namespace CodeInject.MemoryTools
 
             return itemList;
         }
-
-
 
         public Int64 GetItemPointer(ushort index)
         {

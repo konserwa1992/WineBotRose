@@ -4,12 +4,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebSocketSharp.Server;
 using WebSocketSharp;
 using CodeInject.WebServ.Models;
-using CodeInject.WineBot;
+using CodeInject.PickupFilters;
+using CodeInject.WebServ.Models.PickUpFilter;
 
 namespace CodeInject
 {
@@ -53,18 +52,19 @@ namespace CodeInject
             protected override void OnMessage(MessageEventArgs e)
             {
 
-                if (e.Data.Contains("setSkills") )
+                if (e.Data.Contains("setSkills"))
                 {
                     SetSkills newSkillSet = JsonConvert.DeserializeObject<SetSkills>(e.Data);
 
                     WineBot.WineBot.Instance.BotSkills.RemoveAll(x => 1 == 1);
 
-                    foreach(int skillId in newSkillSet.setSkills)
+                    foreach (int skillId in newSkillSet.setSkills)
                     {
                         WineBot.WineBot.Instance.BotSkills.Add(Skills.GetSkillByID(skillId));
                     }
                 }
-                else {
+                else
+                {
                     PlayerSkillModel skillsList = new PlayerSkillModel();
                     foreach (Skills singleSkill in PlayerCharacter.GetPlayerSkills)
                     {
@@ -79,6 +79,23 @@ namespace CodeInject
                 }
             }
         }
+
+
+        public class PickUpFilterService : WebSocketBehavior
+        {
+            protected override void OnMessage(MessageEventArgs e)
+            {
+
+                var pickUpFilter = new SimpleFilterModel()
+                {
+                    Name = "Simple",
+                    Filter = (QuickFilter)WineBot.WineBot.Instance.filter
+                };
+
+                Send($"{JsonConvert.SerializeObject((object)pickUpFilter)}");
+            }
+        }
+
 
         public class AutoPotionService : WebSocketBehavior
         {
@@ -104,7 +121,7 @@ namespace CodeInject
                     }
 
 
-                    if(WineBot.WineBot.Instance.AutoHp == null || WineBot.WineBot.Instance.AutoMp==null)
+                    if (WineBot.WineBot.Instance.AutoHp == null || WineBot.WineBot.Instance.AutoMp == null)
                     {
                         Send(JsonConvert.SerializeObject(new AutoPotionSettings()
                         {
@@ -113,7 +130,7 @@ namespace CodeInject
                             MinMana = 0,
                             HealthItemIndex = 0,
                             ManaItemIndex = 0,
-                            HelathDurration =0,
+                            HelathDurration = 0,
                             ManaDurration = 0
                         }));
                         return;
@@ -125,7 +142,7 @@ namespace CodeInject
                         ItemsList = ItemToSend,
                         MinHelath = WineBot.WineBot.Instance.AutoHp.MinValueToExecute,
                         MinMana = WineBot.WineBot.Instance.AutoMp.MinValueToExecute,
-                        HealthItemIndex = ItemToSend.FindIndex(x=>x.Id== (long)WineBot.WineBot.Instance.AutoHp.Item2Cast.ObjectPointer),
+                        HealthItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoHp.Item2Cast.ObjectPointer),
                         ManaItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoMp.Item2Cast.ObjectPointer),
                         HelathDurration = WineBot.WineBot.Instance.AutoHp.ColdDown,
                         ManaDurration = WineBot.WineBot.Instance.AutoMp.ColdDown
@@ -136,7 +153,7 @@ namespace CodeInject
                     dynamic setPotion = JsonConvert.DeserializeObject<dynamic>(e.Data);
                     InvItem[] items = WineBot.WineBot.Instance.UpdateConsumeList().ToArray();
 
-                    WineBot.WineBot.Instance.SetAutoHPpotion((int)setPotion.procHelath,(int)setPotion.hpItemDurr, items[(int)setPotion.hpItemIndex]);
+                    WineBot.WineBot.Instance.SetAutoHPpotion((int)setPotion.procHelath, (int)setPotion.hpItemDurr, items[(int)setPotion.hpItemIndex]);
                     WineBot.WineBot.Instance.SetAutoMPpotion((int)setPotion.procMana, (int)setPotion.mpItemDurr, items[(int)setPotion.mpItemIndex]);
                 }
             }

@@ -63,7 +63,6 @@
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.cAdvanceEnable = new System.Windows.Forms.CheckBox();
             this.bAdvancedFilter = new System.Windows.Forms.Button();
             this.SimpleFilterGroup = new System.Windows.Forms.GroupBox();
@@ -80,7 +79,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tMpDurr = new System.Windows.Forms.TextBox();
@@ -94,6 +93,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -103,6 +110,8 @@
             this.SimpleFilterGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -369,6 +378,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.bSkillRemove);
             this.tabPage2.Controls.Add(this.bSkillAdd);
             this.tabPage2.Controls.Add(this.lUseSkill);
@@ -388,7 +398,7 @@
             this.bSkillRemove.Name = "bSkillRemove";
             this.bSkillRemove.Size = new System.Drawing.Size(42, 23);
             this.bSkillRemove.TabIndex = 6;
-            this.bSkillRemove.Text = "<";
+            this.bSkillRemove.Text = "-";
             this.bSkillRemove.UseVisualStyleBackColor = true;
             this.bSkillRemove.Click += new System.EventHandler(this.bSkillRemove_Click);
             // 
@@ -398,7 +408,7 @@
             this.bSkillAdd.Name = "bSkillAdd";
             this.bSkillAdd.Size = new System.Drawing.Size(42, 23);
             this.bSkillAdd.TabIndex = 5;
-            this.bSkillAdd.Text = ">";
+            this.bSkillAdd.Text = "+";
             this.bSkillAdd.UseVisualStyleBackColor = true;
             this.bSkillAdd.Click += new System.EventHandler(this.bSkillAdd_Click);
             // 
@@ -430,7 +440,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.cAdvanceEnable);
             this.tabPage3.Controls.Add(this.bAdvancedFilter);
             this.tabPage3.Controls.Add(this.SimpleFilterGroup);
@@ -443,16 +452,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(315, 237);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // cAdvanceEnable
             // 
@@ -596,7 +595,7 @@
             this.tPickupRadius.Name = "tPickupRadius";
             this.tPickupRadius.Size = new System.Drawing.Size(100, 20);
             this.tPickupRadius.TabIndex = 4;
-            this.tPickupRadius.Text = "10,0";
+            this.tPickupRadius.Text = "10";
             // 
             // groupBox2
             // 
@@ -619,7 +618,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button3);
+            this.tabPage5.Controls.Add(this.pictureBox1);
             this.tabPage5.Controls.Add(this.label11);
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Controls.Add(this.tMpDurr);
@@ -638,15 +637,16 @@
             this.tabPage5.Text = "Auto-Potion";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // pictureBox1
             // 
-            this.button3.Location = new System.Drawing.Point(352, 246);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::CodeInject.Properties.Resources.gluten_free;
+            this.pictureBox1.Location = new System.Drawing.Point(136, 164);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(354, 331);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // label11
             // 
@@ -755,16 +755,90 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.listBox2);
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.listBox1);
+            this.groupBox4.Location = new System.Drawing.Point(6, 203);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(390, 249);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Healer";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(128, 134);
+            this.listBox1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 169);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(73, 169);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(61, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "-";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(219, 169);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(301, 169);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Remove";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(219, 19);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(157, 108);
+            this.listBox2.TabIndex = 10;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(219, 133);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(157, 20);
+            this.textBox1.TabIndex = 11;
+            // 
             // cBot
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(502, 522);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "cBot";
-            this.Text = "WineBot RoseOnline (20230811)";
+            this.Text = "WineBot RoseOnline (20230829)";
             this.Load += new System.EventHandler(this.cBot_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -780,6 +854,9 @@
             this.groupBox2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -847,8 +924,15 @@
         private System.Windows.Forms.CheckBox cFilterShield;
         private System.Windows.Forms.Button bAdvancedFilter;
         private System.Windows.Forms.CheckBox cAdvanceEnable;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

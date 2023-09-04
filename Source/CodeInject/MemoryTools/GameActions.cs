@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace CodeInject.MemoryTools
 {
@@ -16,11 +12,14 @@ namespace CodeInject.MemoryTools
         private delegate void UseIcoItemAction(long* IcoAdr);
         private delegate void UseQuickAction(long cQuickBarAddr, int key);
         private delegate void UseItemAction(long itemAdr);
+        private delegate void NormalAttack(long networkClass,int enemy);
+
 
         private UseIcoItemAction UseIcpItemFunc;
         private UseItemAction UseItemFunc;
         private PickUpAction PickUpFunc;
         private AttackWithSkillAction AttackWithSkillFunc;
+        private NormalAttack NormalAttackFunc;
         private UseQuickAction QuickActionFunc;
         private long BaseAddres;
         private long BaseNetworkClass;
@@ -34,9 +33,10 @@ namespace CodeInject.MemoryTools
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
             BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();
             QuickActionFunc = (UseQuickAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x87c4), typeof(UseQuickAction));
-            UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x13A870), typeof(UseItemAction)); //MSG#INV5 
+            UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 
             PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ?? 45 33 C9 44 8B 47 38 48 81 C1 B8 16 00 00 48 8B D7 E8 ?? ?? ?? ??"), typeof(PickUpAction)); //MSG#INV4
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
+            NormalAttackFunc = (NormalAttack)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x3768C),typeof(NormalAttack));
         }
 
         public void PickUp(ushort ItemID)
@@ -52,6 +52,11 @@ namespace CodeInject.MemoryTools
         public void Attack(int TargedID, int SkillIndex)
         {
             AttackWithSkillFunc(SkillIndex, TargedID, 0);
+        }
+
+        public void Attack(int TargedID)
+        {
+            NormalAttackFunc((*(long*)(BaseNetworkClass) + 0x16b8), TargedID);
         }
 
         /// <summary>

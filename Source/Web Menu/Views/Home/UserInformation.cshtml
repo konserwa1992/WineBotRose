@@ -4,7 +4,8 @@
 *@
 
     <div class="info">
-    <p>Name: <b>@Model.Name</b></p>
+    <p class="actor-names">Name: <b>@Model.Name</b></p>
+    <p>HP: @Model.Hp / @Model.MaxHp</p>
         <div class="progress-bar">
         <div class="progress" style="width: @Model.getPrecHP()%"></div>
         </div>
@@ -17,7 +18,7 @@
         </div>
     </div>
 
-<p>Position:  <pre class="tab1">X: @(Model.X / 100)</br>Y: @(Model.Y / 100)</br>Z: @(Model.Z / 100)</pre></p><br />
+<pre class="tab1"><p>Position:  <br />X: @(Model.X / 100)</br>Y: @(Model.Y / 100)</br>Z: @(Model.Z / 100)</p></pre>
 
-<p>Position:  <pre class="tab1">Buffs :@Model.BuffCount</pre></p>
+<pre class="tab1">Buffs :@Model.BuffCount</pre>
 

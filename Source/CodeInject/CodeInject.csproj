@@ -81,10 +81,17 @@
     <Compile Include="ItemExecutor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Skills.cs" />
     <Compile Include="WebServ\Models\AutoPotionSettings.cs" />
     <Compile Include="WebServ\Models\ItemModel.cs" />
     <Compile Include="WebServ\Models\NPCModel.cs" />
+    <Compile Include="WebServ\Models\PickUpFilter\IPickupFilterModel.cs" />
+    <Compile Include="WebServ\Models\PickUpFilter\SimpleFilterModel.cs" />
     <Compile Include="WebServ\Models\SetSkills.cs" />
     <Compile Include="WebServ\Models\SkillModel.cs" />
     <Compile Include="WebSocketServices.cs" />
@@ -97,8 +104,13 @@
     <EmbeddedResource Include="cBot.resx">
       <DependentUpon>cBot.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="CopyToRose\ArmItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -128,6 +140,8 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\gluten free.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

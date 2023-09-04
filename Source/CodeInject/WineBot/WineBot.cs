@@ -3,10 +3,8 @@ using CodeInject.MemoryTools;
 using CodeInject.PickupFilters;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CodeInject.WineBot
 {
@@ -42,21 +40,31 @@ namespace CodeInject.WineBot
 
         public List<InvItem> UpdateConsumeList()
         {
-            List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
+            List<IntPtr> itemsAddrs = GameFunctionsAndObjects.DataFetch.getInventoryItems();
+            List<InvItem> invDescriptions = new List<InvItem>();
 
-            foreach (IntPtr item in items)
+            foreach (IntPtr item in itemsAddrs)
             {
                 if (item.ToInt64() != 0x0)
                 {
                     InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
-
-
-                    if (*inv.ItemType == 0xA)
-                    {
-                        ConsumeItems.Add(inv);
-                    }
+                    invDescriptions.Add(inv);
                 }
             }
+
+            //ADD NEW
+            foreach (InvItem item in invDescriptions)
+            {
+                if (*item.ItemType == 0xA && !ConsumeItems.Any(x=>(long)x.ObjectPointer==(long)item.ObjectPointer))
+                {
+                   ConsumeItems.Add(item);
+                }
+            }
+
+
+            //REMOVE OLD
+            ConsumeItems.RemoveAll(a => !invDescriptions.Any(b => (long)b.ObjectPointer == (long)a.ObjectPointer));
+
 
             return ConsumeItems;
         }
@@ -66,7 +74,6 @@ namespace CodeInject.WineBot
    
             AutoHp = new ItemExecutor(colddawn, minHelathProc, item);
         }
-
 
         public void SetAutoMPpotion(int minManaProc, int colddawn, InvItem item)
         {
@@ -86,11 +93,22 @@ namespace CodeInject.WineBot
 
             if (this.NpcAround.Count > 0)
             {
-                this.Target = this.NpcAround[0];
-                Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
-                GameFunctionsAndObjects.Actions.Attack(*this.Target.ID,
-                    PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == Skill2Cast.skillInfo.ID)
-                    );
+                this.Target = this.NpcAround.FirstOrDefault(x=>*(((NPC)x).Hp)>0);
+
+                if (this.Target != null)
+                {
+                    if (this.BotSkills.Count > 0)
+                    {
+                        Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
+
+
+                        GameFunctionsAndObjects.Actions.Attack(*this.Target.ID,
+                            PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == Skill2Cast.skillInfo.ID)
+                            );
+                    }
+
+                    GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
+                }
             }
         }
 
