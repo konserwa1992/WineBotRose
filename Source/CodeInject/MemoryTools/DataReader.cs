@@ -40,7 +40,7 @@ namespace CodeInject.MemoryTools
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x13b280), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x1448c0), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x11ba820);
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x12142f0);
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)//OBS#S2
@@ -81,7 +81,7 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public IObject GetObject<T>(int ID)
         {
-            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (ID * 8) + 0x22078); //OBS#N3
+            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (ID * 8) + 0x22080); //OBS#N3
 
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
@@ -104,7 +104,7 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public Player GetPlayer()
         {
-            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);
+            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);
             int* monsterIDList = (int*)*wsp;
 
             return (Player)GetObject<Player>(*monsterIDList);
@@ -118,9 +118,10 @@ namespace CodeInject.MemoryTools
         {
 
             List<IObject> wholeNpcList = new List<IObject>();
-            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22050);//OBS#S3
+            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);//OBS#S3
             int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A078);//OBS#S4
+            int i2 = 1;
+            int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A080);//OBS#S4
 
             for (int i = 0; i < *count; i++)
             {

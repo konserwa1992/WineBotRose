@@ -1,4 +1,4 @@
-﻿@model SkillsListsModel
+﻿@model CodeInject.WebServ.Models.PlayerSkillModel
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -10,7 +10,7 @@
 
     @foreach (var item in Model.UnUsedSkillList)
     {
-        <option value='@item.Id'>@item.Name</option>
+        <option value='@item.ID'>@item.Name</option>
        
     }
         </select>
@@ -18,13 +18,13 @@
     <select id="S2" multiple class="form-control form-control-sm" onclick="DeSelectValues();" style="height:90px; width:40%; min-width:400px; font-size:8pt; text-align:left;">
     @foreach (var item in Model.SkillInUseList)
     {
-        <option value='@item.Id'>@item.Name</option>
+                <option value='@item.ID'>@item.Name</option>
 
     }
         </select>
     </div>
 </div>
-
+<br />
 <button multiple class="form-control form-control-sm" onclick="SetSkills()">Confirm</button>
 
 <script>

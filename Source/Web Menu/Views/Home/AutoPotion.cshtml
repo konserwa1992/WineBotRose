@@ -1,4 +1,4 @@
-﻿@model AutoPotionSettings
+﻿@model CodeInject.WebServ.Models.AutoPotionSettings
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -46,7 +46,8 @@
         }
         </select>       <input id="ManaPotionDurration" value="@Model.ManaDurration" type="number" />
         </div>
-    <button type="button" id="submitButton">Wyślij</button>
+        <br />
+    <button type="button" id="submitButton" multiple class="form-control form-control-sm" onclick="SetSkills()">Confirm</button>
 </form>
 
 

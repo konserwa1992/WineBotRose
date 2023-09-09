@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeInject.Actors;
+using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -36,7 +37,7 @@ namespace CodeInject.MemoryTools
             UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 
             PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ?? 45 33 C9 44 8B 47 38 48 81 C1 B8 16 00 00 48 8B D7 E8 ?? ?? ?? ??"), typeof(PickUpAction)); //MSG#INV4
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
-            NormalAttackFunc = (NormalAttack)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x3768C),typeof(NormalAttack));
+            NormalAttackFunc = (NormalAttack)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x3920c),typeof(NormalAttack));
         }
 
         public void PickUp(ushort ItemID)
@@ -49,9 +50,17 @@ namespace CodeInject.MemoryTools
         /// </summary>
         /// <param name="TargedID"></param>
         /// <param name="SkillIndex"></param>
-        public void Attack(int TargedID, int SkillIndex)
+        /// 
+        public void CastSpell(int TargedID, int SkillIndex)
         {
             AttackWithSkillFunc(SkillIndex, TargedID, 0);
+        }
+
+        public void CastSpell(int SkillIndex)
+        {
+            IObject player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+
+            AttackWithSkillFunc(SkillIndex, *player.ID, 0);
         }
 
         public void Attack(int TargedID)

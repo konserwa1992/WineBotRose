@@ -4,7 +4,8 @@ using CodeInject.PickupFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CodeInject.WineBot
 {
@@ -13,7 +14,8 @@ namespace CodeInject.WineBot
         public static WineBot Instance { get; private set; } = new WineBot();
 
         public List<IObject> NpcAround = new List<IObject>();
-        public List<Skills> BotSkills = new List<Skills>(); //Skills what gonna be used by bot
+        public List<Skills> BotSkills = new List<Skills>(); //Skills what gonna be used on monsters
+        public List<Skills> BotBuffs = new List<Skills>(); //Buffs
         public List<InvItem> ConsumeItems = new List<InvItem>();
         public List<IObject> ItemAround = new List<IObject>();
 
@@ -100,16 +102,26 @@ namespace CodeInject.WineBot
                     if (this.BotSkills.Count > 0)
                     {
                         Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
-
-
-                        GameFunctionsAndObjects.Actions.Attack(*this.Target.ID,
-                            PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == Skill2Cast.skillInfo.ID)
-                            );
+                        GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
                     }
 
                     GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
                 }
             }
+        }
+
+        public unsafe void UseBuffs()
+        {
+            foreach (Skills skill in BotBuffs)
+            {
+                    GameFunctionsAndObjects.Actions.CastSpell(GetSkillIndex(skill.skillInfo.ID));
+                    Thread.Sleep(1250);
+            }
+        }
+
+        private int GetSkillIndex(int SkillID)
+        {
+            return PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == SkillID);
         }
 
         public void AutoPotionFunction(int minHpp,int minMpp)

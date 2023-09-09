@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CodeInject.WebServ.Models.PickUpFilter
 {
-    internal interface IPickupFilterModel
+    public  interface IPickupFilterModel
     {
         string Name { get; set; }
         object Filter { get; set; }

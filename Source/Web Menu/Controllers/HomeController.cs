@@ -60,9 +60,9 @@ namespace Bot_Menu.Controllers
         {
             pl.Update();
             if (pl.NPCList != "")
-                return PartialView(JsonConvert.DeserializeObject<List<NpcViewModel>>(pl.NPCList));
+                return PartialView(JsonConvert.DeserializeObject<List<CodeInject.WebServ.Models.NPCModel>>(pl.NPCList));
             else
-                return PartialView(new List<NpcViewModel>());
+                return PartialView(new List<CodeInject.WebServ.Models.NPCModel>());
         }
 
         public class SelectedValuesModel
@@ -74,7 +74,7 @@ namespace Bot_Menu.Controllers
         public IActionResult UseSkillConfirm([FromBody] List<int> selectedValues)
         {
      
-            pl.webSkillSocket.Send(JsonConvert.SerializeObject(new SetSkills()
+            pl.webSkillSocket.Send(JsonConvert.SerializeObject(new CodeInject.WebServ.Models.SetSkills()
             {
                 setSkills = selectedValues
             }));
@@ -98,7 +98,7 @@ namespace Bot_Menu.Controllers
             if (pl.AttackedNpc!=null)
                 return PartialView(pl.AttackedNpc);
             else
-                return PartialView(new NpcViewModel());
+                return PartialView(new CodeInject.WebServ.Models.NPCModel());
         }
 
         public IActionResult Privacy()
@@ -109,7 +109,7 @@ namespace Bot_Menu.Controllers
 
         public IActionResult SimpleFilter()
         {
-            return View();
+            return View(pl.PickupFilter);
         }
 
         public IActionResult PickupFilter()

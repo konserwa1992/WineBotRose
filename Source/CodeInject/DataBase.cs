@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-
+using System.Linq;
 
 namespace CodeInject
 {
@@ -97,6 +98,8 @@ namespace CodeInject
         public List<MaterialItemsInfo> MaterialItemsDatabase = new List<MaterialItemsInfo>();
 
 
+
+
         public List<T> GetList<T>() where T : class
         {
             if(typeof(T) == typeof(MobInfo))
@@ -133,6 +136,7 @@ namespace CodeInject
             LoadFootDataBase();
             LoadShieldItemDataBase();
             LoadMaterialItemDataBase();
+
         }
 
 

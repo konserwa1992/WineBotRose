@@ -1,6 +1,9 @@
 ﻿
 using Bot_Menu.Models;
 using Newtonsoft.Json;
+using CodeInject.WebServ.Models;
+using CodeInject.PickupFilters;
+using CodeInject.WebServ.Models.PickUpFilter;
 
 namespace Bot_Menu.Mods
 {
@@ -13,11 +16,13 @@ namespace Bot_Menu.Mods
 
         public WebSocketSharp.WebSocket webPickUpSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/Filter");
 
-        public NpcViewModel AttackedNpc {  get; set; }
+        public NPCModel AttackedNpc {  get; set; }
 
         public PlayerInfoViewModel CharacterInfoJson { get; set; }
         public AutoPotionSettings AutoPotionSettings { get; set; } = new AutoPotionSettings();
-        public SkillsListsModel Skills { get; set; } = new SkillsListsModel();
+        public PlayerSkillModel Skills { get; set; } = new PlayerSkillModel();
+        public IPickupFilterModel PickupFilter { get; set; }
+
         public string NPCList { get; set; } = "";
 
         public PlayerInfo() {
@@ -44,7 +49,7 @@ namespace Bot_Menu.Mods
                 if(e.Data.Contains("AttackedNPC"))
                 {
                     dynamic obj = JsonConvert.DeserializeObject<dynamic>(e.Data);
-                    AttackedNpc = new NpcViewModel()
+                    AttackedNpc = new NPCModel()
                     { 
                         Hp = obj.AttackedNPC.Hp, 
                         X = obj.AttackedNPC.X,
@@ -63,7 +68,7 @@ namespace Bot_Menu.Mods
 
             webSkillSocket.OnMessage += (sender, e) =>
             {
-                this.Skills = JsonConvert.DeserializeObject<SkillsListsModel>(e.Data);
+                this.Skills = JsonConvert.DeserializeObject<PlayerSkillModel>(e.Data);
             };
 
 
@@ -73,7 +78,7 @@ namespace Bot_Menu.Mods
 
             webPickUpSocket.OnMessage += (sender, e) =>
             {
-                Console.WriteLine(e.Data);
+                PickupFilter = JsonConvert.DeserializeObject<SimpleFilterModel>(e.Data);
             };
             webPickUpSocket.Connect();
         }

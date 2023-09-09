@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace CodeInject.Actors
@@ -43,7 +44,13 @@ namespace CodeInject.Actors
 
         public double CalcDistance(IObject actor)
         {
-            return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
+            try//Walk around for error TODO:Fix it. Sometime getting null reference, i belive we talk  about this.position .
+            {
+                return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
+            }catch(Exception) {
+            
+            }
+            return 0;
         }
 
 

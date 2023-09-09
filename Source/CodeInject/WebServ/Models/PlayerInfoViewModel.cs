@@ -1,10 +1,14 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Bot_Menu.Models
+namespace CodeInject.WebServ.Models
 {
     public class PlayerInfoViewModel
     {
-        public int Hp=0;
+        public int Hp = 0;
         public int MaxHp = 0;
         public int Mp = 0;
         public int MaxMp = 0;
@@ -16,7 +20,7 @@ namespace Bot_Menu.Models
 
         public string getPrecMP()
         {
-            return $"{((float)Mp) * 100.0f / ((float)MaxMp)}".Replace(",",".");
+            return $"{((float)Mp) * 100.0f / ((float)MaxMp)}".Replace(",", ".");
         }
         public string getPrecHP()
         {

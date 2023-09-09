@@ -89,7 +89,7 @@ namespace CodeInject
                 var pickUpFilter = new SimpleFilterModel()
                 {
                     Name = "Simple",
-                    Filter = (QuickFilter)WineBot.WineBot.Instance.filter
+                    Filter = ((QuickFilter)WineBot.WineBot.Instance.filter).pickTypeList
                 };
 
                 Send($"{JsonConvert.SerializeObject((object)pickUpFilter)}");

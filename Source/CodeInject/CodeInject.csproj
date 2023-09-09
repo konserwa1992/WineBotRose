@@ -92,6 +92,7 @@
     <Compile Include="WebServ\Models\NPCModel.cs" />
     <Compile Include="WebServ\Models\PickUpFilter\IPickupFilterModel.cs" />
     <Compile Include="WebServ\Models\PickUpFilter\SimpleFilterModel.cs" />
+    <Compile Include="WebServ\Models\PlayerInfoViewModel.cs" />
     <Compile Include="WebServ\Models\SetSkills.cs" />
     <Compile Include="WebServ\Models\SkillModel.cs" />
     <Compile Include="WebSocketServices.cs" />

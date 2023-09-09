@@ -1,6 +1,7 @@
 ﻿using CodeInject.Actors;
 using CodeInject.MemoryTools;
 using CodeInject.PickupFilters;
+using CodeInject.WineBot;
 using System;
 using System.Data;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace CodeInject
         public cBot()
         {
             InitializeComponent();
-            SetupWebSocketServer();
+          //  SetupWebSocketServer();
         }
 
 
@@ -182,6 +183,10 @@ namespace CodeInject
         {
             pickUpTimer.Enabled = !pickUpTimer.Enabled;
             timer2.Enabled = !timer2.Enabled;
+
+            BuffTimer.Enabled = !BuffTimer.Enabled;
+
+            WineBot.WineBot.Instance.UseBuffs();
 
             bHuntToggle.Text = timer2.Enabled == true ? "STOP" : "START";
 
@@ -338,7 +343,41 @@ namespace CodeInject
 
         private void cBot_Load(object sender, EventArgs e)
         {
+        //    MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer).ToString("X"));
+        }
 
+        private void lSkillList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bBuffAdd_Click(object sender, EventArgs e)
+        {
+            if (!lUseBuffs.Items.Cast<Skills>().Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
+                lUseBuffs.Items.Add(lSkillList.SelectedItem);
+
+
+            if (!WineBot.WineBot.Instance.BotBuffs.Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
+            {
+                WineBot.WineBot.Instance.BotBuffs.Add((Skills)lSkillList.SelectedItem);
+            }
+
+            lUseBuffs.Items.Clear();
+            lUseBuffs.Items.AddRange(WineBot.WineBot.Instance.BotBuffs.ToArray());
+        }
+
+        private void bBuffRemove_Click(object sender, EventArgs e)
+        {
+            if (lUseBuffs.SelectedItem != null)
+                WineBot.WineBot.Instance.BotBuffs.Remove((Skills)lUseBuffs.SelectedItem);
+
+            lUseBuffs.Items.Clear();
+            lUseBuffs.Items.AddRange(WineBot.WineBot.Instance.BotBuffs.ToArray());
+        }
+
+        private void BuffTimer_Tick(object sender, EventArgs e)
+        {
+            WineBot.WineBot.Instance.UseBuffs();
         }
     }
 }

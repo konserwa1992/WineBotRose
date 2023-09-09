@@ -57,6 +57,20 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lNPClist = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.bBuffRemove = new System.Windows.Forms.Button();
+            this.bBuffAdd = new System.Windows.Forms.Button();
+            this.lUseBuffs = new System.Windows.Forms.ListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.bSkillRemove = new System.Windows.Forms.Button();
             this.bSkillAdd = new System.Windows.Forms.Button();
             this.lUseSkill = new System.Windows.Forms.ListBox();
@@ -93,25 +107,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BuffTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SimpleFilterGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -378,6 +385,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.bBuffRemove);
+            this.tabPage2.Controls.Add(this.bBuffAdd);
+            this.tabPage2.Controls.Add(this.lUseBuffs);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.bSkillRemove);
             this.tabPage2.Controls.Add(this.bSkillAdd);
@@ -392,11 +405,142 @@
             this.tabPage2.Text = "Skill";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Character skills:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(177, 196);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Buff skills:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(177, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Attack skills:";
+            // 
+            // bBuffRemove
+            // 
+            this.bBuffRemove.Location = new System.Drawing.Point(249, 352);
+            this.bBuffRemove.Name = "bBuffRemove";
+            this.bBuffRemove.Size = new System.Drawing.Size(51, 23);
+            this.bBuffRemove.TabIndex = 10;
+            this.bBuffRemove.Text = "-";
+            this.bBuffRemove.UseVisualStyleBackColor = true;
+            this.bBuffRemove.Click += new System.EventHandler(this.bBuffRemove_Click);
+            // 
+            // bBuffAdd
+            // 
+            this.bBuffAdd.Location = new System.Drawing.Point(180, 352);
+            this.bBuffAdd.Name = "bBuffAdd";
+            this.bBuffAdd.Size = new System.Drawing.Size(51, 23);
+            this.bBuffAdd.TabIndex = 9;
+            this.bBuffAdd.Text = "+";
+            this.bBuffAdd.UseVisualStyleBackColor = true;
+            this.bBuffAdd.Click += new System.EventHandler(this.bBuffAdd_Click);
+            // 
+            // lUseBuffs
+            // 
+            this.lUseBuffs.FormattingEnabled = true;
+            this.lUseBuffs.Location = new System.Drawing.Point(180, 212);
+            this.lUseBuffs.Name = "lUseBuffs";
+            this.lUseBuffs.Size = new System.Drawing.Size(120, 134);
+            this.lUseBuffs.TabIndex = 8;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.listBox2);
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.listBox1);
+            this.groupBox4.Location = new System.Drawing.Point(321, 395);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(390, 249);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Healer";
+            this.groupBox4.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(219, 133);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(157, 20);
+            this.textBox1.TabIndex = 11;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(219, 19);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(157, 108);
+            this.listBox2.TabIndex = 10;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(301, 169);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Remove";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(219, 169);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(73, 169);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(61, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "-";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 169);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(128, 134);
+            this.listBox1.TabIndex = 5;
+            // 
             // bSkillRemove
             // 
-            this.bSkillRemove.Location = new System.Drawing.Point(132, 84);
+            this.bSkillRemove.Location = new System.Drawing.Point(249, 165);
             this.bSkillRemove.Name = "bSkillRemove";
-            this.bSkillRemove.Size = new System.Drawing.Size(42, 23);
+            this.bSkillRemove.Size = new System.Drawing.Size(51, 23);
             this.bSkillRemove.TabIndex = 6;
             this.bSkillRemove.Text = "-";
             this.bSkillRemove.UseVisualStyleBackColor = true;
@@ -404,9 +548,9 @@
             // 
             // bSkillAdd
             // 
-            this.bSkillAdd.Location = new System.Drawing.Point(132, 55);
+            this.bSkillAdd.Location = new System.Drawing.Point(180, 165);
             this.bSkillAdd.Name = "bSkillAdd";
-            this.bSkillAdd.Size = new System.Drawing.Size(42, 23);
+            this.bSkillAdd.Size = new System.Drawing.Size(51, 23);
             this.bSkillAdd.TabIndex = 5;
             this.bSkillAdd.Text = "+";
             this.bSkillAdd.UseVisualStyleBackColor = true;
@@ -415,14 +559,14 @@
             // lUseSkill
             // 
             this.lUseSkill.FormattingEnabled = true;
-            this.lUseSkill.Location = new System.Drawing.Point(180, 6);
+            this.lUseSkill.Location = new System.Drawing.Point(180, 25);
             this.lUseSkill.Name = "lUseSkill";
             this.lUseSkill.Size = new System.Drawing.Size(120, 134);
             this.lUseSkill.TabIndex = 4;
             // 
             // bSkillRefresh
             // 
-            this.bSkillRefresh.Location = new System.Drawing.Point(6, 146);
+            this.bSkillRefresh.Location = new System.Drawing.Point(6, 165);
             this.bSkillRefresh.Name = "bSkillRefresh";
             this.bSkillRefresh.Size = new System.Drawing.Size(120, 23);
             this.bSkillRefresh.TabIndex = 3;
@@ -433,10 +577,11 @@
             // lSkillList
             // 
             this.lSkillList.FormattingEnabled = true;
-            this.lSkillList.Location = new System.Drawing.Point(6, 6);
+            this.lSkillList.Location = new System.Drawing.Point(6, 25);
             this.lSkillList.Name = "lSkillList";
             this.lSkillList.Size = new System.Drawing.Size(120, 134);
             this.lSkillList.TabIndex = 2;
+            this.lSkillList.SelectedIndexChanged += new System.EventHandler(this.lSkillList_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -755,80 +900,10 @@
             this.pickUpTimer.Interval = 150;
             this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
-            // groupBox4
+            // BuffTimer
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.listBox2);
-            this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Controls.Add(this.button3);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.listBox1);
-            this.groupBox4.Location = new System.Drawing.Point(6, 203);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(390, 249);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Healer";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(128, 134);
-            this.listBox1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(73, 169);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(219, 169);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(301, 169);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Remove";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(219, 19);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(157, 108);
-            this.listBox2.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(219, 133);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 20);
-            this.textBox1.TabIndex = 11;
+            this.BuffTimer.Interval = 900000;
+            this.BuffTimer.Tick += new System.EventHandler(this.BuffTimer_Tick);
             // 
             // cBot
             // 
@@ -847,6 +922,9 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.SimpleFilterGroup.ResumeLayout(false);
@@ -855,8 +933,6 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -934,5 +1010,12 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lUseBuffs;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button bBuffRemove;
+        private System.Windows.Forms.Button bBuffAdd;
+        private System.Windows.Forms.Timer BuffTimer;
     }
 }

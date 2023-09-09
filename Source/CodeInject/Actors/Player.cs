@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CodeInject.WebServ.Models;
+using Newtonsoft.Json;
 using System;
 using System.Runtime.InteropServices;
 
@@ -56,8 +57,8 @@ namespace CodeInject.Actors
         public override string ToString()
         {
             string playerJson =
-                JsonConvert.SerializeObject(new
-                {
+                JsonConvert.SerializeObject(new PlayerInfoViewModel()
+                { 
                     Hp = *Hp,
                     MaxHp = *MaxHp,
                     Mp = *Mp,
