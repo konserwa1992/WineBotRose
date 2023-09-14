@@ -914,6 +914,7 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "Start";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label15
@@ -924,6 +925,7 @@
             this.label15.Size = new System.Drawing.Size(26, 13);
             this.label15.TabIndex = 1;
             this.label15.Text = "Port";
+            this.label15.Visible = false;
             // 
             // textBox4
             // 
@@ -931,6 +933,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 0;
+            this.textBox4.Visible = false;
             // 
             // timer2
             // 

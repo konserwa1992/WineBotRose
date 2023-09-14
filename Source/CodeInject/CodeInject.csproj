@@ -112,31 +112,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="CopyToRose\ArmItemList.json">
+    <None Include="data\ArmItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\BodyItemList.json">
+    <None Include="data\BodyItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\FootItemList.json">
+    <None Include="data\FootItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\MaterialItemList.json">
+    <None Include="data\MaterialItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\MonsterList.json">
+    <None Include="data\MonsterList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\ShieldItemList.json">
+    <None Include="data\ShieldItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\SkillList.json">
+    <None Include="data\SkillList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\UseItemList.json">
+    <None Include="data\UseItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CopyToRose\WeaponItemList.json">
+    <None Include="data\WeaponItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
