@@ -82,7 +82,7 @@ namespace CodeInject.Actors
                 case 0x08:
                     {
                         temp = DataBase.GameDataBase.WeaponItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0A:
@@ -100,24 +100,24 @@ namespace CodeInject.Actors
                 case 0x05:
                     {
                         temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x04:
                     {
                         temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
                 case 0x09:
                     {
                         temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0C:
                     {
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X")+" "+ temp.Name : "Unknow")}";
                     }
 
                 default:

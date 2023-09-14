@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Runtime.InteropServices;
-
+using System.Windows.Forms;
 
 namespace CodeInject.Actors
 {

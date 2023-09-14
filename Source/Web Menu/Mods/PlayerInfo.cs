@@ -11,9 +11,8 @@ namespace Bot_Menu.Mods
     {
         public WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/CharacterInfo");
         public WebSocketSharp.WebSocket webSocket2 = new WebSocketSharp.WebSocket("ws://localhost:8080/AutoPotion");
-        public  WebSocketSharp.WebSocket webSocket3 = new WebSocketSharp.WebSocket("ws://localhost:8080/NpcList");
+        public WebSocketSharp.WebSocket webSocket3 = new WebSocketSharp.WebSocket("ws://localhost:8080/NpcList");
         public WebSocketSharp.WebSocket webSkillSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/SkillList");
-
         public WebSocketSharp.WebSocket webPickUpSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/Filter");
 
         public NPCModel AttackedNpc {  get; set; }

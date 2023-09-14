@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
-    internal unsafe class DataReader
+    internal unsafe class dataReadr
     {
         /// <summary>
         /// Im not sure what kind of index is. Propobly some kind index of clickable object?
@@ -22,13 +23,11 @@ namespace CodeInject.MemoryTools
         private GetItemAdr getItemFunc;
         private GetInventoryItemDetailsAdr getInventoryItemDetailsFunc;
 
-        private long BaseAddres;
+        public long BaseAddres;
         private long GameBaseAddres;
 
 
-
-
-        public DataReader()
+        public dataReadr()
         {
             Init();
         }

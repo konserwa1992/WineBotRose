@@ -4,7 +4,10 @@ using CodeInject.PickupFilters;
 using CodeInject.WineBot;
 using System;
 using System.Data;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WebSocketSharp.Server;
@@ -19,7 +22,6 @@ namespace CodeInject
         ItemExecutor mp;
         ItemExecutor hp;
         WebSocketServer server;
-
 
 
         private void SetupWebSocketServer(int port = 8080)
@@ -38,14 +40,7 @@ namespace CodeInject
         public cBot()
         {
             InitializeComponent();
-          //  SetupWebSocketServer();
-        }
-
-
-
-        private  void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show($"{((long)((NPC)lNPClist.SelectedItem).ObjectPointer).ToString("X")}");
+            //  SetupWebSocketServer();
         }
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
@@ -115,9 +110,6 @@ namespace CodeInject
             }
         }
 
-
-
-
         private void pickUpTimer_Tick(object sender, EventArgs e)
         {
 
@@ -129,7 +121,6 @@ namespace CodeInject
             if (cPickUpEnable.Checked)
                 WineBot.WineBot.Instance.PickClosestItem();
         }
-
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -166,7 +157,7 @@ namespace CodeInject
             tZHuntArea.Text = (*player.Z).ToString();
         }
 
-
+ 
         private void cbHealHPItem_DropDown(object sender, EventArgs e)
         {
             cbHealHPItem.Items.Clear();
@@ -309,12 +300,6 @@ namespace CodeInject
             bAdvancedFilter.Enabled = cAdvanceEnable.Checked;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show(Marshal.PtrToStringAnsi(new IntPtr(GameFunctionsAndObjects.DataFetch.GetPlayer().Name)));
-            MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer).ToString("X"));
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             foreach (MobInfo mob in  lFullMonsterList.Items)
@@ -341,15 +326,12 @@ namespace CodeInject
             }
         }
 
-        private void cBot_Load(object sender, EventArgs e)
+        private unsafe void cBot_Load(object sender, EventArgs e)
         {
-        //    MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer).ToString("X"));
+            GameFunctionsAndObjects.Actions.Logger($"Hello.",Color.GreenYellow);
+            GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
         }
 
-        private void lSkillList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void bBuffAdd_Click(object sender, EventArgs e)
         {
@@ -379,5 +361,12 @@ namespace CodeInject
         {
             WineBot.WineBot.Instance.UseBuffs();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string path = MemoryTools.MemoryTools.GetModulePath("clrbootstrap").Substring(0,MemoryTools.MemoryTools.GetModulePath("clrbootstrap").LastIndexOf("\\"));
+            Process.Start(new ProcessStartInfo(path+ "WebMenu\\Release\\net7.0\\Web Menu.exe", textBox4.Text));
+        }
+
     }
 }

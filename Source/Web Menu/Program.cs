@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Hosting;
 using System.Reflection.PortableExecutable;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.WebHost.UseUrls("http://*:5000");
+WebSocketConfig.port = int.Parse(args[0]);
+
+builder.WebHost.UseUrls($"http://*:{args[1]}");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -30,3 +34,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+
+class WebSocketConfig
+{
+    public static int port;
+}

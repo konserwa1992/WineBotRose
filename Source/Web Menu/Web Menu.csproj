@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Bot_Menu</RootNamespace>
 <IsPackable>true</IsPackable>
+<BaseOutputPath>E:\Git projects\Rose\roseBot\bin\WebMenu</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

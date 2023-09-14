@@ -1,12 +1,29 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
     internal unsafe class MemoryTools
     {
+
+        public static string GetModulePath(string moduleName)
+        {
+            foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
+            {
+                if(module.FileName.ToUpper().Contains(moduleName.ToUpper()))
+                {
+                    return module.FileName;
+                }
+            }
+            return "NOT FOUND";
+        }
+
+
         public static IntPtr? GetSignatureAddreses(string pattern)
         {
             Process proc = Process.GetCurrentProcess();
