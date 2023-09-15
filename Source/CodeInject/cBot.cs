@@ -172,10 +172,12 @@ namespace CodeInject
 
         private void bHuntToggle_Click_1(object sender, EventArgs e)
         {
+          
             pickUpTimer.Enabled = !pickUpTimer.Enabled;
             timer2.Enabled = !timer2.Enabled;
-
             BuffTimer.Enabled = !BuffTimer.Enabled;
+
+            GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
 
             WineBot.WineBot.Instance.UseBuffs();
 

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
-    internal unsafe class dataReadr
+    internal unsafe class DataReader
     {
         /// <summary>
         /// Im not sure what kind of index is. Propobly some kind index of clickable object?
@@ -27,7 +27,7 @@ namespace CodeInject.MemoryTools
         private long GameBaseAddres;
 
 
-        public dataReadr()
+        public DataReader()
         {
             Init();
         }
