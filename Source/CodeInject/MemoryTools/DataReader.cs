@@ -1,4 +1,5 @@
 ﻿using CodeInject.Actors;
+using CodeInject.Party;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,10 +19,20 @@ namespace CodeInject.MemoryTools
         /// <param name="idObj"></param>
         /// <returns></returns>
         public delegate Int64 GetItemAdr(long arg1, int index);
+
         public delegate long GetInventoryItemDetailsAdr(long cItemAddr);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arg0"></param>
+        /// <param name="npcID">Its that same index as we have in INPcList in form</param>
+        /// <returns></returns>
+        public delegate long GetPartyMemberDetailsAdr(long arg0,short npcID);
 
         private GetItemAdr getItemFunc;
         private GetInventoryItemDetailsAdr getInventoryItemDetailsFunc;
+        private GetPartyMemberDetailsAdr getPartyMemberDetailsFunc;
 
         public long BaseAddres;
         private long GameBaseAddres;
@@ -40,6 +51,50 @@ namespace CodeInject.MemoryTools
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
             getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x1448c0), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
+        }
+
+
+
+        public IObject GetPartyMemberDetails(PartyMember member)
+        {
+            int partyMemberId = *(int*)(member.MemberAddres + 0x08);
+
+            long rcx = *(long*)(BaseAddres + 0x1217268);
+            short edx = *(short*)(rcx + partyMemberId * 2 + 0x0c); //so we multiply by 2 so partyMemberId should be short, we will see if its going to work
+
+            long addr = getPartyMemberDetailsFunc(rcx, edx);
+
+            
+
+            return new NPC(&addr);
+        }
+
+        public List<PartyMember> GetPartyMembersList()
+        {
+            long* PartyMemberDataAddres = (long*)*(long*)MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x0121A130, new short[] { 0x0, 0x10, 0x08 });
+
+            int partyMemberCount = *(int*)(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x121A170);
+
+            List<PartyMember> PartyMemberList = new List<PartyMember>();
+
+            for (int i = 0; i < partyMemberCount; i++)
+            {
+                long* currentMember = (long*)*PartyMemberDataAddres; //selecting member
+
+                PartyMember member = new PartyMember()
+                {
+                    MemberAddres = (long)currentMember,
+                    MemberName = Marshal.PtrToStringAnsi(new IntPtr((long)currentMember + 0x10)),
+                };
+
+                member.Details = GetPartyMemberDetails(member);
+
+                PartyMemberList.Add(member);
+                PartyMemberDataAddres++; //move to next member
+            }
+
+            return PartyMemberList;
         }
 
         /// <summary>

@@ -119,7 +119,7 @@ namespace CodeInject.WineBot
             }
         }
 
-        private int GetSkillIndex(int SkillID)
+        public int GetSkillIndex(int SkillID)
         {
             return PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == SkillID);
         }

@@ -114,6 +114,19 @@ namespace CodeInject
                 }
             }
 
+            if(cEnableHealParty.Checked)
+            {
+                int minProcHp = int.Parse(textBox1.Text);
+                foreach (PartyMember member in party.PartyMemberList)
+                {
+                    if (((float)*((NPC)member.Details).Hp / *((NPC)member.Details).MaxHp * 100) < minProcHp)
+                    {
+                        Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lHealSkills.Items[0]).skillInfo.ID);
+                        GameFunctionsAndObjects.Actions.CastSpell(*member.Details.ID, WineBot.WineBot.Instance.GetSkillIndex(Skill2Cast.skillInfo.ID));
+                    }
+                }
+            }
+
             if (cAutoPotionEnabled.Checked)
             {
                 WineBot.WineBot.Instance.AutoPotionFunction(int.Parse(tHPPotionUseProc.Text),int.Parse(tMPPotionUseProc.Text));
@@ -404,6 +417,12 @@ namespace CodeInject
         {
             party = new Party.Party();
             timerParty.Enabled = !timerParty.Enabled;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (!lHealSkills.Items.Cast<Skills>().Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
+                lHealSkills.Items.Add(lSkillList.SelectedItem);
         }
     }
 }

@@ -65,13 +65,9 @@
             this.bBuffAdd = new System.Windows.Forms.Button();
             this.lUseBuffs = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lHealSkills = new System.Windows.Forms.ListBox();
             this.bSkillRemove = new System.Windows.Forms.Button();
             this.bSkillAdd = new System.Windows.Forms.Button();
             this.lUseSkill = new System.Windows.Forms.ListBox();
@@ -113,13 +109,15 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.bPartyStart = new System.Windows.Forms.Button();
+            this.lPartyMembers = new System.Windows.Forms.ListBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.lPartyMembers = new System.Windows.Forms.ListBox();
             this.timerParty = new System.Windows.Forms.Timer(this.components);
-            this.bPartyStart = new System.Windows.Forms.Button();
+            this.cEnableHealParty = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -446,7 +444,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(177, 196);
+            this.label13.Location = new System.Drawing.Point(295, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 12;
@@ -455,7 +453,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(177, 9);
+            this.label12.Location = new System.Drawing.Point(150, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 13);
             this.label12.TabIndex = 11;
@@ -463,7 +461,7 @@
             // 
             // bBuffRemove
             // 
-            this.bBuffRemove.Location = new System.Drawing.Point(249, 352);
+            this.bBuffRemove.Location = new System.Drawing.Point(367, 165);
             this.bBuffRemove.Name = "bBuffRemove";
             this.bBuffRemove.Size = new System.Drawing.Size(51, 23);
             this.bBuffRemove.TabIndex = 10;
@@ -473,7 +471,7 @@
             // 
             // bBuffAdd
             // 
-            this.bBuffAdd.Location = new System.Drawing.Point(180, 352);
+            this.bBuffAdd.Location = new System.Drawing.Point(298, 165);
             this.bBuffAdd.Name = "bBuffAdd";
             this.bBuffAdd.Size = new System.Drawing.Size(51, 23);
             this.bBuffAdd.TabIndex = 9;
@@ -484,7 +482,7 @@
             // lUseBuffs
             // 
             this.lUseBuffs.FormattingEnabled = true;
-            this.lUseBuffs.Location = new System.Drawing.Point(180, 212);
+            this.lUseBuffs.Location = new System.Drawing.Point(298, 25);
             this.lUseBuffs.Name = "lUseBuffs";
             this.lUseBuffs.Size = new System.Drawing.Size(120, 134);
             this.lUseBuffs.TabIndex = 8;
@@ -492,52 +490,16 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.listBox2);
-            this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.cEnableHealParty);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.listBox1);
-            this.groupBox4.Location = new System.Drawing.Point(321, 395);
+            this.groupBox4.Controls.Add(this.lHealSkills);
+            this.groupBox4.Location = new System.Drawing.Point(9, 206);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(390, 249);
+            this.groupBox4.Size = new System.Drawing.Size(453, 219);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Healer";
-            this.groupBox4.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(219, 133);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(219, 19);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(157, 108);
-            this.listBox2.TabIndex = 10;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(301, 169);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Remove";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(219, 169);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -556,18 +518,19 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // listBox1
+            // lHealSkills
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(128, 134);
-            this.listBox1.TabIndex = 5;
+            this.lHealSkills.FormattingEnabled = true;
+            this.lHealSkills.Location = new System.Drawing.Point(6, 19);
+            this.lHealSkills.Name = "lHealSkills";
+            this.lHealSkills.Size = new System.Drawing.Size(128, 134);
+            this.lHealSkills.TabIndex = 5;
             // 
             // bSkillRemove
             // 
-            this.bSkillRemove.Location = new System.Drawing.Point(249, 165);
+            this.bSkillRemove.Location = new System.Drawing.Point(222, 165);
             this.bSkillRemove.Name = "bSkillRemove";
             this.bSkillRemove.Size = new System.Drawing.Size(51, 23);
             this.bSkillRemove.TabIndex = 6;
@@ -577,7 +540,7 @@
             // 
             // bSkillAdd
             // 
-            this.bSkillAdd.Location = new System.Drawing.Point(180, 165);
+            this.bSkillAdd.Location = new System.Drawing.Point(153, 165);
             this.bSkillAdd.Name = "bSkillAdd";
             this.bSkillAdd.Size = new System.Drawing.Size(51, 23);
             this.bSkillAdd.TabIndex = 5;
@@ -588,7 +551,7 @@
             // lUseSkill
             // 
             this.lUseSkill.FormattingEnabled = true;
-            this.lUseSkill.Location = new System.Drawing.Point(180, 25);
+            this.lUseSkill.Location = new System.Drawing.Point(153, 25);
             this.lUseSkill.Name = "lUseSkill";
             this.lUseSkill.Size = new System.Drawing.Size(120, 134);
             this.lUseSkill.TabIndex = 4;
@@ -986,6 +949,35 @@
             this.textBox4.TabIndex = 0;
             this.textBox4.Visible = false;
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.bPartyStart);
+            this.tabPage6.Controls.Add(this.lPartyMembers);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(490, 495);
+            this.tabPage6.TabIndex = 6;
+            this.tabPage6.Text = "Party";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // bPartyStart
+            // 
+            this.bPartyStart.Location = new System.Drawing.Point(6, 414);
+            this.bPartyStart.Name = "bPartyStart";
+            this.bPartyStart.Size = new System.Drawing.Size(120, 23);
+            this.bPartyStart.TabIndex = 1;
+            this.bPartyStart.Text = "Run Party helper";
+            this.bPartyStart.UseVisualStyleBackColor = true;
+            this.bPartyStart.Click += new System.EventHandler(this.bPartyStart_Click);
+            // 
+            // lPartyMembers
+            // 
+            this.lPartyMembers.FormattingEnabled = true;
+            this.lPartyMembers.Location = new System.Drawing.Point(6, 14);
+            this.lPartyMembers.Name = "lPartyMembers";
+            this.lPartyMembers.Size = new System.Drawing.Size(120, 394);
+            this.lPartyMembers.TabIndex = 0;
+            // 
             // timer2
             // 
             this.timer2.Interval = 500;
@@ -1001,39 +993,28 @@
             this.BuffTimer.Interval = 900000;
             this.BuffTimer.Tick += new System.EventHandler(this.BuffTimer_Tick);
             // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.bPartyStart);
-            this.tabPage6.Controls.Add(this.lPartyMembers);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(490, 495);
-            this.tabPage6.TabIndex = 6;
-            this.tabPage6.Text = "Party";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // lPartyMembers
-            // 
-            this.lPartyMembers.FormattingEnabled = true;
-            this.lPartyMembers.Location = new System.Drawing.Point(6, 14);
-            this.lPartyMembers.Name = "lPartyMembers";
-            this.lPartyMembers.Size = new System.Drawing.Size(120, 394);
-            this.lPartyMembers.TabIndex = 0;
-            // 
             // timerParty
             // 
             this.timerParty.Interval = 500;
             this.timerParty.Tick += new System.EventHandler(this.timerParty_Tick);
             // 
-            // bPartyStart
+            // cEnableHealParty
             // 
-            this.bPartyStart.Location = new System.Drawing.Point(6, 414);
-            this.bPartyStart.Name = "bPartyStart";
-            this.bPartyStart.Size = new System.Drawing.Size(120, 23);
-            this.bPartyStart.TabIndex = 1;
-            this.bPartyStart.Text = "Run Party helper";
-            this.bPartyStart.UseVisualStyleBackColor = true;
-            this.bPartyStart.Click += new System.EventHandler(this.bPartyStart_Click);
+            this.cEnableHealParty.AutoSize = true;
+            this.cEnableHealParty.Location = new System.Drawing.Point(6, 196);
+            this.cEnableHealParty.Name = "cEnableHealParty";
+            this.cEnableHealParty.Size = new System.Drawing.Size(111, 17);
+            this.cEnableHealParty.TabIndex = 8;
+            this.cEnableHealParty.Text = "Enable Party Heal";
+            this.cEnableHealParty.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(144, 57);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "90";
             // 
             // cBot
             // 
@@ -1136,13 +1117,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lHealSkills;
         private System.Windows.Forms.ListBox lUseBuffs;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -1162,5 +1139,7 @@
         private System.Windows.Forms.ListBox lPartyMembers;
         private System.Windows.Forms.Timer timerParty;
         private System.Windows.Forms.Button bPartyStart;
+        private System.Windows.Forms.CheckBox cEnableHealParty;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -5,9 +5,9 @@ using System.Reflection.PortableExecutable;
 
 var builder = WebApplication.CreateBuilder(args);
 
-WebSocketConfig.port = int.Parse(args[0]);
+//WebSocketConfig.port = int.Parse(args[0]);
 
-builder.WebHost.UseUrls($"http://*:{args[1]}");
+//builder.WebHost.UseUrls($"http://*:{args[1]}");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

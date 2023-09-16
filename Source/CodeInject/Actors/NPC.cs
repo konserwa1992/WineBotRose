@@ -27,7 +27,6 @@ namespace CodeInject.Actors
             {
                 ObjectPointer = (long*)*Entry;
 
-
                 X = (float*)(*Entry + 0x10);
                 Y = (float*)(*Entry + 0x14);
                 Z = (float*)(*Entry + 0x18);
