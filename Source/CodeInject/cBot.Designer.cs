@@ -37,6 +37,7 @@
             this.cPickUpEnable = new System.Windows.Forms.CheckBox();
             this.cHuntEnable = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cBackToCenter = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tZHuntArea = new System.Windows.Forms.TextBox();
             this.bSetArea = new System.Windows.Forms.Button();
@@ -106,12 +107,19 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lPartyMembers = new System.Windows.Forms.ListBox();
+            this.timerParty = new System.Windows.Forms.Timer(this.components);
+            this.bPartyStart = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -124,6 +132,7 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -133,6 +142,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -204,6 +214,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cBackToCenter);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.tZHuntArea);
             this.groupBox3.Controls.Add(this.bSetArea);
@@ -221,26 +232,38 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunting Area";
             // 
+            // cBackToCenter
+            // 
+            this.cBackToCenter.AutoSize = true;
+            this.cBackToCenter.Location = new System.Drawing.Point(6, 34);
+            this.cBackToCenter.Name = "cBackToCenter";
+            this.cBackToCenter.Size = new System.Drawing.Size(164, 17);
+            this.cBackToCenter.TabIndex = 10;
+            this.cBackToCenter.Text = "Back to center if no monsters";
+            this.cBackToCenter.UseVisualStyleBackColor = true;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 74);
+            this.label7.Location = new System.Drawing.Point(247, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 13);
             this.label7.TabIndex = 9;
             this.label7.Text = "Z:";
+            this.label7.Visible = false;
             // 
             // tZHuntArea
             // 
-            this.tZHuntArea.Location = new System.Drawing.Point(144, 71);
+            this.tZHuntArea.Location = new System.Drawing.Point(250, 22);
             this.tZHuntArea.Name = "tZHuntArea";
             this.tZHuntArea.Size = new System.Drawing.Size(100, 20);
             this.tZHuntArea.TabIndex = 8;
             this.tZHuntArea.Text = "1";
+            this.tZHuntArea.Visible = false;
             // 
             // bSetArea
             // 
-            this.bSetArea.Location = new System.Drawing.Point(10, 106);
+            this.bSetArea.Location = new System.Drawing.Point(23, 106);
             this.bSetArea.Name = "bSetArea";
             this.bSetArea.Size = new System.Drawing.Size(234, 23);
             this.bSetArea.TabIndex = 7;
@@ -251,7 +274,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 48);
+            this.label6.Location = new System.Drawing.Point(6, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 6;
@@ -259,16 +282,16 @@
             // 
             // tHuntRadius
             // 
-            this.tHuntRadius.Location = new System.Drawing.Point(10, 64);
+            this.tHuntRadius.Location = new System.Drawing.Point(58, 57);
             this.tHuntRadius.Name = "tHuntRadius";
-            this.tHuntRadius.Size = new System.Drawing.Size(100, 20);
+            this.tHuntRadius.Size = new System.Drawing.Size(70, 20);
             this.tHuntRadius.TabIndex = 5;
             this.tHuntRadius.Text = "50";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(122, 48);
+            this.label5.Location = new System.Drawing.Point(135, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 4;
@@ -276,7 +299,7 @@
             // 
             // tYHuntArea
             // 
-            this.tYHuntArea.Location = new System.Drawing.Point(144, 45);
+            this.tYHuntArea.Location = new System.Drawing.Point(157, 80);
             this.tYHuntArea.Name = "tYHuntArea";
             this.tYHuntArea.Size = new System.Drawing.Size(100, 20);
             this.tYHuntArea.TabIndex = 3;
@@ -285,7 +308,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(121, 22);
+            this.label4.Location = new System.Drawing.Point(5, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 2;
@@ -293,7 +316,7 @@
             // 
             // tXHuntArea
             // 
-            this.tXHuntArea.Location = new System.Drawing.Point(144, 19);
+            this.tXHuntArea.Location = new System.Drawing.Point(28, 80);
             this.tXHuntArea.Name = "tXHuntArea";
             this.tXHuntArea.Size = new System.Drawing.Size(100, 20);
             this.tXHuntArea.TabIndex = 1;
@@ -387,6 +410,7 @@
             this.lNPClist.Name = "lNPClist";
             this.lNPClist.Size = new System.Drawing.Size(188, 446);
             this.lNPClist.TabIndex = 1;
+            this.lNPClist.SelectedIndexChanged += new System.EventHandler(this.lNPClist_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -896,6 +920,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button6);
+            this.tabPage4.Controls.Add(this.textBox3);
+            this.tabPage4.Controls.Add(this.textBox2);
             this.tabPage4.Controls.Add(this.button7);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.textBox4);
@@ -905,6 +932,30 @@
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "WebMenu";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(286, 175);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 23);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(286, 149);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 4;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(286, 123);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 3;
             // 
             // button7
             // 
@@ -950,6 +1001,40 @@
             this.BuffTimer.Interval = 900000;
             this.BuffTimer.Tick += new System.EventHandler(this.BuffTimer_Tick);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.bPartyStart);
+            this.tabPage6.Controls.Add(this.lPartyMembers);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(490, 495);
+            this.tabPage6.TabIndex = 6;
+            this.tabPage6.Text = "Party";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // lPartyMembers
+            // 
+            this.lPartyMembers.FormattingEnabled = true;
+            this.lPartyMembers.Location = new System.Drawing.Point(6, 14);
+            this.lPartyMembers.Name = "lPartyMembers";
+            this.lPartyMembers.Size = new System.Drawing.Size(120, 394);
+            this.lPartyMembers.TabIndex = 0;
+            // 
+            // timerParty
+            // 
+            this.timerParty.Interval = 500;
+            this.timerParty.Tick += new System.EventHandler(this.timerParty_Tick);
+            // 
+            // bPartyStart
+            // 
+            this.bPartyStart.Location = new System.Drawing.Point(6, 414);
+            this.bPartyStart.Name = "bPartyStart";
+            this.bPartyStart.Size = new System.Drawing.Size(120, 23);
+            this.bPartyStart.TabIndex = 1;
+            this.bPartyStart.Text = "Run Party helper";
+            this.bPartyStart.UseVisualStyleBackColor = true;
+            this.bPartyStart.Click += new System.EventHandler(this.bPartyStart_Click);
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -980,6 +1065,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1068,5 +1154,13 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox cBackToCenter;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.ListBox lPartyMembers;
+        private System.Windows.Forms.Timer timerParty;
+        private System.Windows.Forms.Button bPartyStart;
     }
 }

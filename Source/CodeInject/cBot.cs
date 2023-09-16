@@ -1,5 +1,6 @@
 ﻿using CodeInject.Actors;
 using CodeInject.MemoryTools;
+using CodeInject.Party;
 using CodeInject.PickupFilters;
 using CodeInject.WineBot;
 using System;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -22,7 +24,7 @@ namespace CodeInject
         ItemExecutor mp;
         ItemExecutor hp;
         WebSocketServer server;
-
+        Party.Party party;
 
         private void SetupWebSocketServer(int port = 8080)
         {
@@ -85,6 +87,14 @@ namespace CodeInject
 
 
                 lNPClist.Items.AddRange(WineBot.WineBot.Instance.NpcAround.ToArray());
+
+                if(cBackToCenter.Checked && 
+                   lNPClist.Items.Count == 0 && 
+                   ((int)*GameFunctionsAndObjects.DataFetch.GetPlayer().X) != (int)float.Parse(tXHuntArea.Text) && 
+                   ((int)*GameFunctionsAndObjects.DataFetch.GetPlayer().Y) != (int)float.Parse(tYHuntArea.Text))
+                {
+                    GameFunctionsAndObjects.Actions.MoveToPoint(new Vector2(float.Parse(tXHuntArea.Text)/100, float.Parse(tYHuntArea.Text)/100));
+                }
             }
             else
             {
@@ -332,6 +342,9 @@ namespace CodeInject
         {
             GameFunctionsAndObjects.Actions.Logger($"Hello.",Color.GreenYellow);
             GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
+
+            GameFunctionsAndObjects.Actions.Logger($"{MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x0121A130, new short[] { 0x0, 0x10, 0x08 }).ToString("X")}", Color.GreenYellow);
+       
         }
 
 
@@ -370,5 +383,27 @@ namespace CodeInject
             Process.Start(new ProcessStartInfo(path+ "WebMenu\\Release\\net7.0\\Web Menu.exe", textBox4.Text));
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            GameFunctionsAndObjects.Actions.MoveToPoint(new Vector2(float.Parse(textBox2.Text), float.Parse(textBox3.Text)));
+        }
+
+        private void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(((long)((IObject)lNPClist.SelectedItem).ObjectPointer).ToString("X"));
+        }
+
+        private void timerParty_Tick(object sender, EventArgs e)
+        {
+            lPartyMembers.Items.Clear();
+            party.Update();
+            lPartyMembers.Items.AddRange(party.PartyMemberList.ToArray());
+        }
+
+        private void bPartyStart_Click(object sender, EventArgs e)
+        {
+            party = new Party.Party();
+            timerParty.Enabled = !timerParty.Enabled;
+        }
     }
 }

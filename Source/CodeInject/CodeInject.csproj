@@ -75,6 +75,8 @@
     <Compile Include="MemoryTools\GameActions.cs" />
     <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
     <Compile Include="MemoryTools\MemoryTools.cs" />
+    <Compile Include="Party\Party.cs" />
+    <Compile Include="Party\PartyMember.cs" />
     <Compile Include="PickupFilters\AdvancedFilter.cs" />
     <Compile Include="PickupFilters\QuickFilter.cs" />
     <Compile Include="PickupFilters\IFilter.cs" />

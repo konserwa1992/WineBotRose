@@ -87,11 +87,12 @@ namespace CodeInject.MemoryTools
         /// Z is unnessesery
         /// </summary>
         /// <param name="position"></param>
-        public void MoveToPoint(Vector3 position)
+        public void MoveToPoint(Vector2 position)
         {
+            Logger($"Go to: {position.ToString()}", Color.Khaki);
             float[] position2float = new float[]
             {
-                position.X*100, position.Y*100, position.Z*100
+                position.X*100, position.Y*100,0
             };
             fixed (float* p = position2float)
             {

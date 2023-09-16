@@ -108,6 +108,19 @@ namespace CodeInject.MemoryTools
         {
             return GetCallAddress(pattern);
         }
+
+
+        public static long GetInt64(long Adress, short[] offsets)
+        {
+            long finalAdress = Adress;
+
+            foreach (short offset in offsets)
+            {
+                finalAdress = (*(long*)(finalAdress)) + (long)offset;
+            }
+
+            return finalAdress;
+        }
     }
 }
 
