@@ -4,6 +4,7 @@ using CodeInject.Party;
 using CodeInject.PickupFilters;
 using CodeInject.WineBot;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -117,18 +118,21 @@ namespace CodeInject
             if(cEnableHealParty.Checked)
             {
                 int minProcHp = int.Parse(textBox1.Text);
-                foreach (PartyMember member in party.PartyMemberList)
-                {
-                    if (((float)*((NPC)member.Details).Hp / *((NPC)member.Details).MaxHp * 100) < minProcHp)
-                    {
-                        Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lHealSkills.Items[0]).skillInfo.ID);
-                        GameFunctionsAndObjects.Actions.CastSpell(*member.Details.ID, WineBot.WineBot.Instance.GetSkillIndex(Skill2Cast.skillInfo.ID));
-                    }
+                party.Update();
+                lPartyMembers.Items.AddRange(party.PartyMemberList.ToArray());
+
+                PartyMember member = party.PartyMemberList.OrderBy(x => ((float)*((NPC)x.Details).Hp / *((NPC)x.Details).MaxHp * 100)).FirstOrDefault();
+
+               if (member!=null && ((float)*((NPC)member.Details).Hp / *((NPC)member.Details).MaxHp * 100) < minProcHp)
+               {
+                    Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lHealSkills.Items[0]).skillInfo.ID);
+                    GameFunctionsAndObjects.Actions.CastSpell(*member.Details.ID, WineBot.WineBot.Instance.GetSkillIndex(Skill2Cast.skillInfo.ID));
                 }
             }
 
             if (cAutoPotionEnabled.Checked)
             {
+        
                 WineBot.WineBot.Instance.AutoPotionFunction(int.Parse(tHPPotionUseProc.Text),int.Parse(tMPPotionUseProc.Text));
             }
         }
@@ -204,8 +208,12 @@ namespace CodeInject
 
             WineBot.WineBot.Instance.UseBuffs();
 
-            bHuntToggle.Text = timer2.Enabled == true ? "STOP" : "START";
+            if(cEnableHealParty.Checked)
+            {
+                party = new Party.Party();
+            }
 
+            bHuntToggle.Text = timer2.Enabled == true ? "STOP" : "START";
         }
 
         private void cFilterMaterials_CheckedChanged(object sender, EventArgs e)
@@ -415,8 +423,8 @@ namespace CodeInject
 
         private void bPartyStart_Click(object sender, EventArgs e)
         {
-            party = new Party.Party();
-            timerParty.Enabled = !timerParty.Enabled;
+
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)

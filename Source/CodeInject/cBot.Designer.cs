@@ -65,6 +65,8 @@
             this.bBuffAdd = new System.Windows.Forms.Button();
             this.lUseBuffs = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cEnableHealParty = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lHealSkills = new System.Windows.Forms.ListBox();
@@ -115,9 +117,6 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
-            this.timerParty = new System.Windows.Forms.Timer(this.components);
-            this.cEnableHealParty = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -444,7 +443,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(295, 9);
+            this.label13.Location = new System.Drawing.Point(340, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 12;
@@ -453,7 +452,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(150, 9);
+            this.label12.Location = new System.Drawing.Point(177, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 13);
             this.label12.TabIndex = 11;
@@ -461,7 +460,7 @@
             // 
             // bBuffRemove
             // 
-            this.bBuffRemove.Location = new System.Drawing.Point(367, 165);
+            this.bBuffRemove.Location = new System.Drawing.Point(412, 165);
             this.bBuffRemove.Name = "bBuffRemove";
             this.bBuffRemove.Size = new System.Drawing.Size(51, 23);
             this.bBuffRemove.TabIndex = 10;
@@ -471,7 +470,7 @@
             // 
             // bBuffAdd
             // 
-            this.bBuffAdd.Location = new System.Drawing.Point(298, 165);
+            this.bBuffAdd.Location = new System.Drawing.Point(343, 165);
             this.bBuffAdd.Name = "bBuffAdd";
             this.bBuffAdd.Size = new System.Drawing.Size(51, 23);
             this.bBuffAdd.TabIndex = 9;
@@ -482,7 +481,7 @@
             // lUseBuffs
             // 
             this.lUseBuffs.FormattingEnabled = true;
-            this.lUseBuffs.Location = new System.Drawing.Point(298, 25);
+            this.lUseBuffs.Location = new System.Drawing.Point(343, 25);
             this.lUseBuffs.Name = "lUseBuffs";
             this.lUseBuffs.Size = new System.Drawing.Size(120, 134);
             this.lUseBuffs.TabIndex = 8;
@@ -496,10 +495,28 @@
             this.groupBox4.Controls.Add(this.lHealSkills);
             this.groupBox4.Location = new System.Drawing.Point(9, 206);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(453, 219);
+            this.groupBox4.Size = new System.Drawing.Size(475, 286);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Healer";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(144, 57);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "90";
+            // 
+            // cEnableHealParty
+            // 
+            this.cEnableHealParty.AutoSize = true;
+            this.cEnableHealParty.Location = new System.Drawing.Point(6, 196);
+            this.cEnableHealParty.Name = "cEnableHealParty";
+            this.cEnableHealParty.Size = new System.Drawing.Size(111, 17);
+            this.cEnableHealParty.TabIndex = 8;
+            this.cEnableHealParty.Text = "Enable Party Heal";
+            this.cEnableHealParty.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -530,7 +547,7 @@
             // 
             // bSkillRemove
             // 
-            this.bSkillRemove.Location = new System.Drawing.Point(222, 165);
+            this.bSkillRemove.Location = new System.Drawing.Point(249, 165);
             this.bSkillRemove.Name = "bSkillRemove";
             this.bSkillRemove.Size = new System.Drawing.Size(51, 23);
             this.bSkillRemove.TabIndex = 6;
@@ -540,7 +557,7 @@
             // 
             // bSkillAdd
             // 
-            this.bSkillAdd.Location = new System.Drawing.Point(153, 165);
+            this.bSkillAdd.Location = new System.Drawing.Point(180, 165);
             this.bSkillAdd.Name = "bSkillAdd";
             this.bSkillAdd.Size = new System.Drawing.Size(51, 23);
             this.bSkillAdd.TabIndex = 5;
@@ -551,7 +568,7 @@
             // lUseSkill
             // 
             this.lUseSkill.FormattingEnabled = true;
-            this.lUseSkill.Location = new System.Drawing.Point(153, 25);
+            this.lUseSkill.Location = new System.Drawing.Point(180, 25);
             this.lUseSkill.Name = "lUseSkill";
             this.lUseSkill.Size = new System.Drawing.Size(120, 134);
             this.lUseSkill.TabIndex = 4;
@@ -777,7 +794,7 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::CodeInject.Properties.Resources.gluten_free;
-            this.pictureBox1.Location = new System.Drawing.Point(136, 164);
+            this.pictureBox1.Location = new System.Drawing.Point(145, 178);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(354, 331);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -993,33 +1010,10 @@
             this.BuffTimer.Interval = 900000;
             this.BuffTimer.Tick += new System.EventHandler(this.BuffTimer_Tick);
             // 
-            // timerParty
-            // 
-            this.timerParty.Interval = 500;
-            this.timerParty.Tick += new System.EventHandler(this.timerParty_Tick);
-            // 
-            // cEnableHealParty
-            // 
-            this.cEnableHealParty.AutoSize = true;
-            this.cEnableHealParty.Location = new System.Drawing.Point(6, 196);
-            this.cEnableHealParty.Name = "cEnableHealParty";
-            this.cEnableHealParty.Size = new System.Drawing.Size(111, 17);
-            this.cEnableHealParty.TabIndex = 8;
-            this.cEnableHealParty.Text = "Enable Party Heal";
-            this.cEnableHealParty.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(144, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "90";
-            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(494, 517);
+            this.ClientSize = new System.Drawing.Size(495, 524);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1137,7 +1131,6 @@
         private System.Windows.Forms.CheckBox cBackToCenter;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.ListBox lPartyMembers;
-        private System.Windows.Forms.Timer timerParty;
         private System.Windows.Forms.Button bPartyStart;
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox textBox1;

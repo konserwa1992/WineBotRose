@@ -65,7 +65,6 @@ namespace CodeInject.MemoryTools
 
             long addr = getPartyMemberDetailsFunc(rcx, edx);
 
-            
 
             return new NPC(&addr);
         }
@@ -88,9 +87,13 @@ namespace CodeInject.MemoryTools
                     MemberName = Marshal.PtrToStringAnsi(new IntPtr((long)currentMember + 0x10)),
                 };
 
+
                 member.Details = GetPartyMemberDetails(member);
 
+                if((long)member.Details.ObjectPointer!=0x0)
                 PartyMemberList.Add(member);
+
+
                 PartyMemberDataAddres++; //move to next member
             }
 
