@@ -95,7 +95,10 @@ namespace CodeInject.WineBot
 
             if (this.NpcAround.Count > 0)
             {
-                this.Target = this.NpcAround.FirstOrDefault(x=>*(((NPC)x).Hp)>0);
+                if (Target == null || *((NPC)Target).Hp <= 0)
+                {
+                    this.Target = this.NpcAround.FirstOrDefault(x => *(((NPC)x).Hp) > 0); //select closest monster with have over 0 hp
+                }
 
                 if (this.Target != null)
                 {
