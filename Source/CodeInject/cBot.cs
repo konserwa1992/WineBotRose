@@ -132,7 +132,6 @@ namespace CodeInject
 
             if (cAutoPotionEnabled.Checked)
             {
-        
                 WineBot.WineBot.Instance.AutoPotionFunction(int.Parse(tHPPotionUseProc.Text),int.Parse(tMPPotionUseProc.Text));
             }
         }

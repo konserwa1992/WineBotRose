@@ -15,8 +15,8 @@ namespace CodeInject.Actors
         public float* X { get; set; }
         public float* Y { get; set; }
         public float* Z { get; set; }
-        public short* Hp { get; set; }
-        public short* MaxHp { get; set; }
+        public int* Hp { get; set; }
+        public int* MaxHp { get; set; }
         public int* modelNaME { get; set; }
 
         public string* Name { get; set; }
@@ -32,8 +32,8 @@ namespace CodeInject.Actors
                 Z = (float*)(*Entry + 0x18);
                 if ((long*)(*Entry + 0x20) != null)
                     ID = (int*)(*((long*)(*Entry + 0x20)));
-                Hp = (short*)(*Entry + 0xE8);
-                MaxHp = (short*)(*Entry + 0xF0);
+                Hp = (int*)(*Entry + 0xE8);
+                MaxHp = (int*)(*Entry + 0xF0);
 
                 Name = (string*)(*Entry + 0xb10);
 
@@ -78,7 +78,7 @@ namespace CodeInject.Actors
         public override string ToString()
         {
             if(Info != null)
-              return $"[{(*ID).ToString("X")}] {Info.Name}";
+              return $"[{(*ID).ToString("X")}] {*Hp} {Info.Name}";
             else
               return $"[{(*ID).ToString("X")}] {Marshal.PtrToStringAnsi(new IntPtr(Name))}";
         }
