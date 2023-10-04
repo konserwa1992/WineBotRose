@@ -82,47 +82,47 @@ namespace CodeInject.Actors
                 case 0x08:
                     {
                         temp = DataBase.GameDataBase.WeaponItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{Index} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0A:
                     {
                         temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
+                        return $"{Index} {(temp != null ? ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
                     }
 
                 case 0x03:
                     {
                         temp = DataBase.GameDataBase.BodyItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{Index} {(temp != null ? temp.Name : "Unknow")}";
                     }
 
                 case 0x05:
                     {
                         temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{Index} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x04:
                     {
                         temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{Index} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
                 case 0x09:
                     {
                         temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{Index} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0C:
                     {
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((long)ObjectPointer).ToString("X")+" "+ temp.Name : "Unknow")}";
+                        return $"{Index} {(temp != null ? ((long)ObjectPointer).ToString("X")+" "+ temp.Name : "Unknow")}";
                     }
 
                 default:
                     {
-                        return $"Unknow type:{(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";
+                        return $"Unknow type:{Index} {(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";
                     }
             }
         }

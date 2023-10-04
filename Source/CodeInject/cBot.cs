@@ -132,8 +132,8 @@ namespace CodeInject
             lNearItemsList.Items.AddRange(WineBot.WineBot.Instance.UpdateItemsAroundPlayer(int.Parse(tPickupRadius.Text)).ToArray());
 
 
-            if (cPickUpEnable.Checked)
-                WineBot.WineBot.Instance.PickClosestItem();
+            //if (cPickUpEnable.Checked)
+           //     WineBot.WineBot.Instance.PickClosestItem();
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,7 +141,7 @@ namespace CodeInject
             tPickupRadius.Text = ((long)((Item)lNearItemsList.SelectedItem).ObjectPointer).ToString("X");
          //   ((UsableItem)lNearItemsList.SelectedItem).Pickup();
             lNearItemsList.Items.Clear();
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().ToArray());
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -384,8 +384,9 @@ namespace CodeInject
 
         private void button7_Click(object sender, EventArgs e)
         {
-            string path = MemoryTools.MemoryTools.GetModulePath("clrbootstrap").Substring(0,MemoryTools.MemoryTools.GetModulePath("clrbootstrap").LastIndexOf("\\"));
-            Process.Start(new ProcessStartInfo(path+ "WebMenu\\Release\\net7.0\\Web Menu.exe", textBox4.Text));
+            GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2();
+          /*  string path = MemoryTools.MemoryTools.GetModulePath("clrbootstrap").Substring(0,MemoryTools.MemoryTools.GetModulePath("clrbootstrap").LastIndexOf("\\"));
+            Process.Start(new ProcessStartInfo(path+ "WebMenu\\Release\\net7.0\\Web Menu.exe", textBox4.Text));*/
         }
 
 

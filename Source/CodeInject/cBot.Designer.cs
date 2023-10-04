@@ -33,13 +33,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tZHuntArea = new System.Windows.Forms.TextBox();
             this.bHuntToggle = new System.Windows.Forms.Button();
             this.cPickUpEnable = new System.Windows.Forms.CheckBox();
             this.cHuntEnable = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cBackToCenter = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tZHuntArea = new System.Windows.Forms.TextBox();
             this.bSetArea = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tHuntRadius = new System.Windows.Forms.TextBox();
@@ -179,6 +179,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(477, 386);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Z:";
+            this.label7.Visible = false;
+            // 
+            // tZHuntArea
+            // 
+            this.tZHuntArea.Location = new System.Drawing.Point(500, 383);
+            this.tZHuntArea.Name = "tZHuntArea";
+            this.tZHuntArea.Size = new System.Drawing.Size(100, 20);
+            this.tZHuntArea.TabIndex = 8;
+            this.tZHuntArea.Text = "1";
+            this.tZHuntArea.Visible = false;
+            // 
             // bHuntToggle
             // 
             this.bHuntToggle.Location = new System.Drawing.Point(381, 15);
@@ -236,25 +255,6 @@
             this.cBackToCenter.TabIndex = 10;
             this.cBackToCenter.Text = "Back to center if no monsters";
             this.cBackToCenter.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(477, 386);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Z:";
-            this.label7.Visible = false;
-            // 
-            // tZHuntArea
-            // 
-            this.tZHuntArea.Location = new System.Drawing.Point(500, 383);
-            this.tZHuntArea.Name = "tZHuntArea";
-            this.tZHuntArea.Size = new System.Drawing.Size(100, 20);
-            this.tZHuntArea.TabIndex = 8;
-            this.tZHuntArea.Text = "1";
-            this.tZHuntArea.Visible = false;
             // 
             // bSetArea
             // 
@@ -917,7 +917,6 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "Start";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label15

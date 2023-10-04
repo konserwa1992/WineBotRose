@@ -238,6 +238,34 @@ namespace CodeInject.MemoryTools
             return inventorySlotAddrs;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<IObject> GetItemsAroundPlayerV2()
+        {
+            List<IObject> itemList = new List<IObject>();
+
+            Process _proc = Process.GetCurrentProcess();
+
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x14C1520));
+            long* RBX = (long*)((long)RDI + 0x2a0b8);
+
+            RBX = (long*)*RBX; //select first item from list
+
+            while ((long)RBX != 0x0)
+            {
+                long* itemAddr = (long*)*(long*)((long)RDI + ((*(short*)RBX) * 8) + 0x22080);
+                Item nearItem = new Item(0, itemAddr);
+                itemList.Add(nearItem);
+                RBX = (long*)*((long*)((long)RBX+0x8));
+            }
+
+            return itemList;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>

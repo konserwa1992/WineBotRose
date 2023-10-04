@@ -36,7 +36,7 @@ namespace CodeInject.WineBot
         public List<IObject> UpdateItemsAroundPlayer(int radius)
         {
             IObject player = GameFunctionsAndObjects.DataFetch.GetPlayer();
-            ItemAround = GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayer().Where(x => filter.CanPickup(x) && x.CalcDistance(player) < radius).OrderBy(x => x.CalcDistance(player)).ToList();
+            ItemAround = GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().Where(x => filter.CanPickup(x) && x.CalcDistance(player) < radius).OrderBy(x => x.CalcDistance(player)).ToList();
             return ItemAround;
         }
 
