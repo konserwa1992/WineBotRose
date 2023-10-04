@@ -257,7 +257,7 @@ namespace CodeInject.MemoryTools
             while ((long)RBX != 0x0)
             {
                 long* itemAddr = (long*)*(long*)((long)RDI + ((*(short*)RBX) * 8) + 0x22080);
-                Item nearItem = new Item(0, itemAddr);
+                Item nearItem = new Item((*(ushort*)RBX), itemAddr);
                 itemList.Add(nearItem);
                 RBX = (long*)*((long*)((long)RBX+0x8));
             }
