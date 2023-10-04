@@ -3,44 +3,55 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Bot_Menu.Mods;
 using Newtonsoft.Json;
+using CodeInject.WebServ.Models;
+using Microsoft.AspNetCore.SignalR;
+using WebSocketSharp;
 
 namespace Bot_Menu.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         static PlayerInfo pl = new PlayerInfo();
+
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
+
         public IActionResult IndexAsync()
         {
-            pl.Update();
-
             return View();
         }
 
         [HttpGet]
-        public IActionResult UserInformation()
+        public IActionResult UserInformation(string characterDataJson)
         {
-            pl.Update();
-            return PartialView(pl.CharacterInfoJson);
+            return PartialView(JsonConvert.DeserializeObject<PlayerInfoViewModel>(characterDataJson));
         }
 
         [HttpGet]
         public IActionResult AutoPotion()
         {
-            pl.Update();
-            return View(pl.AutoPotionSettings);
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetAutoPotionSettings(string json)
+        {
+            AutoPotionSettings potSettings= JsonConvert.DeserializeObject<AutoPotionSettings>(json);
+            return PartialView(potSettings);
         }
 
         [HttpPost]
-        public IActionResult AutoPotionSettings(int procHelath, int hpItemIndex,int hpItemDurr, int procMana,int mpItemIndex, int mpItemDurr)
+        public IActionResult SetAutoPotionSettings(int procHelath, int hpItemIndex,int hpItemDurr, int procMana,int mpItemIndex, int mpItemDurr)
         {
-            pl.webSocket2.Send(JsonConvert.SerializeObject(new
+            WebSocketSharp.WebSocket setPotions = new WebSocketSharp.WebSocket("ws://localhost:8080/AutoPotion");
+
+            setPotions.Send(JsonConvert.SerializeObject(new
             {
                 OpCode = "SetPotions",
                 procHelath = procHelath,
@@ -56,13 +67,9 @@ namespace Bot_Menu.Controllers
         }
 
         [HttpGet]
-        public IActionResult NpcList()
+        public IActionResult NpcList(string npcDataJson)
         {
-            pl.Update();
-            if (pl.NPCList != "")
-                return PartialView(JsonConvert.DeserializeObject<List<CodeInject.WebServ.Models.NPCModel>>(pl.NPCList));
-            else
-                return PartialView(new List<CodeInject.WebServ.Models.NPCModel>());
+            return PartialView(JsonConvert.DeserializeObject<List<CodeInject.WebServ.Models.NPCModel>>(npcDataJson));
         }
 
         public class SelectedValuesModel
@@ -80,15 +87,6 @@ namespace Bot_Menu.Controllers
             }));
             pl.Update();
             return null;
-        }
-
-
-        [HttpGet]
-        public IActionResult SkillList()
-        {
-            pl.Update();
-
-            return View(pl.Skills);
         }
 
         [HttpGet]

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/Bot_Menu.styles.css" asp-append-version="true" />
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+     <script src="https://unpkg.com/htmx.org@1.9.5"></script>
 </head>
 <body>
     <header>
@@ -31,7 +32,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AutoPotion">AutoPotion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SkillList">SkillList</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Skill" asp-action="Index">SkillList</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pickup" asp-action="Index">Pickup filter</a>
                         </li>
                     </ul>
                 </div>

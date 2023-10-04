@@ -7,10 +7,7 @@ namespace CodeInject
     {
         public SkillInfo skillInfo;
 
-        private Skills()
-        {
-            this.skillInfo = skillInfo;
-        }
+
 
         public Skills(SkillInfo skillInfo)
         {
@@ -29,10 +26,7 @@ namespace CodeInject
 
         public static Skills GetSkillByID(int skillId)
         {
-            return new Skills()
-            {
-                skillInfo = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(s => s.ID == skillId)
-            };
+            return new Skills(DataBase.GameDataBase.SkillDatabase.FirstOrDefault(s => s.ID == skillId));
         }
 
         public override string ToString()

@@ -15,22 +15,21 @@ namespace Bot_Menu.Mods
         public WebSocketSharp.WebSocket webSkillSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/SkillList");
         public WebSocketSharp.WebSocket webPickUpSocket = new WebSocketSharp.WebSocket("ws://localhost:8080/Filter");
 
-        public NPCModel AttackedNpc {  get; set; }
+        public NPCModel AttackedNpc { get; set; }
 
-        public PlayerInfoViewModel CharacterInfoJson { get; set; }
         public AutoPotionSettings AutoPotionSettings { get; set; } = new AutoPotionSettings();
         public PlayerSkillModel Skills { get; set; } = new PlayerSkillModel();
         public IPickupFilterModel PickupFilter { get; set; }
 
         public string NPCList { get; set; } = "";
 
-        public PlayerInfo() {
-           
+        public PlayerInfo()
+        {
+
             webSocket.OnMessage += (sender, e) =>
             {
-                this.CharacterInfoJson = JsonConvert.DeserializeObject<PlayerInfoViewModel>(e.Data);
+               
             };
-
             webSocket.Connect();
 
 
@@ -38,39 +37,34 @@ namespace Bot_Menu.Mods
             {
                 this.AutoPotionSettings = JsonConvert.DeserializeObject<AutoPotionSettings>(e.Data);
             };
-
             webSocket2.Connect();
-
 
             webSocket3.OnMessage += (sender, e) =>
             {
 
-                if(e.Data.Contains("AttackedNPC"))
+                if (e.Data.Contains("AttackedNPC"))
                 {
                     dynamic obj = JsonConvert.DeserializeObject<dynamic>(e.Data);
                     AttackedNpc = new NPCModel()
-                    { 
-                        Hp = obj.AttackedNPC.Hp, 
+                    {
+                        Hp = obj.AttackedNPC.Hp,
                         X = obj.AttackedNPC.X,
                         Y = obj.AttackedNPC.Y,
                         Z = obj.AttackedNPC.Z,
                         MaxHp = obj.AttackedNPC.MaxHp,
                         Name = obj.AttackedNPC.Name
                     };
- 
+
                 }
                 else
-                this.NPCList = e.Data;
+                    this.NPCList = e.Data;
             };
-
             webSocket3.Connect();
 
             webSkillSocket.OnMessage += (sender, e) =>
             {
                 this.Skills = JsonConvert.DeserializeObject<PlayerSkillModel>(e.Data);
             };
-
-
             webSkillSocket.Connect();
 
 
@@ -81,7 +75,6 @@ namespace Bot_Menu.Mods
             };
             webPickUpSocket.Connect();
         }
-
 
 
         public void Update()

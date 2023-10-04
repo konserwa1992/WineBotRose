@@ -2,8 +2,6 @@
 
 namespace CodeInject.MemoryTools
 {
-  
-
     internal class GameFunctionsAndObjects
     {
         public static DataReader DataFetch { get; private set; } = new DataReader();

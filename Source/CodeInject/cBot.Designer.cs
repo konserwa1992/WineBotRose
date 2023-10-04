@@ -105,9 +105,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -117,6 +114,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
+            this.WsTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -149,6 +147,8 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.tZHuntArea);
             this.tabPage1.Controls.Add(this.bHuntToggle);
             this.tabPage1.Controls.Add(this.cPickUpEnable);
             this.tabPage1.Controls.Add(this.cHuntEnable);
@@ -212,8 +212,6 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cBackToCenter);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.tZHuntArea);
             this.groupBox3.Controls.Add(this.bSetArea);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.tHuntRadius);
@@ -242,7 +240,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(247, 25);
+            this.label7.Location = new System.Drawing.Point(477, 386);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 13);
             this.label7.TabIndex = 9;
@@ -251,7 +249,7 @@
             // 
             // tZHuntArea
             // 
-            this.tZHuntArea.Location = new System.Drawing.Point(250, 22);
+            this.tZHuntArea.Location = new System.Drawing.Point(500, 383);
             this.tZHuntArea.Name = "tZHuntArea";
             this.tZHuntArea.Size = new System.Drawing.Size(100, 20);
             this.tZHuntArea.TabIndex = 8;
@@ -499,6 +497,7 @@
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Healer";
+            this.groupBox4.Visible = false;
             // 
             // textBox1
             // 
@@ -900,9 +899,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.button6);
-            this.tabPage4.Controls.Add(this.textBox3);
-            this.tabPage4.Controls.Add(this.textBox2);
             this.tabPage4.Controls.Add(this.button7);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.textBox4);
@@ -912,30 +908,6 @@
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "WebMenu";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(286, 175);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(286, 149);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(286, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
             // 
             // button7
             // 
@@ -1009,6 +981,11 @@
             // 
             this.BuffTimer.Interval = 900000;
             this.BuffTimer.Tick += new System.EventHandler(this.BuffTimer_Tick);
+            // 
+            // WsTimer
+            // 
+            this.WsTimer.Interval = 500;
+            this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // cBot
             // 
@@ -1125,14 +1102,12 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox cBackToCenter;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.ListBox lPartyMembers;
         private System.Windows.Forms.Button bPartyStart;
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer WsTimer;
     }
 }

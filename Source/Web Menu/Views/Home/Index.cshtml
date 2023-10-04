@@ -10,6 +10,8 @@
 
 
 
+
+
 <div  style="display:flex">
     
     <div style="width:40%;padding-right:15px">
@@ -29,11 +31,66 @@
 <p id="p1"></p>
 
 
-<script>
+        <script>
 
-     setInterval(refresh, 500);
+
+   const CharacterInformationSocket = new WebSocket('ws://localhost:2458/CharacterInfo');
+
+    CharacterInformationSocket.addEventListener('message', (event) => {
+                // Przykład: Wysłanie danych JSON do kontrolera za pomocą fetch
+                fetch('/Home/UserInformation?characterDataJson=' + event.data, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error('Błąd podczas pobierania danych');
+                        }
+                    })
+                    .then(data => {
+                        $('#PlayerInfo').html(data);
+                    })
+                    .catch(error => {
+                        console.error('Błąd:', error);
+                    });
+            });
+
+
+
+    const socket = new WebSocket('ws://localhost:2458/NpcList');
+
+    socket.addEventListener('message', (event) => {
+        // Przykład: Wysłanie danych JSON do kontrolera za pomocą fetch
+        fetch('/Home/NpcList?npcDataJson=' + event.data, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Błąd podczas pobierania danych');
+                }
+            })
+            .then(data => {
+                $('#NpcList').html(data);
+            })
+            .catch(error => {
+                console.error('Błąd:', error);
+            });
+    });
+
+            setInterval(refresh, 500);
+
+
     function refresh() {
-        $.ajax({
+        /*$.ajax({
             url: '/Home/UserInformation', // Adres kontrolera i akcji, które zwracają nową zawartość
             type: 'GET', // Typ żądania
             dataType: 'html', // Typ danych, jakie oczekujemy w odpowiedzi
@@ -51,7 +108,7 @@
                 // Aktualizacja zawartości elementu za pomocą otrzymanych danych
                 $('#NpcList').html(data);
             }
-        });
+        });*/
 
         $.ajax({
             url: '/Home/TargetInfo', // Adres kontrolera i akcji, które zwracają nową zawartość

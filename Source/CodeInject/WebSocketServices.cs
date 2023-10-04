@@ -21,6 +21,7 @@ namespace CodeInject
             {
                 Send($"{GameFunctionsAndObjects.DataFetch.GetPlayer().ToString()}");
             }
+
         }
 
         public class NPCService : WebSocketBehavior
@@ -63,7 +64,7 @@ namespace CodeInject
                         WineBot.WineBot.Instance.BotSkills.Add(Skills.GetSkillByID(skillId));
                     }
                 }
-                else
+                else if (e.Data.Contains("GetSkills"))
                 {
                     PlayerSkillModel skillsList = new PlayerSkillModel();
                     foreach (Skills singleSkill in PlayerCharacter.GetPlayerSkills)
@@ -85,68 +86,76 @@ namespace CodeInject
         {
             protected override void OnMessage(MessageEventArgs e)
             {
-
-                var pickUpFilter = new SimpleFilterModel()
+                if (e.Data.Contains("GetFilter"))
                 {
-                    Name = "Simple",
-                    Filter = ((QuickFilter)WineBot.WineBot.Instance.filter).pickTypeList
-                };
+                    var pickUpFilter = new SimpleFilterModel()
+                    {
+                        Name = "Simple",
+                        Filter = ((QuickFilter)WineBot.WineBot.Instance.filter).pickTypeList
+                    };
 
-                Send($"{JsonConvert.SerializeObject((object)pickUpFilter)}");
+                    Send($"{JsonConvert.SerializeObject((object)pickUpFilter)}");
+                }
             }
         }
 
 
         public class AutoPotionService : WebSocketBehavior
         {
+            protected override void OnOpen()
+            {
+                List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
+
+                List<ItemModel> ItemToSend = new List<ItemModel>();
+
+                foreach (IntPtr item in items)
+                {
+                    if (item.ToInt64() != 0x0)
+                    {
+                        InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
+
+                        if (*inv.ItemType == 0xA)
+                        {
+                            ItemToSend.Add(inv.ToWSObject());
+                        }
+                    }
+                }
+
+
+                if (WineBot.WineBot.Instance.AutoHp == null || WineBot.WineBot.Instance.AutoMp == null)
+                {
+                    Send(JsonConvert.SerializeObject(new AutoPotionSettings()
+                    {
+                        ItemsList = ItemToSend,
+                        MinHelath = 0,
+                        MinMana = 0,
+                        HealthItemIndex = 0,
+                        ManaItemIndex = 0,
+                        HelathDurration = 0,
+                        ManaDurration = 0
+                    }));
+                    return;
+                }
+
+
+                Send(JsonConvert.SerializeObject(new AutoPotionSettings()
+                {
+                    ItemsList = ItemToSend,
+                    MinHelath = WineBot.WineBot.Instance.AutoHp.MinValueToExecute,
+                    MinMana = WineBot.WineBot.Instance.AutoMp.MinValueToExecute,
+                    HealthItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoHp.Item2Cast.ObjectPointer),
+                    ManaItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoMp.Item2Cast.ObjectPointer),
+                    HelathDurration = WineBot.WineBot.Instance.AutoHp.ColdDown,
+                    ManaDurration = WineBot.WineBot.Instance.AutoMp.ColdDown
+                }));
+
+                base.OnOpen();
+            }
             protected override void OnMessage(MessageEventArgs e)
             {
                 if (e.Data.Contains("GetAutoPotionSettings"))
                 {
-                    List<IntPtr> items = GameFunctionsAndObjects.DataFetch.getInventoryItems();
-
-                    List<ItemModel> ItemToSend = new List<ItemModel>();
-
-                    foreach (IntPtr item in items)
-                    {
-                        if (item.ToInt64() != 0x0)
-                        {
-                            InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
-
-                            if (*inv.ItemType == 0xA)
-                            {
-                                ItemToSend.Add(inv.ToWSObject());
-                            }
-                        }
-                    }
-
-
-                    if (WineBot.WineBot.Instance.AutoHp == null || WineBot.WineBot.Instance.AutoMp == null)
-                    {
-                        Send(JsonConvert.SerializeObject(new AutoPotionSettings()
-                        {
-                            ItemsList = ItemToSend,
-                            MinHelath = 0,
-                            MinMana = 0,
-                            HealthItemIndex = 0,
-                            ManaItemIndex = 0,
-                            HelathDurration = 0,
-                            ManaDurration = 0
-                        }));
-                        return;
-                    }
-
-
-                    Send(JsonConvert.SerializeObject(new AutoPotionSettings()
-                    {
-                        ItemsList = ItemToSend,
-                        MinHelath = WineBot.WineBot.Instance.AutoHp.MinValueToExecute,
-                        MinMana = WineBot.WineBot.Instance.AutoMp.MinValueToExecute,
-                        HealthItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoHp.Item2Cast.ObjectPointer),
-                        ManaItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoMp.Item2Cast.ObjectPointer),
-                        HelathDurration = WineBot.WineBot.Instance.AutoHp.ColdDown,
-                        ManaDurration = WineBot.WineBot.Instance.AutoMp.ColdDown
-                    }));
+                   
                 }
                 if (e.Data.Contains("SetPotions"))
                 {

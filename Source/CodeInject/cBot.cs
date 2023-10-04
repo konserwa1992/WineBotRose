@@ -14,7 +14,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WebSocketSharp.Server;
-using static CodeInject.WebSocketServices;
 
 
 
@@ -24,26 +23,14 @@ namespace CodeInject
     {
         ItemExecutor mp;
         ItemExecutor hp;
-        WebSocketServer server;
+        WebServer ws = new WebServer();
+
         Party.Party party;
-
-        private void SetupWebSocketServer(int port = 8080)
-        {
-             server = new WebSocketServer($"ws://localhost:{port}");
-
-            server.AddWebSocketService<MyWebSocketService>("/CharacterInfo");
-            server.AddWebSocketService<AutoPotionService>("/AutoPotion");
-            server.AddWebSocketService<NPCService>("/NpcList");
-            server.AddWebSocketService<SkillService>("/SkillList");
-            server.AddWebSocketService<PickUpFilterService>("/Filter");
-
-            server.Start();
-        }
 
         public cBot()
         {
             InitializeComponent();
-            //  SetupWebSocketServer();
+         //   ws.SetupWebSocketServer();
         }
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
@@ -79,6 +66,7 @@ namespace CodeInject
         private void timer2_Tick(object sender, EventArgs e)
         {
             lNPClist.Items.Clear();
+
 
             if (cEnableHuntingArea.Checked)
             {
@@ -362,9 +350,6 @@ namespace CodeInject
         {
             GameFunctionsAndObjects.Actions.Logger($"Hello.",Color.GreenYellow);
             GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
-
-            GameFunctionsAndObjects.Actions.Logger($"{MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x0121A130, new short[] { 0x0, 0x10, 0x08 }).ToString("X")}", Color.GreenYellow);
-       
         }
 
 
@@ -403,10 +388,6 @@ namespace CodeInject
             Process.Start(new ProcessStartInfo(path+ "WebMenu\\Release\\net7.0\\Web Menu.exe", textBox4.Text));
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            GameFunctionsAndObjects.Actions.MoveToPoint(new Vector2(float.Parse(textBox2.Text), float.Parse(textBox3.Text)));
-        }
 
         private void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -422,14 +403,18 @@ namespace CodeInject
 
         private void bPartyStart_Click(object sender, EventArgs e)
         {
-
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (!lHealSkills.Items.Cast<Skills>().Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
                 lHealSkills.Items.Add(lSkillList.SelectedItem);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ws.SendPlayerInformation();
+            ws.SendNPCsInformation();
         }
     }
 }

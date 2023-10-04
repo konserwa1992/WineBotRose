@@ -1,0 +1,60 @@
+﻿@model CodeInject.WebServ.Models.AutoPotionSettings
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form id="AutoPotionSetting">
+    <div style="display:flex">
+
+    <div style="text-align:center">HP:</div><br />
+    <input id="procHelath" name="procHelath" value="@Model.MinHelath" type="number" />
+        <select class="form-select" id="hpItemIndex" name="number">
+        @for (int i = 0; i < Model.ItemsList.Count; i++)
+        {
+                @if (i != Model.HealthItemIndex){
+                    @:<option value="@i" id="@Model.ItemsList[i].Name">
+                 }
+                 else{
+                    @:<option value="@i" id="@Model.ItemsList[i].Name" selected>
+                 }
+                    @Model.ItemsList[i].Name
+            @:</option>
+        }
+    </select>
+        <input id="hpItemDurr" value="@Model.HelathDurration" type="number" />
+    </div>
+    <br />
+    <div style="display:flex">
+    MP:<br />
+    <input id="ManaProcentage" value="@Model.MinMana"  type="number" />
+        <select class="form-select" id="MpItem" name="number">
+            @for (int i = 0; i < Model.ItemsList.Count; i++)
+        {       @if (i != Model.ManaItemIndex){
+                    @:<option value="@i" id="@Model.ItemsList[i].Name">
+                 }
+                 else{
+                    @:<option value="@i" id="@Model.ItemsList[i].Name" selected>
+                 }
+                    @Model.ItemsList[i].Name
+            @:</option>
+        }
+        </select>       <input id="ManaPotionDurration" value="@Model.ManaDurration" type="number" />
+        </div>
+        <br />
+    <input type="submit" id="submitButton" multiple class="form-control form-control-sm"/>
+</form>
+
+
+<script>
+    function submitSettings() { 
+       $.ajax({
+          type: "POST",
+          url: url,
+          data: data,
+          success: success,
+          dataType: dataType
+        });
+    }
+</script>

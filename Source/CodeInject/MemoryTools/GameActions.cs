@@ -46,8 +46,8 @@ namespace CodeInject.MemoryTools
         public void Init()
         {
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
-            BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();
-            BaseOfDialogBoxes = MemoryTools.GetVariableAddres("48 81 c1 ?? ?? ?? ?? 48 8d 54 24 20 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ??").ToInt64();
+            BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();//2023.10.03
+            BaseOfDialogBoxes = MemoryTools.GetVariableAddres("48 81 c1 ?? ?? ?? ?? 48 8d 54 24 20 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ??").ToInt64();//2023.10.03
             LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 81 c1 ?? ?? ?? ?? 48 8d 54 24 20 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(Log));
             QuickActionFunc = (UseQuickAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x87c4), typeof(UseQuickAction));
             UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 
@@ -77,7 +77,7 @@ namespace CodeInject.MemoryTools
         /// 
         public void CastSpell(int TargedID, int SkillIndex)
         {
-            Logger($"Target {TargedID.ToString("X")}  SkillIndex: {SkillIndex.ToString("X")}",Color.Bisque);
+          //  Logger($"Target {TargedID.ToString("X")}  SkillIndex: {SkillIndex.ToString("X")}",Color.Bisque);
             AttackWithSkillFunc(SkillIndex, TargedID, 1);
         }
 

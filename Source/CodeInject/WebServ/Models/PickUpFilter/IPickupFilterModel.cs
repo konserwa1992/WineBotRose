@@ -10,6 +10,6 @@ namespace CodeInject.WebServ.Models.PickUpFilter
     public  interface IPickupFilterModel
     {
         string Name { get; set; }
-        object Filter { get; set; }
+        List<ItemType> Filter { get; set; }
     }
 }
