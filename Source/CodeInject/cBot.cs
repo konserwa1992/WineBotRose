@@ -132,16 +132,17 @@ namespace CodeInject
             lNearItemsList.Items.AddRange(WineBot.WineBot.Instance.UpdateItemsAroundPlayer(int.Parse(tPickupRadius.Text)).ToArray());
 
 
-            //if (cPickUpEnable.Checked)
-           //     WineBot.WineBot.Instance.PickClosestItem();
+            if (cPickUpEnable.Checked)
+               WineBot.WineBot.Instance.PickClosestItem();
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tPickupRadius.Text = ((long)((Item)lNearItemsList.SelectedItem).ObjectPointer).ToString("X");
+            ((Item)lNearItemsList.SelectedItem).Pickup();
+         //   tPickupRadius.Text = ((long)((Item)lNearItemsList.SelectedItem).ObjectPointer).ToString("X");
          //   ((UsableItem)lNearItemsList.SelectedItem).Pickup();
-            lNearItemsList.Items.Clear();
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
+         //   lNearItemsList.Items.Clear();
+         //   lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

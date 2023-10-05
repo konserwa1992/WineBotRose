@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using CodeInject.MemoryTools;
 
 namespace CodeInject.Actors
@@ -53,10 +57,13 @@ namespace CodeInject.Actors
             Init(Entry);
         }
 
+
+        [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
+        private delegate long PickupTEST(long unknow1);
+        PickupTEST pinsad;
         public void Pickup()
         {
-            if(Index!=null)
-            GameFunctionsAndObjects.Actions.PickUp((ushort)Index);
+              GameFunctionsAndObjects.Actions.PickUp(this);
         }
 
         public double CalcDistance(IObject actor)
