@@ -58,9 +58,7 @@ namespace CodeInject.Actors
         }
 
 
-        [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
-        private delegate long PickupTEST(long unknow1);
-        PickupTEST pinsad;
+
         public void Pickup()
         {
               GameFunctionsAndObjects.Actions.PickUp(this);
