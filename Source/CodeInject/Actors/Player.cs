@@ -9,7 +9,7 @@ namespace CodeInject.Actors
     unsafe class Player : IObject
     {
         public long* ObjectPointer { get; set; }
-        public int* ID { get; set; }
+        public ushort* ID { get; set; }
         public float* X { get; set; }
         public float* Y { get; set; }
         public float* Z { get; set; }
@@ -29,7 +29,7 @@ namespace CodeInject.Actors
             X = (float*)(*Entry + 0x10);
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
-            ID = (int*)(*((long*)(*Entry + 0x20)));
+            ID = (ushort*)(*((long*)(*Entry + 0x20)));
             Hp = (int*)(*Entry + 0x3AE8);
             MaxHp = (int*)(*Entry + 0x3C94);
             Mp = (int*)(*Entry + 0x3AEC);

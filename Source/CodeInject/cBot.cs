@@ -30,7 +30,7 @@ namespace CodeInject
         public cBot()
         {
             InitializeComponent();
-         //   ws.SetupWebSocketServer();
+            ws.SetupWebSocketServer();
         }
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
@@ -194,7 +194,6 @@ namespace CodeInject
 
             GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
 
-            WineBot.WineBot.Instance.UseBuffs();
 
             if(cEnableHealParty.Checked)
             {

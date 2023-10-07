@@ -983,6 +983,7 @@
             // 
             // WsTimer
             // 
+            this.WsTimer.Enabled = true;
             this.WsTimer.Interval = 500;
             this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 

@@ -113,6 +113,13 @@ namespace CodeInject.WineBot
             }
         }
 
+        public void Start()
+        {
+            Target = null;
+            UseBuffs();
+        }
+
+
         public unsafe void UseBuffs()
         {
             foreach (Skills skill in BotBuffs)

@@ -3,9 +3,9 @@ namespace CodeInject.Actors
 {
     public unsafe interface IObject
     {
-        long* ObjectPointer { get; set; }
-        int* ID { get; set; }
-        float* X { get; set; }
+         long* ObjectPointer { get; set; }
+         ushort* ID { get; set; }
+         float* X { get; set; }
          float* Y { get; set; }
          float* Z { get; set; }
 

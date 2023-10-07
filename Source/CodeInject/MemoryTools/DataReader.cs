@@ -257,39 +257,12 @@ namespace CodeInject.MemoryTools
             while ((long)RBX != 0x0)
             {
                 long* itemAddr = (long*)*(long*)((long)RDI + ((*(short*)RBX) * 8) + 0x22080);
-                Item nearItem = new Item((*(ushort*)RBX), itemAddr);
+                Item nearItem = new Item(itemAddr);
                 itemList.Add(nearItem);
                 RBX = (long*)*((long*)((long)RBX+0x8));
             }
 
             return itemList;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<IObject> GetItemsAroundPlayer()
-        {
-            List<IObject> itemList = new List<IObject>();
-
-            for (ushort i = 0; i < 0xFFFF; i++)
-            {
-                long* itemPointer = (long*)GameFunctionsAndObjects.DataFetch.GetItemPointer(i);
-                if ((long)itemPointer != 0)
-                {
-                    Item nearItem = new Item(i, itemPointer);
-                    itemList.Add(nearItem);
-                }
-            }
-
-            return itemList;
-        }
-
-        public Int64 GetItemPointer(ushort index)
-        {
-            return getItemFunc(GameBaseAddres, *(int*)(*(long*)(GameBaseAddres) + (2 * index) + 0x0c));
         }
 
     }

@@ -55,10 +55,10 @@ namespace CodeInject
             {
                 server.WebSocketServices["/NpcList"].Sessions.SendTo(npcListJson, session.ID);
 
-               /* server.WebSocketServices["/NpcList"].Sessions.SendTo(JsonConvert.SerializeObject(new
+                server.WebSocketServices["/NpcList"].Sessions.SendTo(JsonConvert.SerializeObject(new
                 {
                     AttackedNPC = ((NPC)WineBot.WineBot.Instance.Target).ToWSObject()
-                }),session.ID);*/
+                }),session.ID);
 
             }
         }

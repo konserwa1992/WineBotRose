@@ -69,7 +69,7 @@ namespace CodeInject.MemoryTools
         public void PickUp(Item Item)
         {
             long r8 = ((long)Item.ObjectPointer) +0x10;
-            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), (int)Item.Index, r8);
+            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), *Item.ID, r8);
         }
 
         /// <summary>

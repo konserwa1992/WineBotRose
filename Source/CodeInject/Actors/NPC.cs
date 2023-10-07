@@ -10,7 +10,7 @@ namespace CodeInject.Actors
     public unsafe class  NPC: IObject
     {
         public long* ObjectPointer { get; set; }
-        public int* ID { get; set; }
+        public ushort* ID { get; set; }
         public MobInfo Info { get; set; }
         public float* X { get; set; }
         public float* Y { get; set; }
@@ -31,7 +31,7 @@ namespace CodeInject.Actors
                 Y = (float*)(*Entry + 0x14);
                 Z = (float*)(*Entry + 0x18);
                 if ((long*)(*Entry + 0x20) != null)
-                    ID = (int*)(*((long*)(*Entry + 0x20)));
+                ID = (ushort*)(*((long*)(*Entry + 0x20)));
                 Hp = (int*)(*Entry + 0xE8);
                 MaxHp = (int*)(*Entry + 0xF0);
 
