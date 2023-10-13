@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CodeInject.Actors;
+using System.Collections.Generic;
 
 namespace CodeInject.Hunt
 {
@@ -8,6 +9,7 @@ namespace CodeInject.Hunt
         List<Skills> BotBuffs { get; set; }
 
         List<MobInfo> ListOfMonstersToAttack { get; set; }
+        IObject Target { get; set; }
 
         void Update();
         int GetSkillIndex(int SkillID);

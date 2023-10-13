@@ -89,7 +89,7 @@
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Hunt\DefaultHunt.cs" />
-    <Compile Include="Hunt\HuntSetting.cs" />
+    <Compile Include="Hunt\EmptyHuntSetting.cs" />
     <Compile Include="Hunt\IHuntSetting.cs" />
     <Compile Include="Modules\AutoPotionModule.cs" />
     <Compile Include="Modules\IModule.cs" />

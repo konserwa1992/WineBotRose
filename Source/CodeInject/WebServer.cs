@@ -1,4 +1,5 @@
 ﻿using CodeInject.Actors;
+using CodeInject.BotStates;
 using CodeInject.MemoryTools;
 using CodeInject.WebServ.Models;
 using Newtonsoft.Json;
@@ -52,11 +53,11 @@ namespace CodeInject
             {
                 server.WebSocketServices["/NpcList"].Sessions.SendTo(npcListJson, session.ID);
 
-                if (WineBot.WineBot.Instance.Target != null)
+                if (WineBot.WineBot.Instance.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target != null)
                 {
                     server.WebSocketServices["/NpcList"].Sessions.SendTo(JsonConvert.SerializeObject(new TargetInfoModel()
                     {
-                        AttackedNPC = ((NPC)WineBot.WineBot.Instance.Target).ToWSObject()
+                        AttackedNPC = ((NPC)WineBot.WineBot.Instance.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target).ToWSObject()
                     }), session.ID);
                 }
             }

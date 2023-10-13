@@ -36,9 +36,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tZHuntArea = new System.Windows.Forms.TextBox();
             this.bHuntToggle = new System.Windows.Forms.Button();
-            this.cHuntEnable = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cBackToCenter = new System.Windows.Forms.CheckBox();
             this.bSetArea = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tHuntRadius = new System.Windows.Forms.TextBox();
@@ -46,7 +44,6 @@
             this.tYHuntArea = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tXHuntArea = new System.Windows.Forms.TextBox();
-            this.cEnableHuntingArea = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bRemoveMonster2Attack = new System.Windows.Forms.Button();
             this.bAddMonster2Attack = new System.Windows.Forms.Button();
@@ -54,14 +51,9 @@
             this.lFullMonsterList = new System.Windows.Forms.ListBox();
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.bBuffRemove = new System.Windows.Forms.Button();
-            this.bBuffAdd = new System.Windows.Forms.Button();
-            this.lUseBuffs = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cEnableHealParty = new System.Windows.Forms.CheckBox();
@@ -110,12 +102,9 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
             this.WsTimer = new System.Windows.Forms.Timer(this.components);
-            this.lNPClist = new System.Windows.Forms.ListBox();
-            this.cPickUpEnable = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -147,8 +136,6 @@
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.tZHuntArea);
             this.tabPage1.Controls.Add(this.bHuntToggle);
-            this.tabPage1.Controls.Add(this.cPickUpEnable);
-            this.tabPage1.Controls.Add(this.cHuntEnable);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.bRemoveMonster2Attack);
@@ -157,7 +144,6 @@
             this.tabPage1.Controls.Add(this.lFullMonsterList);
             this.tabPage1.Controls.Add(this.tSearchMobTextBox);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -168,7 +154,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(299, 195);
+            this.button2.Location = new System.Drawing.Point(93, 146);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 23);
             this.button2.TabIndex = 12;
@@ -197,27 +183,16 @@
             // 
             // bHuntToggle
             // 
-            this.bHuntToggle.Location = new System.Drawing.Point(369, 6);
+            this.bHuntToggle.Location = new System.Drawing.Point(9, 405);
             this.bHuntToggle.Name = "bHuntToggle";
-            this.bHuntToggle.Size = new System.Drawing.Size(103, 23);
+            this.bHuntToggle.Size = new System.Drawing.Size(269, 23);
             this.bHuntToggle.TabIndex = 11;
             this.bHuntToggle.Text = "Start";
             this.bHuntToggle.UseVisualStyleBackColor = true;
             this.bHuntToggle.Click += new System.EventHandler(this.bHuntToggle_Click_1);
             // 
-            // cHuntEnable
-            // 
-            this.cHuntEnable.AutoSize = true;
-            this.cHuntEnable.Location = new System.Drawing.Point(215, 6);
-            this.cHuntEnable.Name = "cHuntEnable";
-            this.cHuntEnable.Size = new System.Drawing.Size(85, 17);
-            this.cHuntEnable.TabIndex = 9;
-            this.cHuntEnable.Text = "Enable Hunt";
-            this.cHuntEnable.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cBackToCenter);
             this.groupBox3.Controls.Add(this.bSetArea);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.tHuntRadius);
@@ -225,27 +200,16 @@
             this.groupBox3.Controls.Add(this.tYHuntArea);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.tXHuntArea);
-            this.groupBox3.Controls.Add(this.cEnableHuntingArea);
-            this.groupBox3.Location = new System.Drawing.Point(215, 351);
+            this.groupBox3.Location = new System.Drawing.Point(9, 302);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(269, 135);
+            this.groupBox3.Size = new System.Drawing.Size(269, 97);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunting Area";
             // 
-            // cBackToCenter
-            // 
-            this.cBackToCenter.AutoSize = true;
-            this.cBackToCenter.Location = new System.Drawing.Point(6, 34);
-            this.cBackToCenter.Name = "cBackToCenter";
-            this.cBackToCenter.Size = new System.Drawing.Size(164, 17);
-            this.cBackToCenter.TabIndex = 10;
-            this.cBackToCenter.Text = "Back to center if no monsters";
-            this.cBackToCenter.UseVisualStyleBackColor = true;
-            // 
             // bSetArea
             // 
-            this.bSetArea.Location = new System.Drawing.Point(23, 106);
+            this.bSetArea.Location = new System.Drawing.Point(23, 65);
             this.bSetArea.Name = "bSetArea";
             this.bSetArea.Size = new System.Drawing.Size(234, 23);
             this.bSetArea.TabIndex = 7;
@@ -256,7 +220,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 60);
+            this.label6.Location = new System.Drawing.Point(6, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 6;
@@ -264,7 +228,7 @@
             // 
             // tHuntRadius
             // 
-            this.tHuntRadius.Location = new System.Drawing.Point(58, 57);
+            this.tHuntRadius.Location = new System.Drawing.Point(58, 16);
             this.tHuntRadius.Name = "tHuntRadius";
             this.tHuntRadius.Size = new System.Drawing.Size(70, 20);
             this.tHuntRadius.TabIndex = 5;
@@ -273,7 +237,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(135, 83);
+            this.label5.Location = new System.Drawing.Point(135, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 4;
@@ -281,7 +245,7 @@
             // 
             // tYHuntArea
             // 
-            this.tYHuntArea.Location = new System.Drawing.Point(157, 80);
+            this.tYHuntArea.Location = new System.Drawing.Point(157, 39);
             this.tYHuntArea.Name = "tYHuntArea";
             this.tYHuntArea.Size = new System.Drawing.Size(100, 20);
             this.tYHuntArea.TabIndex = 3;
@@ -290,7 +254,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 83);
+            this.label4.Location = new System.Drawing.Point(5, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 2;
@@ -298,21 +262,11 @@
             // 
             // tXHuntArea
             // 
-            this.tXHuntArea.Location = new System.Drawing.Point(28, 80);
+            this.tXHuntArea.Location = new System.Drawing.Point(28, 39);
             this.tXHuntArea.Name = "tXHuntArea";
             this.tXHuntArea.Size = new System.Drawing.Size(100, 20);
             this.tXHuntArea.TabIndex = 1;
             this.tXHuntArea.Text = "1";
-            // 
-            // cEnableHuntingArea
-            // 
-            this.cEnableHuntingArea.AutoSize = true;
-            this.cEnableHuntingArea.Location = new System.Drawing.Point(6, 19);
-            this.cEnableHuntingArea.Name = "cEnableHuntingArea";
-            this.cEnableHuntingArea.Size = new System.Drawing.Size(104, 17);
-            this.cEnableHuntingArea.TabIndex = 0;
-            this.cEnableHuntingArea.Text = "Set hunting area";
-            this.cEnableHuntingArea.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -324,7 +278,7 @@
             // 
             // bRemoveMonster2Attack
             // 
-            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(397, 195);
+            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(191, 146);
             this.bRemoveMonster2Attack.Name = "bRemoveMonster2Attack";
             this.bRemoveMonster2Attack.Size = new System.Drawing.Size(75, 23);
             this.bRemoveMonster2Attack.TabIndex = 6;
@@ -334,7 +288,7 @@
             // 
             // bAddMonster2Attack
             // 
-            this.bAddMonster2Attack.Location = new System.Drawing.Point(218, 195);
+            this.bAddMonster2Attack.Location = new System.Drawing.Point(12, 146);
             this.bAddMonster2Attack.Name = "bAddMonster2Attack";
             this.bAddMonster2Attack.Size = new System.Drawing.Size(75, 23);
             this.bAddMonster2Attack.TabIndex = 5;
@@ -345,7 +299,7 @@
             // lMonster2Attack
             // 
             this.lMonster2Attack.FormattingEnabled = true;
-            this.lMonster2Attack.Location = new System.Drawing.Point(215, 224);
+            this.lMonster2Attack.Location = new System.Drawing.Point(9, 175);
             this.lMonster2Attack.Name = "lMonster2Attack";
             this.lMonster2Attack.Size = new System.Drawing.Size(257, 121);
             this.lMonster2Attack.TabIndex = 4;
@@ -353,14 +307,14 @@
             // lFullMonsterList
             // 
             this.lFullMonsterList.FormattingEnabled = true;
-            this.lFullMonsterList.Location = new System.Drawing.Point(215, 94);
+            this.lFullMonsterList.Location = new System.Drawing.Point(9, 45);
             this.lFullMonsterList.Name = "lFullMonsterList";
             this.lFullMonsterList.Size = new System.Drawing.Size(257, 95);
             this.lFullMonsterList.TabIndex = 3;
             // 
             // tSearchMobTextBox
             // 
-            this.tSearchMobTextBox.Location = new System.Drawing.Point(215, 68);
+            this.tSearchMobTextBox.Location = new System.Drawing.Point(9, 19);
             this.tSearchMobTextBox.Name = "tSearchMobTextBox";
             this.tSearchMobTextBox.Size = new System.Drawing.Size(257, 20);
             this.tSearchMobTextBox.TabIndex = 2;
@@ -369,30 +323,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(212, 52);
+            this.label1.Location = new System.Drawing.Point(6, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Search monster:";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lNPClist);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 480);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "NPC List";
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.bBuffRemove);
-            this.tabPage2.Controls.Add(this.bBuffAdd);
-            this.tabPage2.Controls.Add(this.lUseBuffs);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.bSkillRemove);
             this.tabPage2.Controls.Add(this.bSkillAdd);
@@ -416,15 +356,6 @@
             this.label14.TabIndex = 13;
             this.label14.Text = "Character skills:";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(340, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Buff skills:";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -433,34 +364,6 @@
             this.label12.Size = new System.Drawing.Size(66, 13);
             this.label12.TabIndex = 11;
             this.label12.Text = "Attack skills:";
-            // 
-            // bBuffRemove
-            // 
-            this.bBuffRemove.Location = new System.Drawing.Point(412, 165);
-            this.bBuffRemove.Name = "bBuffRemove";
-            this.bBuffRemove.Size = new System.Drawing.Size(51, 23);
-            this.bBuffRemove.TabIndex = 10;
-            this.bBuffRemove.Text = "-";
-            this.bBuffRemove.UseVisualStyleBackColor = true;
-            this.bBuffRemove.Click += new System.EventHandler(this.bBuffRemove_Click);
-            // 
-            // bBuffAdd
-            // 
-            this.bBuffAdd.Location = new System.Drawing.Point(343, 165);
-            this.bBuffAdd.Name = "bBuffAdd";
-            this.bBuffAdd.Size = new System.Drawing.Size(51, 23);
-            this.bBuffAdd.TabIndex = 9;
-            this.bBuffAdd.Text = "+";
-            this.bBuffAdd.UseVisualStyleBackColor = true;
-            this.bBuffAdd.Click += new System.EventHandler(this.bBuffAdd_Click);
-            // 
-            // lUseBuffs
-            // 
-            this.lUseBuffs.FormattingEnabled = true;
-            this.lUseBuffs.Location = new System.Drawing.Point(343, 25);
-            this.lUseBuffs.Name = "lUseBuffs";
-            this.lUseBuffs.Size = new System.Drawing.Size(120, 134);
-            this.lUseBuffs.TabIndex = 8;
             // 
             // groupBox4
             // 
@@ -942,29 +845,10 @@
             this.WsTimer.Interval = 500;
             this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lNPClist
-            // 
-            this.lNPClist.FormattingEnabled = true;
-            this.lNPClist.Location = new System.Drawing.Point(6, 19);
-            this.lNPClist.Name = "lNPClist";
-            this.lNPClist.Size = new System.Drawing.Size(188, 446);
-            this.lNPClist.TabIndex = 1;
-            this.lNPClist.SelectedIndexChanged += new System.EventHandler(this.lNPClist_SelectedIndexChanged);
-            // 
-            // cPickUpEnable
-            // 
-            this.cPickUpEnable.AutoSize = true;
-            this.cPickUpEnable.Location = new System.Drawing.Point(215, 25);
-            this.cPickUpEnable.Name = "cPickUpEnable";
-            this.cPickUpEnable.Size = new System.Drawing.Size(62, 17);
-            this.cPickUpEnable.TabIndex = 10;
-            this.cPickUpEnable.Text = "Pick up";
-            this.cPickUpEnable.UseVisualStyleBackColor = true;
-            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(495, 524);
+            this.ClientSize = new System.Drawing.Size(497, 524);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -976,7 +860,6 @@
             this.tabPage1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1000,7 +883,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button bSkillRefresh;
         private System.Windows.Forms.ListBox lSkillList;
@@ -1023,7 +905,6 @@
         private System.Windows.Forms.TextBox tYHuntArea;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tXHuntArea;
-        private System.Windows.Forms.CheckBox cEnableHuntingArea;
         private System.Windows.Forms.Button bSetArea;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tHuntRadius;
@@ -1041,7 +922,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tMpDurr;
         private System.Windows.Forms.TextBox tHpDurr;
-        private System.Windows.Forms.CheckBox cHuntEnable;
         private System.Windows.Forms.Button bHuntToggle;
         private System.Windows.Forms.GroupBox SimpleFilterGroup;
         private System.Windows.Forms.CheckBox cFilterShoes;
@@ -1060,25 +940,18 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lHealSkills;
-        private System.Windows.Forms.ListBox lUseBuffs;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button bBuffRemove;
-        private System.Windows.Forms.Button bBuffAdd;
         private System.Windows.Forms.Timer BuffTimer;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox cBackToCenter;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.ListBox lPartyMembers;
         private System.Windows.Forms.Button bPartyStart;
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer WsTimer;
-        private System.Windows.Forms.ListBox lNPClist;
-        private System.Windows.Forms.CheckBox cPickUpEnable;
     }
 }

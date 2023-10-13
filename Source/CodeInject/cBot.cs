@@ -19,15 +19,13 @@ namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
-        WebServer ws = new WebServer();
-
-
+       // WebServer ws = new WebServer();
         Party.Party party;
-
+        bool BotState = false;
         public cBot()
         {
             InitializeComponent();
-            ws.SetupWebSocketServer();
+            //ws.SetupWebSocketServer();
         }
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
@@ -140,28 +138,22 @@ namespace CodeInject
 
         private void bHuntToggle_Click_1(object sender, EventArgs e)
         {
-            BuffTimer.Enabled = !BuffTimer.Enabled;
-
-            WineBot.WineBot.Instance.Start();
-
-            GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
-
-            if(cHuntEnable.Checked)
-               WineBot.WineBot.Instance.BotContext.Start(
-                   new HuntState(
-                       new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(), 
-                       new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                       float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this) 
-                      ));
-
-
-
-            if (cEnableHealParty.Checked)
+            if (BotState == false)
             {
-                party = new Party.Party();
+                GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
+                WineBot.WineBot.Instance.BotContext.Start(
+                    new HuntState(
+                        new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+                        new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
+                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this)
+                       ));           
             }
-
-            bHuntToggle.Text = timer2.Enabled == true ? "STOP" : "START";
+            else
+            {
+                WineBot.WineBot.Instance.BotContext.Stop();
+            }
+            BotState = !BotState;
+            bHuntToggle.Text = BotState ? "Stop" : "Start";
         }
 
         private void cFilterMaterials_CheckedChanged(object sender, EventArgs e)
@@ -305,7 +297,7 @@ namespace CodeInject
             {
                 if (cbHealHPItem.SelectedIndex != -1 && cbHealMPItem.SelectedIndex != -1)
                 {
-                    AutoPotionModule autoPotion = (AutoPotionModule)WineBot.WineBot.Instance.BotContext.GetModule("AUTOPOTION");
+                    AutoPotionModule autoPotion = WineBot.WineBot.Instance.BotContext.GetModule<AutoPotionModule>("AUTOPOTION");
                     if (autoPotion == null)
                         autoPotion = (AutoPotionModule)WineBot.WineBot.Instance.BotContext.AddModule(new AutoPotionModule());
 
@@ -326,30 +318,6 @@ namespace CodeInject
         }
 
 
-        private void bBuffAdd_Click(object sender, EventArgs e)
-        {
-            if (!lUseBuffs.Items.Cast<Skills>().Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
-                lUseBuffs.Items.Add(lSkillList.SelectedItem);
-
-
-            if (!WineBot.WineBot.Instance.BotBuffs.Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
-            {
-                WineBot.WineBot.Instance.BotBuffs.Add((Skills)lSkillList.SelectedItem);
-            }
-
-            lUseBuffs.Items.Clear();
-            lUseBuffs.Items.AddRange(WineBot.WineBot.Instance.BotBuffs.ToArray());
-        }
-
-        private void bBuffRemove_Click(object sender, EventArgs e)
-        {
-            if (lUseBuffs.SelectedItem != null)
-                WineBot.WineBot.Instance.BotBuffs.Remove((Skills)lUseBuffs.SelectedItem);
-
-            lUseBuffs.Items.Clear();
-            lUseBuffs.Items.AddRange(WineBot.WineBot.Instance.BotBuffs.ToArray());
-        }
-
         private void BuffTimer_Tick(object sender, EventArgs e)
         {
             WineBot.WineBot.Instance.UseBuffs();
@@ -363,10 +331,6 @@ namespace CodeInject
         }
 
 
-        private void lNPClist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show(((long)((IObject)lNPClist.SelectedItem).ObjectPointer).ToString("X"));
-        }
 
         private void timerParty_Tick(object sender, EventArgs e)
         {
@@ -387,8 +351,8 @@ namespace CodeInject
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ws.SendPlayerInformation();
-            ws.SendNPCsInformation();
+            //ws.SendPlayerInformation();
+          //  ws.SendNPCsInformation();
         }
     }
 }

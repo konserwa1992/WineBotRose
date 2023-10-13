@@ -11,17 +11,18 @@ namespace CodeInject.WineBot
    public unsafe class WineBot
     {
         public static WineBot Instance { get; private set; } = new WineBot();
-        public BotContext BotContext { get; set; } = new BotContext();
+        public BotContext BotContext { get; set; }
         public List<Skills> BotBuffs = new List<Skills>(); //Buffs to change
 
         public List<InvItem> ConsumeItems = new List<InvItem>();
 
 
         public int SkillIndex = 0;
-        public IObject Target;
+
 
         private WineBot() 
         {
+            BotContext = new BotContext();
         }
 
 
@@ -42,22 +43,19 @@ namespace CodeInject.WineBot
             //ADD NEW
             foreach (InvItem item in invDescriptions)
             {
-                if (*item.ItemType == 0xA && !ConsumeItems.Any(x=>(long)x.ObjectPointer==(long)item.ObjectPointer))
+                if (*item.ItemType == 0xA && !ConsumeItems.Any(x => (long)x.ObjectPointer == (long)item.ObjectPointer))
                 {
-                   ConsumeItems.Add(item);
+                    ConsumeItems.Add(item);
                 }
             }
             //REMOVE OLD
             ConsumeItems.RemoveAll(a => !invDescriptions.Any(b => (long)b.ObjectPointer == (long)a.ObjectPointer));
             return ConsumeItems;
         }
+
         public void Update()
         {
             BotContext.Update();
-        }
-        public void Start()
-        {
-            Target = null;
         }
         public unsafe void UseBuffs()
         {

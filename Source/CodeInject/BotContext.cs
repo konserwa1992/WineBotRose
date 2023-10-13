@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 
 namespace CodeInject
@@ -32,6 +33,7 @@ namespace CodeInject
             StandbyState standBy = new StandbyState();
             States.Add("STANDBY", standBy);
             States.Add("PICK", new PickUpState());
+            States.Add("HUNT",new HuntState(new DefaultHunt()));
             SetState("STANDBY");
         }
 
@@ -45,7 +47,6 @@ namespace CodeInject
         {
             SetState("STANDBY");
         }
-
         public void SetState(string stateName)
         {
             if (States.ContainsKey(stateName) && CurrentBotState != States[stateName])
@@ -61,7 +62,7 @@ namespace CodeInject
         }
         public IModule AddModule(IModule module)
         {
-            IModule ifExistModule = GetModule(module.Name);
+            IModule ifExistModule = GetModule<IModule>(module.Name);
             if (ifExistModule != null)
             {
                 return ifExistModule;
@@ -82,9 +83,11 @@ namespace CodeInject
             if (module != null)
                 ModuleList.Remove(module);
         }
-        public IModule GetModule(string moduleName)
+        public T GetModule<T>(string moduleName)
         {
-            return ModuleList.FirstOrDefault(m => m.Name == moduleName);
+            var module = ModuleList.FirstOrDefault(m => m.Name == moduleName);
+            return module != null ? (T)module : default;
+           // return (T)ModuleList.FirstOrDefault(m => m.Name == moduleName);
         }
         public void ModuleExecute()
         {
@@ -114,5 +117,9 @@ namespace CodeInject
             }
         }
 
+        public T GetState<T>(string key)
+        {
+            return (T)States[key];
+        }
     }
 }

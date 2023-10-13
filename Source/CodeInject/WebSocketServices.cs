@@ -42,12 +42,12 @@ namespace CodeInject
                 Send($"{JsonConvert.SerializeObject(toSerialzie)}");
 
 
-                if (WineBot.WineBot.Instance.Target != null)
+                if (WineBot.WineBot.Instance.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target != null)
                 {
                     Send(JsonConvert.SerializeObject(
                         new TargetInfoModel()
                         {
-                            AttackedNPC = ((NPC)WineBot.WineBot.Instance.Target).ToWSObject()
+                            AttackedNPC = ((NPC)WineBot.WineBot.Instance.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target).ToWSObject()
                         }));
                 }
             }

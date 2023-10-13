@@ -3,16 +3,22 @@ using CodeInject.MemoryTools;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace CodeInject.Hunt
 {
-    public unsafe class DefaultHunt : HuntSetting
+    public unsafe class DefaultHunt : EmptyHuntSetting
     {
         public int SkillIndex = 0;
         public IObject Target;
         public Vector3 HuntingAreaCenter { get; set; }
-        public int Radius {  get; set; }
+        public int Radius { get; set; } = 50;
         private cBot WinFormMenu;
+        public DefaultHunt()
+        {
+        }
 
         public DefaultHunt(List<MobInfo> monstersToAttackList,Vector3 huntingAreaCenter,int radius,List<Skills> skillList,cBot WinForm)
         {
@@ -21,12 +27,16 @@ namespace CodeInject.Hunt
             ListOfMonstersToAttack= monstersToAttackList;
             WinFormMenu = WinForm;
             BotSkills = skillList;
+            Target = null;
         }
 
         public override void AddSkill(Skills skill)
         {
             base.AddSkill(skill);
-            WinFormMenu.SkillListUpdate();
+            if (WinFormMenu != null)
+            {
+                WinFormMenu.SkillListUpdate();
+            }
         }
 
         public override void RemoveSkill(Skills skill)

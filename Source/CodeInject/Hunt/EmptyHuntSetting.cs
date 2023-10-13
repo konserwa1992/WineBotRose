@@ -1,18 +1,18 @@
-﻿using CodeInject.Modules;
+﻿using CodeInject.Actors;
+using CodeInject.Modules;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeInject.Hunt
 {
-    public abstract class HuntSetting : IHuntSetting
+    public abstract class EmptyHuntSetting : IHuntSetting
     {
         public List<Skills> BotSkills { get; set; } = new List<Skills>();
         public List<MobInfo> ListOfMonstersToAttack { get; set; } = new List<MobInfo> { new MobInfo() };
         public List<Skills> BotBuffs { get; set; } = new List<Skills>();
-
+        public IObject Target { get; set; }
 
         public abstract void Update();
-    
         public int GetSkillIndex(int SkillID)
         {
             return PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == SkillID);

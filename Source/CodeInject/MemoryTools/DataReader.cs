@@ -41,6 +41,8 @@ namespace CodeInject.MemoryTools
             Init();
         }
 
+  
+
         private void Init()
         {
             Process _proc = Process.GetCurrentProcess();
