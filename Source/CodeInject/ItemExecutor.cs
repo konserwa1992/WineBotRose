@@ -5,18 +5,17 @@ namespace CodeInject
 {
     public unsafe class ItemExecutor
     {
-        public int ColdDown { get; set; }
+        public int CooldDown { get; set; }
         private Stopwatch stopWatch = new Stopwatch();
         public InvItem Item2Cast { get; set; }
         public int MinValueToExecute = 0;
 
-        public ItemExecutor(int coldDown,int minValue, InvItem item)
+        public ItemExecutor(int cooldDown,int minValue, InvItem item)
         {
-            this.ColdDown = coldDown;
+            this.CooldDown = cooldDown;
             this.Item2Cast = item;
             this.MinValueToExecute = minValue;
         }
-
 
         public void Use(float currVal)
         {
@@ -29,7 +28,7 @@ namespace CodeInject
                     Item2Cast.UseItem();
                 }
 
-                if (stopWatch.Elapsed.Seconds > ColdDown)
+                if (stopWatch.Elapsed.Seconds > CooldDown)
                 {
                     Item2Cast.UseItem();
                     stopWatch.Reset();

@@ -3,10 +3,8 @@ using CodeInject.Party;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
@@ -50,9 +48,10 @@ namespace CodeInject.MemoryTools
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x2d3ed0), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+ 0x2EAF60), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
           //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
         }
+
 
 
 
@@ -88,9 +87,9 @@ namespace CodeInject.MemoryTools
                 };
 
 
-                member.Details = GetPartyMemberDetails(member);
+                member.PartyMemberObject = GetPartyMemberDetails(member);
 
-                if((long)member.Details.ObjectPointer!=0x0)
+                if((long)member.PartyMemberObject.ObjectPointer!=0x0)
                 PartyMemberList.Add(member);
 
 
@@ -108,7 +107,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x14bf0a0); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x14c3170); //2023.10.04
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)//OBS#S2
@@ -134,11 +133,11 @@ namespace CodeInject.MemoryTools
         /// Get GameObject from ID 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="ID"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public IObject GetObject<T>(int ID)
+        public IObject GetObject<T>(int id)
         {
-            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (ID * 8) + 0x22080); //OBS#N3
+            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (id * 8) + 0x22080); //OBS#N3
 
             if (typeof(T) == typeof(NPC))
                 return new NPC(wskObj);
@@ -177,7 +176,6 @@ namespace CodeInject.MemoryTools
             List<IObject> wholeNpcList = new List<IObject>();
             long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);//OBS#S3
             int* monsterIDList = (int*)*wsp;
-            int i2 = 1;
             int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A080);//OBS#S4
 
             for (int i = 0; i < *count; i++)
@@ -216,9 +214,9 @@ namespace CodeInject.MemoryTools
         /// trose.exe+21CA3D 
         /// </summary>
         /// <param name="page"></param>
-        /// <param name="DialogBoxAdr"></param>
+        /// <param name="dialogBoxAdr"></param>
         /// <returns></returns>
-        public List<IntPtr> getInventorySlots(int page,long DialogBoxAdr)
+        public List<IntPtr> getInventorySlots(int page,long dialogBoxAdr)
         {
 
             List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
@@ -230,7 +228,7 @@ namespace CodeInject.MemoryTools
             {
                 long slotAddres = (itemIndexStart + i) * 0x168;
                 slotAddres += 0x2d78;
-                slotAddres += DialogBoxAdr;
+                slotAddres += dialogBoxAdr;
                 Console.WriteLine($"{itemIndex.ToString("X")} {slotAddres.ToString("X")}");
                 inventorySlotAddrs.Add(new IntPtr(slotAddres));
                 i++;
@@ -249,7 +247,7 @@ namespace CodeInject.MemoryTools
 
             Process _proc = Process.GetCurrentProcess();
 
-            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x14C1520));
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x14C54F8));
             long* RBX = (long*)((long)RDI + 0x2a0b8);
 
             RBX = (long*)*RBX; //select first item from list

@@ -1,10 +1,5 @@
 ﻿using CodeInject.Actors;
 using CodeInject.MemoryTools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeInject.Party
 {
@@ -15,7 +10,7 @@ namespace CodeInject.Party
         /// <summary>
         /// Everything what got NPC definition
         /// </summary>
-        public IObject Details { get; set; }
+        public IObject PartyMemberObject { get; set; }
         public string MemberName { get; set;}
 
  
@@ -23,7 +18,7 @@ namespace CodeInject.Party
         public override string ToString()
         {
             NPC npce = (NPC)GameFunctionsAndObjects.DataFetch.GetPartyMemberDetails(this);
-            return *(((NPC)Details).Hp) +" "+ MemberName;
+            return *(((NPC)PartyMemberObject).Hp) +" "+ MemberName;
         }
     }
 }

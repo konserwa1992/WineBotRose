@@ -9,6 +9,7 @@ using WebSocketSharp;
 using CodeInject.WebServ.Models;
 using CodeInject.PickupFilters;
 using CodeInject.WebServ.Models.PickUpFilter;
+using CodeInject.BotStates;
 
 namespace CodeInject
 {
@@ -40,10 +41,15 @@ namespace CodeInject
 
                 Send($"{JsonConvert.SerializeObject(toSerialzie)}");
 
-                Send(JsonConvert.SerializeObject(new
+
+                if (WineBot.WineBot.Instance.Target != null)
                 {
-                    AttackedNPC = ((NPC)WineBot.WineBot.Instance.Target).ToWSObject()
-                }));
+                    Send(JsonConvert.SerializeObject(
+                        new TargetInfoModel()
+                        {
+                            AttackedNPC = ((NPC)WineBot.WineBot.Instance.Target).ToWSObject()
+                        }));
+                }
             }
         }
 
@@ -52,16 +58,15 @@ namespace CodeInject
         {
             protected override void OnMessage(MessageEventArgs e)
             {
-
                 if (e.Data.Contains("setSkills"))
                 {
-                    SetSkills newSkillSet = JsonConvert.DeserializeObject<SetSkills>(e.Data);
+                    SetSkillsModel newSkillSet = JsonConvert.DeserializeObject<SetSkillsModel>(e.Data);
 
-                    WineBot.WineBot.Instance.BotSkills.RemoveAll(x => 1 == 1);
+                    ((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.RemoveAll(x => 1 == 1);
 
                     foreach (int skillId in newSkillSet.setSkills)
                     {
-                        WineBot.WineBot.Instance.BotSkills.Add(Skills.GetSkillByID(skillId));
+                        ((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.AddSkill(Skills.GetSkillByID(skillId));
                     }
                 }
                 else if (e.Data.Contains("GetSkills"))
@@ -69,10 +74,10 @@ namespace CodeInject
                     PlayerSkillModel skillsList = new PlayerSkillModel();
                     foreach (Skills singleSkill in PlayerCharacter.GetPlayerSkills)
                     {
-                        if (!WineBot.WineBot.Instance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
+                        if (!((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
                             skillsList.UnUsedSkillList.Add(singleSkill.ToWSObject());
 
-                        if (WineBot.WineBot.Instance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
+                        if (((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
                             skillsList.SkillInUseList.Add(singleSkill.ToWSObject());
                     }
 
@@ -91,7 +96,7 @@ namespace CodeInject
                     var pickUpFilter = new SimpleFilterModel()
                     {
                         Name = "Simple",
-                        Filter = ((QuickFilter)WineBot.WineBot.Instance.filter).pickTypeList
+                        Filter = ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).pickTypeList
                     };
 
                     Send($"{JsonConvert.SerializeObject((object)pickUpFilter)}");
@@ -122,9 +127,11 @@ namespace CodeInject
                 }
 
 
+                /*
+                 * UNCOMMENT
                 if (WineBot.WineBot.Instance.AutoHp == null || WineBot.WineBot.Instance.AutoMp == null)
                 {
-                    Send(JsonConvert.SerializeObject(new AutoPotionSettings()
+                    Send(JsonConvert.SerializeObject(new AutoPotionSettingsModel()
                     {
                         ItemsList = ItemToSend,
                         MinHelath = 0,
@@ -138,17 +145,17 @@ namespace CodeInject
                 }
 
 
-                Send(JsonConvert.SerializeObject(new AutoPotionSettings()
+                Send(JsonConvert.SerializeObject(new AutoPotionSettingsModel()
                 {
                     ItemsList = ItemToSend,
                     MinHelath = WineBot.WineBot.Instance.AutoHp.MinValueToExecute,
                     MinMana = WineBot.WineBot.Instance.AutoMp.MinValueToExecute,
                     HealthItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoHp.Item2Cast.ObjectPointer),
                     ManaItemIndex = ItemToSend.FindIndex(x => x.Id == (long)WineBot.WineBot.Instance.AutoMp.Item2Cast.ObjectPointer),
-                    HelathDurration = WineBot.WineBot.Instance.AutoHp.ColdDown,
-                    ManaDurration = WineBot.WineBot.Instance.AutoMp.ColdDown
+                    HelathDurration = WineBot.WineBot.Instance.AutoHp.CooldDown,
+                    ManaDurration = WineBot.WineBot.Instance.AutoMp.CooldDown
                 }));
-
+                */
                 base.OnOpen();
             }
             protected override void OnMessage(MessageEventArgs e)
@@ -162,8 +169,9 @@ namespace CodeInject
                     dynamic setPotion = JsonConvert.DeserializeObject<dynamic>(e.Data);
                     InvItem[] items = WineBot.WineBot.Instance.UpdateConsumeList().ToArray();
 
-                    WineBot.WineBot.Instance.SetAutoHPpotion((int)setPotion.procHelath, (int)setPotion.hpItemDurr, items[(int)setPotion.hpItemIndex]);
-                    WineBot.WineBot.Instance.SetAutoMPpotion((int)setPotion.procMana, (int)setPotion.mpItemDurr, items[(int)setPotion.mpItemIndex]);
+                    //UNCOMMENT
+                  //  WineBot.WineBot.Instance.SetAutoHPpotion((int)setPotion.procHelath, (int)setPotion.hpItemDurr, items[(int)setPotion.hpItemIndex]);
+                  //  WineBot.WineBot.Instance.SetAutoMPpotion((int)setPotion.procMana, (int)setPotion.mpItemDurr, items[(int)setPotion.mpItemIndex]);
                 }
             }
         }

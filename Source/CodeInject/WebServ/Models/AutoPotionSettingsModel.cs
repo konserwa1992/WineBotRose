@@ -2,7 +2,7 @@
 
 namespace CodeInject.WebServ.Models
 {
-    public class AutoPotionSettings
+    public class AutoPotionSettingsModel
     {
         public List<ItemModel> ItemsList = new List<ItemModel>();
         public int MinHelath;

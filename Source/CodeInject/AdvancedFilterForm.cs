@@ -15,9 +15,6 @@ namespace CodeInject
     public partial class AdvancedFilterForm : Form
     {
         AdvancedFilter Filter { get; set; }
-
-        ItemType selectedType = ItemType.Weapon;
-
         List<IBasicInfo> FullItemList = new List<IBasicInfo>();
 
         public AdvancedFilterForm(IFilter filter)

@@ -3,7 +3,7 @@
 
 namespace CodeInject.WebServ.Models
 {
-    public class SetSkills
+    public class SetSkillsModel
     {
         public List<int> setSkills = new List<int>();
     }

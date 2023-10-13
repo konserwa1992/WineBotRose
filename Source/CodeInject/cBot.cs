@@ -1,19 +1,17 @@
 ﻿using CodeInject.Actors;
+using CodeInject.BotStates;
+using CodeInject.Hunt;
 using CodeInject.MemoryTools;
+using CodeInject.Modules;
 using CodeInject.Party;
 using CodeInject.PickupFilters;
-using CodeInject.WineBot;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using WebSocketSharp.Server;
 
 
 
@@ -21,9 +19,8 @@ namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
-        ItemExecutor mp;
-        ItemExecutor hp;
         WebServer ws = new WebServer();
+
 
         Party.Party party;
 
@@ -41,67 +38,28 @@ namespace CodeInject
 
         private void bSkillAdd_Click(object sender, EventArgs e)
         {
-            if(!lUseSkill.Items.Cast<Skills>().Any(x=>x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
-            lUseSkill.Items.Add(lSkillList.SelectedItem);
-
-
-            if(!WineBot.WineBot.Instance.BotSkills.Any(x=>x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
-            {
-                WineBot.WineBot.Instance.BotSkills.Add((Skills)lSkillList.SelectedItem);
-            }
-
-            lUseSkill.Items.Clear();
-            lUseSkill.Items.AddRange(WineBot.WineBot.Instance.BotSkills.ToArray());
+            if(lSkillList.SelectedIndex!=-1)
+            ((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.AddSkill((Skills)lSkillList.SelectedItem);
         }
 
         private void bSkillRemove_Click(object sender, EventArgs e)
         {
             if (lUseSkill.SelectedItem!=null)
-                WineBot.WineBot.Instance.BotSkills.Remove((Skills)lUseSkill.SelectedItem);
+                ((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.RemoveSkill((Skills)lUseSkill.SelectedItem);
+        }
 
+
+        public void SkillListUpdate()
+        {
+            GameFunctionsAndObjects.Actions.Logger($"SkillListUpdate", Color.Orange);
             lUseSkill.Items.Clear();
-            lUseSkill.Items.AddRange(WineBot.WineBot.Instance.BotSkills.ToArray());
+            lUseSkill.Items.AddRange(((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.ToArray());
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            lNPClist.Items.Clear();
+            WineBot.WineBot.Instance.Update();
 
-
-            if (cEnableHuntingArea.Checked)
-            {
-                WineBot.WineBot.Instance.NpcAround = GameFunctionsAndObjects.DataFetch.GetNPCs()
-                    .Where(x => lMonster2Attack.Items.Count == 0 || lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
-                    .Where(x => ((NPC)x).CalcDistance(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text), float.Parse(tZHuntArea.Text)) < float.Parse(tHuntRadius.Text)).ToList();
-
-
-                lNPClist.Items.AddRange(WineBot.WineBot.Instance.NpcAround.ToArray());
-
-                if(cBackToCenter.Checked && 
-                   lNPClist.Items.Count == 0 && 
-                   ((int)*GameFunctionsAndObjects.DataFetch.GetPlayer().X) != (int)float.Parse(tXHuntArea.Text) && 
-                   ((int)*GameFunctionsAndObjects.DataFetch.GetPlayer().Y) != (int)float.Parse(tYHuntArea.Text))
-                {
-                    GameFunctionsAndObjects.Actions.MoveToPoint(new Vector2(float.Parse(tXHuntArea.Text)/100, float.Parse(tYHuntArea.Text)/100));
-                }
-            }
-            else
-            {
-                WineBot.WineBot.Instance.NpcAround = GameFunctionsAndObjects.DataFetch.GetNPCs()
-               .Where(x => lMonster2Attack.Items.Count == 0 || lMonster2Attack.Items.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID)).ToList();
-
-                lNPClist.Items.AddRange(WineBot.WineBot.Instance.NpcAround.ToArray());
-            }
-
-
-
-            if (cHuntEnable.Checked)
-            {
-                if (cPickUpEnable.Checked == false || lNearItemsList.Items.Count == 0)
-                {
-                    WineBot.WineBot.Instance.AttackClosestMonster();
-                }
-            }
 
             if(cEnableHealParty.Checked)
             {
@@ -109,31 +67,26 @@ namespace CodeInject
                 party.Update();
                 lPartyMembers.Items.AddRange(party.PartyMemberList.ToArray());
 
-                PartyMember member = party.PartyMemberList.OrderBy(x => ((float)*((NPC)x.Details).Hp / *((NPC)x.Details).MaxHp * 100)).FirstOrDefault();
+                PartyMember member = party.PartyMemberList.OrderBy(x => ((float)*((NPC)x.PartyMemberObject).Hp / *((NPC)x.PartyMemberObject).MaxHp * 100)).FirstOrDefault();
 
-               if (member!=null && ((float)*((NPC)member.Details).Hp / *((NPC)member.Details).MaxHp * 100) < minProcHp)
+               if (member!=null && ((float)*((NPC)member.PartyMemberObject).Hp / *((NPC)member.PartyMemberObject).MaxHp * 100) < minProcHp)
                {
                     Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == ((Skills)lHealSkills.Items[0]).skillInfo.ID);
-                    GameFunctionsAndObjects.Actions.CastSpell(*member.Details.ID, WineBot.WineBot.Instance.GetSkillIndex(Skill2Cast.skillInfo.ID));
+                    GameFunctionsAndObjects.Actions.CastSpell(*member.PartyMemberObject.ID, WineBot.WineBot.Instance.GetSkillIndex(Skill2Cast.skillInfo.ID));
                 }
-            }
-
-            if (cAutoPotionEnabled.Checked)
-            {
-                WineBot.WineBot.Instance.AutoPotionFunction(int.Parse(tHPPotionUseProc.Text),int.Parse(tMPPotionUseProc.Text));
             }
         }
 
         private void pickUpTimer_Tick(object sender, EventArgs e)
         {
-
+            /*
             lNearItemsList.Items.Clear();
 
             lNearItemsList.Items.AddRange(WineBot.WineBot.Instance.UpdateItemsAroundPlayer(int.Parse(tPickupRadius.Text)).ToArray());
 
 
             if (cPickUpEnable.Checked)
-               WineBot.WineBot.Instance.PickClosestItem();
+               WineBot.WineBot.Instance.PickClosestItem();*/
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -187,15 +140,23 @@ namespace CodeInject
 
         private void bHuntToggle_Click_1(object sender, EventArgs e)
         {
-          
-            pickUpTimer.Enabled = !pickUpTimer.Enabled;
-            timer2.Enabled = !timer2.Enabled;
             BuffTimer.Enabled = !BuffTimer.Enabled;
+
+            WineBot.WineBot.Instance.Start();
 
             GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
 
+            if(cHuntEnable.Checked)
+               WineBot.WineBot.Instance.BotContext.Start(
+                   new HuntState(
+                       new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(), 
+                       new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
+                       float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this) 
+                      ));
 
-            if(cEnableHealParty.Checked)
+
+
+            if (cEnableHealParty.Checked)
             {
                 party = new Party.Party();
             }
@@ -207,11 +168,11 @@ namespace CodeInject
         {
             if(cFilterMaterials.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.Material);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.Material);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.Material);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.Material);
             }
         }
 
@@ -219,11 +180,11 @@ namespace CodeInject
         {
             if (cFilterArmor.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.ChestArmor);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.ChestArmor);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.ChestArmor);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.ChestArmor);
             }
         }
 
@@ -231,11 +192,11 @@ namespace CodeInject
         {
             if (cFilterGloves.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.Gloves);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.Gloves);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.Gloves);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.Gloves);
             }
         }
 
@@ -243,11 +204,11 @@ namespace CodeInject
         {
             if (cFilterHat.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.Hat);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.Hat);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.Hat);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.Hat);
             }
         }
 
@@ -255,11 +216,11 @@ namespace CodeInject
         {
             if (cFilterShoes.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.Shoes);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.Shoes);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.Shoes);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.Shoes);
             }
         }
 
@@ -267,11 +228,11 @@ namespace CodeInject
         {
             if (cFilterUsable.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.UsableItem);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.UsableItem);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.UsableItem);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.UsableItem);
             }
         }
 
@@ -279,11 +240,11 @@ namespace CodeInject
         {
             if (cFilterWeapon.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.Weapon);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.Weapon);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.Weapon);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.Weapon);
             }
         }
 
@@ -291,17 +252,17 @@ namespace CodeInject
         {
             if (cFilterShield.Checked)
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).AddToPick(ItemType.Shield);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).AddToPick(ItemType.Shield);
             }
             else
             {
-                ((QuickFilter)WineBot.WineBot.Instance.filter).RemoveFromPick(ItemType.Shield);
+                ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).RemoveFromPick(ItemType.Shield);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(WineBot.WineBot.Instance.filter);
+            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(WineBot.WineBot.Instance.BotContext.Filter);
             advFilterWindow.ShowDialog();
         }
 
@@ -309,12 +270,12 @@ namespace CodeInject
         {
             if (!cAdvanceEnable.Checked)
             {
-                WineBot.WineBot.Instance.filter = new QuickFilter();
+                WineBot.WineBot.Instance.BotContext.Filter = new QuickFilter();
                 SimpleFilterGroup.Controls.OfType<CheckBox>().ToList().ForEach(c => c.Checked = false);
             }
             else
             {
-                WineBot.WineBot.Instance.filter = new AdvancedFilter();
+                WineBot.WineBot.Instance.BotContext.Filter = new AdvancedFilter();
             }
             SimpleFilterGroup.Enabled = !cAdvanceEnable.Checked;
             bAdvancedFilter.Enabled = cAdvanceEnable.Checked;
@@ -336,13 +297,25 @@ namespace CodeInject
 
         private void cAutoPotionEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbHealHPItem.SelectedIndex!=-1 && cbHealMPItem.SelectedIndex!= -1)
+            if (!cAutoPotionEnabled.Checked)
             {
-                WineBot.WineBot.Instance.SetAutoHPpotion(int.Parse(tHPPotionUseProc.Text), int.Parse(tHpDurr.Text), (InvItem)cbHealHPItem.SelectedItem);
-                WineBot.WineBot.Instance.SetAutoMPpotion( int.Parse(tMPPotionUseProc.Text), int.Parse(tMpDurr.Text), (InvItem)cbHealMPItem.SelectedItem);
-            }else
+                WineBot.WineBot.Instance.BotContext.RemoveModule("AUTOPOTION");
+            }
+            else
             {
-                throw new Exception("Please Select Both item in Autopotion option if you want to have it enabled");
+                if (cbHealHPItem.SelectedIndex != -1 && cbHealMPItem.SelectedIndex != -1)
+                {
+                    AutoPotionModule autoPotion = (AutoPotionModule)WineBot.WineBot.Instance.BotContext.GetModule("AUTOPOTION");
+                    if (autoPotion == null)
+                        autoPotion = (AutoPotionModule)WineBot.WineBot.Instance.BotContext.AddModule(new AutoPotionModule());
+
+                    autoPotion.SetAutoHPpotion(int.Parse(tHPPotionUseProc.Text), int.Parse(tHpDurr.Text), (InvItem)cbHealHPItem.SelectedItem);
+                    autoPotion.SetAutoMPpotion(int.Parse(tMPPotionUseProc.Text), int.Parse(tMpDurr.Text), (InvItem)cbHealMPItem.SelectedItem);
+                }
+                else
+                {
+                    throw new Exception("Please Select both item in Autopotion option if you want to have it enabled");
+                }
             }
         }
 

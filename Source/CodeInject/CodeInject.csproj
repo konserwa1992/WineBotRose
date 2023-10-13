@@ -76,6 +76,11 @@
     <Compile Include="AdvancedFilterForm.Designer.cs">
       <DependentUpon>AdvancedFilterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BotContext.cs" />
+    <Compile Include="BotStates\HuntState.cs" />
+    <Compile Include="BotStates\IBotState.cs" />
+    <Compile Include="BotStates\PickUpState.cs" />
+    <Compile Include="BotStates\StandbyState.cs" />
     <Compile Include="cBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +88,11 @@
       <DependentUpon>cBot.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
+    <Compile Include="Hunt\DefaultHunt.cs" />
+    <Compile Include="Hunt\HuntSetting.cs" />
+    <Compile Include="Hunt\IHuntSetting.cs" />
+    <Compile Include="Modules\AutoPotionModule.cs" />
+    <Compile Include="Modules\IModule.cs" />
     <Compile Include="Inventory\InvItem.cs" />
     <Compile Include="ItemTypes.cs" />
     <Compile Include="MemoryTools\DataReader.cs" />
@@ -105,14 +115,15 @@
     </Compile>
     <Compile Include="Skills.cs" />
     <Compile Include="WebServer.cs" />
-    <Compile Include="WebServ\Models\AutoPotionSettings.cs" />
+    <Compile Include="WebServ\Models\AutoPotionSettingsModel.cs" />
     <Compile Include="WebServ\Models\ItemModel.cs" />
     <Compile Include="WebServ\Models\NPCModel.cs" />
     <Compile Include="WebServ\Models\PickUpFilter\IPickupFilterModel.cs" />
     <Compile Include="WebServ\Models\PickUpFilter\SimpleFilterModel.cs" />
-    <Compile Include="WebServ\Models\PlayerInfoViewModel.cs" />
-    <Compile Include="WebServ\Models\SetSkills.cs" />
+    <Compile Include="WebServ\Models\PlayerInfoModel.cs" />
+    <Compile Include="WebServ\Models\SetSkillsModel.cs" />
     <Compile Include="WebServ\Models\SkillModel.cs" />
+    <Compile Include="WebServ\Models\TargetInfoModel.cs" />
     <Compile Include="WebSocketServices.cs" />
     <Compile Include="WineBot\WineBot.cs" />
   </ItemGroup>

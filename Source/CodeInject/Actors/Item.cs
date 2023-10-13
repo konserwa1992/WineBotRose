@@ -29,19 +29,19 @@ namespace CodeInject.Actors
         /// </summary>
         public short* ItemType { get;set; }
 
-        private void Init(long* Entry)
+        private void Init(long* entry)
         {
        
-            ObjectPointer = Entry;
+            ObjectPointer = entry;
 
 
-            X = (float*)((long)Entry + 0x10);
-            Y = (float*)((long)Entry + 0x14);
-            Z = (float*)((long)Entry + 0x18);
-            ID = (ushort*)((long)Entry + 0x1c);
-            ItemData = (short*)((long)Entry + 0x6c);
+            X = (float*)((long)entry + 0x10);
+            Y = (float*)((long)entry + 0x14);
+            Z = (float*)((long)entry + 0x18);
+            ID = (ushort*)((long)entry + 0x1c);
+            ItemData = (short*)((long)entry + 0x6c);
 
-            ItemType = (short*)((long)Entry + 0x68);
+            ItemType = (short*)((long)entry + 0x68);
 
         }
 
@@ -56,9 +56,9 @@ namespace CodeInject.Actors
               GameFunctionsAndObjects.Actions.PickUp(this);
         }
 
-        public double CalcDistance(IObject actor)
+        public double CalcDistance(IObject targetObject)
         {
-            return Math.Sqrt(Math.Pow((*actor.X/100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
+            return Math.Sqrt(Math.Pow((*targetObject.X/100) - (*this.X / 100), 2) + Math.Pow((*targetObject.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*targetObject.Z / 100) - (*this.Z / 100), 2));
         }
 
         public double CalcDistance(float x, float y, float z)

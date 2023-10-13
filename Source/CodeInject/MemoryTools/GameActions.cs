@@ -1,13 +1,10 @@
 ﻿using CodeInject.Actors;
 using System;
-using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using WebSocketSharp;
-using static System.Net.Mime.MediaTypeNames;
+
 
 
 namespace CodeInject.MemoryTools
@@ -55,7 +52,7 @@ namespace CodeInject.MemoryTools
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
             NormalAttackFunc = (NormalAttackAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 0f 84 ?? ?? ?? ?? 40 84 f6 0f 84 ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 8b d3 48 81 c1 ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(NormalAttackAction));
             MoveToPointFunc = (MoveToAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 ?? ?? ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 4c 8b c6 48 81 c1 ?? ?? ?? ?? 33 d2 e8 ?? ?? ?? ??"), typeof(MoveToAction));
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x39324), typeof(PickUpAction)); //MSG#INV4
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x39496), typeof(PickUpAction)); //MSG#INV4
         }
 
 
@@ -66,22 +63,22 @@ namespace CodeInject.MemoryTools
         }
 
 
-        public void PickUp(Item Item)
+        public void PickUp(Item item)
         {
-            long r8 = ((long)Item.ObjectPointer) +0x10;
-            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), *Item.ID, r8);
+            long r8 = ((long)item.ObjectPointer) +0x10;
+            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), *item.ID, r8);
         }
 
         /// <summary>
         /// Pattern: 4c 8d 44 24 20 8b d0
         /// </summary>
-        /// <param name="TargedID"></param>
-        /// <param name="SkillIndex"></param>
+        /// <param name="targedID"></param>
+        /// <param name="skillIndex"></param>
         /// 
-        public void CastSpell(int TargedID, int SkillIndex)
+        public void CastSpell(int targedID, int skillIndex)
         {
           //  Logger($"Target {TargedID.ToString("X")}  SkillIndex: {SkillIndex.ToString("X")}",Color.Bisque);
-            AttackWithSkillFunc(SkillIndex, TargedID, 1);
+            AttackWithSkillFunc(skillIndex, targedID, 1);
         }
 
 
@@ -103,16 +100,16 @@ namespace CodeInject.MemoryTools
             }
         }
 
-        public void CastSpell(int SkillIndex)
+        public void CastSpell(int skillIndex)
         {
             IObject player = GameFunctionsAndObjects.DataFetch.GetPlayer();
 
-            AttackWithSkillFunc(SkillIndex, *player.ID, 0);
+            AttackWithSkillFunc(skillIndex, *player.ID, 0);
         }
 
-        public void Attack(int TargedID)
+        public void Attack(int targedID)
         {
-            NormalAttackFunc((*(long*)(BaseNetworkClass) + 0x16b8), TargedID);
+            NormalAttackFunc((*(long*)(BaseNetworkClass) + 0x16b8), targedID);
         }
 
         /// <summary>
@@ -131,10 +128,10 @@ namespace CodeInject.MemoryTools
         }
 
 
-        public void UseItemByIco(long* IconAdr)
+        public void UseItemByIco(long* iconAdr)
         {
-            UseIcpItemFunc = (UseIcoItemAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(*(long*)(*IconAdr + 0x18)), typeof(UseIcoItemAction));
-            UseIcpItemFunc(IconAdr);
+            UseIcpItemFunc = (UseIcoItemAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(*(long*)(*iconAdr + 0x18)), typeof(UseIcoItemAction));
+            UseIcpItemFunc(iconAdr);
         }
     }
 }

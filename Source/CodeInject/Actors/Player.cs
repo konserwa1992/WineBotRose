@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace CodeInject.Actors
 {
@@ -25,7 +24,6 @@ namespace CodeInject.Actors
         {
             ObjectPointer = (long*)*Entry;
 
-
             X = (float*)(*Entry + 0x10);
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
@@ -34,17 +32,14 @@ namespace CodeInject.Actors
             MaxHp = (int*)(*Entry + 0x3C94);
             Mp = (int*)(*Entry + 0x3AEC);
             MaxMp = (int*)(*Entry + 0x4624);
-
             MaxMp = (int*)(*Entry + 0x4624);
-
             BuffCount = (short*)(*Entry + 0x7b0);
-
             Name = (string*)(*Entry + 0xb10);
         }
 
-        public double CalcDistance(IObject actor)
+        public double CalcDistance(IObject targerObject)
         {
-            return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
+            return Math.Sqrt(Math.Pow((*targerObject.X / 100) - (*this.X / 100), 2) + Math.Pow((*targerObject.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*targerObject.Z / 100) - (*this.Z / 100), 2));
         }
 
         public double CalcDistance(float x, float y, float z)
@@ -57,7 +52,7 @@ namespace CodeInject.Actors
         public override string ToString()
         {
             string playerJson =
-                JsonConvert.SerializeObject(new PlayerInfoViewModel()
+                JsonConvert.SerializeObject(new PlayerInfoModel()
                 { 
                     Hp = *Hp,
                     MaxHp = *MaxHp,

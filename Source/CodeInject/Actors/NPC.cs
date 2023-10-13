@@ -2,8 +2,7 @@
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Xml.Linq;
+
 
 namespace CodeInject.Actors
 {
@@ -17,7 +16,6 @@ namespace CodeInject.Actors
         public float* Z { get; set; }
         public int* Hp { get; set; }
         public int* MaxHp { get; set; }
-        public int* modelNaME { get; set; }
 
         public string* Name { get; set; }
 
@@ -41,17 +39,16 @@ namespace CodeInject.Actors
             }catch (Exception) { }
         }
 
-        public double CalcDistance(IObject actor)
+        public double CalcDistance(IObject targetObject)
         {
-            try//Walk around for error TODO:Fix it. Sometime getting null reference, i belive we talk  about this.position .
+            try//Walk around for error TODO:Fix it. Sometime getting null reference.
             {
-                return Math.Sqrt(Math.Pow((*actor.X / 100) - (*this.X / 100), 2) + Math.Pow((*actor.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*actor.Z / 100) - (*this.Z / 100), 2));
+                return Math.Sqrt(Math.Pow((*targetObject.X / 100) - (*this.X / 100), 2) + Math.Pow((*targetObject.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*targetObject.Z / 100) - (*this.Z / 100), 2));
             }catch(Exception) {
             
             }
             return 0;
         }
-
 
         public NPCModel ToWSObject()
         {

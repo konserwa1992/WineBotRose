@@ -36,7 +36,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tZHuntArea = new System.Windows.Forms.TextBox();
             this.bHuntToggle = new System.Windows.Forms.Button();
-            this.cPickUpEnable = new System.Windows.Forms.CheckBox();
             this.cHuntEnable = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cBackToCenter = new System.Windows.Forms.CheckBox();
@@ -56,7 +55,6 @@
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lNPClist = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -87,8 +85,6 @@
             this.cFilterGloves = new System.Windows.Forms.CheckBox();
             this.cFilterArmor = new System.Windows.Forms.CheckBox();
             this.cFilterMaterials = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tPickupRadius = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -112,9 +108,10 @@
             this.bPartyStart = new System.Windows.Forms.Button();
             this.lPartyMembers = new System.Windows.Forms.ListBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.pickUpTimer = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
             this.WsTimer = new System.Windows.Forms.Timer(this.components);
+            this.lNPClist = new System.Windows.Forms.ListBox();
+            this.cPickUpEnable = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -141,7 +138,7 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(498, 521);
+            this.tabControl1.Size = new System.Drawing.Size(494, 521);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -164,7 +161,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(490, 495);
+            this.tabPage1.Size = new System.Drawing.Size(486, 495);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -200,23 +197,13 @@
             // 
             // bHuntToggle
             // 
-            this.bHuntToggle.Location = new System.Drawing.Point(381, 15);
+            this.bHuntToggle.Location = new System.Drawing.Point(369, 6);
             this.bHuntToggle.Name = "bHuntToggle";
             this.bHuntToggle.Size = new System.Drawing.Size(103, 23);
             this.bHuntToggle.TabIndex = 11;
             this.bHuntToggle.Text = "Start";
             this.bHuntToggle.UseVisualStyleBackColor = true;
             this.bHuntToggle.Click += new System.EventHandler(this.bHuntToggle_Click_1);
-            // 
-            // cPickUpEnable
-            // 
-            this.cPickUpEnable.AutoSize = true;
-            this.cPickUpEnable.Location = new System.Drawing.Point(215, 25);
-            this.cPickUpEnable.Name = "cPickUpEnable";
-            this.cPickUpEnable.Size = new System.Drawing.Size(62, 17);
-            this.cPickUpEnable.TabIndex = 10;
-            this.cPickUpEnable.Text = "Pick up";
-            this.cPickUpEnable.UseVisualStyleBackColor = true;
             // 
             // cHuntEnable
             // 
@@ -398,15 +385,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NPC List";
             // 
-            // lNPClist
-            // 
-            this.lNPClist.FormattingEnabled = true;
-            this.lNPClist.Location = new System.Drawing.Point(6, 19);
-            this.lNPClist.Name = "lNPClist";
-            this.lNPClist.Size = new System.Drawing.Size(188, 446);
-            this.lNPClist.TabIndex = 1;
-            this.lNPClist.SelectedIndexChanged += new System.EventHandler(this.lNPClist_SelectedIndexChanged);
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label14);
@@ -424,7 +402,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(490, 495);
+            this.tabPage2.Size = new System.Drawing.Size(486, 495);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Skill";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -595,12 +573,10 @@
             this.tabPage3.Controls.Add(this.cAdvanceEnable);
             this.tabPage3.Controls.Add(this.bAdvancedFilter);
             this.tabPage3.Controls.Add(this.SimpleFilterGroup);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Controls.Add(this.tPickupRadius);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(490, 495);
+            this.tabPage3.Size = new System.Drawing.Size(486, 495);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pick UP";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -732,23 +708,6 @@
             this.cFilterMaterials.UseVisualStyleBackColor = true;
             this.cFilterMaterials.CheckedChanged += new System.EventHandler(this.cFilterMaterials_CheckedChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Pick up radius";
-            // 
-            // tPickupRadius
-            // 
-            this.tPickupRadius.Location = new System.Drawing.Point(212, 31);
-            this.tPickupRadius.Name = "tPickupRadius";
-            this.tPickupRadius.Size = new System.Drawing.Size(100, 20);
-            this.tPickupRadius.TabIndex = 4;
-            this.tPickupRadius.Text = "10";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lNearItemsList);
@@ -784,7 +743,7 @@
             this.tabPage5.Controls.Add(this.label8);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(490, 495);
+            this.tabPage5.Size = new System.Drawing.Size(486, 495);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Auto-Potion";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -904,7 +863,7 @@
             this.tabPage4.Controls.Add(this.textBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(490, 495);
+            this.tabPage4.Size = new System.Drawing.Size(486, 495);
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "WebMenu";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -943,7 +902,7 @@
             this.tabPage6.Controls.Add(this.lPartyMembers);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(490, 495);
+            this.tabPage6.Size = new System.Drawing.Size(486, 495);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Party";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -968,13 +927,9 @@
             // 
             // timer2
             // 
+            this.timer2.Enabled = true;
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // pickUpTimer
-            // 
-            this.pickUpTimer.Interval = 150;
-            this.pickUpTimer.Tick += new System.EventHandler(this.pickUpTimer_Tick);
             // 
             // BuffTimer
             // 
@@ -986,6 +941,25 @@
             this.WsTimer.Enabled = true;
             this.WsTimer.Interval = 500;
             this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lNPClist
+            // 
+            this.lNPClist.FormattingEnabled = true;
+            this.lNPClist.Location = new System.Drawing.Point(6, 19);
+            this.lNPClist.Name = "lNPClist";
+            this.lNPClist.Size = new System.Drawing.Size(188, 446);
+            this.lNPClist.TabIndex = 1;
+            this.lNPClist.SelectedIndexChanged += new System.EventHandler(this.lNPClist_SelectedIndexChanged);
+            // 
+            // cPickUpEnable
+            // 
+            this.cPickUpEnable.AutoSize = true;
+            this.cPickUpEnable.Location = new System.Drawing.Point(215, 25);
+            this.cPickUpEnable.Name = "cPickUpEnable";
+            this.cPickUpEnable.Size = new System.Drawing.Size(62, 17);
+            this.cPickUpEnable.TabIndex = 10;
+            this.cPickUpEnable.Text = "Pick up";
+            this.cPickUpEnable.UseVisualStyleBackColor = true;
             // 
             // cBot
             // 
@@ -1027,7 +1001,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox lNPClist;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button bSkillRefresh;
         private System.Windows.Forms.ListBox lSkillList;
@@ -1038,16 +1011,13 @@
         private System.Windows.Forms.TextBox tSearchMobTextBox;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Timer pickUpTimer;
         private System.Windows.Forms.ListBox lNearItemsList;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox tPickupRadius;
         private System.Windows.Forms.ListBox lFullMonsterList;
         private System.Windows.Forms.Button bAddMonster2Attack;
         private System.Windows.Forms.ListBox lMonster2Attack;
         private System.Windows.Forms.Button bRemoveMonster2Attack;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tYHuntArea;
@@ -1073,7 +1043,6 @@
         private System.Windows.Forms.TextBox tHpDurr;
         private System.Windows.Forms.CheckBox cHuntEnable;
         private System.Windows.Forms.Button bHuntToggle;
-        private System.Windows.Forms.CheckBox cPickUpEnable;
         private System.Windows.Forms.GroupBox SimpleFilterGroup;
         private System.Windows.Forms.CheckBox cFilterShoes;
         private System.Windows.Forms.CheckBox cFilterUsable;
@@ -1109,5 +1078,7 @@
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer WsTimer;
+        private System.Windows.Forms.ListBox lNPClist;
+        private System.Windows.Forms.CheckBox cPickUpEnable;
     }
 }

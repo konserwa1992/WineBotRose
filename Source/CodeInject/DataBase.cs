@@ -1,10 +1,9 @@
 ﻿using CodeInject.MemoryTools;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
+
 
 namespace CodeInject
 {
@@ -15,7 +14,6 @@ namespace CodeInject
 
          string ToString();
     }
-
     public class MobInfo: IBasicInfo
     {
         public int ID { get; set; }
@@ -26,14 +24,12 @@ namespace CodeInject
             return Name;
         }
     }
-
     public class SkillInfo: IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = " ";
         public override string ToString() { return Name; }
     }
-
     public class WeaponItemsInfo: IBasicInfo
     {
         public int ID { get; set; }
@@ -42,7 +38,6 @@ namespace CodeInject
 
         public override string ToString() { return Name; }
     }
-
     public class UsableItemsInfo: IBasicInfo
     {
         public int ID { get; set; }
@@ -51,7 +46,6 @@ namespace CodeInject
         public override string ToString() { return DisplayName; }
 
     }
-
     public class BodyItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
@@ -64,7 +58,6 @@ namespace CodeInject
         public string Name { get; set; } = "";
         public override string ToString() { return Name; }
     }
-
     public class ArmItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
@@ -77,14 +70,12 @@ namespace CodeInject
         public string Name { get; set; } = "";
         public override string ToString() { return Name; }
     }
-
     public class MaterialItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
         public string Name { get; set; } = "";
         public override string ToString() { return Name; }
     }
-
     public class DataBase
     {
         public static DataBase GameDataBase { get; private set; } = new DataBase();
