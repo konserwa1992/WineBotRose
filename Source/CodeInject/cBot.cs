@@ -25,6 +25,14 @@ namespace CodeInject
         public cBot()
         {
             InitializeComponent();
+
+            WineBot.WineBot.Instance.BotContext.Start(
+                    new HuntState(
+                        new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+                        new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
+                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this)
+                       ));
+            WineBot.WineBot.Instance.BotContext.Stop();
             //ws.SetupWebSocketServer();
         }
 

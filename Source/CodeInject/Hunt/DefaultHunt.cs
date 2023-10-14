@@ -33,10 +33,7 @@ namespace CodeInject.Hunt
         public override void AddSkill(Skills skill)
         {
             base.AddSkill(skill);
-            if (WinFormMenu != null)
-            {
-                WinFormMenu.SkillListUpdate();
-            }
+            WinFormMenu.SkillListUpdate();
         }
 
         public override void RemoveSkill(Skills skill)
