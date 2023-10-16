@@ -93,9 +93,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.bPartyStart = new System.Windows.Forms.Button();
             this.lPartyMembers = new System.Windows.Forms.ListBox();
@@ -112,7 +109,6 @@
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage4.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -761,43 +757,12 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.button7);
-            this.tabPage4.Controls.Add(this.label15);
-            this.tabPage4.Controls.Add(this.textBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(486, 495);
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "WebMenu";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(156, 25);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Start";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 30);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(26, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Port";
-            this.label15.Visible = false;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(50, 27);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 0;
-            this.textBox4.Visible = false;
             // 
             // tabPage6
             // 
@@ -872,8 +837,6 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -944,9 +907,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Timer BuffTimer;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.ListBox lPartyMembers;
         private System.Windows.Forms.Button bPartyStart;

@@ -55,7 +55,32 @@ namespace CodeInject.MemoryTools
         }
 
 
+        public List<InvItem> GetConsumableItemsFromInventory(List<InvItem> currentList)
+        {
+            List<IntPtr> itemsAddrs = GameFunctionsAndObjects.DataFetch.getInventoryItems();
+            List<InvItem> invDescriptions = new List<InvItem>();
 
+            foreach (IntPtr item in itemsAddrs)
+            {
+                if (item.ToInt64() != 0x0)
+                {
+                    InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
+                    invDescriptions.Add(inv);
+                }
+            }
+
+            //ADD NEW
+            foreach (InvItem item in invDescriptions)
+            {
+                if (*item.ItemType == 0xA && !currentList.Any(x => (long)x.ObjectPointer == (long)item.ObjectPointer))
+                {
+                    currentList.Add(item);
+                }
+            }
+            //REMOVE OLD
+            currentList.RemoveAll(a => !invDescriptions.Any(b => (long)b.ObjectPointer == (long)a.ObjectPointer));
+            return currentList;
+        }
 
         public IObject GetPartyMemberDetails(PartyMember member)
         {

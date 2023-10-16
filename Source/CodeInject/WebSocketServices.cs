@@ -15,7 +15,6 @@ namespace CodeInject
 {
     public unsafe class WebSocketServices
     {
-
         public class MyWebSocketService : WebSocketBehavior
         {
             protected override void OnMessage(MessageEventArgs e)
@@ -42,12 +41,12 @@ namespace CodeInject
                 Send($"{JsonConvert.SerializeObject(toSerialzie)}");
 
 
-                if (WineBot.WineBot.Instance.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target != null)
+                if (cBot.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target != null)
                 {
                     Send(JsonConvert.SerializeObject(
                         new TargetInfoModel()
                         {
-                            AttackedNPC = ((NPC)WineBot.WineBot.Instance.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target).ToWSObject()
+                            AttackedNPC = ((NPC)cBot.BotContext.GetState<HuntState>("HUNT").HuntInstance.Target).ToWSObject()
                         }));
                 }
             }
@@ -62,11 +61,11 @@ namespace CodeInject
                 {
                     SetSkillsModel newSkillSet = JsonConvert.DeserializeObject<SetSkillsModel>(e.Data);
 
-                    ((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.RemoveAll(x => 1 == 1);
+                    cBot.BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.RemoveAll(x => 1 == 1);
 
                     foreach (int skillId in newSkillSet.setSkills)
                     {
-                        ((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.AddSkill(Skills.GetSkillByID(skillId));
+                        cBot.BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(Skills.GetSkillByID(skillId));
                     }
                 }
                 else if (e.Data.Contains("GetSkills"))
@@ -74,10 +73,10 @@ namespace CodeInject
                     PlayerSkillModel skillsList = new PlayerSkillModel();
                     foreach (Skills singleSkill in PlayerCharacter.GetPlayerSkills)
                     {
-                        if (!((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
+                        if (!(cBot.BotContext.GetState<HuntState>("HUNT")).HuntInstance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
                             skillsList.UnUsedSkillList.Add(singleSkill.ToWSObject());
 
-                        if (((HuntState)WineBot.WineBot.Instance.BotContext.States["HUNT"]).HuntInstance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
+                        if ((cBot.BotContext.GetState<HuntState>("HUNT")).HuntInstance.BotSkills.Any(x => x.skillInfo.ID == singleSkill.skillInfo.ID))
                             skillsList.SkillInUseList.Add(singleSkill.ToWSObject());
                     }
 
@@ -96,7 +95,7 @@ namespace CodeInject
                     var pickUpFilter = new SimpleFilterModel()
                     {
                         Name = "Simple",
-                        Filter = ((QuickFilter)WineBot.WineBot.Instance.BotContext.Filter).pickTypeList
+                        Filter = ((QuickFilter)cBot.BotContext.Filter).pickTypeList
                     };
 
                     Send($"{JsonConvert.SerializeObject((object)pickUpFilter)}");
@@ -167,7 +166,7 @@ namespace CodeInject
                 if (e.Data.Contains("SetPotions"))
                 {
                     dynamic setPotion = JsonConvert.DeserializeObject<dynamic>(e.Data);
-                    InvItem[] items = WineBot.WineBot.Instance.UpdateConsumeList().ToArray();
+                    InvItem[] items = GameFunctionsAndObjects.DataFetch.GetConsumableItemsFromInventory(new List<InvItem>()).ToArray();
 
                     //UNCOMMENT
                   //  WineBot.WineBot.Instance.SetAutoHPpotion((int)setPotion.procHelath, (int)setPotion.hpItemDurr, items[(int)setPotion.hpItemIndex]);
