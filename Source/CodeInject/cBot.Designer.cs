@@ -99,6 +99,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
             this.WsTimer = new System.Windows.Forms.Timer(this.components);
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -109,6 +110,7 @@
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -757,6 +759,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(486, 495);
@@ -810,6 +813,16 @@
             this.WsTimer.Interval = 500;
             this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 17);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(117, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Start webmenu";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -837,6 +850,7 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -913,5 +927,6 @@
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer WsTimer;
+        private System.Windows.Forms.Button button4;
     }
 }

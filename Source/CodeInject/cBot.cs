@@ -20,7 +20,7 @@ namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
-       // WebServer ws = new WebServer();
+   
         Party.Party party;
         public static BotContext BotContext = new BotContext();
         bool BotState = false;
@@ -38,7 +38,6 @@ namespace CodeInject
                         float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this)
                        ));
            BotContext.Stop();
-        //   ws.SetupWebSocketServer();
         }
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
@@ -69,9 +68,6 @@ namespace CodeInject
         private void timer2_Tick(object sender, EventArgs e)
         {
             BotContext.Update();
-
-          //  ws.SendPlayerInformation();
-          //  ws.SendNPCsInformation();
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -326,6 +322,11 @@ namespace CodeInject
         private void timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            BotContext.AddModule(new WebMenuModule());
         }
     }
 }

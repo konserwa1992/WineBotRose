@@ -99,6 +99,7 @@
     <Compile Include="MemoryTools\GameActions.cs" />
     <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
     <Compile Include="MemoryTools\MemoryTools.cs" />
+    <Compile Include="Modules\WebMenu.cs" />
     <Compile Include="Party\Party.cs" />
     <Compile Include="Party\PartyMember.cs" />
     <Compile Include="PickupFilters\AdvancedFilter.cs" />
