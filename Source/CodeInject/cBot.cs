@@ -68,6 +68,9 @@ namespace CodeInject
         private void timer2_Tick(object sender, EventArgs e)
         {
             BotContext.Update();
+
+            listBox1.Items.Clear();
+            listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -328,5 +331,8 @@ namespace CodeInject
         {
             BotContext.AddModule(new WebMenuModule());
         }
+
+ 
+
     }
 }

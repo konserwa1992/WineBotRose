@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tZHuntArea = new System.Windows.Forms.TextBox();
@@ -93,13 +94,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.bPartyStart = new System.Windows.Forms.Button();
             this.lPartyMembers = new System.Windows.Forms.ListBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.BuffTimer = new System.Windows.Forms.Timer(this.components);
             this.WsTimer = new System.Windows.Forms.Timer(this.components);
-            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -130,6 +131,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.tZHuntArea);
@@ -149,6 +151,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(285, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(187, 407);
+            this.listBox1.TabIndex = 13;
             // 
             // button2
             // 
@@ -767,6 +777,17 @@
             this.tabPage4.Text = "WebMenu";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 17);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(117, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Start webmenu";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.bPartyStart);
@@ -812,16 +833,6 @@
             this.WsTimer.Enabled = true;
             this.WsTimer.Interval = 500;
             this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 17);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(117, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Start webmenu";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // cBot
             // 
@@ -928,5 +939,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer WsTimer;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

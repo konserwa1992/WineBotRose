@@ -45,7 +45,7 @@ namespace CodeInject
 
         public void UseItem()
         {
-            GameFunctionsAndObjects.Actions.itemUse((long)CItemAddr);
+            GameFunctionsAndObjects.Actions.ItemUse((long)CItemAddr);
         }
 
         public override string ToString()

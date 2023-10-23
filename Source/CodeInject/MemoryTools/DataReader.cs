@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
@@ -50,7 +51,7 @@ namespace CodeInject.MemoryTools
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+ 0x2EAF60), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+ 0x3b7800), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
           //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
         }
 
@@ -134,12 +135,12 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x14c3170); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x16AA2F0); //2023.10.04
 
             int s = 0;
-            while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0) != 0)//OBS#S2
+            while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd70) != 0)//OBS#S2
             {
-                short skillID = *(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xCD0);
+                short skillID = *(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd70);
                 SkillInfo skill = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == skillID);
                 if (skill == null)
                 {
@@ -225,8 +226,9 @@ namespace CodeInject.MemoryTools
         public List<IntPtr> getInventoryItems()
         {
             List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
-            //movsxd rax, dword ptr [rdi+000001B0]
-            long* startList = (long*)(*(long*)((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer + 0x6a78 + 0x18));//MSG#INV4
+            //movsxd rax, dword ptr [rdi+000001B0] 2B 5E90
+            long* startList = (long*)(*(long*)((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer + 0x6b18 + 0x18));//MSG#INV4
+
 
             for (long itemIndex = 0; itemIndex < 139; itemIndex++)
             {
@@ -274,7 +276,7 @@ namespace CodeInject.MemoryTools
 
             Process _proc = Process.GetCurrentProcess();
 
-            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x14C54F8));
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x16ac678));
             long* RBX = (long*)((long)RDI + 0x2a0b8);
 
             RBX = (long*)*RBX; //select first item from list

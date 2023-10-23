@@ -28,13 +28,12 @@ namespace CodeInject.Actors
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
             ID = (ushort*)(*((long*)(*Entry + 0x20)));
-            Hp = (int*)(*Entry + 0x3AE8);
-            MaxHp = (int*)(*Entry + 0x3C94);
-            Mp = (int*)(*Entry + 0x3AEC);
-            MaxMp = (int*)(*Entry + 0x4624);
-            MaxMp = (int*)(*Entry + 0x4624);
+            Hp = (int*)(*Entry + 0x3B88);
+            MaxHp = (int*)(*Entry + 0x3D34);
+            Mp = (int*)(*Entry + 0x3B8C);
+            MaxMp = (int*)(*Entry + 0x46C4);
             BuffCount = (short*)(*Entry + 0x7b0);
-            Name = (string*)(*Entry + 0xb10);
+            Name = (string*)(*Entry + 0xBB0);
         }
 
         public double CalcDistance(IObject targerObject)

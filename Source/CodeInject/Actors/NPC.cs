@@ -35,7 +35,7 @@ namespace CodeInject.Actors
 
                 Name = (string*)(*Entry + 0xb10);
 
-                Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x2c0)));
+                Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x360)));
             }catch (Exception) { }
         }
 
