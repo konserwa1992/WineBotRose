@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+
+<h3>AutoPotion:</h3>
+
+
+<div id="Autopotion">
+
+</div>
+
+
+
+<script>
+    const socket = new WebSocket('ws://localhost:2458/AutoPotion');
+
+
+    socket.addEventListener('open', (event) => {
+        console.log('Połączenie WebSocket zostało nawiązane.');
+        socket.send("Connected");
+    });
+
+    socket.addEventListener('message', (event) => {
+        // Przykład: Wysłanie danych JSON do kontrolera za pomocą fetch
+        fetch('/Home/GetAutoPotionSettings?json=' + event.data, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Błąd podczas pobierania danych');
+                }
+            })
+            .then(data => {
+                $('#Autopotion').html(data);
+            })
+            .catch(error => {
+                console.error('Błąd:', error);
+            });
+    });
+</script>

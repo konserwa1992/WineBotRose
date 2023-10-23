@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4">Welcome</h1>
+    <h2>WineBot Rose Online</h2>
+
+</div>
+
+
+
+
+
+<div  style="display:flex">
+    
+    <div style="width:40%;padding-right:15px">
+
+        <div multiple class="form-control form-control-sm"  id="PlayerInfo" style="padding-right:15px">
+        </div>
+
+        <div multiple class="form-control form-control-sm"  id="TargetInfo" style="border-top:solid; padding-right:15px">
+            </div>
+    </div>
+    <div multiple class="form-control form-control-sm"  id="NpcList" >
+        </div>
+  
+</div>
+
+
+<p id="p1"></p>
+
+
+        <script>
+
+
+   const CharacterInformationSocket = new WebSocket('ws://localhost:2458/CharacterInfo');
+
+    CharacterInformationSocket.addEventListener('message', (event) => {
+                // Przykład: Wysłanie danych JSON do kontrolera za pomocą fetch
+                fetch('/Home/UserInformation?characterDataJson=' + event.data, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error('Błąd podczas pobierania danych');
+                        }
+                    })
+                    .then(data => {
+                        $('#PlayerInfo').html(data);
+                    })
+                    .catch(error => {
+                        console.error('Błąd:', error);
+                    });
+            });
+
+
+
+    const socket = new WebSocket('ws://localhost:2458/NpcList');
+
+    socket.addEventListener('message', (event) => {
+        // Przykład: Wysłanie danych JSON do kontrolera za pomocą fetch
+        fetch('/Home/NpcList?npcDataJson=' + event.data, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Błąd podczas pobierania danych');
+                }
+            })
+            .then(data => {
+                $('#NpcList').html(data);
+            })
+            .catch(error => {
+                console.error('Błąd:', error);
+            });
+    });
+
+            setInterval(refresh, 500);
+
+
+    function refresh() {
+        /*$.ajax({
+            url: '/Home/UserInformation', // Adres kontrolera i akcji, które zwracają nową zawartość
+            type: 'GET', // Typ żądania
+            dataType: 'html', // Typ danych, jakie oczekujemy w odpowiedzi
+            success: function (data) {
+                // Aktualizacja zawartości elementu za pomocą otrzymanych danych
+                $('#PlayerInfo').html(data);
+            }
+        });
+
+        $.ajax({
+            url: '/Home/NpcList', // Adres kontrolera i akcji, które zwracają nową zawartość
+            type: 'GET', // Typ żądania
+            dataType: 'html', // Typ danych, jakie oczekujemy w odpowiedzi
+            success: function (data) {
+                // Aktualizacja zawartości elementu za pomocą otrzymanych danych
+                $('#NpcList').html(data);
+            }
+        });*/
+
+        $.ajax({
+            url: '/Home/TargetInfo', // Adres kontrolera i akcji, które zwracają nową zawartość
+            type: 'GET', // Typ żądania
+            dataType: 'html', // Typ danych, jakie oczekujemy w odpowiedzi
+            success: function (data) {
+                // Aktualizacja zawartości elementu za pomocą otrzymanych danych
+                $('#TargetInfo').html(data);
+            }
+        });
+    }
+</script>
+
+
+
+
+<!--
+<script>
+    var socket = new WebSocket('ws://localhost:8080/myService');
+
+    socket.addEventListener('open', (event) => {
+        console.log('Połączenie WebSocket zostało nawiązane.');
+        socket.send("Connected");
+    });
+
+
+    function send()
+    {
+        socket.send("TEST");
+    }
+
+    socket.addEventListener('message', (event) => {
+        console.log('Odebrano wiadomość od serwera:', event.data);
+        document.getElementById("p1").innerHTML = event.data;
+    });
+
+    socket.addEventListener('close', (event) => {
+        if (event.wasClean) {
+            console.log('Połączenie WebSocket zostało zamknięte poprawnie.');
+        } else {
+            console.log('Połączenie WebSocket zostało zamknięte niepoprawnie.');
+        }
+        console.log('Kod zamknięcia:', event.code, 'Powód:', event.reason);
+    });
+
+    socket.addEventListener('error', (error) => {
+        console.error('Wystąpił błąd połączenia:', error);
+    });
+</script>
+-->

@@ -1,0 +1,71 @@
+﻿@model CodeInject.WebServ.Models.PlayerSkillModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div id="SkillList">
+ @if (Model != null)
+{
+    <div id="SkillList"  style="display:flex;">
+
+        <div style="padding-right:5%">
+            <select id="S1" multiple class="form-control form-control-sm" style="height:90px; width:40%; min-width:400px; font-size:8pt; text-align:left;" onchange="SelectValues(this)">
+
+
+                @foreach (var item in Model.UnUsedSkillList)
+                {
+                    <option value='@item.ID'>@item.Name</option>
+
+                }
+            </select>
+        </div><div>
+            <select id="S2" multiple class="form-control form-control-sm" onclick="DeSelectValues();" style="height:90px; width:40%; min-width:400px; font-size:8pt; text-align:left;">
+                @foreach (var item in Model.SkillInUseList)
+                {
+                    <option value='@item.ID'>@item.Name</option>
+
+            }
+            </select>
+        </div>
+
+    </div>
+
+<br />
+<button multiple class="form-control form-control-sm" onclick="SetSkills()">Confirm</button>
+}
+</div>
+
+<script>
+
+    function SetSkills() {
+
+        var selectedValues = [...document.getElementById("S2").options].map(o => o.value);
+
+        $.ajax({
+            type: "POST",
+            url: "/Skill/SkillConfirm",
+            data: JSON.stringify(selectedValues),
+            contentType: "application/json",
+            dataType: "JSON",
+            success: function (response) {
+            },
+            error: function () {
+            }
+        });
+
+    }
+
+ 
+
+
+    function DeSelectValues() {
+        var selval = $("#S2 option:selected");
+        selval[0].selected = false // deselecting
+        $("#S1").append(selval);
+    }
+
+    function SelectValues(sel) {
+        var selval = $("#S1 option:selected");
+        selval[0].selected = false // deselecting
+        $("#S2").append(selval);
+    }
+</script>
