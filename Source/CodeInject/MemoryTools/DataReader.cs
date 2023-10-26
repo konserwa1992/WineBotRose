@@ -150,7 +150,7 @@ namespace CodeInject.MemoryTools
                         Name = "Unknow"
                     };
                 }
-                skillList.Add(new Skills(skill));
+                skillList.Add(new Skills(skill,SkillTypes.Unknow));
 
                 s++;
             }
@@ -163,21 +163,19 @@ namespace CodeInject.MemoryTools
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IObject GetObject<T>(int id)
+        public IObject GetObject(int id)
         {
-            long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (id * 8) + 0x22080); //OBS#N3
+           long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (id * 8) + 0x22080); //OBS#N3
 
-            if (typeof(T) == typeof(NPC))
-                return new NPC(wskObj);
+           long ObjectTypeFuncTable = *(long*)*wskObj;
 
-            if (typeof(T) == typeof(Item))
-                return new Item(wskObj);
-
-
-            if (typeof(T) == typeof(Player))
+           if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11993B0 == ObjectTypeFuncTable)
+                return new OtherPlayer(wskObj);
+            if  (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x119B378 == ObjectTypeFuncTable) // player avatar
                 return new Player(wskObj);
 
-            return null;
+        
+           return new NPC(wskObj);
         }
 
         /// <summary>
@@ -191,7 +189,7 @@ namespace CodeInject.MemoryTools
             long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);
             int* monsterIDList = (int*)*wsp;
 
-            return (Player)GetObject<Player>(*monsterIDList);
+            return (Player)GetObject(*monsterIDList);
         }
 
         /// <summary>
@@ -208,7 +206,7 @@ namespace CodeInject.MemoryTools
 
             for (int i = 0; i < *count; i++)
             {
-                wholeNpcList.Add(GetObject<NPC>(*monsterIDList));
+                wholeNpcList.Add(GetObject(*monsterIDList));
                 monsterIDList++;
             }
 

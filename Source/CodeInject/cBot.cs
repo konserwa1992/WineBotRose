@@ -33,9 +33,10 @@ namespace CodeInject
 
             BotContext.Start(
                     new HuntState(
-                        new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+                        new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this)
+                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(),lPlayers2Heal.Items.OfType<IObject>().ToList(), int
+                        .Parse(tHealWhenProc.Text), this)
                        ));
            BotContext.Stop();
         }
@@ -49,7 +50,7 @@ namespace CodeInject
         private void bSkillAdd_Click(object sender, EventArgs e)
         {
             if(lSkillList.SelectedIndex!=-1)
-               BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem);
+               BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem,SkillTypes.AttackSkill);
         }
 
         private void bSkillRemove_Click(object sender, EventArgs e)
@@ -62,7 +63,9 @@ namespace CodeInject
         public void SkillListUpdate()
         {
             lUseSkill.Items.Clear();
-            lUseSkill.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.ToArray());
+            lHealSkills.Items.Clear();
+            lUseSkill.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x=>x.SkillType == SkillTypes.AttackSkill).ToArray());
+            lHealSkills.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x => x.SkillType == SkillTypes.HealTarget).ToArray());
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -123,12 +126,30 @@ namespace CodeInject
             if (BotState == false)
             {
                 GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
-                BotContext.Start(
-                    new HuntState(
-                        new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+
+
+                if (cEnableHealParty.Checked)
+                {
+                    List<Skills> SkillList = new List<Skills>();
+                    SkillList.AddRange(lUseSkill.Items.Cast<Skills>().ToArray());
+                    SkillList.AddRange(lHealSkills.Items.Cast<Skills>().ToArray());
+
+                    BotContext.Start(new HuntState(
+                        new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this)
-                       ));           
+                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, lPlayers2Heal.Items.OfType<IObject>().ToList(), int
+                        .Parse(tHealWhenProc.Text), this)
+                       ));
+                }
+                else
+                {
+                    BotContext.Start(
+                        new HuntState(
+                            new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+                            new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
+                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), this)
+                           ));
+                }
             }
             else
             {
@@ -318,8 +339,8 @@ namespace CodeInject
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (!lHealSkills.Items.Cast<Skills>().Any(x => x.skillInfo.ID == ((Skills)lSkillList.SelectedItem).skillInfo.ID))
-                lHealSkills.Items.Add(lSkillList.SelectedItem);
+            if (lSkillList.SelectedIndex != -1)
+                BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.HealTarget);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -332,7 +353,20 @@ namespace CodeInject
             BotContext.AddModule(new WebMenuModule());
         }
 
- 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(((long)((IObject)listBox1.SelectedItem).ObjectPointer).ToString("X"));
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            lPlayersList.Items.Clear();
+            lPlayersList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x=>x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            lPlayers2Heal.Items.Add(lPlayersList.SelectedItem);
+        }
     }
 }

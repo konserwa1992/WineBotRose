@@ -3,15 +3,21 @@
 
 namespace CodeInject
 {
+    public enum SkillTypes
+    {
+        HealTarget,Buff,AttackSkill,Unknow
+    }
+
     public class Skills
     {
         public SkillInfo skillInfo;
+        public SkillTypes SkillType;
 
 
-
-        public Skills(SkillInfo skillInfo)
+        public Skills(SkillInfo skillInfo,SkillTypes type)
         {
             this.skillInfo = skillInfo;
+            this.SkillType = type;
         }
 
         public SkillInfo ToWSObject()
@@ -26,7 +32,7 @@ namespace CodeInject
 
         public static Skills GetSkillByID(int skillId)
         {
-            return new Skills(DataBase.GameDataBase.SkillDatabase.FirstOrDefault(s => s.ID == skillId));
+            return new Skills(DataBase.GameDataBase.SkillDatabase.FirstOrDefault(s => s.ID == skillId),SkillTypes.Unknow);
         }
 
         public override string ToString()

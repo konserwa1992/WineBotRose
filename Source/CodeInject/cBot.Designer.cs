@@ -56,7 +56,12 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.lPlayers2Heal = new System.Windows.Forms.ListBox();
+            this.lPlayersList = new System.Windows.Forms.ListBox();
+            this.tHealWhenProc = new System.Windows.Forms.TextBox();
             this.cEnableHealParty = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -159,6 +164,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(187, 407);
             this.listBox1.TabIndex = 13;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -375,31 +381,80 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.button7);
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.lPlayers2Heal);
+            this.groupBox4.Controls.Add(this.lPlayersList);
+            this.groupBox4.Controls.Add(this.tHealWhenProc);
             this.groupBox4.Controls.Add(this.cEnableHealParty);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.lHealSkills);
-            this.groupBox4.Location = new System.Drawing.Point(9, 206);
+            this.groupBox4.Location = new System.Drawing.Point(9, 194);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(475, 286);
+            this.groupBox4.Size = new System.Drawing.Size(471, 286);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Healer";
-            this.groupBox4.Visible = false;
             // 
-            // textBox1
+            // button6
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "90";
+            this.button6.Location = new System.Drawing.Point(326, 189);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(128, 23);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "-";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(192, 189);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(128, 23);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "+";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(192, 218);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(262, 23);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "Refresh";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // lPlayers2Heal
+            // 
+            this.lPlayers2Heal.FormattingEnabled = true;
+            this.lPlayers2Heal.Location = new System.Drawing.Point(326, 49);
+            this.lPlayers2Heal.Name = "lPlayers2Heal";
+            this.lPlayers2Heal.Size = new System.Drawing.Size(128, 134);
+            this.lPlayers2Heal.TabIndex = 11;
+            // 
+            // lPlayersList
+            // 
+            this.lPlayersList.FormattingEnabled = true;
+            this.lPlayersList.Location = new System.Drawing.Point(192, 49);
+            this.lPlayersList.Name = "lPlayersList";
+            this.lPlayersList.Size = new System.Drawing.Size(128, 134);
+            this.lPlayersList.TabIndex = 10;
+            // 
+            // tHealWhenProc
+            // 
+            this.tHealWhenProc.Location = new System.Drawing.Point(6, 23);
+            this.tHealWhenProc.Name = "tHealWhenProc";
+            this.tHealWhenProc.Size = new System.Drawing.Size(128, 20);
+            this.tHealWhenProc.TabIndex = 9;
+            this.tHealWhenProc.Text = "90";
             // 
             // cEnableHealParty
             // 
             this.cEnableHealParty.AutoSize = true;
-            this.cEnableHealParty.Location = new System.Drawing.Point(6, 196);
+            this.cEnableHealParty.Location = new System.Drawing.Point(6, 242);
             this.cEnableHealParty.Name = "cEnableHealParty";
             this.cEnableHealParty.Size = new System.Drawing.Size(111, 17);
             this.cEnableHealParty.TabIndex = 8;
@@ -408,18 +463,18 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(73, 169);
+            this.button3.Location = new System.Drawing.Point(6, 213);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 23);
+            this.button3.Size = new System.Drawing.Size(128, 23);
             this.button3.TabIndex = 7;
             this.button3.Text = "-";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 169);
+            this.button1.Location = new System.Drawing.Point(6, 189);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 23);
+            this.button1.Size = new System.Drawing.Size(128, 23);
             this.button1.TabIndex = 6;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
@@ -428,7 +483,7 @@
             // lHealSkills
             // 
             this.lHealSkills.FormattingEnabled = true;
-            this.lHealSkills.Location = new System.Drawing.Point(6, 19);
+            this.lHealSkills.Location = new System.Drawing.Point(6, 49);
             this.lHealSkills.Name = "lHealSkills";
             this.lHealSkills.Size = new System.Drawing.Size(128, 134);
             this.lHealSkills.TabIndex = 5;
@@ -936,9 +991,14 @@
         private System.Windows.Forms.ListBox lPartyMembers;
         private System.Windows.Forms.Button bPartyStart;
         private System.Windows.Forms.CheckBox cEnableHealParty;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tHealWhenProc;
         private System.Windows.Forms.Timer WsTimer;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ListBox lPlayers2Heal;
+        private System.Windows.Forms.ListBox lPlayersList;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

@@ -1,4 +1,5 @@
-﻿using CodeInject.WebServ.Models;
+﻿using CodeInject.MemoryTools;
+using CodeInject.WebServ.Models;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -33,7 +34,7 @@ namespace CodeInject.Actors
                 Hp = (int*)(*Entry + 0xE8);
                 MaxHp = (int*)(*Entry + 0xF0);
 
-                Name = (string*)(*Entry + 0xb10);
+                Name = (string*)(*Entry + 0xbb0);
 
                 Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x360)));
             }catch (Exception) { }
@@ -76,8 +77,8 @@ namespace CodeInject.Actors
         {
             if(Info != null)
               return $"[{(*ID).ToString("X")}] {*Hp} {Info.Name}";
-            else
-              return $"[{(*ID).ToString("X")}] {Marshal.PtrToStringAnsi(new IntPtr(Name))}";
+
+            return $"[{(*ID).ToString("X")}] Unknow Object";
         }
     }
 }

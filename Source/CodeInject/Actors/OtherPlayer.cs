@@ -1,11 +1,15 @@
 ﻿using CodeInject.WebServ.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CodeInject.Actors
 {
-    unsafe class Player : IObject, IPlayer
+    internal unsafe class OtherPlayer : IObject, IPlayer
     {
         public long* ObjectPointer { get; set; }
         public ushort* ID { get; set; }
@@ -20,7 +24,7 @@ namespace CodeInject.Actors
         public short* BuffCount { get; set; }
         public int* modelNaME { get; set; }
 
-        public Player(long* Entry)
+        public OtherPlayer(long* Entry)
         {
             ObjectPointer = (long*)*Entry;
 
@@ -28,8 +32,8 @@ namespace CodeInject.Actors
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
             ID = (ushort*)(*((long*)(*Entry + 0x20)));
-            Hp = (int*)(*Entry + 0x3B88);
-            MaxHp = (int*)(*Entry + 0x3D34);
+            Hp = (int*)(*Entry + 0xe8);
+            MaxHp = (int*)(*Entry + 0xf0);
             Mp = (int*)(*Entry + 0x3B8C);
             MaxMp = (int*)(*Entry + 0x46C4);
             BuffCount = (short*)(*Entry + 0x7b0);
@@ -52,7 +56,7 @@ namespace CodeInject.Actors
         {
             string playerJson =
                 JsonConvert.SerializeObject(new PlayerInfoModel()
-                { 
+                {
                     Hp = *Hp,
                     MaxHp = *MaxHp,
                     Mp = *Mp,
@@ -62,7 +66,7 @@ namespace CodeInject.Actors
                     Z = *Z,
                     BuffCount = *BuffCount,
                     Name = Name
-                }, Formatting.Indented); 
+                }, Formatting.Indented);
 
             return playerJson;
         }
@@ -71,6 +75,5 @@ namespace CodeInject.Actors
         {
             return $"[{(*ID).ToString("X")}] {Name}";
         }
- 
     }
 }

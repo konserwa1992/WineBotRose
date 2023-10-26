@@ -19,7 +19,7 @@ namespace CodeInject
         {
             protected override void OnMessage(MessageEventArgs e)
             {
-                Send($"{GameFunctionsAndObjects.DataFetch.GetPlayer().ToString()}");
+                Send($"{GameFunctionsAndObjects.DataFetch.GetPlayer().ToWSObject()}");
             }
 
         }
@@ -65,7 +65,7 @@ namespace CodeInject
 
                     foreach (int skillId in newSkillSet.setSkills)
                     {
-                        cBot.BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(Skills.GetSkillByID(skillId));
+                        cBot.BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(Skills.GetSkillByID(skillId),SkillTypes.Unknow);
                     }
                 }
                 else if (e.Data.Contains("GetSkills"))

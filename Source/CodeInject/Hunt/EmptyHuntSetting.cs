@@ -17,10 +17,11 @@ namespace CodeInject.Hunt
         {
             return PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == SkillID);
         }
-        public virtual void AddSkill(Skills skill)
+        public virtual void AddSkill(Skills skill, SkillTypes type)
         {
             if (!BotSkills.Any(x => x.skillInfo.ID == skill.skillInfo.ID))
             {
+                skill.SkillType = type;
                 BotSkills.Add(skill);
             }
         }

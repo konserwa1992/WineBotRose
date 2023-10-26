@@ -67,8 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\IObject.cs" />
+    <Compile Include="Actors\IPlayer.cs" />
     <Compile Include="Actors\NPC.cs" />
     <Compile Include="Actors\Item.cs" />
+    <Compile Include="Actors\OtherPlayer.cs" />
     <Compile Include="Actors\Player.cs" />
     <Compile Include="AdvancedFilterForm.cs">
       <SubType>Form</SubType>
@@ -90,6 +92,7 @@
     <Compile Include="DataBase.cs" />
     <Compile Include="Hunt\DefaultHunt.cs" />
     <Compile Include="Hunt\EmptyHuntSetting.cs" />
+    <Compile Include="Hunt\HealerHunt.cs" />
     <Compile Include="Hunt\IHuntSetting.cs" />
     <Compile Include="Modules\AutoPotionModule.cs" />
     <Compile Include="Modules\IModule.cs" />

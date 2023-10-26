@@ -28,7 +28,7 @@ namespace CodeInject
 
         public void SendPlayerInformation()
         {
-            string characterJson = GameFunctionsAndObjects.DataFetch.GetPlayer().ToString();
+            string characterJson = GameFunctionsAndObjects.DataFetch.GetPlayer().ToWSObject();
             foreach (var session in server.WebSocketServices["/CharacterInfo"].Sessions.Sessions)
             {
                 server.WebSocketServices["/CharacterInfo"].Sessions.SendTo(characterJson, session.ID);

@@ -30,9 +30,9 @@ namespace CodeInject.Hunt
             Target = null;
         }
 
-        public override void AddSkill(Skills skill)
+        public override void AddSkill(Skills skill, SkillTypes type)
         {
-            base.AddSkill(skill);
+            base.AddSkill(skill, type);
             WinFormMenu.SkillListUpdate();
         }
 
@@ -55,7 +55,7 @@ namespace CodeInject.Hunt
 
             if (Target == null || *((NPC)Target).Hp <= 0)
             {
-                this.Target = GameFunctionsAndObjects.DataFetch.GetNPCs()
+                this.Target = GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                 .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
                 .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => *(((NPC)x).Hp) > 0);
             }
@@ -64,8 +64,11 @@ namespace CodeInject.Hunt
             {
                 if (this.BotSkills.Count > 0)
                 {
-                    Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
-                    GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                    Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x =>x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
+                    if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
+                    {
+                        GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                    }
                 }
                 GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
             }
