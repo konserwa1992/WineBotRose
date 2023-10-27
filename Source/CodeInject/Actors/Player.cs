@@ -1,7 +1,12 @@
-﻿using CodeInject.WebServ.Models;
+﻿using CodeInject.MemoryTools;
+using CodeInject.WebServ.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace CodeInject.Actors
 {
@@ -20,6 +25,9 @@ namespace CodeInject.Actors
         public short* BuffCount { get; set; }
         public int* modelNaME { get; set; }
 
+
+
+
         public Player(long* Entry)
         {
             ObjectPointer = (long*)*Entry;
@@ -32,7 +40,7 @@ namespace CodeInject.Actors
             MaxHp = (int*)(*Entry + 0x3D34);
             Mp = (int*)(*Entry + 0x3B8C);
             MaxMp = (int*)(*Entry + 0x46C4);
-            BuffCount = (short*)(*Entry + 0x7b0);
+            BuffCount = (short*)(*Entry + 0x850);
             Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB0)));
         }
 
@@ -65,6 +73,30 @@ namespace CodeInject.Actors
                 }, Formatting.Indented); 
 
             return playerJson;
+        }
+        public List<int> GetBuffsIDs()
+        {
+            List<int> list = new List<int>();
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016AA2F0, new short[] { 0x1a0, 0x48, 0x8e8, 0x858, 0x30, 0x8, 0x0 });
+
+            baseBuffAddres = *(long*)(*(long*)(*(long*)(*(long*)(*(long*)baseBuffAddres))));
+            baseBuffAddres = *(long*)baseBuffAddres;
+            baseBuffAddres = *(long*)baseBuffAddres;
+
+            for (int i = 0; i < *BuffCount; i++)
+            {
+                long buffAddres = *(long*)(baseBuffAddres + 0x18);
+                if (buffAddres != 0x0)
+                {
+                    list.Add(*(int*)(buffAddres + 0x18));
+                }
+                else
+                { i--;
+                }
+                baseBuffAddres = *(long*)baseBuffAddres;
+            }
+
+            return list;
         }
 
         public override string ToString()

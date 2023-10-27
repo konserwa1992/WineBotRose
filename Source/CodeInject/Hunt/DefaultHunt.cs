@@ -1,10 +1,12 @@
 ﻿using CodeInject.Actors;
 using CodeInject.MemoryTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CodeInject.Hunt
@@ -53,30 +55,41 @@ namespace CodeInject.Hunt
                 this.SkillIndex = 0;
             }
 
-            if (Target == null || *((NPC)Target).Hp <= 0)
-            {
-                this.Target = GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC))
-                .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
-                .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => *(((NPC)x).Hp) > 0);
-            }
+            Player player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+            List<int> buffs = player.GetBuffsIDs();
+            List<Skills> skill2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
 
-            if (this.Target != null)
+            if (skill2Use.Count>0)
             {
-                if (this.BotSkills.Count > 0)
-                {
-                    Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x =>x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
-                    if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
-                    {
-                        GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
-                    }
-                }
-                GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
+              GameFunctionsAndObjects.Actions.CastSpell(GetSkillIndex(skill2Use.FirstOrDefault().skillInfo.ID));
+              Thread.Sleep(100);
             }
             else
             {
-                GoToHuntingAreaCenter();
-            }
+                if (Target == null || *((NPC)Target).Hp <= 0)
+                {
+                    this.Target = GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC))
+                    .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
+                    .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => *(((NPC)x).Hp) > 0);
+                }
 
+                if (this.Target != null)
+                {
+                    if (this.BotSkills.Count > 0)
+                    {
+                        Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
+                        if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
+                        {
+                            GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                        }
+                    }
+                    GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
+                }
+                else
+                {
+                    GoToHuntingAreaCenter();
+                }
+            }
         }
 
         private void GoToHuntingAreaCenter()
