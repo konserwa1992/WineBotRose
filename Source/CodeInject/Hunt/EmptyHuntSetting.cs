@@ -1,10 +1,12 @@
 ﻿using CodeInject.Actors;
 using CodeInject.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeInject.Hunt
 {
+    [Serializable]
     public abstract class EmptyHuntSetting : IHuntSetting
     {
         public List<Skills> BotSkills { get; set; } = new List<Skills>();

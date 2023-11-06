@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace CodeInject.Hunt
 {
+    [Serializable]
     public unsafe class DefaultHunt : EmptyHuntSetting
     {
         public int SkillIndex = 0;
@@ -56,7 +57,7 @@ namespace CodeInject.Hunt
             }
 
             Player player = GameFunctionsAndObjects.DataFetch.GetPlayer();
-            List<int> buffs = player.GetBuffsIDs();
+            List<ushort> buffs = player.GetBuffsIDs();
             List<Skills> skill2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
 
             if (skill2Use.Count>0)

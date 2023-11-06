@@ -94,7 +94,9 @@
     <Compile Include="Hunt\EmptyHuntSetting.cs" />
     <Compile Include="Hunt\HealerHunt.cs" />
     <Compile Include="Hunt\IHuntSetting.cs" />
+    <Compile Include="Load.cs" />
     <Compile Include="Modules\AutoPotionModule.cs" />
+    <Compile Include="Modules\FollowModule.cs" />
     <Compile Include="Modules\IModule.cs" />
     <Compile Include="Inventory\InvItem.cs" />
     <Compile Include="ItemTypes.cs" />
@@ -102,7 +104,7 @@
     <Compile Include="MemoryTools\GameActions.cs" />
     <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
     <Compile Include="MemoryTools\MemoryTools.cs" />
-    <Compile Include="Modules\WebMenu.cs" />
+    <Compile Include="Modules\WebMenuModule.cs" />
     <Compile Include="Party\Party.cs" />
     <Compile Include="Party\PartyMember.cs" />
     <Compile Include="PickupFilters\AdvancedFilter.cs" />
@@ -117,6 +119,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Save.cs" />
     <Compile Include="Skills.cs" />
     <Compile Include="WebServer.cs" />
     <Compile Include="WebServ\Models\AutoPotionSettingsModel.cs" />

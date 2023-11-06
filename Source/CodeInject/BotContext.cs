@@ -5,6 +5,7 @@ using CodeInject.Hunt;
 using CodeInject.MemoryTools;
 using CodeInject.Modules;
 using CodeInject.PickupFilters;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

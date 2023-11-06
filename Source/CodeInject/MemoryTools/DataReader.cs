@@ -166,17 +166,19 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public IObject GetObject(int id)
         {
-           long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (id * 8) + 0x22080); //OBS#N3
 
-           long ObjectTypeFuncTable = *(long*)*wskObj;
+                long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (id * 8) + 0x22080); //OBS#N3
 
-           if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11993B0 == ObjectTypeFuncTable)
-                return new OtherPlayer(wskObj);
-            if  (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x119B378 == ObjectTypeFuncTable) // player avatar
-                return new Player(wskObj);
 
-        
-           return new NPC(wskObj);
+                long ObjectTypeFuncTable = *(long*)*wskObj;
+
+                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11993B0 == ObjectTypeFuncTable)
+                    return new OtherPlayer(wskObj);
+                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x119B378 == ObjectTypeFuncTable) // player avatar
+                    return new Player(wskObj);
+
+
+                return new NPC(wskObj);
         }
 
         /// <summary>
@@ -200,21 +202,27 @@ namespace CodeInject.MemoryTools
         /// <returns></returns>
         public List<IObject> GetNPCs()
         {
-
-            List<IObject> wholeNpcList = new List<IObject>();
-            long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);//OBS#S3
-            int* monsterIDList = (int*)*wsp;
-            int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A080);//OBS#S4
-
-            for (int i = 0; i < *count; i++)
+            try
             {
-                wholeNpcList.Add(GetObject(*monsterIDList));
-                monsterIDList++;
+                List<IObject> wholeNpcList = new List<IObject>();
+                long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);//OBS#S3
+                int* monsterIDList = (int*)*wsp;
+                int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A080);//OBS#S4
+
+                for (int i = 0; i < *count; i++)
+                {
+                    wholeNpcList.Add(GetObject(*monsterIDList));
+                    monsterIDList++;
+                }
+
+                var sortedList = wholeNpcList.OrderBy(x => x.CalcDistance(wholeNpcList[0]));
+                return sortedList.ToList();
             }
-
-            var sortedList = wholeNpcList.OrderBy(x => x.CalcDistance(wholeNpcList[0]));
-
-            return sortedList.ToList();
+            catch(Exception e)
+            {
+                return new List<IObject>();
+            }
+      
         }
 
         public long GetInventoryItemDetails(long cItemAddres)

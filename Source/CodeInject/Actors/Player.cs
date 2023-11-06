@@ -74,27 +74,70 @@ namespace CodeInject.Actors
 
             return playerJson;
         }
-        public List<int> GetBuffsIDs()
+        public List<ushort> GetBuffsIDs()
         {
-            List<int> list = new List<int>();
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016AA2F0, new short[] { 0x1a0, 0x48, 0x8e8, 0x858, 0x30, 0x8, 0x0 });
 
-            baseBuffAddres = *(long*)(*(long*)(*(long*)(*(long*)(*(long*)baseBuffAddres))));
-            baseBuffAddres = *(long*)baseBuffAddres;
-            baseBuffAddres = *(long*)baseBuffAddres;
+            List<ushort> list = new List<ushort>();
+            /* long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016AA2F0, new short[] { 0x1a0, 0x48, 0x8e8, 0x858, 0x30, 0x8, 0x0 });
 
-            for (int i = 0; i < *BuffCount; i++)
+             baseBuffAddres = *(long*)(*(long*)(*(long*)(*(long*)(*(long*)baseBuffAddres))));
+             baseBuffAddres = *(long*)baseBuffAddres;
+             baseBuffAddres = *(long*)baseBuffAddres;
+            408*/
+
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016AA2F0, new short[] { 0x380, 0x830, 0x858, 0x30, 0x08,0x0 });
+
+
+           // baseBuffAddres = *(long*)baseBuffAddres; 
+            GameFunctionsAndObjects.Actions.Logger("RAX: "+(baseBuffAddres).ToString("X"), Color.Green);
+            long* buffAddr =(long*)baseBuffAddres;
+            int b = 0;
+            GameFunctionsAndObjects.Actions.Logger("RbX: " + (*buffAddr).ToString("X"), Color.Coral);
+
+
+            long* firstElement = buffAddr;
+            firstElement =(long*)(*buffAddr); // or (long*)(*buffAddr);
+
+            if ((long)firstElement == (long)buffAddr)
             {
-                long buffAddres = *(long*)(baseBuffAddres + 0x18);
-                if (buffAddres != 0x0)
-                {
-                    list.Add(*(int*)(buffAddres + 0x18));
-                }
-                else
-                { i--;
-                }
-                baseBuffAddres = *(long*)baseBuffAddres;
+                GameFunctionsAndObjects.Actions.Logger("NO BUFF's",Color.Green);
+                return list;
             }
+
+            do
+                {
+                GameFunctionsAndObjects.Actions.Logger("------------------------------------------",Color.DimGray);
+                GameFunctionsAndObjects.Actions.Logger(((long)firstElement).ToString("X"), Color.YellowGreen);
+                long* buffDetails = (long*)(*(long*)((long)firstElement + 0x18));
+                if (*(long*)((long)buffDetails + 0x08)== (long)ObjectPointer)
+                {
+                    GameFunctionsAndObjects.Actions.Logger("RCX: " + ((long)buffDetails).ToString("X"), Color.Violet);
+                    ushort* buffID = (ushort*)((long)buffDetails + 0x18);
+
+                    GameFunctionsAndObjects.Actions.Logger("ID: " + *buffID, Color.DeepPink);
+                   
+                    b++;
+                }
+                firstElement = (long*)(*firstElement);
+            } while (b < *BuffCount);
+
+            /*GameFunctionsAndObjects.Actions.Logger(baseBuffAddres.ToString("X"), Color.Blue);*/
+
+
+            /* for (int i = 0; i < *BuffCount; i++)
+             {
+                 GameFunctionsAndObjects.Actions.Logger(baseBuffAddres.ToString("X"),Color.Blue);
+                 long buffAddres = *(long*)(baseBuffAddres + 0x18);
+
+                 if (buffAddres != 0x0)
+                 {
+                    
+                 }
+                 else
+                 { i--;
+                 }
+                 baseBuffAddres = *(long*)baseBuffAddres;
+             }*/
 
             return list;
         }

@@ -8,10 +8,15 @@ using CodeInject.PickupFilters;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -70,12 +75,19 @@ namespace CodeInject
             lBuffs.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x => x.SkillType == SkillTypes.Buff).ToArray());
         }
 
+        public void PorionSettingsUpdate()
+        {
+            
+        }
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             BotContext.Update();
-
-            listBox1.Items.Clear();
-            listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+          //  PlayerInfo();
+                listBox1.Items.Clear();
+        
+                listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+ 
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,21 +335,21 @@ namespace CodeInject
         }
 
 
+        private void PlayerInfo()
+        {
+            IPlayer player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+
+            pbHpBar.Minimum = 0;
+            pbHpBar.Maximum = *player.MaxHp;
+            pbHpBar.Value = *player.Hp;
+        }
+
+
         private void BuffTimer_Tick(object sender, EventArgs e)
         {
       
         }
 
-        private void timerParty_Tick(object sender, EventArgs e)
-        {
-            lPartyMembers.Items.Clear();
-            party.Update();
-            lPartyMembers.Items.AddRange(party.PartyMemberList.ToArray());
-        }
-
-        private void bPartyStart_Click(object sender, EventArgs e)
-        {
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -355,9 +367,19 @@ namespace CodeInject
 
         }
 
+
+        delegate void speak(long userInput,ushort adr2, ushort targetID);
+        speak funcspeak;
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             MessageBox.Show(((long)((IObject)listBox1.SelectedItem).ObjectPointer).ToString("X"));
+            //  GameFunctionsAndObjects.Actions.Attack((int)((IObject)listBox1.SelectedItem).ID);
+
+       /*     funcspeak = Marshal.GetDelegateForFunctionPointer<speak>(new IntPtr(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x2842a));
+            long rcx = *(long*)(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x16AC620);
+
+            funcspeak(rcx, 6, *((IObject)listBox1.SelectedItem).ID);*/
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -387,6 +409,60 @@ namespace CodeInject
         {
             if (lHealSkills.SelectedItem != null)
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lHealSkills.SelectedItem);
+        }
+
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {
+            comboBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+           if(checkBox1.Checked)
+            {
+                BotContext.AddModule(new FollowModule(((IPlayer)comboBox1.SelectedItem).Name));
+            }
+           else
+            {
+                BotContext.RemoveModule("FOLLOW");
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+         //   IPlayer player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+
+         //   listBox2.Items.Add(new Vector2(*player.X, *player.Y));
+            
+            List<ushort> buffs = GameFunctionsAndObjects.DataFetch.GetPlayer().GetBuffsIDs();
+            foreach(int i in buffs)
+            {
+               /* SkillInfo info = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x=>x.ID == i);
+                if(info != null)
+                  GameFunctionsAndObjects.Actions.Logger(info.ToString(), Color.White);
+                else*/
+                  GameFunctionsAndObjects.Actions.Logger(i.ToString(), Color.White);
+            }
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Save save = new Save(BotContext, 10);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Load load = new Load(BotContext, 10);
         }
     }
 }

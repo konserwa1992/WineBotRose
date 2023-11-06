@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeInject.Modules
 {
+    [Serializable]
     public class WebMenuModule : IModule
     {
         WebServer ws;

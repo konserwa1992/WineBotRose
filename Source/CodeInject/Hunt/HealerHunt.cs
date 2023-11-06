@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CodeInject.Hunt
 {
+    [Serializable]
     internal unsafe class HealerHunt : DefaultHunt
     {
 

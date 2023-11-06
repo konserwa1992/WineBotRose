@@ -8,7 +8,6 @@ namespace CodeInject
     {
         public long* ObjectPointer { get; set; }
         public long* CItemAddr { get; set; }
-        public int* ID { get; set; }
         public short* ItemData { get; set; }
 
         /// <summary>
@@ -58,42 +57,42 @@ namespace CodeInject
                 case 0x08:
                     {
                         temp = DataBase.GameDataBase.WeaponItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID+ " "+ temp.Name : "Unknow")}";
                     }
 
                 case 0x0A:
                     {
                         temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
                     }
 
                 case 0x03:
                     {
                         temp = DataBase.GameDataBase.BodyItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x05:
                     {
                         temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x04:
                     {
                         temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
                 case 0x09:
                     {
                         temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0C:
                     {
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
                 default:
                     {

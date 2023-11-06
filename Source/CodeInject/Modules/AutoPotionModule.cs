@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CodeInject.Modules
 {
+    [Serializable]
     internal unsafe class AutoPotionModule : IModule
     {
         public ItemExecutor AutoHp;
