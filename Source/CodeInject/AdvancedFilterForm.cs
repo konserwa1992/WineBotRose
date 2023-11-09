@@ -113,5 +113,10 @@ namespace CodeInject
             listBox2.Items.Clear();
             listBox2.Items.AddRange(Filter.PickWeapon.ToArray());
         }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            SetSearchList<HeadItemsInfo>();
+        }
     }
 }

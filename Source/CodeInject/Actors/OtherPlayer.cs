@@ -20,7 +20,7 @@ namespace CodeInject.Actors
         public int* Hp { get; set; }
         public int* MaxMp { get; set; }
         public int* Mp { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
         public short* BuffCount { get; set; }
         public int* modelNaME { get; set; }
 
@@ -39,6 +39,9 @@ namespace CodeInject.Actors
             BuffCount = (short*)(*Entry + 0x7b0);
             Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB0)));
         }
+
+
+
 
         public double CalcDistance(IObject targerObject)
         {

@@ -53,6 +53,12 @@ namespace CodeInject
         public string Name { get; set; } = "";
         public override string ToString() { return Name; }
     }
+    public class HeadItemsInfo : IBasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
+    }
     public class FootItemsInfo : IBasicInfo
     {
         public int ID { get; set; }
@@ -90,6 +96,7 @@ namespace CodeInject
         public List<FootItemsInfo> FootItemsDatabase = new List<FootItemsInfo>();
         public List<ShieldItemsInfo> SheildItemsDatabase = new List<ShieldItemsInfo>();
         public List<MaterialItemsInfo> MaterialItemsDatabase = new List<MaterialItemsInfo>();
+        public List<HeadItemsInfo> HeadItemsDatabase = new List<HeadItemsInfo>();
         public static string DataPath;
 
 
@@ -114,6 +121,8 @@ namespace CodeInject
                 return (SheildItemsDatabase as List<T>);
             if (typeof(T) == typeof(MaterialItemsInfo))
                 return (MaterialItemsDatabase as List<T>);
+            if (typeof(T) == typeof(HeadItemsInfo))
+                return (HeadItemsDatabase as List<T>);
 
             return null;
         }
@@ -131,6 +140,7 @@ namespace CodeInject
             LoadFootDataBase();
             LoadShieldItemDataBase();
             LoadMaterialItemDataBase();
+            LoadHeadDataBase();
         }
 
 
@@ -139,6 +149,13 @@ namespace CodeInject
             if (!File.Exists(DataPath+"MaterialItemList.json")) GameFunctionsAndObjects.Actions.Logger($"Missing file: MaterialItemList.json", Color.Red);
             StreamReader dataRead = new StreamReader(DataPath+"MaterialItemList.json");
             MaterialItemsDatabase = JsonConvert.DeserializeObject<List<MaterialItemsInfo>>(dataRead.ReadToEnd());
+            dataRead.Close();
+        }
+        private void LoadHeadDataBase()
+        {
+            if (!File.Exists(DataPath + "HeadItemList.json")) GameFunctionsAndObjects.Actions.Logger($"Missing file: HeadItemList.json", Color.Red);
+            StreamReader dataRead = new StreamReader(DataPath + "HeadItemList.json");
+            HeadItemsDatabase = JsonConvert.DeserializeObject<List<HeadItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
 

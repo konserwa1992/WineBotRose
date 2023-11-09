@@ -36,7 +36,7 @@ namespace CodeInject
         {
             InitializeComponent();
 
-            BotContext.Start(
+           BotContext.Start(
                     new HuntState(
                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
@@ -437,10 +437,7 @@ namespace CodeInject
             List<ushort> buffs = GameFunctionsAndObjects.DataFetch.GetPlayer().GetBuffsIDs();
             foreach(int i in buffs)
             {
-               /* SkillInfo info = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x=>x.ID == i);
-                if(info != null)
-                  GameFunctionsAndObjects.Actions.Logger(info.ToString(), Color.White);
-                else*/
+
                   GameFunctionsAndObjects.Actions.Logger(i.ToString(), Color.White);
             }
         }

@@ -52,8 +52,8 @@ namespace CodeInject.MemoryTools
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+ 0x3b7800), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
-          //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 EC 20 48 8B D9 E8 ?? ?? ?? ?? 83 f8 01 75 1c"), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
         }
 
 
@@ -136,7 +136,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x16AA2F0); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x16BF8f0); //2023.10.04
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd70) != 0)//OBS#S2
@@ -172,9 +172,9 @@ namespace CodeInject.MemoryTools
 
                 long ObjectTypeFuncTable = *(long*)*wskObj;
 
-                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11993B0 == ObjectTypeFuncTable)
+                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AA3B0 == ObjectTypeFuncTable)
                     return new OtherPlayer(wskObj);
-                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x119B378 == ObjectTypeFuncTable) // player avatar
+                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AC378 == ObjectTypeFuncTable) // player avatar
                     return new Player(wskObj);
 
 
@@ -284,7 +284,7 @@ namespace CodeInject.MemoryTools
 
             Process _proc = Process.GetCurrentProcess();
 
-            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x16ac678));
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x16c1c78));
             long* RBX = (long*)((long)RDI + 0x2a0b8);
 
             RBX = (long*)*RBX; //select first item from list

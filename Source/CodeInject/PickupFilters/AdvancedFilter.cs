@@ -19,7 +19,7 @@ namespace CodeInject.PickupFilters
                 case ItemType.UsableItem:
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(UsableItemsInfo));
                 case ItemType.Hat:
-                    return false;// PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(UsableItemsInfo));
+                    return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(HeadItemsInfo));
                 case ItemType.Material:
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(MaterialItemsInfo));
                 case ItemType.Shield:

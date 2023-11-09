@@ -51,7 +51,7 @@ namespace CodeInject.Hunt
                 foreach (string nick in Players2HealList)
                 {
                     IPlayer currentPlayerObj2Heal = (IPlayer)GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && ((IPlayer)x).Name == nick)
-                        .OrderBy(x => (*((IPlayer)x).Hp / *((IPlayer)x).MaxHp) * 100.0f)
+                        .OrderByDescending(x => (*((IPlayer)x).Hp / *((IPlayer)x).MaxHp) * 100.0f)
                         .FirstOrDefault();
 
                     if (currentPlayerObj2Heal != null) 

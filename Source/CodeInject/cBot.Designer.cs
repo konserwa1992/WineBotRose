@@ -110,6 +110,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.button11 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button10 = new System.Windows.Forms.Button();
@@ -120,9 +123,7 @@
             this.WsTimer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -135,6 +136,7 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -183,6 +185,7 @@
             this.button12.TabIndex = 14;
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Visible = false;
             // 
             // listBox1
             // 
@@ -951,20 +954,50 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.groupBox1);
             this.tabPage6.Controls.Add(this.button14);
             this.tabPage6.Controls.Add(this.button13);
             this.tabPage6.Controls.Add(this.listBox3);
             this.tabPage6.Controls.Add(this.button11);
             this.tabPage6.Controls.Add(this.listBox2);
             this.tabPage6.Controls.Add(this.button10);
-            this.tabPage6.Controls.Add(this.checkBox1);
-            this.tabPage6.Controls.Add(this.comboBox1);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(486, 495);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Others";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(15, 204);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(114, 23);
+            this.button14.TabIndex = 7;
+            this.button14.Text = "button14";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Visible = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(15, 175);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(114, 23);
+            this.button13.TabIndex = 6;
+            this.button13.Text = "button13";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Visible = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(15, 74);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(114, 95);
+            this.listBox3.TabIndex = 5;
+            this.listBox3.Visible = false;
             // 
             // button11
             // 
@@ -974,6 +1007,7 @@
             this.button11.TabIndex = 4;
             this.button11.Text = "button11";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // listBox2
@@ -983,6 +1017,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 238);
             this.listBox2.TabIndex = 3;
+            this.listBox2.Visible = false;
             // 
             // button10
             // 
@@ -992,12 +1027,13 @@
             this.button10.TabIndex = 2;
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Visible = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(15, 46);
+            this.checkBox1.Location = new System.Drawing.Point(18, 45);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(56, 17);
             this.checkBox1.TabIndex = 1;
@@ -1008,7 +1044,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 19);
+            this.comboBox1.Location = new System.Drawing.Point(18, 18);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(114, 21);
             this.comboBox1.TabIndex = 0;
@@ -1035,33 +1071,16 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // listBox3
+            // groupBox1
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(15, 74);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(114, 95);
-            this.listBox3.TabIndex = 5;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(15, 175);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(114, 23);
-            this.button13.TabIndex = 6;
-            this.button13.Text = "button13";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(15, 204);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(114, 23);
-            this.button14.TabIndex = 7;
-            this.button14.Text = "button14";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Follow Player";
             // 
             // cBot
             // 
@@ -1093,7 +1112,8 @@
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1193,5 +1213,6 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

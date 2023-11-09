@@ -156,6 +156,9 @@
     <None Include="data\FootItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="data\HeadItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="data\MaterialItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

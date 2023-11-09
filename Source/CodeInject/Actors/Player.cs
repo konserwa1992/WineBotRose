@@ -21,7 +21,7 @@ namespace CodeInject.Actors
         public int* Hp { get; set; }
         public int* MaxMp { get; set; }
         public int* Mp { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
         public short* BuffCount { get; set; }
         public int* modelNaME { get; set; }
 
@@ -74,6 +74,7 @@ namespace CodeInject.Actors
 
             return playerJson;
         }
+
         public List<ushort> GetBuffsIDs()
         {
 
@@ -85,59 +86,41 @@ namespace CodeInject.Actors
              baseBuffAddres = *(long*)baseBuffAddres;
             408*/
 
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016AA2F0, new short[] { 0x380, 0x830, 0x858, 0x30, 0x08,0x0 });
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016BF8C0, new short[] { 0x848, 0x0});
 
 
-           // baseBuffAddres = *(long*)baseBuffAddres; 
-            GameFunctionsAndObjects.Actions.Logger("RAX: "+(baseBuffAddres).ToString("X"), Color.Green);
-            long* buffAddr =(long*)baseBuffAddres;
+
+            long* buffAddr =(long*)baseBuffAddres;  //RAX
             int b = 0;
-            GameFunctionsAndObjects.Actions.Logger("RbX: " + (*buffAddr).ToString("X"), Color.Coral);
 
 
-            long* firstElement = buffAddr;
-            firstElement =(long*)(*buffAddr); // or (long*)(*buffAddr);
+            long* firstElement;
+            firstElement=(long*)*buffAddr; // (long*)(*(long*)(*buffAddr)) or (long*)(*buffAddr);
 
-            if ((long)firstElement == (long)buffAddr)
+
+            GameFunctionsAndObjects.Actions.Logger($"RAX: {baseBuffAddres.ToString("X")}", Color.Green);
+            GameFunctionsAndObjects.Actions.Logger($"RBX: {((long)firstElement).ToString("X")}", Color.Green);
+
+            /*      if ((long)firstElement == (long)buffAddr)
+                  {
+                      GameFunctionsAndObjects.Actions.Logger("NO BUFF's",Color.Green);
+                      return list;
+                  }*/
+
+            
+            while (b < *BuffCount)
             {
-                GameFunctionsAndObjects.Actions.Logger("NO BUFF's",Color.Green);
-                return list;
-            }
+                    long* buffDetails = (long*)(*(long*)((long)firstElement + 0x18));
+                    if (*(long*)((long)buffDetails + 0x08) == (long)ObjectPointer)
+                    {
+                        ushort* buffID = (ushort*)((long)buffDetails + 0x18);
 
-            do
-                {
-                GameFunctionsAndObjects.Actions.Logger("------------------------------------------",Color.DimGray);
-                GameFunctionsAndObjects.Actions.Logger(((long)firstElement).ToString("X"), Color.YellowGreen);
-                long* buffDetails = (long*)(*(long*)((long)firstElement + 0x18));
-                if (*(long*)((long)buffDetails + 0x08)== (long)ObjectPointer)
-                {
-                    GameFunctionsAndObjects.Actions.Logger("RCX: " + ((long)buffDetails).ToString("X"), Color.Violet);
-                    ushort* buffID = (ushort*)((long)buffDetails + 0x18);
-
-                    GameFunctionsAndObjects.Actions.Logger("ID: " + *buffID, Color.DeepPink);
-                   
-                    b++;
-                }
-                firstElement = (long*)(*firstElement);
-            } while (b < *BuffCount);
-
-            /*GameFunctionsAndObjects.Actions.Logger(baseBuffAddres.ToString("X"), Color.Blue);*/
-
-
-            /* for (int i = 0; i < *BuffCount; i++)
-             {
-                 GameFunctionsAndObjects.Actions.Logger(baseBuffAddres.ToString("X"),Color.Blue);
-                 long buffAddres = *(long*)(baseBuffAddres + 0x18);
-
-                 if (buffAddres != 0x0)
-                 {
-                    
-                 }
-                 else
-                 { i--;
-                 }
-                 baseBuffAddres = *(long*)baseBuffAddres;
-             }*/
+                        list.Add(*buffID);
+                        b++;
+                    }
+                    firstElement = (long*)(*firstElement);
+             } 
+       
 
             return list;
         }
