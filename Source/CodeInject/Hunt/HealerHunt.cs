@@ -58,7 +58,6 @@ namespace CodeInject.Hunt
                         float currhp = (float)*currentPlayerObj2Heal.Hp;
                         float maxhp = (float)*currentPlayerObj2Heal.MaxHp;
 
-                         GameFunctionsAndObjects.Actions.Logger($"Lowest % hp {currentPlayerObj2Heal.Name} {currhp} / {maxhp}  {((currhp / maxhp) * 100.0f)}",Color.Green);
                         if (((currhp / maxhp) * 100.0f) < ProcHeal)
                         {
                             GameFunctionsAndObjects.Actions.CastSpell(*currentPlayerObj2Heal.ID, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));

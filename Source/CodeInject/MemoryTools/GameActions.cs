@@ -124,7 +124,6 @@ namespace CodeInject.MemoryTools
 
         public void ItemUse(long itemAddr)
         {
-            Logger("Try UseItem",Color.AliceBlue);
             UseItemFunc(itemAddr);
         }
 

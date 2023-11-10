@@ -430,9 +430,6 @@ namespace CodeInject
 
         private void button10_Click(object sender, EventArgs e)
         {
-         //   IPlayer player = GameFunctionsAndObjects.DataFetch.GetPlayer();
-
-         //   listBox2.Items.Add(new Vector2(*player.X, *player.Y));
             
             List<ushort> buffs = GameFunctionsAndObjects.DataFetch.GetPlayer().GetBuffsIDs();
             foreach(int i in buffs)
