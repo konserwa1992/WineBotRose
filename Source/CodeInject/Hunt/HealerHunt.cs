@@ -2,6 +2,7 @@
 using CodeInject.MemoryTools;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -48,22 +49,21 @@ namespace CodeInject.Hunt
         {
             if (Players2HealList.Count > 0)
             {
-                foreach (string nick in Players2HealList)
-                {
-                    IPlayer currentPlayerObj2Heal = (IPlayer)GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && ((IPlayer)x).Name == nick)
-                        .OrderByDescending(x => (*((IPlayer)x).Hp / *((IPlayer)x).MaxHp) * 100.0f)
+                    IPlayer currentPlayerObj2Heal = (IPlayer)GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && Players2HealList.Contains(((IPlayer)x).Name))
+                        .OrderBy(x => (((float)*((IPlayer)x).Hp / (float)*((IPlayer)x).MaxHp) * 100.0f))
                         .FirstOrDefault();
 
                     if (currentPlayerObj2Heal != null) 
                     {
                         float currhp = (float)*currentPlayerObj2Heal.Hp;
                         float maxhp = (float)*currentPlayerObj2Heal.MaxHp;
+
+                         GameFunctionsAndObjects.Actions.Logger($"Lowest % hp {currentPlayerObj2Heal.Name} {currhp} / {maxhp}  {((currhp / maxhp) * 100.0f)}",Color.Green);
                         if (((currhp / maxhp) * 100.0f) < ProcHeal)
                         {
                             GameFunctionsAndObjects.Actions.CastSpell(*currentPlayerObj2Heal.ID, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
                         }
                     }
-                }
             }
 
             base.Update();

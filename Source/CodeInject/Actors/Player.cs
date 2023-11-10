@@ -98,8 +98,8 @@ namespace CodeInject.Actors
             firstElement=(long*)*buffAddr; // (long*)(*(long*)(*buffAddr)) or (long*)(*buffAddr);
 
 
-            GameFunctionsAndObjects.Actions.Logger($"RAX: {baseBuffAddres.ToString("X")}", Color.Green);
-            GameFunctionsAndObjects.Actions.Logger($"RBX: {((long)firstElement).ToString("X")}", Color.Green);
+           // GameFunctionsAndObjects.Actions.Logger($"RAX: {baseBuffAddres.ToString("X")}", Color.Green);
+           // GameFunctionsAndObjects.Actions.Logger($"RBX: {((long)firstElement).ToString("X")}", Color.Green);
 
             /*      if ((long)firstElement == (long)buffAddr)
                   {

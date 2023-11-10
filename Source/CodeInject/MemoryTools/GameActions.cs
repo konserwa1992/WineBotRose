@@ -58,8 +58,8 @@ namespace CodeInject.MemoryTools
 
         public void Logger(string text, Color color,int chatType=5)
         {
-       //     LoggerFunc(
-         //    BaseOfDialogBoxes, text, chatType, (uint)color.ToArgb());
+           LoggerFunc(
+             BaseOfDialogBoxes, text, chatType, (uint)color.ToArgb());
         }
 
 
