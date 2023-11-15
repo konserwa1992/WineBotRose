@@ -10,6 +10,7 @@ namespace CodeInject.Hunt
 
         List<MobInfo> ListOfMonstersToAttack { get; set; }
         IObject Target { get; set; }
+        bool NormalAttack { get; set; }
 
         void Update();
         int GetSkillIndex(int SkillID);

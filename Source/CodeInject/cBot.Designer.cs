@@ -54,6 +54,7 @@
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cNormalAttackEnable = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -110,6 +111,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button16 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -120,10 +126,8 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button10 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.BuffTimer = new System.Windows.Forms.Timer(this.components);
-            this.WsTimer = new System.Windows.Forms.Timer(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -136,6 +140,8 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -375,6 +381,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cNormalAttackEnable);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.button9);
@@ -394,6 +401,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Skill";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cNormalAttackEnable
+            // 
+            this.cNormalAttackEnable.AutoSize = true;
+            this.cNormalAttackEnable.Checked = true;
+            this.cNormalAttackEnable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cNormalAttackEnable.Location = new System.Drawing.Point(9, 194);
+            this.cNormalAttackEnable.Name = "cNormalAttackEnable";
+            this.cNormalAttackEnable.Size = new System.Drawing.Size(93, 17);
+            this.cNormalAttackEnable.TabIndex = 17;
+            this.cNormalAttackEnable.Text = "Normal Attack";
+            this.cNormalAttackEnable.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -462,9 +481,9 @@
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.lHealSkills);
-            this.groupBox4.Location = new System.Drawing.Point(9, 194);
+            this.groupBox4.Location = new System.Drawing.Point(9, 217);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(471, 286);
+            this.groupBox4.Size = new System.Drawing.Size(471, 271);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Healer";
@@ -763,7 +782,6 @@
             this.lNearItemsList.Name = "lNearItemsList";
             this.lNearItemsList.Size = new System.Drawing.Size(188, 56);
             this.lNearItemsList.TabIndex = 2;
-            this.lNearItemsList.SelectedIndexChanged += new System.EventHandler(this.lNearItemsList_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -821,7 +839,6 @@
             this.button4.Text = "Start webmenu";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // tabPage5
             // 
@@ -954,6 +971,11 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.button16);
+            this.tabPage6.Controls.Add(this.pictureBox3);
+            this.tabPage6.Controls.Add(this.listBox4);
+            this.tabPage6.Controls.Add(this.button15);
+            this.tabPage6.Controls.Add(this.pictureBox2);
             this.tabPage6.Controls.Add(this.groupBox1);
             this.tabPage6.Controls.Add(this.button14);
             this.tabPage6.Controls.Add(this.button13);
@@ -967,6 +989,56 @@
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Others";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(235, 122);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(75, 23);
+            this.button16.TabIndex = 13;
+            this.button16.Text = "Go to target";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::CodeInject.Properties.Resources.Bez_tytułu;
+            this.pictureBox3.Location = new System.Drawing.Point(316, 74);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(342, 227);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(236, 21);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(120, 95);
+            this.listBox4.TabIndex = 11;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(235, 151);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 10;
+            this.button15.Text = "Stop";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CodeInject.Properties.Resources.Bez_tytułu1;
+            this.pictureBox2.Location = new System.Drawing.Point(15, 245);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(502, 243);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // groupBox1
             // 
@@ -1067,20 +1139,10 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // BuffTimer
+            // timer3
             // 
-            this.BuffTimer.Interval = 900000;
-            this.BuffTimer.Tick += new System.EventHandler(this.BuffTimer_Tick);
-            // 
-            // WsTimer
-            // 
-            this.WsTimer.Enabled = true;
-            this.WsTimer.Interval = 500;
-            this.WsTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            this.timer3.Interval = 250;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // cBot
             // 
@@ -1112,6 +1174,9 @@
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -1181,12 +1246,10 @@
         private System.Windows.Forms.ListBox lHealSkills;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Timer BuffTimer;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox tHealWhenProc;
-        private System.Windows.Forms.Timer WsTimer;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button5;
@@ -1202,7 +1265,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label labCharName;
         private System.Windows.Forms.Label label13;
@@ -1214,5 +1276,12 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.CheckBox cNormalAttackEnable;
     }
 }

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphShape.Controls" Version="1.2.2" />
     <PackageReference Include="Reloaded.Injector" Version="1.2.5" />
   </ItemGroup>
 

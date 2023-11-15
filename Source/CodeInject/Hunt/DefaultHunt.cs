@@ -17,19 +17,21 @@ namespace CodeInject.Hunt
         public int SkillIndex = 0;
         public IObject Target;
         public Vector3 HuntingAreaCenter { get; set; }
+
         public int Radius { get; set; } = 50;
         private cBot WinFormMenu;
         public DefaultHunt()
         {
         }
 
-        public DefaultHunt(List<MobInfo> monstersToAttackList,Vector3 huntingAreaCenter,int radius,List<Skills> skillList,cBot WinForm)
+        public DefaultHunt(List<MobInfo> monstersToAttackList, Vector3 huntingAreaCenter, int radius, List<Skills> skillList,bool normalAttack, cBot WinForm)
         {
             HuntingAreaCenter = huntingAreaCenter;
             Radius = radius;
-            ListOfMonstersToAttack= monstersToAttackList;
+            ListOfMonstersToAttack = monstersToAttackList;
             WinFormMenu = WinForm;
             BotSkills = skillList;
+            NormalAttack = normalAttack;
             Target = null;
         }
 
@@ -58,16 +60,16 @@ namespace CodeInject.Hunt
 
             Player player = GameFunctionsAndObjects.DataFetch.GetPlayer();
             List<ushort> buffs = player.GetBuffsIDs();
-            List<Skills> skill2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
+            List<Skills> BotBuff2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
 
-            if (skill2Use.Count>0)
+            if (BotBuff2Use.Count > 0)
             {
-              GameFunctionsAndObjects.Actions.CastSpell(GetSkillIndex(skill2Use.FirstOrDefault().skillInfo.ID));
-              Thread.Sleep(100);
+                GameFunctionsAndObjects.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
+                Thread.Sleep(100);
             }
             else
             {
-                if (Target == null|| !GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x=>(long)x.ObjectPointer == (long)Target.ObjectPointer) || *((NPC)Target).Hp <= 0)
+                if (Target == null || !GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || *((NPC)Target).Hp <= 0)
                 {
                     this.Target = GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                     .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
@@ -76,22 +78,23 @@ namespace CodeInject.Hunt
 
                 if (this.Target != null)
                 {
-                    if (this.BotSkills.Count > 0)
-                    {
-                        Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
-                        if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
-                        {
-                            GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
-                        }
-                    }
-                    GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
-                }
-                else
-                {
                     GoToHuntingAreaCenter();
                 }
+
+                if (this.BotSkills.Count > 0)
+                {
+                    Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
+                    if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
+                    {
+                        GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                    }
+                }
+                if(NormalAttack == true)
+                GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
             }
         }
+ 
+
 
         private void GoToHuntingAreaCenter()
         {

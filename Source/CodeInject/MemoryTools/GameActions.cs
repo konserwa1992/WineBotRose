@@ -19,9 +19,11 @@ namespace CodeInject.MemoryTools
         private delegate void UseItemAction(long itemAdr);
         private delegate void NormalAttackAction(long networkClass, int enemy);
         private delegate void MoveToAction(long networkClass, int unknow0,float* destinationPoint);
+        private delegate void TalkWithNPC(long arg0, ushort npcIndex);
 
 
-        public delegate void Log(long player, string stringPointer, int cType, uint color); //trose.exe+3266EE unknowarg = 0xFFFFBF00
+
+        public delegate void Log(long player, string stringPointer, int cType, uint color); 
 
         //121bc50
 
@@ -32,6 +34,8 @@ namespace CodeInject.MemoryTools
         private NormalAttackAction NormalAttackFunc;
         private UseQuickAction QuickActionFunc;
         private MoveToAction MoveToPointFunc;
+        private TalkWithNPC TalkToNPCFunc;
+
         public Log LoggerFunc;
         private long BaseAddres;
         private long BaseNetworkClass;
@@ -53,6 +57,7 @@ namespace CodeInject.MemoryTools
             NormalAttackFunc = (NormalAttackAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 0f 84 ?? ?? ?? ?? 40 84 f6 0f 84 ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 8b d3 48 81 c1 ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(NormalAttackAction));
             MoveToPointFunc = (MoveToAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 ?? ?? ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 4c 8b c6 48 81 c1 ?? ?? ?? ?? 33 d2 e8 ?? ?? ?? ??"), typeof(MoveToAction));
             PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x4246F), typeof(PickUpAction)); //MSG#INV4
+            TalkToNPCFunc = (TalkWithNPC)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x25D7E), typeof(TalkWithNPC)); //MSG#INV4
         }
 
 
@@ -60,6 +65,12 @@ namespace CodeInject.MemoryTools
         {
            LoggerFunc(
              BaseOfDialogBoxes, text, chatType, (uint)color.ToArgb());
+        }
+
+        public void TalkToNPC(ushort ID)
+        {
+            long* rcxAddr = (long*)BaseAddres + 0x16DAF00;
+            TalkToNPCFunc(*rcxAddr, ID);
         }
 
 

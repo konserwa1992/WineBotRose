@@ -1,15 +1,18 @@
 ﻿using CodeInject.Actors;
+using CodeInject.AutoReStock;
 using CodeInject.BotStates;
 using CodeInject.Hunt;
 using CodeInject.MemoryTools;
 using CodeInject.Modules;
 using CodeInject.Party;
 using CodeInject.PickupFilters;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -18,14 +21,18 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Windows.Forms;
-
-
+using AForge;
+using System.Drawing;
+using Point = AForge.Point;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
+using CodeInject.AutoWalk;
+using System.Security.Policy;
 
 namespace CodeInject
 {
     public unsafe partial class cBot : Form
     {
-   
+
         Party.Party party;
         public static BotContext BotContext = new BotContext();
         bool BotState = false;
@@ -36,15 +43,17 @@ namespace CodeInject
         {
             InitializeComponent();
 
-           BotContext.Start(
-                    new HuntState(
-                        new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
-                        new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                        float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(),lPlayers2Heal.Items.OfType<IObject>().ToList(), int
-                        .Parse(tHealWhenProc.Text), this)
-                       ));
-           BotContext.Stop();
+            BotContext.Start(
+                     new HuntState(
+                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
+                         float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), lPlayers2Heal.Items.OfType<IObject>().ToList(), int
+                         .Parse(tHealWhenProc.Text),cNormalAttackEnable.Checked, this)
+                        ));
+            BotContext.Stop();
         }
+
+
 
         private void bSkillRefresh_Click(object sender, EventArgs e)
         {
@@ -54,13 +63,13 @@ namespace CodeInject
 
         private void bSkillAdd_Click(object sender, EventArgs e)
         {
-            if(lSkillList.SelectedIndex!=-1)
-               BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem,SkillTypes.AttackSkill);
+            if (lSkillList.SelectedIndex != -1)
+                BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.AttackSkill);
         }
 
         private void bSkillRemove_Click(object sender, EventArgs e)
         {
-            if (lUseSkill.SelectedItem!=null)
+            if (lUseSkill.SelectedItem != null)
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lUseSkill.SelectedItem);
         }
 
@@ -70,46 +79,42 @@ namespace CodeInject
             lUseSkill.Items.Clear();
             lHealSkills.Items.Clear();
             lBuffs.Items.Clear();
-            lUseSkill.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x=>x.SkillType == SkillTypes.AttackSkill).ToArray());
+            lUseSkill.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x => x.SkillType == SkillTypes.AttackSkill).ToArray());
             lHealSkills.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x => x.SkillType == SkillTypes.HealTarget).ToArray());
             lBuffs.Items.AddRange(BotContext.GetState<HuntState>("HUNT").HuntInstance.BotSkills.Where(x => x.SkillType == SkillTypes.Buff).ToArray());
         }
 
         public void PorionSettingsUpdate()
         {
-            
-        }
 
+        }
+        bool tdelete = false;
         private void timer2_Tick(object sender, EventArgs e)
         {
             BotContext.Update();
-          //  PlayerInfo();
-                listBox1.Items.Clear();
-        
-                listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
- 
-        }
+            //  PlayerInfo();
+            listBox1.Items.Clear();
 
-        private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ((Item)lNearItemsList.SelectedItem).Pickup();
+            listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+
+     
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             lFullMonsterList.Items.Clear();
-            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x =>x.Name!="" && x.Name.ToUpper().Contains(tSearchMobTextBox.Text.ToUpper())).ToArray());
+            lFullMonsterList.Items.AddRange(DataBase.GameDataBase.MonsterDatabase.Where(x => x.Name != "" && x.Name.ToUpper().Contains(tSearchMobTextBox.Text.ToUpper())).ToArray());
         }
 
         private void bAddMonster2Attack_Click(object sender, EventArgs e)
         {
-            if(lMonster2Attack.Items.Cast<MobInfo>().FirstOrDefault(x=>x.ID==((MobInfo)lFullMonsterList.SelectedItem).ID)==null)
-            lMonster2Attack.Items.Add(lFullMonsterList.SelectedItem);
+            if (lMonster2Attack.Items.Cast<MobInfo>().FirstOrDefault(x => x.ID == ((MobInfo)lFullMonsterList.SelectedItem).ID) == null)
+                lMonster2Attack.Items.Add(lFullMonsterList.SelectedItem);
         }
 
         private void bRemoveMonster2Attack_Click(object sender, EventArgs e)
         {
-            if(lMonster2Attack.SelectedIndex!=-1)
+            if (lMonster2Attack.SelectedIndex != -1)
                 lMonster2Attack.Items.Remove(lMonster2Attack.SelectedItem);
         }
 
@@ -122,7 +127,7 @@ namespace CodeInject
             tZHuntArea.Text = (*player.Z).ToString();
         }
 
- 
+
         private void cbHealHPItem_DropDown(object sender, EventArgs e)
         {
             cbHealHPItem.Items.Clear();
@@ -152,7 +157,7 @@ namespace CodeInject
                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
                         float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, lPlayers2Heal.Items.OfType<IObject>().ToList(), int
-                        .Parse(tHealWhenProc.Text), this)
+                        .Parse(tHealWhenProc.Text), cNormalAttackEnable.Checked, this)
                        ));
                 }
                 else
@@ -161,7 +166,7 @@ namespace CodeInject
                         new HuntState(
                             new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                             new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, this)
+                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this)
                            ));
                 }
             }
@@ -175,7 +180,7 @@ namespace CodeInject
 
         private void cFilterMaterials_CheckedChanged(object sender, EventArgs e)
         {
-            if(cFilterMaterials.Checked)
+            if (cFilterMaterials.Checked)
             {
                 ((QuickFilter)BotContext.Filter).AddToPick(ItemType.Material);
             }
@@ -292,7 +297,7 @@ namespace CodeInject
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (MobInfo mob in  lFullMonsterList.Items)
+            foreach (MobInfo mob in lFullMonsterList.Items)
             {
                 if (!lMonster2Attack.Items.Cast<MobInfo>().Any(x => x.ID == mob.ID))
                     lMonster2Attack.Items.Add(mob);
@@ -330,7 +335,7 @@ namespace CodeInject
 
         private unsafe void cBot_Load(object sender, EventArgs e)
         {
-            GameFunctionsAndObjects.Actions.Logger($"Hello.",Color.GreenYellow);
+            GameFunctionsAndObjects.Actions.Logger($"Hello.", Color.GreenYellow);
             GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
         }
 
@@ -345,11 +350,6 @@ namespace CodeInject
         }
 
 
-        private void BuffTimer_Tick(object sender, EventArgs e)
-        {
-      
-        }
-
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -357,35 +357,22 @@ namespace CodeInject
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.HealTarget);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
-        delegate void speak(long userInput,ushort adr2, ushort targetID);
+
+        delegate void speak(long userInput, ushort adr2, ushort targetID);
         speak funcspeak;
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             MessageBox.Show(((long)((IObject)listBox1.SelectedItem).ObjectPointer).ToString("X"));
-            //  GameFunctionsAndObjects.Actions.Attack((int)((IObject)listBox1.SelectedItem).ID);
 
-       /*     funcspeak = Marshal.GetDelegateForFunctionPointer<speak>(new IntPtr(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x2842a));
-            long rcx = *(long*)(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x16AC620);
-
-            funcspeak(rcx, 6, *((IObject)listBox1.SelectedItem).ID);*/
-
+            GameFunctionsAndObjects.Actions.TalkToNPC(*((IObject)listBox1.SelectedItem).ID);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             lPlayersList.Items.Clear();
-            lPlayersList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x=>x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+            lPlayersList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -418,11 +405,11 @@ namespace CodeInject
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-           if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 BotContext.AddModule(new FollowModule(((IPlayer)comboBox1.SelectedItem).Name));
             }
-           else
+            else
             {
                 BotContext.RemoveModule("FOLLOW");
             }
@@ -430,12 +417,12 @@ namespace CodeInject
 
         private void button10_Click(object sender, EventArgs e)
         {
-            
+
             List<ushort> buffs = GameFunctionsAndObjects.DataFetch.GetPlayer().GetBuffsIDs();
-            foreach(int i in buffs)
+            foreach (int i in buffs)
             {
 
-                  GameFunctionsAndObjects.Actions.Logger(i.ToString(), Color.White);
+                GameFunctionsAndObjects.Actions.Logger(i.ToString(), Color.White);
             }
         }
 
@@ -458,5 +445,110 @@ namespace CodeInject
         {
             Load load = new Load(BotContext, 10);
         }
+
+
+
+ 
+
+
+        Map map;
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+
+            map = new Map("Bez tytułu1.png", "Bez tytułu.png", new double[,]{ { 5417, 5373 }, { 5651, 5368 }, { 5742, 5095 } },new double[,]{ { 162, 93 }, { 241, 97 }, { 272, 176 } });
+
+
+            listBox4.Items.Clear();
+
+            GameFunctionsAndObjects.Actions.MoveToPoint(map.CalculatePositionFromMap2World(me.X, me.Y));
+
+
+            Point pos = map.PlayerPositionOnMap();
+
+           List<Point> p = map.FindShortestPathOnMap(pos, new Point(me.X, me.Y));
+
+
+            Bitmap bitmap = new Bitmap(map.RoadMap);
+
+            pictureBox2.Image = new Bitmap(map.OryginalMap);
+            pictureBox3.Image = bitmap;
+            using (Graphics g = Graphics.FromImage(pictureBox2.Image))
+            {
+                g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
+                int sizeC = 4;
+                for(int x=0;x< pictureBox3.Width- sizeC; x+= sizeC)
+                {
+                    for (int y = 0; y < pictureBox3.Height- sizeC; y += sizeC)
+                    {
+
+                        Color pixelColor = bitmap.GetPixel(x + (sizeC / 2), y + (sizeC / 2));
+                        if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+                        {
+                            g.DrawRectangle(new Pen(Color.Orange, 1), new Rectangle(new System.Drawing.Point(x, y), new Size(sizeC, sizeC)));
+                        }
+                    }
+                }
+            }
+
+            pictureBox2.Refresh();
+            using (Graphics g = Graphics.FromImage(pictureBox2.Image))
+            {
+                g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
+                foreach (Point p2 in p)
+                {
+                    listBox4.Items.Add(p2);
+                    g.DrawEllipse(new Pen(Color.Blue, 4), p2.X, p2.Y, 4, 4);
+                }
+            }
+            pictureBox2.Refresh();
+            pictureBox3.Refresh();
+        }
+
+       
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            timer3.Enabled = false;
+        }
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+         
+            listBox4.SelectedIndex = 0;
+            timer3.Enabled = true;
+     
+        }
+
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+
+                if (listBox4.SelectedIndex == listBox4.Items.Count-1)
+                {
+                    timer3.Enabled = false;
+                    return;
+                }
+
+
+                Point p = (Point)listBox4.SelectedItem;
+                Vector2 playerPos = new Vector2(*GameFunctionsAndObjects.DataFetch.GetPlayer().X, *GameFunctionsAndObjects.DataFetch.GetPlayer().Y);
+                Vector2 destination = map.CalculatePositionFromMap2World(p.X, p.Y);
+
+                if (Vector2.Distance(playerPos / 100, destination) < 3)
+                {
+                    listBox4.SelectedIndex = listBox4.SelectedIndex + 1;
+              
+                }
+            GameFunctionsAndObjects.Actions.MoveToPoint(destination);
+        }
     }
+
 }
+
+

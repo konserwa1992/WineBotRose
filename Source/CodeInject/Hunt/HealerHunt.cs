@@ -21,12 +21,13 @@ namespace CodeInject.Hunt
         private cBot WinFormMenu;
         public List<string> Players2HealList = new List<string>();
         public int ProcHeal = 0;
+   
 
         public HealerHunt()
         {
         }
 
-        public HealerHunt(List<MobInfo> monstersToAttackList, Vector3 huntingAreaCenter, int radius, List<Skills> skillList, List<IObject> players2Heal, int healProc, cBot WinForm):base(monstersToAttackList, huntingAreaCenter, radius, skillList, WinForm)
+        public HealerHunt(List<MobInfo> monstersToAttackList, Vector3 huntingAreaCenter, int radius, List<Skills> skillList, List<IObject> players2Heal, int healProc,bool normalAttack, cBot WinForm):base(monstersToAttackList, huntingAreaCenter, radius, skillList, normalAttack, WinForm)
         {
             HuntingAreaCenter = huntingAreaCenter;
             Radius = radius;

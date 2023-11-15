@@ -13,6 +13,7 @@ namespace CodeInject.Hunt
         public List<MobInfo> ListOfMonstersToAttack { get; set; } = new List<MobInfo> { new MobInfo() };
         public List<Skills> BotBuffs { get; set; } = new List<Skills>();
         public IObject Target { get; set; }
+        public bool NormalAttack { get; set; } = true;
 
         public abstract void Update();
         public int GetSkillIndex(int SkillID)
