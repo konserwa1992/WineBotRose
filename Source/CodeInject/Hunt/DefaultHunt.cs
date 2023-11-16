@@ -76,9 +76,11 @@ namespace CodeInject.Hunt
                     .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => *(((NPC)x).Hp) > 0);
                 }
 
-                if (this.Target != null)
+
+                if (this.Target == null)
                 {
                     GoToHuntingAreaCenter();
+                    return;
                 }
 
                 if (this.BotSkills.Count > 0)
@@ -90,7 +92,7 @@ namespace CodeInject.Hunt
                     }
                 }
                 if(NormalAttack == true)
-                GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
+                  GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
             }
         }
  

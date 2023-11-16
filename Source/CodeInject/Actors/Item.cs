@@ -17,6 +17,7 @@ namespace CodeInject.Actors
         public float* Y { get; set; }
         public float* Z { get; set; }
 
+        public int* CanPick {  get; set; }
         /// <summary>
         /// 0x08 Weapon
         /// 0x09 Shield
@@ -40,6 +41,8 @@ namespace CodeInject.Actors
             Z = (float*)((long)entry + 0x18);
             ID = (ushort*)((long)entry + 0x1c);
             ItemData = (short*)((long)entry + 0x6c);
+
+            CanPick = (int*)((long)entry + 0x134);
 
             ItemType = (short*)((long)entry + 0x68);
 
@@ -97,24 +100,24 @@ namespace CodeInject.Actors
                 case 0x05:
                     {
                         temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") +$" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
                     }
 
                 case 0x04:
                     {
                         temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
                     }
                 case 0x09:
                     {
                         temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0C:
                     {
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X")+" "+ temp.Name : "Unknow")}";
+                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
                     }
 
                 default:

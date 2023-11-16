@@ -782,6 +782,7 @@
             this.lNearItemsList.Name = "lNearItemsList";
             this.lNearItemsList.Size = new System.Drawing.Size(188, 56);
             this.lNearItemsList.TabIndex = 2;
+            this.lNearItemsList.SelectedIndexChanged += new System.EventHandler(this.lNearItemsList_SelectedIndexChanged);
             // 
             // tabPage4
             // 

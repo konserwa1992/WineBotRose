@@ -95,9 +95,13 @@ namespace CodeInject
             //  PlayerInfo();
             listBox1.Items.Clear();
 
-            listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+            lNearItemsList.Items.Clear();
 
-     
+
+            listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -546,6 +550,11 @@ namespace CodeInject
               
                 }
             GameFunctionsAndObjects.Actions.MoveToPoint(destination);
+        }
+
+        private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show($"ADDR {((long)((IObject)lNearItemsList.SelectedItem).ObjectPointer).ToString("X")}");
         }
     }
 
