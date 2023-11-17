@@ -88,7 +88,7 @@ namespace CodeInject.Hunt
                     Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
                     if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
                     {
-                        GameFunctionsAndObjects.Actions.CastSpell(*this.Target.ID, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                        GameFunctionsAndObjects.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
                     }
                 }
                 if(NormalAttack == true)

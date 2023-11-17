@@ -61,7 +61,7 @@ namespace CodeInject.Hunt
 
                         if (((currhp / maxhp) * 100.0f) < ProcHeal)
                         {
-                            GameFunctionsAndObjects.Actions.CastSpell(*currentPlayerObj2Heal.ID, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
+                            GameFunctionsAndObjects.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
                         }
                     }
             }

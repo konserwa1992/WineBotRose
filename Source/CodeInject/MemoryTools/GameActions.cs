@@ -11,7 +11,7 @@ namespace CodeInject.MemoryTools
 {
     internal unsafe class GameActions
     {
-        private delegate Int64 AttackWithSkillAction(int skill, int enemy, int arg0);
+        private delegate Int64 AttackWithSkillAction(int skill, int enemy, float* arg0);
      //   private delegate Int64 PickUpAction(long networkClass, long playerObjectAdr, int itemIndex, int arg4);
         private delegate Int64 PickUpAction(long networkClass, int itemIndex, long playerObjectAdr);
         private delegate void UseIcoItemAction(long* IcoAdr);
@@ -86,10 +86,10 @@ namespace CodeInject.MemoryTools
         /// <param name="targedID"></param>
         /// <param name="skillIndex"></param>
         /// 
-        public void CastSpell(int targedID, int skillIndex)
+        public void CastSpell(IObject target, int skillIndex)
         {
-          //  Logger($"Target {TargedID.ToString("X")}  SkillIndex: {SkillIndex.ToString("X")}",Color.Bisque);
-            AttackWithSkillFunc(skillIndex, targedID, 1);
+            
+                AttackWithSkillFunc(skillIndex, *target.ID, target.X);
         }
 
 
@@ -115,7 +115,8 @@ namespace CodeInject.MemoryTools
         {
             IObject player = GameFunctionsAndObjects.DataFetch.GetPlayer();
 
-            AttackWithSkillFunc(skillIndex, *player.ID, 0);
+
+            AttackWithSkillFunc(skillIndex, *player.ID, player.X);
         }
 
         public void Attack(int targedID)
