@@ -21,15 +21,16 @@ namespace CodeInject.AutoWalk
 
         public string OrginalMapFile { get; set; }
         public string RoadMapFile { get; set; }
-
         public double[,] GameCoords, MapCoords;
 
+        public string Name { get; set; }
 
         private BellmanFordAlgorithm PathFinder;
 
 
-        public Map(string oryginalMapFile, string roadMapFile, double[,] gameCoords, double[,] mapCoords)
+        public Map(string name,string oryginalMapFile, string roadMapFile, double[,] gameCoords, double[,] mapCoords)
         {
+            Name = name;
             this.OrginalMapFile = oryginalMapFile;
             this.RoadMapFile = roadMapFile;
 
@@ -38,11 +39,16 @@ namespace CodeInject.AutoWalk
 
             GameCoords = gameCoords;
             MapCoords = mapCoords;
-
+        
 
             PathFinder = new BellmanFordAlgorithm(CreateGraph(FindWhitePixels()));
         }
 
+
+        public override string ToString()
+        {
+            return Name;
+        }
 
         public List<Point> FindShortestPathOnMap(Point start, Point end)
         {

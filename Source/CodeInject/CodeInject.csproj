@@ -234,6 +234,12 @@
     <Content Include="data\Map\JCPSRkl1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\Map\Magic City.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\Map\pMagic City.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Bez tytułu2.png" />
     <None Include="Resources\JCPSCXt.png" />
     <Content Include="Resources\JCPSRkl.png" />

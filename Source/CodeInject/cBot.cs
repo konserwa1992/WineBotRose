@@ -27,6 +27,7 @@ using Point = AForge.Point;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 using CodeInject.AutoWalk;
 using System.Security.Policy;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CodeInject
 {
@@ -341,8 +342,18 @@ namespace CodeInject
         {
             GameFunctionsAndObjects.Actions.Logger($"Hello.", Color.GreenYellow);
             GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
+            LoadMaps();
         }
 
+
+
+        private void LoadMaps()
+        {
+
+            comboBox2.Items.Add(new Map("Adventurer plants","Bez tytułu1.png", "Bez tytułu.png", new double[,] { { 5417, 5373 }, { 5651, 5368 }, { 5742, 5095 } }, new double[,] { { 162, 93 }, { 241, 97 }, { 272, 176 } }));
+            comboBox2.Items.Add(new Map("Zant Cannon City", "JCPSCXt.png", "JCPSCXt.png", new double[,] { { 5240, 5192 }, { 5424, 5175 }, { 5276, 5432 } }, new double[,] { { 172, 227 }, { 249, 234 }, { 190, 131 } }));
+            comboBox2.Items.Add(new Map("Magic City of the Eucar", "Magic City.png", "pMagic City.png", new double[,] { { 5357, 5012 }, { 5653, 4961 }, { 5521, 4741 } }, new double[,] { { 221, 234 }, { 341, 254 }, { 288, 342 } }));
+        }
 
         private void PlayerInfo()
         {
@@ -452,83 +463,70 @@ namespace CodeInject
 
 
 
- 
 
 
         Map map;
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
-
-            map = new Map("Bez tytułu1.png", "Bez tytułu.png", new double[,]{ { 5417, 5373 }, { 5651, 5368 }, { 5742, 5095 } },new double[,]{ { 162, 93 }, { 241, 97 }, { 272, 176 } });
-
-
-            listBox4.Items.Clear();
-
-            GameFunctionsAndObjects.Actions.MoveToPoint(map.CalculatePositionFromMap2World(me.X, me.Y));
-
-
-            Point pos = map.PlayerPositionOnMap();
-
-           List<Point> p = map.FindShortestPathOnMap(pos, new Point(me.X, me.Y));
-
-
-            Bitmap bitmap = new Bitmap(map.RoadMap);
-
-            pictureBox2.Image = new Bitmap(map.OryginalMap);
-            pictureBox3.Image = bitmap;
-            using (Graphics g = Graphics.FromImage(pictureBox2.Image))
+            if (comboBox2.SelectedIndex == -1)
             {
-                g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
-                int sizeC = 4;
-                for(int x=0;x< pictureBox3.Width- sizeC; x+= sizeC)
-                {
-                    for (int y = 0; y < pictureBox3.Height- sizeC; y += sizeC)
-                    {
+                return;
+            }
+   
+                map = comboBox2.SelectedItem as Map;
 
-                        Color pixelColor = bitmap.GetPixel(x + (sizeC / 2), y + (sizeC / 2));
-                        if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+
+                listBox4.Items.Clear();
+
+                GameFunctionsAndObjects.Actions.MoveToPoint(map.CalculatePositionFromMap2World(me.X, me.Y));
+
+
+                Point pos = map.PlayerPositionOnMap();
+
+                List<Point> p = map.FindShortestPathOnMap(pos, new Point(me.X, me.Y));
+
+
+                Bitmap bitmap = new Bitmap(map.RoadMap);
+
+                pictureBox2.Image = new Bitmap(map.OryginalMap);
+                pictureBox3.Image = bitmap;
+                using (Graphics g = Graphics.FromImage(pictureBox2.Image))
+                {
+                    g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
+                    int sizeC = 4;
+                    for (int x = 0; x < pictureBox3.Width - sizeC; x += sizeC)
+                    {
+                        for (int y = 0; y < pictureBox3.Height - sizeC; y += sizeC)
                         {
-                            g.DrawRectangle(new Pen(Color.Orange, 1), new Rectangle(new System.Drawing.Point(x, y), new Size(sizeC, sizeC)));
+
+                            Color pixelColor = bitmap.GetPixel(x + (sizeC / 2), y + (sizeC / 2));
+                            if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+                            {
+                                g.DrawRectangle(new Pen(Color.Orange, 1), new Rectangle(new System.Drawing.Point(x, y), new Size(sizeC, sizeC)));
+                            }
                         }
                     }
                 }
-            }
 
-            pictureBox2.Refresh();
-            using (Graphics g = Graphics.FromImage(pictureBox2.Image))
-            {
-                g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
-                foreach (Point p2 in p)
+                pictureBox2.Refresh();
+                using (Graphics g = Graphics.FromImage(pictureBox2.Image))
                 {
-                    listBox4.Items.Add(p2);
-                    g.DrawEllipse(new Pen(Color.Blue, 4), p2.X, p2.Y, 4, 4);
+                    g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
+                    foreach (Point p2 in p)
+                    {
+                        listBox4.Items.Add(p2);
+                        g.DrawEllipse(new Pen(Color.Blue, 4), p2.X, p2.Y, 4, 4);
+                    }
                 }
+                pictureBox2.Refresh();
+                pictureBox3.Refresh();
             }
-            pictureBox2.Refresh();
-            pictureBox3.Refresh();
-        }
+        
 
        
 
-        private void button15_Click(object sender, EventArgs e)
-        {
-            timer3.Enabled = false;
-        }
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-         
-            listBox4.SelectedIndex = 0;
-            timer3.Enabled = true;
-     
-        }
-
+ 
 
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -555,6 +553,27 @@ namespace CodeInject
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             MessageBox.Show($"ADDR {((long)((IObject)lNearItemsList.SelectedItem).ObjectPointer).ToString("X")}");
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pictureBox2.Image = (comboBox2.SelectedItem as Map).OryginalMap;
+
+            pictureBox3.Image = (comboBox2.SelectedItem as Map).RoadMap;
+
+        }
+
+
+
+        private void button16_Click_1(object sender, EventArgs e)
+        {
+            listBox4.SelectedIndex = 0;
+            timer3.Enabled = true;
+        }
+
+        private void button15_Click_1(object sender, EventArgs e)
+        {
+            timer3.Enabled = false;
         }
     }
 

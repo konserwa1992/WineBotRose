@@ -22,8 +22,8 @@ namespace CodeInject.Actors
 
         public NPC(long* Entry)
         {
-            try//Walk around for error TODO:Fix it
-            {
+         //   try//Walk around for error TODO:Fix it
+         //   {
                 ObjectPointer = (long*)*Entry;
 
                 X = (float*)(*Entry + 0x10);
@@ -37,7 +37,7 @@ namespace CodeInject.Actors
                 Name = (string*)(*Entry + 0xbb0);
 
                 Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x360)));
-            }catch (Exception) { }
+         //   }catch (Exception) { }
         }
 
         public double CalcDistance(IObject targetObject)
