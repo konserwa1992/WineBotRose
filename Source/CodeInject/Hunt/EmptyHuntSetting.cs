@@ -7,7 +7,7 @@ using System.Linq;
 namespace CodeInject.Hunt
 {
     [Serializable]
-    public abstract class EmptyHuntSetting : IHuntSetting
+    public abstract class EmptyHuntSetting : ModuleConteiner,IHuntSetting
     {
         public List<Skills> BotSkills { get; set; } = new List<Skills>();
         public List<MobInfo> ListOfMonstersToAttack { get; set; } = new List<MobInfo> { new MobInfo() };
@@ -15,7 +15,10 @@ namespace CodeInject.Hunt
         public IObject Target { get; set; }
         public bool NormalAttack { get; set; } = true;
 
-        public abstract void Update();
+        public virtual void Update()
+        {
+            base.ModuleExecute();
+        }
         public int GetSkillIndex(int SkillID)
         {
             return PlayerCharacter.GetPlayerSkills.FindIndex(x => x.skillInfo.ID == SkillID);

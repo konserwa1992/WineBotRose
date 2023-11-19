@@ -15,7 +15,7 @@ namespace CodeInject.Modules
 
         public string Name { get; set; } = "AUTOPOTION";
 
-        public void update()
+        public void Update()
         {
             AutoPotionFunction();
         }

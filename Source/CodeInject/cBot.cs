@@ -157,6 +157,7 @@ namespace CodeInject
 
                 if (cEnableHealParty.Checked)
                 {
+
                     BotContext.Start(new HuntState(
                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
@@ -166,11 +167,15 @@ namespace CodeInject
                 }
                 else
                 {
-                    BotContext.Start(
-                        new HuntState(
-                            new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
+                    DefaultHunt hunt = new DefaultHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                             new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this)
+                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this);
+
+                    hunt.AddModule(new BackToCenterModule(lMonster2Attack.Items.Cast<MobInfo>().ToList(), new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
+                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text)));
+
+                    BotContext.Start(
+                        new HuntState(hunt
                            ));
                 }
             }

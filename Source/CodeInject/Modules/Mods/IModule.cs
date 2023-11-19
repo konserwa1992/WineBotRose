@@ -9,6 +9,6 @@ namespace CodeInject.Modules
     public interface IModule
     {
         string Name { get; set; }
-        void update();
+        void Update();
     }
 }

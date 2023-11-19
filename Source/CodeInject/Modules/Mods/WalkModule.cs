@@ -22,7 +22,7 @@ namespace CodeInject.Modules
         }
 
 
-        public unsafe void update()
+        public unsafe void Update()
         {
             if (index == points.Count)
             {

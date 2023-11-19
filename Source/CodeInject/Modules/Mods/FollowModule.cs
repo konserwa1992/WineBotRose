@@ -19,7 +19,7 @@ namespace CodeInject.Modules
             FollowPlayerName = folowPlayerName;
         }
 
-        public void update()
+        public void Update()
         {
             IPlayer fPlayer = (IPlayer)GameFunctionsAndObjects.DataFetch.GetNPCs().FirstOrDefault(x => x.GetType() == typeof(OtherPlayer) && ((IPlayer)x).Name == FollowPlayerName);
 

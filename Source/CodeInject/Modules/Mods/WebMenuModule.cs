@@ -19,7 +19,7 @@ namespace CodeInject.Modules
             ws.SetupWebSocketServer();
         }
 
-        public void update()
+        public void Update()
         {
             ws.SendPlayerInformation();
             ws.SendNPCsInformation();

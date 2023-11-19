@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace CodeInject.Hunt
 {
-    [Serializable]
     public unsafe class DefaultHunt : EmptyHuntSetting
     {
         public int SkillIndex = 0;
         public IObject Target;
         public Vector3 HuntingAreaCenter { get; set; }
-
         public int Radius { get; set; } = 50;
         private cBot WinFormMenu;
+
+
         public DefaultHunt()
         {
         }
@@ -77,34 +77,21 @@ namespace CodeInject.Hunt
                 }
 
 
-                if (this.Target == null)
+                if (Target != null)
                 {
-                    GoToHuntingAreaCenter();
-                    return;
-                }
-
-                if (this.BotSkills.Count > 0)
-                {
-                    Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
-                    if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
+                    if (this.BotSkills.Count > 0)
                     {
-                        GameFunctionsAndObjects.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                        Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
+                        if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
+                        {
+                            GameFunctionsAndObjects.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                        }
                     }
+                    if (NormalAttack == true)
+                        GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
                 }
-                if(NormalAttack == true)
-                  GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
             }
-        }
- 
-
-
-        private void GoToHuntingAreaCenter()
-        {
-            if (((int)*GameFunctionsAndObjects.DataFetch.GetPlayer().X) != (int)HuntingAreaCenter.X &&
-                 ((int)*GameFunctionsAndObjects.DataFetch.GetPlayer().Y) != (int)HuntingAreaCenter.Y)
-            {
-                GameFunctionsAndObjects.Actions.MoveToPoint(new Vector2(HuntingAreaCenter.X / 100, HuntingAreaCenter.Y / 100));
-            }
+            base.Update();
         }
     }
 }

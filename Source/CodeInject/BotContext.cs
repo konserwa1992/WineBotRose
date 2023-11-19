@@ -15,12 +15,13 @@ using static System.Windows.Forms.AxHost;
 
 namespace CodeInject
 {
-    public class BotContext
+    public class BotContext: ModuleConteiner
     {
         public IBotState CurrentBotState { get; set; }
         public Dictionary<string, IBotState> States { private set; get; } = new Dictionary<string, IBotState>();
         public IFilter Filter = new QuickFilter();
-        public List<IModule> ModuleList { get; set; } = new List<IModule>();
+
+
 
         public List<IObject> GetItemsNearby()
         {
@@ -59,44 +60,9 @@ namespace CodeInject
         public void Update()
         {
             CurrentBotState.Work(this);
-            ModuleExecute();
+            base.ModuleExecute();
         }
-        public IModule AddModule(IModule module)
-        {
-            IModule ifExistModule = GetModule<IModule>(module.Name);
-            if (ifExistModule != null)
-            {
-                return ifExistModule;
-            }
-            else
-            {
-                ModuleList.Add(module);
-                return module;
-            }
-        }
-        public void RemoveModule(IModule module)
-        {
-            ModuleList.Remove(module);
-        }
-        public void RemoveModule(string moduleName)
-        {
-            IModule module = ModuleList.FirstOrDefault(m => m.Name == moduleName);
-            if (module != null)
-                ModuleList.Remove(module);
-        }
-        public T GetModule<T>(string moduleName)
-        {
-            var module = ModuleList.FirstOrDefault(m => m.Name == moduleName);
-            return module != null ? (T)module : default;
-           // return (T)ModuleList.FirstOrDefault(m => m.Name == moduleName);
-        }
-        public void ModuleExecute()
-        {
-            foreach (IModule module in ModuleList)
-            {
-                module.update();
-            }
-        }
+ 
         public void AddState(string key,IBotState state)
         {
             if (!States.ContainsKey(key))
