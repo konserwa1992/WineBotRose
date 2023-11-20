@@ -25,9 +25,6 @@ namespace CodeInject.Actors
         public short* BuffCount { get; set; }
         public int* modelNaME { get; set; }
 
-
-
-
         public Player(long* Entry)
         {
             ObjectPointer = (long*)*Entry;

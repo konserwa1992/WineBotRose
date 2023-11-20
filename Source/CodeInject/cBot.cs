@@ -27,6 +27,9 @@ using Point = AForge.Point;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 using CodeInject.AutoWalk;
 using System.Security.Policy;
+using CodeInject.UIPanels;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using CodeInject.UIPanels.Module_Panels;
 
 namespace CodeInject
 {
@@ -93,15 +96,10 @@ namespace CodeInject
         {
             BotContext.Update();
             //  PlayerInfo();
-            listBox1.Items.Clear();
-
+           /* listBox1.Items.Clear();
             lNearItemsList.Items.Clear();
-
-
             listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
-
-
+            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());*/
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -171,8 +169,7 @@ namespace CodeInject
                             new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
                             float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this);
 
-                    hunt.AddModule(new BackToCenterModule(lMonster2Attack.Items.Cast<MobInfo>().ToList(), new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
-                            float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text)));
+                    hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
 
                     BotContext.Start(
                         new HuntState(hunt
@@ -346,6 +343,9 @@ namespace CodeInject
         {
             GameFunctionsAndObjects.Actions.Logger($"Hello.", Color.GreenYellow);
             GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
+
+
+            comboBox2.Items.Add(new BackToCenterPanel(lMonster2Attack));
         }
 
 
@@ -367,16 +367,6 @@ namespace CodeInject
         }
 
 
-
-
-        delegate void speak(long userInput, ushort adr2, ushort targetID);
-        speak funcspeak;
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show(((long)((IObject)listBox1.SelectedItem).ObjectPointer).ToString("X"));
-
-            GameFunctionsAndObjects.Actions.TalkToNPC(*((IObject)listBox1.SelectedItem).ID);
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -560,6 +550,27 @@ namespace CodeInject
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             MessageBox.Show($"ADDR {((long)((IObject)lNearItemsList.SelectedItem).ObjectPointer).ToString("X")}");
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panel2.Controls.Clear();
+            panel2.Controls.Add((UserControl)comboBox2.SelectedItem);
         }
     }
 

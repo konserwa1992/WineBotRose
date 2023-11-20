@@ -1,4 +1,6 @@
-﻿namespace CodeInject
+﻿using System.Windows.Forms;
+
+namespace CodeInject
 {
     partial class cBot
     {
@@ -32,8 +34,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button12 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tZHuntArea = new System.Windows.Forms.TextBox();
@@ -92,13 +92,14 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lNearItemsList = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button17 = new System.Windows.Forms.Button();
             this.pbMPBar = new System.Windows.Forms.ProgressBar();
             this.pbHpBar = new System.Windows.Forms.ProgressBar();
             this.labCharName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tMpDurr = new System.Windows.Forms.TextBox();
@@ -112,10 +113,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button16 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.button15 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -128,6 +127,12 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -138,11 +143,12 @@
             this.groupBox2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -161,8 +167,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button12);
-            this.tabPage1.Controls.Add(this.listBox1);
+            this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.tZHuntArea);
@@ -182,25 +187,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(285, 16);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 14;
-            this.button12.Text = "button12";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Visible = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(285, 45);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(187, 381);
-            this.listBox1.TabIndex = 13;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -250,7 +236,7 @@
             this.groupBox3.Controls.Add(this.tYHuntArea);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.tXHuntArea);
-            this.groupBox3.Location = new System.Drawing.Point(9, 302);
+            this.groupBox3.Location = new System.Drawing.Point(12, 302);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(269, 97);
             this.groupBox3.TabIndex = 8;
@@ -786,6 +772,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.button17);
             this.tabPage4.Controls.Add(this.pbMPBar);
             this.tabPage4.Controls.Add(this.pbHpBar);
             this.tabPage4.Controls.Add(this.labCharName);
@@ -797,6 +785,23 @@
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "Character";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(13, 230);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(440, 183);
+            this.panel1.TabIndex = 13;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(371, 144);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(75, 23);
+            this.button17.TabIndex = 12;
+            this.button17.Text = "button17";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // pbMPBar
             // 
@@ -861,17 +866,6 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Auto-Potion";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::CodeInject.Properties.Resources.gluten_free;
-            this.pictureBox1.Location = new System.Drawing.Point(145, 178);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(354, 331);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // label11
             // 
@@ -976,10 +970,10 @@
             this.tabPage6.Controls.Add(this.pictureBox3);
             this.tabPage6.Controls.Add(this.listBox4);
             this.tabPage6.Controls.Add(this.button15);
-            this.tabPage6.Controls.Add(this.pictureBox2);
             this.tabPage6.Controls.Add(this.groupBox1);
             this.tabPage6.Controls.Add(this.button14);
             this.tabPage6.Controls.Add(this.button13);
+            this.tabPage6.Controls.Add(this.pictureBox2);
             this.tabPage6.Controls.Add(this.listBox3);
             this.tabPage6.Controls.Add(this.button11);
             this.tabPage6.Controls.Add(this.listBox2);
@@ -1001,18 +995,6 @@
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::CodeInject.Properties.Resources.Bez_tytułu;
-            this.pictureBox3.Location = new System.Drawing.Point(316, 74);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(342, 227);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
@@ -1030,16 +1012,6 @@
             this.button15.Text = "Stop";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CodeInject.Properties.Resources.Bez_tytułu1;
-            this.pictureBox2.Location = new System.Drawing.Point(15, 245);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(502, 243);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // groupBox1
             // 
@@ -1145,6 +1117,67 @@
             this.timer3.Interval = 250;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.comboBox2);
+            this.groupBox5.Controls.Add(this.panel2);
+            this.groupBox5.Location = new System.Drawing.Point(272, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(200, 277);
+            this.groupBox5.TabIndex = 13;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Whats do if no monsters";
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(6, 44);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(188, 227);
+            this.panel2.TabIndex = 0;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DisplayMember = "DisplayName";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(6, 17);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(188, 21);
+            this.comboBox2.TabIndex = 1;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::CodeInject.Properties.Resources.gluten_free;
+            this.pictureBox1.Location = new System.Drawing.Point(145, 178);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(354, 331);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::CodeInject.Properties.Resources.Bez_tytułu;
+            this.pictureBox3.Location = new System.Drawing.Point(316, 74);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(342, 227);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CodeInject.Properties.Resources.Bez_tytułu1;
+            this.pictureBox2.Location = new System.Drawing.Point(15, 245);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(502, 243);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1173,13 +1206,14 @@
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1252,7 +1286,6 @@
         private System.Windows.Forms.CheckBox cEnableHealParty;
         private System.Windows.Forms.TextBox tHealWhenProc;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ListBox lPlayers2Heal;
         private System.Windows.Forms.ListBox lPlayersList;
@@ -1272,7 +1305,6 @@
         private System.Windows.Forms.ProgressBar pbMPBar;
         private System.Windows.Forms.ProgressBar pbHpBar;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ListBox listBox3;
@@ -1284,5 +1316,10 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.CheckBox cNormalAttackEnable;
+        private System.Windows.Forms.Button button17;
+        private Panel panel1;
+        private GroupBox groupBox5;
+        private ComboBox comboBox2;
+        private Panel panel2;
     }
 }
