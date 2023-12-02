@@ -9,6 +9,7 @@ namespace CodeInject.UIPanels.Module_Panels
 {
     internal interface IModuleUI
     {
+        string DisplayName { get; }
         IModule GetModule();
     }
 }

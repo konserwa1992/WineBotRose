@@ -172,9 +172,9 @@ namespace CodeInject.MemoryTools
 
                 long ObjectTypeFuncTable = *(long*)*wskObj;
 
-                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AA3B0 == ObjectTypeFuncTable)
+                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AB3B0 == ObjectTypeFuncTable)
                     return new OtherPlayer(wskObj);
-                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AC378 == ObjectTypeFuncTable) // player avatar
+                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AD378 == ObjectTypeFuncTable) // player avatar
                     return new Player(wskObj);
 
 

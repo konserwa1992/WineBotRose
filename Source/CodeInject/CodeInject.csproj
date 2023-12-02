@@ -109,6 +109,7 @@
     <Compile Include="Modules\Mods\AutoPotionModule.cs" />
     <Compile Include="Modules\Mods\BackToCenterModule.cs" />
     <Compile Include="Modules\Mods\FollowModule.cs" />
+    <Compile Include="Modules\Mods\GoToFellowModule.cs" />
     <Compile Include="Modules\Mods\IModule.cs" />
     <Compile Include="Inventory\InvItem.cs" />
     <Compile Include="Items\ItemTypes.cs" />
@@ -146,6 +147,12 @@
     <Compile Include="UIPanels\Module Panels\BackToCenterPanel.Designer.cs">
       <DependentUpon>BackToCenterPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIPanels\Module Panels\GoToPlayerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIPanels\Module Panels\GoToPlayerPanel.Designer.cs">
+      <DependentUpon>GoToPlayerPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIPanels\Module Panels\IModuleUI.cs" />
     <Compile Include="WebServ\WebServer.cs" />
     <Compile Include="WebServ\Models\AutoPotionSettingsModel.cs" />
@@ -172,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIPanels\Module Panels\BackToCenterPanel.resx">
       <DependentUpon>BackToCenterPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIPanels\Module Panels\GoToPlayerPanel.resx">
+      <DependentUpon>GoToPlayerPanel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

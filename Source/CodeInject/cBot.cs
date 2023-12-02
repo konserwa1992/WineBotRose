@@ -1,35 +1,22 @@
 ﻿using CodeInject.Actors;
-using CodeInject.AutoReStock;
 using CodeInject.BotStates;
 using CodeInject.Hunt;
 using CodeInject.MemoryTools;
 using CodeInject.Modules;
-using CodeInject.Party;
 using CodeInject.PickupFilters;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading;
 using System.Windows.Forms;
-using AForge;
 using System.Drawing;
-using Point = AForge.Point;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 using CodeInject.AutoWalk;
-using System.Security.Policy;
 using CodeInject.UIPanels;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using CodeInject.UIPanels.Module_Panels;
+
+using Point = AForge.Point;
 
 namespace CodeInject
 {
@@ -96,10 +83,10 @@ namespace CodeInject
         {
             BotContext.Update();
             //  PlayerInfo();
-           /* listBox1.Items.Clear();
-            lNearItemsList.Items.Clear();
-            listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
-            lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());*/
+          //  listBox1.Items.Clear();
+            // lNearItemsList.Items.Clear();
+           // listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
+           // lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -169,7 +156,8 @@ namespace CodeInject
                             new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
                             float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this);
 
-                    hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
+                    if(comboBox2.SelectedIndex!=-1)
+                      hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
 
                     BotContext.Start(
                         new HuntState(hunt
@@ -346,6 +334,7 @@ namespace CodeInject
 
 
             comboBox2.Items.Add(new BackToCenterPanel(lMonster2Attack));
+            comboBox2.Items.Add(new GoToPlayerPanel(lMonster2Attack,tXHuntArea,tYHuntArea, tHuntRadius));
         }
 
 
@@ -399,6 +388,7 @@ namespace CodeInject
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
+            comboBox1.Items.Clear();
             comboBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
         }
 
@@ -571,6 +561,16 @@ namespace CodeInject
         {
             panel2.Controls.Clear();
             panel2.Controls.Add((UserControl)comboBox2.SelectedItem);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(((long)((listBox1.SelectedItems as IObject).ObjectPointer)).ToString("X"));
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetNPCs()[0].ObjectPointer).ToString("X"));
         }
     }
 

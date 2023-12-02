@@ -13,9 +13,9 @@ namespace CodeInject.Modules
     {
         public string Name { get; set; } = "BACKTOCENTER";
 
-        private Vector3 CenterPosition {  get; set; }
-        private float Radius { get; set; }
-        private List<MobInfo> MonstersToAttackList { get; set; }
+        protected Vector3 CenterPosition {  get; set; }
+        protected float Radius { get; set; }
+        protected List<MobInfo> MonstersToAttackList { get; set; }
 
         public BackToCenterModule(List<MobInfo> monstersToAttackList ,Vector3 position,float radius)
         {
