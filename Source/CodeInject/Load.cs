@@ -36,7 +36,7 @@ namespace CodeInject
         private unsafe ItemExecutor LoadHealthPotion(AutoPotionSettingsModel model)
         {
             List<InvItem> items = new List<InvItem>();
-            GameFunctionsAndObjects.DataFetch.GetConsumableItemsFromInventory(items);
+            GameHackFunc.ClientData.GetConsumableItemsFromInventory(items);
 
             InvItem hpPotionItem = items.FirstOrDefault(x => *x.ItemData == model.HealthItemIndex);
 
@@ -55,7 +55,7 @@ namespace CodeInject
         private unsafe ItemExecutor LoadManaPotion(AutoPotionSettingsModel model)
         {
             List<InvItem> items = new List<InvItem>();
-            GameFunctionsAndObjects.DataFetch.GetConsumableItemsFromInventory(items);
+            GameHackFunc.ClientData.GetConsumableItemsFromInventory(items);
 
             InvItem mpPotionItem = items.FirstOrDefault(x => *x.ItemData == model.ManaItemIndex);
 

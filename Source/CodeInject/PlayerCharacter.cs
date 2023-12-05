@@ -10,7 +10,7 @@ namespace CodeInject
         public static IObject PlayerInfo {
             get
             {
-                return GameFunctionsAndObjects.DataFetch.GetPlayer();
+                return GameHackFunc.ClientData.GetPlayer();
             }
         }
 
@@ -18,7 +18,7 @@ namespace CodeInject
         {
             get
             {
-                return GameFunctionsAndObjects.DataFetch.GetPlayerSkills();
+                return GameHackFunc.ClientData.GetPlayerSkills();
             }
         }
     }

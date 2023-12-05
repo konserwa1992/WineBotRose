@@ -32,12 +32,12 @@ namespace CodeInject.Actors
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
             ID = (ushort*)(*((long*)(*Entry + 0x20)));
-            Hp = (int*)(*Entry + 0xe8);
-            MaxHp = (int*)(*Entry + 0xf0);
-            Mp = (int*)(*Entry + 0x3B8C);
-            MaxMp = (int*)(*Entry + 0x46C4);
-            BuffCount = (short*)(*Entry + 0x7b0);
-            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB0)));
+            Hp = (int*)(*Entry + 0xf0);
+            MaxHp = (int*)(*Entry + 0xf8);
+            Mp = (int*)(*Entry + 0x3B94);
+            MaxMp = (int*)(*Entry + 0x46CC);
+            BuffCount = (short*)(*Entry + 0x7b8);
+            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB8)));
         }
 
 

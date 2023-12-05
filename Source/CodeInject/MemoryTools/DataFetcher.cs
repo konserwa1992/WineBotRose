@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CodeInject.MemoryTools
 {
-    internal unsafe class DataReader
+    public unsafe class DataFetcher
     {
         /// <summary>
         /// Im not sure what kind of index is. Propobly some kind index of clickable object?
@@ -38,7 +38,7 @@ namespace CodeInject.MemoryTools
         private long GameBaseAddres;
 
 
-        public DataReader()
+        public DataFetcher()
         {
             Init();
         }
@@ -53,20 +53,22 @@ namespace CodeInject.MemoryTools
             GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
             getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 EC 20 48 8B D9 E8 ?? ?? ?? ?? 83 f8 01 75 1c"), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+           Console.WriteLine($"DataReader Init");
+       
             //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
         }
 
 
         public List<InvItem> GetConsumableItemsFromInventory(List<InvItem> currentList)
         {
-            List<IntPtr> itemsAddrs = GameFunctionsAndObjects.DataFetch.getInventoryItems();
+            List<IntPtr> itemsAddrs = GameHackFunc.ClientData.getInventoryItems();
             List<InvItem> invDescriptions = new List<InvItem>();
 
             foreach (IntPtr item in itemsAddrs)
             {
                 if (item.ToInt64() != 0x0)
                 {
-                    InvItem inv = new InvItem((long*)GameFunctionsAndObjects.DataFetch.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
+                    InvItem inv = new InvItem((long*)GameHackFunc.ClientData.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
                     invDescriptions.Add(inv);
                 }
             }
@@ -99,9 +101,9 @@ namespace CodeInject.MemoryTools
 
         public List<PartyMember> GetPartyMembersList()
         {
-            long* PartyMemberDataAddres = (long*)*(long*)MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x0121A130, new short[] { 0x0, 0x10, 0x08 });
+            long* PartyMemberDataAddres = (long*)*(long*)MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x0121A130, new short[] { 0x0, 0x10, 0x08 });
 
-            int partyMemberCount = *(int*)(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x121A170);
+            int partyMemberCount = *(int*)(GameHackFunc.ClientData.BaseAddres + 0x121A170);
 
             List<PartyMember> PartyMemberList = new List<PartyMember>();
 
@@ -136,12 +138,13 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x16BF8f0); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x154ee78); //2023.10.04
 
             int s = 0;
-            while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd70) != 0)//OBS#S2
+            while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd78) != 0)//OBS#S2
             {
-                short skillID = *(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd70);
+                ushort skillID = *(ushort*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd78);
+                MessageBox.Show(skillID.ToString());
                 SkillInfo skill = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == skillID);
                 if (skill == null)
                 {
@@ -168,13 +171,16 @@ namespace CodeInject.MemoryTools
         {
 
                 long* wskObj = (long*)((*(long*)(GameBaseAddres)) + (id * 8) + 0x22080); //OBS#N3
+    
 
 
-                long ObjectTypeFuncTable = *(long*)*wskObj;
+            long ObjectTypeFuncTable = *(long*)*wskObj;
 
-                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AB3B0 == ObjectTypeFuncTable)
+                
+    
+                if (GameHackFunc.ClientData.BaseAddres + 0x10320F0 == ObjectTypeFuncTable)
                     return new OtherPlayer(wskObj);
-                if (GameFunctionsAndObjects.DataFetch.BaseAddres + 0x11AD378 == ObjectTypeFuncTable) // player avatar
+                if (GameHackFunc.ClientData.BaseAddres + 0x1033B48 == ObjectTypeFuncTable) // player avatar
                     return new Player(wskObj);
 
 
@@ -190,7 +196,7 @@ namespace CodeInject.MemoryTools
         public Player GetPlayer()
         {
             long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);
-            int* monsterIDList = (int*)*wsp;
+            int * monsterIDList = (int*)*wsp;
 
             return (Player)GetObject(*monsterIDList);
         }
@@ -207,7 +213,7 @@ namespace CodeInject.MemoryTools
                 List<IObject> wholeNpcList = new List<IObject>();
                 long* wsp = (long*)(*(long*)(GameBaseAddres) + 0x22058);//OBS#S3
                 int* monsterIDList = (int*)*wsp;
-                int* count = (int*)(*(long*)(GameBaseAddres) + 0x0002A080);//OBS#S4
+                int* count = (int*)(*(long*)(GameBaseAddres) + 0x2A080);//OBS#S4
 
                 for (int i = 0; i < *count; i++)
                 {
@@ -235,7 +241,7 @@ namespace CodeInject.MemoryTools
         {
             List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
             //movsxd rax, dword ptr [rdi+000001B0] 2B 5E90
-            long* startList = (long*)(*(long*)((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer + 0x6b18 + 0x18));//MSG#INV4
+            long* startList = (long*)(*(long*)((long)GameHackFunc.ClientData.GetPlayer().ObjectPointer + 0x6b18 + 0x20));//MSG#INV4
 
 
             for (long itemIndex = 0; itemIndex < 139; itemIndex++)
@@ -284,7 +290,7 @@ namespace CodeInject.MemoryTools
 
             Process _proc = Process.GetCurrentProcess();
 
-            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x16c1c78));
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x1550C58));
             long* RBX = (long*)((long)RDI + 0x2a0b8);
 
             RBX = (long*)*RBX; //select first item from list

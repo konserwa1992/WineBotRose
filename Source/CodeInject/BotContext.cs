@@ -25,8 +25,8 @@ namespace CodeInject
 
         public List<IObject> GetItemsNearby()
         {
-            IObject player = GameFunctionsAndObjects.DataFetch.GetPlayer();
-            return GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().Where(x => Filter.CanPickup(x) && x.CalcDistance(player) < 20).OrderBy(x => x.CalcDistance(player)).ToList();
+            IObject player = GameHackFunc.ClientData.GetPlayer();
+            return GameHackFunc.ClientData.GetItemsAroundPlayerV2().Where(x => Filter.CanPickup(x) && x.CalcDistance(player) < 20).OrderBy(x => x.CalcDistance(player)).ToList();
         }
 
 
@@ -54,7 +54,7 @@ namespace CodeInject
             if (States.ContainsKey(stateName) && CurrentBotState != States[stateName])
             {
                 CurrentBotState = States[stateName];
-                GameFunctionsAndObjects.Actions.Logger($"Change state: {stateName}",Color.Azure);
+                GameHackFunc.Actions.Logger($"Change state: {stateName}");
             }
         }
         public void Update()

@@ -36,7 +36,7 @@ namespace CodeInject.UIPanels.Module_Panels
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-            comboBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+            comboBox1.Items.AddRange(GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
         }
 
         private void GoToPlayer_Load(object sender, EventArgs e)

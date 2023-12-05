@@ -83,10 +83,10 @@ namespace CodeInject
         {
             BotContext.Update();
             //  PlayerInfo();
-          //  listBox1.Items.Clear();
-            // lNearItemsList.Items.Clear();
-           // listBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().ToArray());
-           // lNearItemsList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetItemsAroundPlayerV2().ToArray());
+            listBox1.Items.Clear();
+             lNearItemsList.Items.Clear();
+            listBox1.Items.AddRange(GameHackFunc.ClientData.GetNPCs().ToArray());
+            lNearItemsList.Items.AddRange(GameHackFunc.ClientData.GetItemsAroundPlayerV2().ToArray());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -120,20 +120,20 @@ namespace CodeInject
         private void cbHealHPItem_DropDown(object sender, EventArgs e)
         {
             cbHealHPItem.Items.Clear();
-            cbHealHPItem.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetConsumableItemsFromInventory(cbHealHPItem.Items.OfType<InvItem>().ToList()).ToArray());
+            cbHealHPItem.Items.AddRange(GameHackFunc.ClientData.GetConsumableItemsFromInventory(cbHealHPItem.Items.OfType<InvItem>().ToList()).ToArray());
         }
 
         private void cbHealMPItem_DropDown(object sender, EventArgs e)
         {
             cbHealMPItem.Items.Clear();
-            cbHealMPItem.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetConsumableItemsFromInventory(cbHealMPItem.Items.OfType<InvItem>().ToList()).ToArray());
+            cbHealMPItem.Items.AddRange(GameHackFunc.ClientData.GetConsumableItemsFromInventory(cbHealMPItem.Items.OfType<InvItem>().ToList()).ToArray());
         }
 
         private void bHuntToggle_Click_1(object sender, EventArgs e)
         {
             if (BotState == false)
             {
-                GameFunctionsAndObjects.Actions.Logger($"Bot is running: {timer2.Enabled}", Color.Orange);
+                GameHackFunc.Actions.Logger($"Bot is running: {timer2.Enabled}");
 
                 List<Skills> SkillList = new List<Skills>();
                 SkillList.AddRange(lUseSkill.Items.Cast<Skills>().ToArray());
@@ -157,10 +157,10 @@ namespace CodeInject
                             float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this);
 
                     if(comboBox2.SelectedIndex!=-1)
-                      hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
+                     hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
 
                     BotContext.Start(
-                        new HuntState(hunt
+                       new HuntState(hunt
                            ));
                 }
             }
@@ -300,7 +300,7 @@ namespace CodeInject
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetPlayer().ObjectPointer).ToString("X"));
+            MessageBox.Show(((long)GameHackFunc.ClientData.GetPlayer().ObjectPointer).ToString("X"));
         }
 
         private void cAutoPotionEnabled_CheckedChanged(object sender, EventArgs e)
@@ -329,8 +329,8 @@ namespace CodeInject
 
         private unsafe void cBot_Load(object sender, EventArgs e)
         {
-            GameFunctionsAndObjects.Actions.Logger($"Hello.", Color.GreenYellow);
-            GameFunctionsAndObjects.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}", Color.GreenYellow);
+            GameHackFunc.Actions.Logger($"Hello.");
+            GameHackFunc.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}");
 
 
             comboBox2.Items.Add(new BackToCenterPanel(lMonster2Attack));
@@ -340,7 +340,7 @@ namespace CodeInject
 
         private void PlayerInfo()
         {
-            IPlayer player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+            IPlayer player = GameHackFunc.ClientData.GetPlayer();
 
             pbHpBar.Minimum = 0;
             pbHpBar.Maximum = *player.MaxHp;
@@ -360,7 +360,7 @@ namespace CodeInject
         private void button5_Click(object sender, EventArgs e)
         {
             lPlayersList.Items.Clear();
-            lPlayersList.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+            lPlayersList.Items.AddRange(GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -389,7 +389,7 @@ namespace CodeInject
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-            comboBox1.Items.AddRange(GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+            comboBox1.Items.AddRange(GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -407,11 +407,11 @@ namespace CodeInject
         private void button10_Click(object sender, EventArgs e)
         {
 
-            List<ushort> buffs = GameFunctionsAndObjects.DataFetch.GetPlayer().GetBuffsIDs();
+            List<ushort> buffs = GameHackFunc.ClientData.GetPlayer().GetBuffsIDs();
             foreach (int i in buffs)
             {
 
-                GameFunctionsAndObjects.Actions.Logger(i.ToString(), Color.White);
+                GameHackFunc.Actions.Logger(i.ToString());
             }
         }
 
@@ -450,7 +450,7 @@ namespace CodeInject
 
             listBox4.Items.Clear();
 
-            GameFunctionsAndObjects.Actions.MoveToPoint(map.CalculatePositionFromMap2World(me.X, me.Y));
+            GameHackFunc.Actions.MoveToPoint(map.CalculatePositionFromMap2World(me.X, me.Y));
 
 
             Point pos = map.PlayerPositionOnMap();
@@ -526,7 +526,7 @@ namespace CodeInject
 
 
                 Point p = (Point)listBox4.SelectedItem;
-                Vector2 playerPos = new Vector2(*GameFunctionsAndObjects.DataFetch.GetPlayer().X, *GameFunctionsAndObjects.DataFetch.GetPlayer().Y);
+                Vector2 playerPos = new Vector2(*GameHackFunc.ClientData.GetPlayer().X, *GameHackFunc.ClientData.GetPlayer().Y);
                 Vector2 destination = map.CalculatePositionFromMap2World(p.X, p.Y);
 
                 if (Vector2.Distance(playerPos / 100, destination) < 3)
@@ -534,7 +534,7 @@ namespace CodeInject
                     listBox4.SelectedIndex = listBox4.SelectedIndex + 1;
               
                 }
-            GameFunctionsAndObjects.Actions.MoveToPoint(destination);
+            GameHackFunc.Actions.MoveToPoint(destination);
         }
 
         private void lNearItemsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -570,7 +570,8 @@ namespace CodeInject
 
         private void button12_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(((long)GameFunctionsAndObjects.DataFetch.GetNPCs()[0].ObjectPointer).ToString("X"));
+            MessageBox.Show(((long)GameHackFunc.ClientData.GetNPCs()[1].ObjectPointer).ToString("X"));
+            MessageBox.Show(((long)GameHackFunc.ClientData.GetNPCs()[0].ObjectPointer).ToString("X"));
         }
     }
 

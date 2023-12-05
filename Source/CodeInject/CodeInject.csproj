@@ -26,9 +26,10 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>..\..\bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -101,6 +102,7 @@
       <DependentUpon>cBot.cs</DependentUpon>
     </Compile>
     <Compile Include="data\DataBase.cs" />
+    <Compile Include="FileName.cs" />
     <Compile Include="Hunt\DefaultHunt.cs" />
     <Compile Include="Hunt\EmptyHuntSetting.cs" />
     <Compile Include="Hunt\HealerHunt.cs" />
@@ -113,9 +115,9 @@
     <Compile Include="Modules\Mods\IModule.cs" />
     <Compile Include="Inventory\InvItem.cs" />
     <Compile Include="Items\ItemTypes.cs" />
-    <Compile Include="MemoryTools\DataReader.cs" />
+    <Compile Include="MemoryTools\DataFetcher.cs" />
     <Compile Include="MemoryTools\GameActions.cs" />
-    <Compile Include="MemoryTools\GameFunctionsAndObjects.cs" />
+    <Compile Include="MemoryTools\GameHackFunc.cs" />
     <Compile Include="MemoryTools\MemoryTools.cs" />
     <Compile Include="Modules\ModuleConteiner.cs" />
     <Compile Include="Modules\Mods\WalkModule.cs" />

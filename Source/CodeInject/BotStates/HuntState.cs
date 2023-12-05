@@ -19,7 +19,7 @@ namespace CodeInject.BotStates
 
         public unsafe void Work(BotContext context)
         {
-            if(*GameFunctionsAndObjects.DataFetch.GetPlayer().Hp <=0)
+            if(*GameHackFunc.ClientData.GetPlayer().Hp <=0)
             {
                 context.SetState("STANDBY");
             }

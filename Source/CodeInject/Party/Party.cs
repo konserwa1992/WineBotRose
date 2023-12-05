@@ -10,7 +10,7 @@ namespace CodeInject.Party
 
         public void Update()
         {
-            PartyMemberList = GameFunctionsAndObjects.DataFetch.GetPartyMembersList();
+            PartyMemberList = GameHackFunc.ClientData.GetPartyMembersList();
         }
 
         public Party() {

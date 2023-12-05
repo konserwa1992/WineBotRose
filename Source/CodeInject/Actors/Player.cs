@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CodeInject.Actors
 {
-    unsafe class Player : IObject, IPlayer
+    public unsafe class Player : IObject, IPlayer
     {
         public long* ObjectPointer { get; set; }
         public ushort* ID { get; set; }
@@ -37,8 +37,8 @@ namespace CodeInject.Actors
             MaxHp = (int*)(*Entry + 0x3D34);
             Mp = (int*)(*Entry + 0x3B8C);
             MaxMp = (int*)(*Entry + 0x46C4);
-            BuffCount = (short*)(*Entry + 0x850);
-            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB0)));
+            BuffCount = (short*)(*Entry + 0x858);
+            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB8)));
         }
 
         public double CalcDistance(IObject targerObject)
@@ -76,14 +76,9 @@ namespace CodeInject.Actors
         {
 
             List<ushort> list = new List<ushort>();
-            /* long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016AA2F0, new short[] { 0x1a0, 0x48, 0x8e8, 0x858, 0x30, 0x8, 0x0 });
+     
 
-             baseBuffAddres = *(long*)(*(long*)(*(long*)(*(long*)(*(long*)baseBuffAddres))));
-             baseBuffAddres = *(long*)baseBuffAddres;
-             baseBuffAddres = *(long*)baseBuffAddres;
-            408*/
-
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameFunctionsAndObjects.DataFetch.BaseAddres + 0x016BF8C0, new short[] { 0x848, 0x0});
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x016BF8C0, new short[] { 0x848, 0x0});
 
 
 
@@ -93,16 +88,6 @@ namespace CodeInject.Actors
 
             long* firstElement;
             firstElement=(long*)*buffAddr; // (long*)(*(long*)(*buffAddr)) or (long*)(*buffAddr);
-
-
-           // GameFunctionsAndObjects.Actions.Logger($"RAX: {baseBuffAddres.ToString("X")}", Color.Green);
-           // GameFunctionsAndObjects.Actions.Logger($"RBX: {((long)firstElement).ToString("X")}", Color.Green);
-
-            /*      if ((long)firstElement == (long)buffAddr)
-                  {
-                      GameFunctionsAndObjects.Actions.Logger("NO BUFF's",Color.Green);
-                      return list;
-                  }*/
 
             
             while (b < *BuffCount)
@@ -124,7 +109,7 @@ namespace CodeInject.Actors
 
         public override string ToString()
         {
-            return $"[{(*ID).ToString("X")}] {Name}";
+            return $"[{(*ID).ToString("X")}] {Name} {*BuffCount}";
         }
  
     }

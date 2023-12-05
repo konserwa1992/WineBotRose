@@ -8,7 +8,7 @@ using CodeInject.MemoryTools;
 
 namespace CodeInject.Actors
 {
-    internal unsafe class Item : IObject
+    public unsafe class Item : IObject
     {
         public long* ObjectPointer { get; set; }
         public ushort* ID { get; set; }
@@ -56,7 +56,7 @@ namespace CodeInject.Actors
 
         public void Pickup()
         {
-              GameFunctionsAndObjects.Actions.PickUp(this);
+              GameHackFunc.Actions.PickUp(this);
         }
 
         public double CalcDistance(IObject targetObject)

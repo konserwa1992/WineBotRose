@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace CodeInject.MemoryTools
 {
-    internal unsafe class GameActions
+    public unsafe class GameActions
     {
         private delegate Int64 AttackWithSkillAction(int skill, int enemy, float* arg0);
      //   private delegate Int64 PickUpAction(long networkClass, long playerObjectAdr, int itemIndex, int arg4);
@@ -23,7 +23,7 @@ namespace CodeInject.MemoryTools
 
 
 
-        public delegate void Log(long player, string stringPointer, int cType, uint color); 
+        public delegate void Log(long staticAddr, string stringPointer, int cType, int color); 
 
         //121bc50
 
@@ -49,22 +49,31 @@ namespace CodeInject.MemoryTools
         {
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
             BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();//2023.10.03
-            BaseOfDialogBoxes = MemoryTools.GetVariableAddres("48 81 c1 ?? ?? ?? ?? 48 8d 54 24 20 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ??").ToInt64();//2023.10.03
-            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 81 c1 ?? ?? ?? ?? 48 8d 54 24 20 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(Log));
-            QuickActionFunc = (UseQuickAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x87c4), typeof(UseQuickAction));
+            Console.WriteLine($"BaseNetworkClass {BaseNetworkClass.ToString("X")}");
+
+
+            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4cbf20), typeof(Log));
+
             UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 
+            Console.WriteLine($"UseItemFunc {BaseNetworkClass.ToString("X")}");
+
             AttackWithSkillFunc = (AttackWithSkillAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("4c 8d 44 24 20 8b d0 e8 ?? ?? ?? ??"), typeof(AttackWithSkillAction));
+            Console.WriteLine($"AttackWithSkillFunc {BaseNetworkClass.ToString("X")}");
+
             NormalAttackFunc = (NormalAttackAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 0f 84 ?? ?? ?? ?? 40 84 f6 0f 84 ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 8b d3 48 81 c1 ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(NormalAttackAction));
+            Console.WriteLine($"NormalAttackFunc {BaseNetworkClass.ToString("X")}");
+
             MoveToPointFunc = (MoveToAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 ?? ?? ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 4c 8b c6 48 81 c1 ?? ?? ?? ?? 33 d2 e8 ?? ?? ?? ??"), typeof(MoveToAction));
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x42668), typeof(PickUpAction)); //MSG#INV4
-            TalkToNPCFunc = (TalkWithNPC)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x25D7E), typeof(TalkWithNPC)); //MSG#INV4
+            Console.WriteLine($"MoveToPointFunc {BaseNetworkClass.ToString("X")}");
+
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x5d50b0), typeof(PickUpAction)); //MSG#INV4
+            Console.WriteLine($"GameActions Init");
         }
 
 
-        public void Logger(string text, Color color,int chatType=5)
+        public void Logger(string text, int chatType = 5)
         {
-           LoggerFunc(
-             BaseOfDialogBoxes, text, chatType, (uint)color.ToArgb());
+            LoggerFunc(BaseAddres+0x1555b30, text, chatType, Color.Red.ToArgb());
         }
 
         public void TalkToNPC(ushort ID)
@@ -100,7 +109,7 @@ namespace CodeInject.MemoryTools
         /// <param name="position"></param>
         public void MoveToPoint(Vector2 position)
         {
-            Logger($"Go to: {position.ToString()}", Color.Khaki);
+            Logger($"Go to: {position.ToString()}");
             float[] position2float = new float[]
             {
                 position.X*100, position.Y*100,0
@@ -113,7 +122,7 @@ namespace CodeInject.MemoryTools
 
         public void CastSpell(int skillIndex)
         {
-            IObject player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+            IObject player = GameHackFunc.ClientData.GetPlayer();
 
 
             AttackWithSkillFunc(skillIndex, *player.ID, player.X);

@@ -30,13 +30,13 @@ namespace CodeInject.Actors
                 Y = (float*)(*Entry + 0x14);
                 Z = (float*)(*Entry + 0x18);
                 if ((long*)(*Entry + 0x20) != null)
-                ID = (ushort*)(*((long*)(*Entry + 0x20)));
-                Hp = (int*)(*Entry + 0xE8);
-                MaxHp = (int*)(*Entry + 0xF0);
+                ID = (ushort*)(*((long*)(*Entry + 0x20)));//0x368
+                Hp = (int*)(*Entry + 0xF0);
+                MaxHp = (int*)(*Entry + 0xF8);
 
-                Name = (string*)(*Entry + 0xbb0);
+                //Name = (string*)(*Entry + 0xbb0);
 
-                Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x360)));
+                Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x368)));
             }catch (Exception) { }
         }
 
@@ -76,7 +76,7 @@ namespace CodeInject.Actors
         public override string ToString()
         {
             if(Info != null)
-              return $"[{(*ID).ToString("X")}] {*Hp} {Info.Name}";
+              return $"[{(*ID).ToString("X")}] {*Hp}/{*MaxHp} {Info.Name}";
 
             return $"[{(*ID).ToString("X")}] Unknow Object";
         }

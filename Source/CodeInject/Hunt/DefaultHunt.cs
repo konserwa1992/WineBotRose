@@ -58,20 +58,20 @@ namespace CodeInject.Hunt
                 this.SkillIndex = 0;
             }
 
-            Player player = GameFunctionsAndObjects.DataFetch.GetPlayer();
+            Player player = GameHackFunc.ClientData.GetPlayer();
             List<ushort> buffs = player.GetBuffsIDs();
             List<Skills> BotBuff2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
 
             if (BotBuff2Use.Count > 0)
             {
-                GameFunctionsAndObjects.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
+                GameHackFunc.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
                 Thread.Sleep(100);
             }
             else
             {
-                if (Target == null || !GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || *((NPC)Target).Hp <= 0)
+                if (Target == null || !GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || *((NPC)Target).Hp <= 0)
                 {
-                    this.Target = GameFunctionsAndObjects.DataFetch.GetNPCs().Where(x => x.GetType() == typeof(NPC))
+                    this.Target = GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                     .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
                     .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => *(((NPC)x).Hp) > 0);
                 }
@@ -84,11 +84,11 @@ namespace CodeInject.Hunt
                         Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
                         if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
                         {
-                            GameFunctionsAndObjects.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                            GameHackFunc.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
                         }
                     }
                     if (NormalAttack == true)
-                        GameFunctionsAndObjects.Actions.Attack(*this.Target.ID);
+                        GameHackFunc.Actions.Attack(*this.Target.ID);
                 }
             }
             base.Update();
