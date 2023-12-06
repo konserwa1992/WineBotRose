@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 
@@ -26,6 +27,7 @@ namespace CodeInject
         public List<IObject> GetItemsNearby()
         {
             IObject player = GameHackFunc.ClientData.GetPlayer();
+
             return GameHackFunc.ClientData.GetItemsAroundPlayerV2().Where(x => Filter.CanPickup(x) && x.CalcDistance(player) < 20).OrderBy(x => x.CalcDistance(player)).ToList();
         }
 

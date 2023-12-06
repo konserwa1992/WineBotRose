@@ -16,12 +16,6 @@ namespace ISpace
               cBot.ShowDialog();
 
 
-        /*   AllocConsole();
-            Console.WriteLine("Injected");
-            Console.WriteLine("Injected1");
-
-            MessageBox.Show(GameHackFunc.ClientData.GetPlayer().Name);*/
-
             return 0;
         }
 

@@ -73,7 +73,7 @@ namespace CodeInject.MemoryTools
 
         public void Logger(string text, int chatType = 5)
         {
-            LoggerFunc(BaseAddres+0x1555b30, text, chatType, Color.Red.ToArgb());
+            LoggerFunc(BaseAddres+0x1555b30, text, chatType, Color.LimeGreen.ToArgb());
         }
 
         public void TalkToNPC(ushort ID)
