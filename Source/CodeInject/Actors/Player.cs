@@ -33,10 +33,10 @@ namespace CodeInject.Actors
             Y = (float*)(*Entry + 0x14);
             Z = (float*)(*Entry + 0x18);
             ID = (ushort*)(*((long*)(*Entry + 0x20)));
-            Hp = (int*)(*Entry + 0x3B88);
-            MaxHp = (int*)(*Entry + 0x3D34);
-            Mp = (int*)(*Entry + 0x3B8C);
-            MaxMp = (int*)(*Entry + 0x46C4);
+            Hp = (int*)(*Entry + 0x3B90);
+            MaxHp = (int*)(*Entry + 0x3D3C);
+            Mp = (int*)(*Entry + 0x3B94);
+            MaxMp = (int*)(*Entry + 0x46CC);
             BuffCount = (short*)(*Entry + 0x858);
             Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB8)));
         }
@@ -78,7 +78,7 @@ namespace CodeInject.Actors
             List<ushort> list = new List<ushort>();
      
 
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x016BF8C0, new short[] { 0x848, 0x0});
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x0154ee60, new short[] { 0x850, 0x0}); //#IMG12
 
 
 

@@ -144,7 +144,7 @@ namespace CodeInject.MemoryTools
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd78) != 0)//OBS#S2
             {
                 ushort skillID = *(ushort*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd78);
-                MessageBox.Show(skillID.ToString());
+         
                 SkillInfo skill = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == skillID);
                 if (skill == null)
                 {

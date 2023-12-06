@@ -65,6 +65,7 @@ namespace CodeInject.Hunt
             if (BotBuff2Use.Count > 0)
             {
                 GameHackFunc.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
+                GameHackFunc.Actions.Logger(BotBuff2Use.FirstOrDefault().skillInfo.ID.ToString());
                 Thread.Sleep(100);
             }
             else

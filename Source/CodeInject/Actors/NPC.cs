@@ -29,7 +29,7 @@ namespace CodeInject.Actors
                 X = (float*)(*Entry + 0x10);
                 Y = (float*)(*Entry + 0x14);
                 Z = (float*)(*Entry + 0x18);
-                if ((long*)(*Entry + 0x20) != null)
+                if ((long*)(*Entry + 0x28) != null)
                 ID = (ushort*)(*((long*)(*Entry + 0x20)));//0x368
                 Hp = (int*)(*Entry + 0xF0);
                 MaxHp = (int*)(*Entry + 0xF8);

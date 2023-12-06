@@ -570,8 +570,8 @@ namespace CodeInject
 
         private void button12_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(((long)GameHackFunc.ClientData.GetNPCs()[1].ObjectPointer).ToString("X"));
-            MessageBox.Show(((long)GameHackFunc.ClientData.GetNPCs()[0].ObjectPointer).ToString("X"));
+             MessageBox.Show((*GameHackFunc.ClientData.GetPlayer().Mp).ToString() +" / "+(*GameHackFunc.ClientData.GetPlayer().MaxMp).ToString());
+            MessageBox.Show(((long)GameHackFunc.ClientData.GetPlayer().ObjectPointer).ToString("X"));
         }
     }
 
