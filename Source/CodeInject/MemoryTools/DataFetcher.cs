@@ -138,7 +138,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x154ee78); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x151abf8); //2023.10.04
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd78) != 0)//OBS#S2
@@ -178,9 +178,9 @@ namespace CodeInject.MemoryTools
 
                 
     
-                if (GameHackFunc.ClientData.BaseAddres + 0x10320F0 == ObjectTypeFuncTable)
+                if (GameHackFunc.ClientData.BaseAddres + 0x10020F0 == ObjectTypeFuncTable)
                     return new OtherPlayer(wskObj);
-                if (GameHackFunc.ClientData.BaseAddres + 0x1033B48 == ObjectTypeFuncTable) // player avatar
+                if (GameHackFunc.ClientData.BaseAddres + 0x1003B48 == ObjectTypeFuncTable) // player avatar
                     return new Player(wskObj);
 
 
@@ -290,7 +290,7 @@ namespace CodeInject.MemoryTools
 
             Process _proc = Process.GetCurrentProcess();
 
-            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x1550C58));
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x151C9A8));
             long* RBX = (long*)((long)RDI + 0x2a0b8);
 
             RBX = (long*)*RBX; //select first item from list

@@ -78,7 +78,7 @@ namespace CodeInject.Actors
             List<ushort> list = new List<ushort>();
      
 
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x0154ee60, new short[] { 0x850, 0x0}); //#IMG12
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x151ABe0, new short[] { 0x850, 0x0}); //#IMG12
 
 
 

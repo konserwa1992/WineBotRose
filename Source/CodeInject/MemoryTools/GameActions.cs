@@ -52,7 +52,7 @@ namespace CodeInject.MemoryTools
             Console.WriteLine($"BaseNetworkClass {BaseNetworkClass.ToString("X")}");
 
 
-            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4cbf20), typeof(Log));
+            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4cc0b0), typeof(Log));
 
             UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 
             Console.WriteLine($"UseItemFunc {BaseNetworkClass.ToString("X")}");
@@ -66,14 +66,14 @@ namespace CodeInject.MemoryTools
             MoveToPointFunc = (MoveToAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 ?? ?? ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 4c 8b c6 48 81 c1 ?? ?? ?? ?? 33 d2 e8 ?? ?? ?? ??"), typeof(MoveToAction));
             Console.WriteLine($"MoveToPointFunc {BaseNetworkClass.ToString("X")}");
 
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x5d50b0), typeof(PickUpAction)); //MSG#INV4
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x5D5240), typeof(PickUpAction)); //MSG#INV4
             Console.WriteLine($"GameActions Init");
         }
 
 
         public void Logger(string text, int chatType = 5)
         {
-            LoggerFunc(BaseAddres+0x1555b30, text, chatType, Color.LimeGreen.ToArgb());
+            LoggerFunc(BaseAddres+0x15218b0, text, chatType, Color.LimeGreen.ToArgb());
         }
 
         public void TalkToNPC(ushort ID)
@@ -85,6 +85,7 @@ namespace CodeInject.MemoryTools
 
         public void PickUp(Item item)
         {
+            //48 8b cf e8 ?? ?? ?? ?? 84 c0 0f 84 ?? ?? ?? ?? 48 8b cf e8 ?? ?? ?? ?? 6683 f804 75 7b 48 8b 47 28  48 8d 4f 28
             long r8 = ((long)item.ObjectPointer) +0x10;
             PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), *item.ID, r8);
         }

@@ -84,7 +84,7 @@ namespace CodeInject
             BotContext.Update();
             //  PlayerInfo();
             listBox1.Items.Clear();
-             lNearItemsList.Items.Clear();
+            lNearItemsList.Items.Clear();
             listBox1.Items.AddRange(GameHackFunc.ClientData.GetNPCs().ToArray());
             lNearItemsList.Items.AddRange(GameHackFunc.ClientData.GetItemsAroundPlayerV2().ToArray());
         }
@@ -570,8 +570,7 @@ namespace CodeInject
 
         private void button12_Click_1(object sender, EventArgs e)
         {
-             MessageBox.Show((*GameHackFunc.ClientData.GetPlayer().Mp).ToString() +" / "+(*GameHackFunc.ClientData.GetPlayer().MaxMp).ToString());
-            MessageBox.Show(((long)GameHackFunc.ClientData.GetPlayer().ObjectPointer).ToString("X"));
+            MessageBox.Show(((long)GameHackFunc.ClientData.GetNPCs().FirstOrDefault().ObjectPointer).ToString("X"));
         }
     }
 

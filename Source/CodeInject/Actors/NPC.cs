@@ -78,7 +78,7 @@ namespace CodeInject.Actors
             if(Info != null)
               return $"[{(*ID).ToString("X")}] {*Hp}/{*MaxHp} {Info.Name}";
 
-            return $"[{(*ID).ToString("X")}] Unknow Object";
+            return $"[{(*ID).ToString("X")}] {((long)ObjectPointer).ToString("X")} Unknow Object";
         }
     }
 }
