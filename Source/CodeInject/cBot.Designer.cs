@@ -34,6 +34,10 @@ namespace CodeInject
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.tProfileName = new System.Windows.Forms.TextBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -136,6 +140,7 @@ namespace CodeInject
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.button20 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -172,6 +177,11 @@ namespace CodeInject
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button20);
+            this.tabPage1.Controls.Add(this.button19);
+            this.tabPage1.Controls.Add(this.button18);
+            this.tabPage1.Controls.Add(this.tProfileName);
+            this.tabPage1.Controls.Add(this.comboBox3);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label7);
@@ -192,6 +202,41 @@ namespace CodeInject
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(404, 334);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 23);
+            this.button19.TabIndex = 17;
+            this.button19.Text = "Load";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(404, 307);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 23);
+            this.button18.TabIndex = 16;
+            this.button18.Text = "Save";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // tProfileName
+            // 
+            this.tProfileName.Location = new System.Drawing.Point(287, 310);
+            this.tProfileName.Name = "tProfileName";
+            this.tProfileName.Size = new System.Drawing.Size(115, 20);
+            this.tProfileName.TabIndex = 15;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(287, 336);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(115, 21);
+            this.comboBox3.TabIndex = 14;
             // 
             // groupBox5
             // 
@@ -1213,6 +1258,16 @@ namespace CodeInject
             this.timer3.Interval = 250;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(293, 398);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(186, 30);
+            this.button20.TabIndex = 18;
+            this.button20.Text = "Donate";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1360,5 +1415,10 @@ namespace CodeInject
         private TabPage tabPage7;
         private ListBox listBox1;
         private Button button12;
+        private Button button19;
+        private Button button18;
+        private TextBox tProfileName;
+        private ComboBox comboBox3;
+        private Button button20;
     }
 }

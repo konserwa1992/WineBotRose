@@ -43,6 +43,11 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.bSave = new System.Windows.Forms.Button();
+            this.bLoad = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox2
@@ -189,11 +194,62 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // bSave
+            // 
+            this.bSave.Location = new System.Drawing.Point(282, 423);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(75, 23);
+            this.bSave.TabIndex = 20;
+            this.bSave.Text = "Save";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            // 
+            // bLoad
+            // 
+            this.bLoad.Location = new System.Drawing.Point(282, 452);
+            this.bLoad.Name = "bLoad";
+            this.bLoad.Size = new System.Drawing.Size(75, 23);
+            this.bLoad.TabIndex = 21;
+            this.bLoad.Text = "Load";
+            this.bLoad.UseVisualStyleBackColor = true;
+            this.bLoad.Click += new System.EventHandler(this.bLoad_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(15, 426);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(261, 20);
+            this.textBox1.TabIndex = 22;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(15, 454);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(261, 21);
+            this.comboBox1.TabIndex = 23;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(258, 28);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 24;
+            this.button10.Text = "Mounts";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // AdvancedFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 450);
+            this.ClientSize = new System.Drawing.Size(369, 487);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.bLoad);
+            this.Controls.Add(this.bSave);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -233,5 +289,10 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button bSave;
+        private System.Windows.Forms.Button bLoad;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button10;
     }
 }

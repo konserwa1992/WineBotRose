@@ -17,6 +17,7 @@ using CodeInject.UIPanels;
 using CodeInject.UIPanels.Module_Panels;
 
 using Point = AForge.Point;
+using System.IO;
 
 namespace CodeInject
 {
@@ -129,6 +130,143 @@ namespace CodeInject
             cbHealMPItem.Items.AddRange(GameHackFunc.ClientData.GetConsumableItemsFromInventory(cbHealMPItem.Items.OfType<InvItem>().ToList()).ToArray());
         }
 
+
+        private Skills GetSkillFromFile(string line)
+        {
+            string[] data = line.Split(';');
+
+            return new Skills(DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x=>x.ID == int.Parse(data[1])), (SkillTypes)int.Parse(data[0]));
+        }
+
+        private void LoadConfig(string name)
+        {
+            StreamReader config = new StreamReader(name + ".skills.txt");
+
+            lUseSkill.Items.Clear();
+            lBuffs.Items.Clear();
+            lHealSkills.Items.Clear();
+
+            while (!config.EndOfStream)
+            {
+                Skills skill = GetSkillFromFile(config.ReadLine());
+
+                switch(skill.SkillType)
+                {
+                    case SkillTypes.AttackSkill:
+                        BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(skill,SkillTypes.AttackSkill);
+                        lUseSkill.Items.Add(skill);
+                        break;
+                    case SkillTypes.Buff:
+                        BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(skill, SkillTypes.Buff);
+                        lBuffs.Items.Add(skill);
+                        break;
+                    case SkillTypes.HealTarget:
+                        BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(skill, SkillTypes.HealTarget);
+                        lHealSkills.Items.Add(skill);
+                        cEnableHealParty.Checked = true;
+                        break;
+
+                 }
+            }
+            config.Close();
+
+            config = new StreamReader(name + ".mobs.txt");
+            lMonster2Attack.Items.Clear();
+            while (!config.EndOfStream)
+            {
+                int id = int.Parse(config.ReadLine());
+                lMonster2Attack.Items.Add(DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == id));
+            }
+            config.Close();
+
+       
+
+            if (File.Exists(name + ".AutoPotion.txt"))
+            {
+                cbHealHPItem.Items.Clear();
+                cbHealMPItem.Items.Clear();
+                config = new StreamReader(name + ".AutoPotion.txt");
+                string[] data = config.ReadLine().Split(';');
+
+                if (data.Length < 3)
+                {
+                    config.Close();
+                    return;
+                }
+
+
+                int itemId = int.Parse(data[2]);
+                InvItem ihp = GameHackFunc.ClientData.GetConsumableItemsFromInventory(new List<InvItem>()).FirstOrDefault(x => *x.ItemData == itemId && *x.ItemType == 0xA);
+
+                if (ihp == null)
+                {
+                    MessageBox.Show($"There is no longer Hp potion avaiable in inventory: {DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == itemId).DisplayName}");
+                    config.Close();
+                    return;
+                }
+                cbHealHPItem.SelectedIndex = cbHealHPItem.Items.Add(ihp);
+                tHPPotionUseProc.Text = data[0];
+                tHpDurr.Text = data[1];
+                data = config.ReadLine().Split(';');
+
+                itemId = int.Parse(data[2]);
+                InvItem imp = GameHackFunc.ClientData.GetConsumableItemsFromInventory(new List<InvItem>()).FirstOrDefault(x => *x.ItemData == itemId && *x.ItemType == 0xA);
+
+                if (ihp == null)
+                {
+                    MessageBox.Show($"There is no longer Mp potion avaiable in inventory: {DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == itemId).DisplayName}");
+                    config.Close();
+                    return;
+                }
+                else
+                {
+                    cbHealMPItem.SelectedIndex = cbHealMPItem.Items.Add(imp);
+                    tMPPotionUseProc.Text = data[0];
+                    tMpDurr.Text = data[1];
+                }
+                cAutoPotionEnabled.Checked = true;
+                config.Close();
+            }
+        }
+
+        private void SaveConfig(string configName)
+        {
+            StreamWriter wConfig = new StreamWriter(configName + ".skills.txt", false);
+
+            foreach (Skills skill in lUseSkill.Items)
+            {
+                wConfig.WriteLine((int)skill.SkillType + ";" + skill.skillInfo.ID);
+            }
+            foreach (Skills skill in lHealSkills.Items)
+            {
+                wConfig.WriteLine((int)skill.SkillType + ";" + skill.skillInfo.ID);
+            }
+            foreach (Skills skill in lBuffs.Items)
+            {
+                wConfig.WriteLine((int)skill.SkillType + ";" + skill.skillInfo.ID);
+            }
+            wConfig.Close();
+
+            wConfig = new StreamWriter(configName + ".mobs.txt", false);
+
+            foreach (MobInfo mob in lMonster2Attack.Items)
+            {
+                wConfig.WriteLine(mob.ID);
+            }
+            wConfig.Close();
+
+
+            if (cbHealHPItem.SelectedItem != null)
+            {
+                wConfig = new StreamWriter(configName + ".AutoPotion.txt", false);
+
+                wConfig.WriteLine($"{tHPPotionUseProc.Text};{tHpDurr.Text};{*((InvItem)cbHealHPItem.SelectedItem).ItemData}");
+                wConfig.WriteLine($"{tMPPotionUseProc.Text};{tMpDurr.Text};{*((InvItem)cbHealMPItem.SelectedItem).ItemData}");
+            }
+
+            wConfig.Close();
+        }
+
         private void bHuntToggle_Click_1(object sender, EventArgs e)
         {
             if (BotState == false)
@@ -142,7 +280,6 @@ namespace CodeInject
 
                 if (cEnableHealParty.Checked)
                 {
-
                     BotContext.Start(new HuntState(
                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
@@ -330,11 +467,29 @@ namespace CodeInject
         private unsafe void cBot_Load(object sender, EventArgs e)
         {
             GameHackFunc.Actions.Logger($"Hello.");
-            GameHackFunc.Actions.Logger($"Bot version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}");
 
+
+
+            this.Text = $"WineBot Character: {GameHackFunc.ClientData.GetPlayer().Name}";
 
             comboBox2.Items.Add(new BackToCenterPanel(lMonster2Attack));
             comboBox2.Items.Add(new GoToPlayerPanel(lMonster2Attack,tXHuntArea,tYHuntArea, tHuntRadius));
+
+
+            string[] configFiles = Directory.GetDirectories(DataBase.DataPath+"Profiles");
+
+            foreach (var file in configFiles)
+            {
+                string filename = file.Substring(file.LastIndexOf('\\') + 1);
+                comboBox3.Items.Add(filename);
+            }
+
+            tProfileName.Text = GameHackFunc.ClientData.GetPlayer().Name;
+
+            if (comboBox3.Items.Count != 0)
+            {
+                comboBox3.SelectedItem = comboBox3.Items.OfType<string>().FirstOrDefault(x => (string)x == GameHackFunc.ClientData.GetPlayer().Name);
+            }
         }
 
 
@@ -571,6 +726,29 @@ namespace CodeInject
         private void button12_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show(((long)GameHackFunc.ClientData.GetNPCs().FirstOrDefault().ObjectPointer).ToString("X"));
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(DataBase.DataPath + tProfileName.Text))
+            {
+                SaveConfig(DataBase.DataPath  + "\\Profiles\\" + tProfileName.Text);
+            }
+            else
+            {
+                Directory.CreateDirectory(DataBase.DataPath + "\\Profiles\\" + tProfileName.Text);
+                SaveConfig(DataBase.DataPath + "\\Profiles\\" + tProfileName.Text+"\\" + tProfileName.Text);
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            LoadConfig(DataBase.DataPath +"\\Profiles\\" + (string)comboBox3.SelectedItem +"\\"+(string)comboBox3.SelectedItem);
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

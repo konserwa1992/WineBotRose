@@ -19,19 +19,22 @@ namespace CodeInject
 
         public void Use(float currVal)
         {
-            if (currVal< MinValueToExecute)
+            if (Item2Cast != null)
             {
-
-                if (stopWatch.IsRunning == false)
+                if (currVal < MinValueToExecute)
                 {
-                    stopWatch.Start();
-                    Item2Cast.UseItem();
-                }
 
-                if (stopWatch.Elapsed.Seconds > CooldDown)
-                {
-                    Item2Cast.UseItem();
-                    stopWatch.Reset();
+                    if (stopWatch.IsRunning == false)
+                    {
+                        stopWatch.Start();
+                        Item2Cast.UseItem();
+                    }
+
+                    if (stopWatch.Elapsed.Seconds > CooldDown)
+                    {
+                        Item2Cast.UseItem();
+                        stopWatch.Reset();
+                    }
                 }
             }
         }

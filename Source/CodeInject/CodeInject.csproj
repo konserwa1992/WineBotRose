@@ -50,6 +50,7 @@
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -101,7 +102,15 @@
     <Compile Include="cBot.Designer.cs">
       <DependentUpon>cBot.cs</DependentUpon>
     </Compile>
+    <Compile Include="data\config\filters\ConfigInit.xaml.cs">
+      <DependentUpon>ConfigInit.txt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="data\DataBase.cs" />
+    <Compile Include="data\Profiles\Configinit.xaml.cs">
+      <DependentUpon>Configinit.txt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="FileName.cs" />
     <Compile Include="Hunt\DefaultHunt.cs" />
     <Compile Include="Hunt\EmptyHuntSetting.cs" />
@@ -206,6 +215,9 @@
     <None Include="data\MonsterList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="data\MountItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="data\ShieldItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -263,6 +275,21 @@
     <Content Include="Resources\JCPSRkl.png" />
     <None Include="Resources\JCPSRkl1.png" />
     <None Include="Resources\Bez tytułu21.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="data\config\filters\ConfigInit.txt">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\Profiles\Configinit.txt">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

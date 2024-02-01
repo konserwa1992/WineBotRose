@@ -16,6 +16,7 @@
         ChestArmor = 0x03,
         Gloves = 0x04,
         Shoes = 0x05,
-        Material = 0x0C
+        Material = 0x0C,
+        Mount = 0x0F
     }
 }

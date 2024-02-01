@@ -83,6 +83,15 @@ namespace CodeInject
         public string Name { get; set; } = "";
         public override string ToString() { return Name; }
     }
+
+
+    public class MountItemsInfo : IBasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
+    }
+
     public class DataBase
     {
         public static DataBase GameDataBase { get; private set; } = new DataBase();
@@ -97,6 +106,7 @@ namespace CodeInject
         public List<ShieldItemsInfo> SheildItemsDatabase = new List<ShieldItemsInfo>();
         public List<MaterialItemsInfo> MaterialItemsDatabase = new List<MaterialItemsInfo>();
         public List<HeadItemsInfo> HeadItemsDatabase = new List<HeadItemsInfo>();
+        public List<MountItemsInfo> MountItemsDatabase = new List<MountItemsInfo>();
         public static string DataPath;
 
 
@@ -123,6 +133,8 @@ namespace CodeInject
                 return (MaterialItemsDatabase as List<T>);
             if (typeof(T) == typeof(HeadItemsInfo))
                 return (HeadItemsDatabase as List<T>);
+            if (typeof(T) == typeof(MountItemsInfo))
+                return (MountItemsDatabase as List<T>);
 
             return null;
         }
@@ -141,8 +153,17 @@ namespace CodeInject
             LoadShieldItemDataBase();
             LoadMaterialItemDataBase();
             LoadHeadDataBase();
+            LoadMountDataBase();
         }
 
+
+        private void LoadMountDataBase()
+        {
+            if (!File.Exists(DataPath + "MountItemList.json")) GameHackFunc.Actions.Logger($"Missing file: MaterialItemList.json");
+            StreamReader dataRead = new StreamReader(DataPath + "MountItemList.json");
+            MountItemsDatabase = JsonConvert.DeserializeObject<List<MountItemsInfo>>(dataRead.ReadToEnd());
+            dataRead.Close();
+        }
 
         private void LoadMaterialItemDataBase()
         {

@@ -119,6 +119,11 @@ namespace CodeInject.Actors
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
                         return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
                     }
+                case 0x0F:
+                    {
+                        temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
+                    }
 
                 default:
                     {

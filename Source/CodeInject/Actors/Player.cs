@@ -78,11 +78,11 @@ namespace CodeInject.Actors
             List<ushort> list = new List<ushort>();
      
 
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x151ABe0, new short[] { 0x850, 0x0}); //#IMG12
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x0151DC80, new short[] { 0x410 }); //#IMG12
+            baseBuffAddres += 0x440;
 
 
-
-            long* buffAddr =(long*)baseBuffAddres;  //RAX
+            long* buffAddr =(long*)*(long*)baseBuffAddres;  //RAX
             int b = 0;
 
 
@@ -109,7 +109,7 @@ namespace CodeInject.Actors
 
         public override string ToString()
         {
-            return $"[{(*ID).ToString("X")}] {Name} {*BuffCount}";
+            return $"[{(*ID).ToString("X")}] {((long)ObjectPointer).ToString("X")} {Name} {*BuffCount}";
         }
  
     }

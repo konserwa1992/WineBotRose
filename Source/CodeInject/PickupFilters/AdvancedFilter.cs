@@ -30,7 +30,9 @@ namespace CodeInject.PickupFilters
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(ArmItemsInfo));
                 case ItemType.ChestArmor:
                     return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(BodyItemsInfo));
-       
+                case ItemType.Mount:
+                    return PickWeapon.Any(x => x.ID == *item2Check.ItemData && x.GetType() == typeof(MountItemsInfo));
+
                 default: 
                     return false;
             }
