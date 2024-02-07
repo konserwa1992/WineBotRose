@@ -21,6 +21,7 @@ namespace CodeInject.MemoryTools
         private delegate void MoveToAction(long networkClass, int unknow0,float* destinationPoint);
         private delegate void TalkWithNPC(long arg0, ushort npcIndex);
 
+        private delegate void PacketSendDelegate(long arg0, byte* packet);
 
 
         public delegate void Log(long staticAddr, string stringPointer, int cType, int color); 
@@ -35,6 +36,7 @@ namespace CodeInject.MemoryTools
         private UseQuickAction QuickActionFunc;
         private MoveToAction MoveToPointFunc;
         private TalkWithNPC TalkToNPCFunc;
+        private PacketSendDelegate SendPacketFunc;
 
         public Log LoggerFunc;
         private long BaseAddres;
@@ -68,6 +70,10 @@ namespace CodeInject.MemoryTools
 
             PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x5d54d0), typeof(PickUpAction)); //MSG#INV4
             Console.WriteLine($"GameActions Init");
+
+
+            SendPacketFunc = (PacketSendDelegate)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0xAF6300), typeof(PacketSendDelegate)); //MSG#INV4
+
         }
 
 
@@ -80,6 +86,12 @@ namespace CodeInject.MemoryTools
         {
             long* rcxAddr = (long*)BaseAddres + 0x16DAF00;
             TalkToNPCFunc(*rcxAddr, ID);
+        }
+
+        public void SendPacket(byte* packet)
+        {
+            long networkStructAddr = *((long*)(BaseAddres + 0x1526a00)) + 0x16b8 + 0x1e0;
+            SendPacketFunc(networkStructAddr, packet);
         }
 
 

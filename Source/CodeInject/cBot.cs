@@ -748,7 +748,22 @@ namespace CodeInject
 
         private void button20_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Process.Start("https://www.paypal.com/paypalme/winebot");
+        }
 
+        private void button21_Click(object sender, EventArgs e)
+        {
+            byte[] packet = new byte[]
+            {
+               0x0E ,0x00 ,0x21 ,0x08 ,0xD1 ,0x58 ,0x04 ,0x00 ,0x00 ,0x00 ,0x33 ,0x68 ,0x00 ,0x00
+            };
+
+
+
+            fixed(byte* packetPointer = packet)
+            {
+                GameHackFunc.Actions.SendPacket(packetPointer);
+            }
         }
     }
 
