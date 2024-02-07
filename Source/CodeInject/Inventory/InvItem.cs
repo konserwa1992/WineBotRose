@@ -63,13 +63,13 @@ namespace CodeInject
                 case 0x0A:
                     {
                         temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.ID + " " + ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
+                        return $" {(temp != null ? temp.ID + " " + ((UsableItemsInfo)temp).DisplayName : " Unknow")}";
                     }
 
                 case 0x03:
                     {
                         temp = DataBase.GameDataBase.BodyItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : temp.ID  + " Unknow")}";
                     }
 
                 case 0x05:

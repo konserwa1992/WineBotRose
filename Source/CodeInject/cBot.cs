@@ -755,15 +755,29 @@ namespace CodeInject
         {
             byte[] packet = new byte[]
             {
-               0x0E ,0x00 ,0x21 ,0x08 ,0xD1 ,0x58 ,0x04 ,0x00 ,0x00 ,0x00 ,0x33 ,0x68 ,0x00 ,0x00
+               0x0e ,0x00 ,0xa3 ,0x07 ,0xD1 ,0x58 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 
             };
 
+            //List<InvItem> items = new List<InvItem>();
+           InvItem item= comboBox4.SelectedItem as InvItem;
+
+            long itemServPacketId = *(long*)((long)item.ObjectPointer + 0x48);
+            //  * (long*)((long)ObjectPointer + 0x48)
+            byte[] servIdArray= BitConverter.GetBytes(itemServPacketId);
+
+            Array.Copy(servIdArray,0,packet,6, servIdArray.Length);
 
 
-            fixed(byte* packetPointer = packet)
+            fixed (byte* packetPointer = packet)
             {
                 GameHackFunc.Actions.SendPacket(packetPointer);
             }
+        }
+
+        private void comboBox4_DropDown(object sender, EventArgs e)
+        {
+            comboBox4.Items.Clear();
+            comboBox4.Items.AddRange(GameHackFunc.ClientData.GetConsumableItemsFromInventory(comboBox4.Items.OfType<InvItem>().ToList()).ToArray());
         }
     }
 
