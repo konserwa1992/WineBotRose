@@ -51,13 +51,13 @@ namespace CodeInject.Hunt
             if (Players2HealList.Count > 0)
             {
                     IPlayer currentPlayerObj2Heal = (IPlayer)GameHackFunc.ClientData.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && Players2HealList.Contains(((IPlayer)x).Name))
-                        .OrderBy(x => (((float)*((IPlayer)x).Hp / (float)*((IPlayer)x).MaxHp) * 100.0f))
+                        .OrderBy(x => (((float)((IPlayer)x).Hp / (float)((IPlayer)x).MaxHp) * 100.0f))
                         .FirstOrDefault();
 
                     if (currentPlayerObj2Heal != null) 
                     {
-                        float currhp = (float)*currentPlayerObj2Heal.Hp;
-                        float maxhp = (float)*currentPlayerObj2Heal.MaxHp;
+                        float currhp = (float)currentPlayerObj2Heal.Hp;
+                        float maxhp = (float)currentPlayerObj2Heal.MaxHp;
 
                         if (((currhp / maxhp) * 100.0f) < ProcHeal)
                         {
@@ -71,8 +71,8 @@ namespace CodeInject.Hunt
 
         private void GoToHuntingAreaCenter()
         {
-            if (((int)*GameHackFunc.ClientData.GetPlayer().X) != (int)HuntingAreaCenter.X &&
-                 ((int)*GameHackFunc.ClientData.GetPlayer().Y) != (int)HuntingAreaCenter.Y)
+            if (((int)GameHackFunc.ClientData.GetPlayer().X) != (int)HuntingAreaCenter.X &&
+                 ((int)GameHackFunc.ClientData.GetPlayer().Y) != (int)HuntingAreaCenter.Y)
             {
                 GameHackFunc.Actions.MoveToPoint(new Vector2(HuntingAreaCenter.X / 100, HuntingAreaCenter.Y / 100));
             }

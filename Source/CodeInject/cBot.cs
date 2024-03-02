@@ -39,7 +39,7 @@ namespace CodeInject
                          new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                          new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
                          float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), lUseSkill.Items.OfType<Skills>().ToList(), lPlayers2Heal.Items.OfType<IObject>().ToList(), int
-                         .Parse(tHealWhenProc.Text),cNormalAttackEnable.Checked, this)
+                         .Parse(tHealWhenProc.Text), cNormalAttackEnable.Checked, this)
                         ));
             BotContext.Stop();
         }
@@ -83,7 +83,6 @@ namespace CodeInject
         private void timer2_Tick(object sender, EventArgs e)
         {
             BotContext.Update();
-            //  PlayerInfo();
             listBox1.Items.Clear();
             lNearItemsList.Items.Clear();
             listBox1.Items.AddRange(GameHackFunc.ClientData.GetNPCs().ToArray());
@@ -112,9 +111,9 @@ namespace CodeInject
         {
             IObject player = PlayerCharacter.PlayerInfo;
 
-            tXHuntArea.Text = (*player.X).ToString();
-            tYHuntArea.Text = (*player.Y).ToString();
-            tZHuntArea.Text = (*player.Z).ToString();
+            tXHuntArea.Text = (player.X).ToString();
+            tYHuntArea.Text = (player.Y).ToString();
+            tZHuntArea.Text = (player.Z).ToString();
         }
 
 
@@ -466,6 +465,7 @@ namespace CodeInject
 
         private unsafe void cBot_Load(object sender, EventArgs e)
         {
+
             GameHackFunc.Actions.Logger($"Hello.");
 
 
@@ -498,8 +498,8 @@ namespace CodeInject
             IPlayer player = GameHackFunc.ClientData.GetPlayer();
 
             pbHpBar.Minimum = 0;
-            pbHpBar.Maximum = *player.MaxHp;
-            pbHpBar.Value = *player.Hp;
+            pbHpBar.Maximum = player.MaxHp;
+            pbHpBar.Value = player.Hp;
         }
 
 
@@ -681,7 +681,7 @@ namespace CodeInject
 
 
                 Point p = (Point)listBox4.SelectedItem;
-                Vector2 playerPos = new Vector2(*GameHackFunc.ClientData.GetPlayer().X, *GameHackFunc.ClientData.GetPlayer().Y);
+                Vector2 playerPos = new Vector2(GameHackFunc.ClientData.GetPlayer().X, GameHackFunc.ClientData.GetPlayer().Y);
                 Vector2 destination = map.CalculatePositionFromMap2World(p.X, p.Y);
 
                 if (Vector2.Distance(playerPos / 100, destination) < 3)
@@ -767,7 +767,6 @@ namespace CodeInject
 
             Array.Copy(servIdArray,0,packet,6, servIdArray.Length);
 
-
             fixed (byte* packetPointer = packet)
             {
                 GameHackFunc.Actions.SendPacket(packetPointer);
@@ -778,6 +777,12 @@ namespace CodeInject
         {
             comboBox4.Items.Clear();
             comboBox4.Items.AddRange(GameHackFunc.ClientData.GetConsumableItemsFromInventory(comboBox4.Items.OfType<InvItem>().ToList()).ToArray());
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            listBox5.Items.Clear();
+            listBox5.Items.AddRange(GameHackFunc.ClientData.GetAllItemsFromInventory(listBox5.Items.OfType<InvItem>().ToList()).ToArray());
         }
     }
 

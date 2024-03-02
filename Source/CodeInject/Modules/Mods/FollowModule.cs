@@ -25,7 +25,7 @@ namespace CodeInject.Modules
 
             if(fPlayer != null)
             {
-                GameHackFunc.Actions.MoveToPoint(new System.Numerics.Vector2(*fPlayer.X/100, *fPlayer.Y/100));
+                GameHackFunc.Actions.MoveToPoint(new System.Numerics.Vector2(fPlayer.X/100, fPlayer.Y/100));
             }
         }
     }

@@ -70,11 +70,11 @@ namespace CodeInject.Hunt
             }
             else
             {
-                if (Target == null || !GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || *((NPC)Target).Hp <= 0)
+                if (Target == null || !GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || ((NPC)Target).Hp <= 0)
                 {
                     this.Target = GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                     .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
-                    .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => *(((NPC)x).Hp) > 0);
+                    .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => (((NPC)x).Hp) > 0);
                 }
 
 
@@ -89,7 +89,7 @@ namespace CodeInject.Hunt
                         }
                     }
                     if (NormalAttack == true)
-                        GameHackFunc.Actions.Attack(*this.Target.ID);
+                        GameHackFunc.Actions.Attack(this.Target.ID);
                 }
             }
             base.Update();

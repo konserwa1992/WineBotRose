@@ -167,7 +167,7 @@ namespace CodeInject.AutoWalk
 
 
 
-            var characterCoordinates = new double[] { *GameHackFunc.ClientData.GetPlayer().X / 100, *GameHackFunc.ClientData.GetPlayer().Y / 100, 1 };
+            var characterCoordinates = new double[] { GameHackFunc.ClientData.GetPlayer().X / 100, GameHackFunc.ClientData.GetPlayer().Y / 100, 1 };
             var newCoordinates = transformationMatrix.Multiply(Vector<double>.Build.DenseOfArray(characterCoordinates));
             return new Point((float)newCoordinates[0], (float)newCoordinates[1]);
         }

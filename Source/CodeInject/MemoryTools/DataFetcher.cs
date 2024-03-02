@@ -50,14 +50,43 @@ namespace CodeInject.MemoryTools
             Process _proc = Process.GetCurrentProcess();
 
             BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
-            GameBaseAddres = MemoryTools.GetVariableAddres("45 0F 57 DB 0F 1F 44 00 00 4C 8B 0D ?? ?? ?? ??").ToInt64(); //UOB#U6
+     
+
+            GameBaseAddres = MemoryTools.GetVariableAddres("83 f8 07 0f 8f ?? ?? ?? ?? 48 63 0f 48 8b 05 ?? ?? ?? ??").ToInt64(); //UOB#U6
             getItemFunc = (GetItemAdr)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8B 0D ?? ?? ?? ?? 0F B7 DD 0F BF 54 59 0C E8 ?? ?? ?? ??"), typeof(GetItemAdr));//MSG#INV3
-            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 EC 20 48 8B D9 E8 ?? ?? ?? ?? 83 f8 01 75 1c"), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("48 89 5c 24 08 57 48 83 ec ?? 48 8b f9 48 8d 59 50 e8 ?? ?? ?? ?? 83 f8 ?? 75 ?? 48 8b 0d ?? ?? ?? ??"), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
            Console.WriteLine($"DataReader Init");
        
             //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
         }
 
+
+        public List<InvItem> GetAllItemsFromInventory(List<InvItem> currentList)
+        {
+            List<IntPtr> itemsAddrs = GameHackFunc.ClientData.getInventoryItems();
+            List<InvItem> invDescriptions = new List<InvItem>();
+
+            foreach (IntPtr item in itemsAddrs)
+            {
+                if (item.ToInt64() != 0x0)
+                {
+                    InvItem inv = new InvItem((long*)GameHackFunc.ClientData.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
+                    invDescriptions.Add(inv);
+                }
+            }
+
+            //ADD NEW
+            foreach (InvItem item in invDescriptions)
+            {
+                if (!currentList.Any(x => (long)x.ObjectPointer == (long)item.ObjectPointer))
+                {
+                    currentList.Add(item);
+                }
+            }
+            //REMOVE OLD
+            currentList.RemoveAll(a => !invDescriptions.Any(b => (long)b.ObjectPointer == (long)a.ObjectPointer));
+            return currentList;
+        }
 
         public List<InvItem> GetConsumableItemsFromInventory(List<InvItem> currentList)
         {
@@ -138,7 +167,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x151dc98); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x14ab8c8); //2023.10.04
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xd78) != 0)//OBS#S2
@@ -178,13 +207,14 @@ namespace CodeInject.MemoryTools
 
 
 
-                if (GameHackFunc.ClientData.BaseAddres + 0x10050F0 == ObjectTypeFuncTable)
+            if (GameHackFunc.ClientData.BaseAddres + 0xFAD3F0 == ObjectTypeFuncTable)
                     return new OtherPlayer(wskObj);
-                if (GameHackFunc.ClientData.BaseAddres + 0x1006B48 == ObjectTypeFuncTable) // player avatar
-                    return new Player(wskObj);
-
-            
+            if (GameHackFunc.ClientData.BaseAddres + 0xFAEE48 == ObjectTypeFuncTable) // player avatar
+                   return new Player(wskObj);
+            if (GameHackFunc.ClientData.BaseAddres + 0xFAC4C0 == ObjectTypeFuncTable) // player avatar
                 return new NPC(wskObj);
+
+            return null;
         }
 
         /// <summary>
@@ -217,7 +247,11 @@ namespace CodeInject.MemoryTools
 
                 for (int i = 0; i < *count; i++)
                 {
-                    wholeNpcList.Add(GetObject(*monsterIDList));
+                    IObject obj = GetObject(*monsterIDList);
+                    if (obj != null)
+                    {
+                        wholeNpcList.Add(GetObject(*monsterIDList));
+                    }
                     monsterIDList++;
                 }
 
@@ -242,6 +276,7 @@ namespace CodeInject.MemoryTools
             List<IntPtr> inventorySlotAddrs = new List<IntPtr>();
             //movsxd rax, dword ptr [rdi+000001B0] 2B 5E90
             long* startList = (long*)(*(long*)((long)GameHackFunc.ClientData.GetPlayer().ObjectPointer + 0x6b18 + 0x20));//MSG#INV4
+
 
 
             for (long itemIndex = 0; itemIndex < 139; itemIndex++)
@@ -290,7 +325,7 @@ namespace CodeInject.MemoryTools
 
             Process _proc = Process.GetCurrentProcess();
 
-            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x151FA48));
+            long* RDI = (long*)(*(long*)(_proc.MainModule.BaseAddress.ToInt64() + 0x14AD678));
             long* RBX = (long*)((long)RDI + 0x2a0b8);
 
             RBX = (long*)*RBX; //select first item from list

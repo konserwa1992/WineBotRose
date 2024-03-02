@@ -136,13 +136,15 @@ namespace CodeInject
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button10 = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button22 = new System.Windows.Forms.Button();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button21 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -1231,6 +1233,8 @@ namespace CodeInject
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button22);
+            this.tabPage7.Controls.Add(this.listBox5);
             this.tabPage7.Controls.Add(this.comboBox4);
             this.tabPage7.Controls.Add(this.button21);
             this.tabPage7.Controls.Add(this.button12);
@@ -1242,14 +1246,45 @@ namespace CodeInject
             this.tabPage7.Text = "Debug";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(237, 406);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(216, 23);
+            this.button22.TabIndex = 5;
+            this.button22.Text = "button22";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Visible = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(237, 71);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(216, 329);
+            this.listBox5.TabIndex = 4;
+            this.listBox5.Visible = false;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(237, 15);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 3;
+            this.comboBox4.Visible = false;
+            this.comboBox4.DropDown += new System.EventHandler(this.comboBox4_DropDown);
+            // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(31, 120);
+            this.button21.Location = new System.Drawing.Point(237, 42);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(75, 23);
+            this.button21.Size = new System.Drawing.Size(121, 23);
             this.button21.TabIndex = 2;
             this.button21.Text = "button21";
             this.button21.UseVisualStyleBackColor = true;
+            this.button21.Visible = false;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // button12
@@ -1267,7 +1302,7 @@ namespace CodeInject
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(473, 446);
+            this.listBox1.Size = new System.Drawing.Size(216, 394);
             this.listBox1.TabIndex = 0;
             this.listBox1.Visible = false;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -1282,15 +1317,6 @@ namespace CodeInject
             // 
             this.timer3.Interval = 250;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(31, 93);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 3;
-            this.comboBox4.DropDown += new System.EventHandler(this.comboBox4_DropDown);
             // 
             // cBot
             // 
@@ -1446,5 +1472,7 @@ namespace CodeInject
         private Button button20;
         private Button button21;
         private ComboBox comboBox4;
+        private Button button22;
+        private ListBox listBox5;
     }
 }

@@ -12,9 +12,8 @@ namespace ISpace
     {
         public unsafe static int IMain(string args)
         {
-             cBot cBot = new cBot();
-              cBot.ShowDialog();
-
+            cBot cBot = new cBot();
+            cBot.ShowDialog();
 
             return 0;
         }

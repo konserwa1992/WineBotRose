@@ -42,8 +42,8 @@ namespace CodeInject.UIPanels
         private unsafe void bGetPosition_Click(object sender, EventArgs e)
         {
             Player player = GameHackFunc.ClientData.GetPlayer();
-            textBox1.Text = (*player.X).ToString();
-            textBox2.Text = (*player.Y).ToString();
+            textBox1.Text = (player.X).ToString();
+            textBox2.Text = (player.Y).ToString();
            
         }
     }

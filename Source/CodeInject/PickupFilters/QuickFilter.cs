@@ -34,7 +34,7 @@ namespace CodeInject.PickupFilters
 
         public unsafe bool CanPickup(IObject item)
         {
-            return pickTypeList.Contains((ItemType)(*(((Item)item).ItemType)));
+            return pickTypeList.Contains((ItemType)((((Item)item).ItemType)));
         }
     }
 }

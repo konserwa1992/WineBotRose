@@ -10,14 +10,14 @@ namespace CodeInject.Actors
 {
     public unsafe class Item : IObject
     {
-        public long* ObjectPointer { get; set; }
-        public ushort* ID { get; set; }
-        public short* ItemData { get; set; }
-        public float* X { get; set; }
-        public float* Y { get; set; }
-        public float* Z { get; set; }
+        public long ObjectPointer { get; set; }
+        public ushort ID { get; set; }
+        public short ItemData { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
 
-        public int* CanPick {  get; set; }
+  
         /// <summary>
         /// 0x08 Weapon
         /// 0x09 Shield
@@ -28,24 +28,22 @@ namespace CodeInject.Actors
         /// 0x05 - shoes
         /// 0x0C - Material
         /// </summary>
-        public short* ItemType { get;set; }
+        public short ItemType { get;set; }
 
         private void Init(long* entry)
         {
        
-            ObjectPointer = entry;
+            ObjectPointer = (long)entry;
 
 
-            X = (float*)((long)entry + 0x10);
-            Y = (float*)((long)entry + 0x14);
-            Z = (float*)((long)entry + 0x18);
-            ID = (ushort*)((long)entry + 0x1c);
-            ItemData = (short*)((long)entry + 0x6c);
+            X = *(float*)((long)entry + 0x10);
+            Y = *(float*)((long)entry + 0x14);
+            Z = *(float*)((long)entry + 0x18);
+            ID = *(ushort*)((long)entry + 0x1c);
+            ItemData = *(short*)((long)entry + 0x6c);
 
-            CanPick = (int*)((long)entry + 0x134);
 
-            ItemType = (short*)((long)entry + 0x68);
-
+            ItemType = *(short*)((long)entry + 0x68);
         }
 
         public Item(long* Entry)
@@ -61,15 +59,15 @@ namespace CodeInject.Actors
 
         public double CalcDistance(IObject targetObject)
         {
-            return Math.Sqrt(Math.Pow((*targetObject.X/100) - (*this.X / 100), 2) + Math.Pow((*targetObject.Y / 100) - (*this.Y / 100), 2) + Math.Pow((*targetObject.Z / 100) - (*this.Z / 100), 2));
+            return Math.Sqrt(Math.Pow((targetObject.X/100) - (this.X / 100), 2) + Math.Pow((targetObject.Y / 100) - (this.Y / 100), 2) + Math.Pow((targetObject.Z / 100) - (this.Z / 100), 2));
         }
 
         public double CalcDistance(float x, float y, float z)
         {
             return Math.Sqrt(
-                  Math.Pow((x / 100) - (*this.X / 100), 2)
-                + Math.Pow((y / 100) - (*this.Y / 100), 2)
-                + Math.Pow((z / 100) - (*this.Z / 100), 2));
+                  Math.Pow((x / 100) - (this.X / 100), 2)
+                + Math.Pow((y / 100) - (this.Y / 100), 2)
+                + Math.Pow((z / 100) - (this.Z / 100), 2));
         }
 
         public override string ToString()
@@ -77,57 +75,57 @@ namespace CodeInject.Actors
             IBasicInfo temp;
 
 
-            switch (*ItemType)
+            switch (ItemType)
             {
                 case 0x08:
                     {
-                        temp = DataBase.GameDataBase.WeaponItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.WeaponItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + " " + temp.Name : "Unknow")}";
                     }
 
                 case 0x0A:
                     {
-                        temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
+                        temp = DataBase.GameDataBase.UsableItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((UsableItemsInfo)temp).DisplayName : "Unknow")}";
                     }
 
                 case 0x03:
                     {
-                        temp = DataBase.GameDataBase.BodyItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.BodyItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? temp.Name : "Unknow")}";
                     }
 
                 case 0x05:
                     {
-                        temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") +$" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.FootItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
 
                 case 0x04:
                     {
-                        temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
                 case 0x09:
                     {
-                        temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
 
                 case 0x0C:
                     {
-                        temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
                 case 0x0F:
                     {
-                        temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
-                        return $"{*ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + $" {(*CanPick).ToString("X")} " + temp.Name : "Unknow")}";
+                        temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") +  temp.Name : "Unknow")}";
                     }
 
                 default:
                     {
-                        return $"Unknow type:{*ID} {(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";
+                        return $"Unknow type:{ID} {(ItemType).ToString("X")} id:{(ItemData).ToString("X")}";
                     }
             }
         }

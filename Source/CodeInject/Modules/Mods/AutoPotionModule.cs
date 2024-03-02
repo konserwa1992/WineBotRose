@@ -22,8 +22,8 @@ namespace CodeInject.Modules
 
         public void AutoPotionFunction()
         {
-            AutoHp.Use((((float)*(GameHackFunc.ClientData.GetPlayer()).Hp / *(GameHackFunc.ClientData.GetPlayer()).MaxHp) * 100));
-            AutoMp.Use((((float)*(GameHackFunc.ClientData.GetPlayer()).Mp / *(GameHackFunc.ClientData.GetPlayer()).MaxMp) * 100));
+            AutoHp.Use((((float)(GameHackFunc.ClientData.GetPlayer()).Hp / (GameHackFunc.ClientData.GetPlayer()).MaxHp) * 100));
+            AutoMp.Use((((float)(GameHackFunc.ClientData.GetPlayer()).Mp / (GameHackFunc.ClientData.GetPlayer()).MaxMp) * 100));
         }
 
         public void SetAutoHPpotion(int minHelathProc, int colddawn, InvItem item)

@@ -43,6 +43,8 @@ namespace CodeInject.MemoryTools
         private long BaseNetworkClass;
         private long BaseOfDialogBoxes;
 
+        private long ChatBaseAddres;
+
         public GameActions()
         {
             Init();
@@ -51,10 +53,13 @@ namespace CodeInject.MemoryTools
         {
             BaseAddres = Process.GetCurrentProcess().MainModule.BaseAddress.ToInt64();
             BaseNetworkClass = MemoryTools.GetVariableAddres("48 8B 47 28 48 8D 4F 28 FF 90 D8 01 00 00 48 8B 0D ?? ?? ?? ??").ToInt64();//2023.10.03
+            ChatBaseAddres = MemoryTools.GetVariableAddres("48 8d 54 24 40 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ??").ToInt64();//2023.10.03
+
             Console.WriteLine($"BaseNetworkClass {BaseNetworkClass.ToString("X")}");
 
-
-            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x4cc370), typeof(Log));
+            //48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ?? e8 ?? ?? ?? ??
+            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x44bd30), typeof(Log));
+          //  LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8d 54 24 40 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(Log));
 
             UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 
             Console.WriteLine($"UseItemFunc {BaseNetworkClass.ToString("X")}");
@@ -68,7 +73,7 @@ namespace CodeInject.MemoryTools
             MoveToPointFunc = (MoveToAction)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8b cf e8 ?? ?? ?? ?? 84 c0 ?? ?? ?? ?? ?? ?? 48 8b 0d ?? ?? ?? ?? 4c 8b c6 48 81 c1 ?? ?? ?? ?? 33 d2 e8 ?? ?? ?? ??"), typeof(MoveToAction));
             Console.WriteLine($"MoveToPointFunc {BaseNetworkClass.ToString("X")}");
 
-            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x5d54d0), typeof(PickUpAction)); //MSG#INV4
+            PickUpFunc = (PickUpAction)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres+0x55d670), typeof(PickUpAction)); //MSG#INV4
             Console.WriteLine($"GameActions Init");
 
 
@@ -79,7 +84,7 @@ namespace CodeInject.MemoryTools
 
         public void Logger(string text, int chatType = 5)
         {
-            LoggerFunc(BaseAddres+0x1524950, text, chatType, Color.LimeGreen.ToArgb());
+            LoggerFunc(BaseAddres+0x14b1d80, text, chatType, Color.LimeGreen.ToArgb());
         }
 
         public void TalkToNPC(ushort ID)
@@ -99,7 +104,7 @@ namespace CodeInject.MemoryTools
         {
             //48 8b cf e8 ?? ?? ?? ?? 84 c0 0f 84 ?? ?? ?? ?? 48 8b cf e8 ?? ?? ?? ?? 6683 f804 75 7b 48 8b 47 28  48 8d 4f 28
             long r8 = ((long)item.ObjectPointer) +0x10;
-            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), *item.ID, r8);
+            PickUpFunc((*(long*)(BaseNetworkClass) + 0x16b8), item.ID, r8);
         }
 
         /// <summary>
@@ -110,8 +115,15 @@ namespace CodeInject.MemoryTools
         /// 
         public void CastSpell(IObject target, int skillIndex)
         {
-            
-                AttackWithSkillFunc(skillIndex, *target.ID, target.X);
+            float[] SkillPosition = new float[]
+            {
+                target.X,target.Y,target.Z
+            };
+
+            fixed (float* markPointer = SkillPosition)
+            {
+                AttackWithSkillFunc(skillIndex, target.ID, markPointer);
+            }
         }
 
 
@@ -137,8 +149,14 @@ namespace CodeInject.MemoryTools
         {
             IObject player = GameHackFunc.ClientData.GetPlayer();
 
-
-            AttackWithSkillFunc(skillIndex, *player.ID, player.X);
+            float[] markPosition = new float[]
+            {
+                player.X, player.Y, player.Z
+            };
+            fixed (float* markPointer = markPosition)
+            {
+                AttackWithSkillFunc(skillIndex, player.ID, markPointer);
+            }
         }
 
         public void Attack(int targedID)
