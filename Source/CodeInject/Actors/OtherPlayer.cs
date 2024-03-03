@@ -16,8 +16,20 @@ namespace CodeInject.Actors
         public float X { get; set; }
         public float Y { get; set; }
         public float Z { get; set; }
-        public int MaxHp { get; set; }
-        public int Hp { get; set; }
+        public int MaxHp
+        {
+            get
+            {
+                return *(int*)(ObjectPointer + 0xf8);
+            }
+        }
+        public int Hp
+        {
+            get
+            {
+                return *(int*)(ObjectPointer + 0xf0);
+            }
+        }
         public int MaxMp { get; set; }
         public int Mp { get; set; }
         public string Name { get; set; } = "";
@@ -32,8 +44,6 @@ namespace CodeInject.Actors
             Y = *(float*)(*Entry + 0x14);
             Z = *(float*)(*Entry + 0x18);
             ID = *(ushort*)(*((long*)(*Entry + 0x20)));
-            Hp = *(int*)(*Entry + 0xf0);
-            MaxHp = *(int*)(*Entry + 0xf8);
             Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB8)));
         }
 

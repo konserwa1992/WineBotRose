@@ -34,7 +34,6 @@ namespace CodeInject
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.tProfileName = new System.Windows.Forms.TextBox();
@@ -181,7 +180,6 @@ namespace CodeInject
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button20);
             this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.button18);
             this.tabPage1.Controls.Add(this.tProfileName);
@@ -206,16 +204,6 @@ namespace CodeInject
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(293, 398);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(186, 30);
-            this.button20.TabIndex = 18;
-            this.button20.Text = "Donate";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button19
             // 
@@ -1469,7 +1457,6 @@ namespace CodeInject
         private Button button18;
         private TextBox tProfileName;
         private ComboBox comboBox3;
-        private Button button20;
         private Button button21;
         private ComboBox comboBox4;
         private Button button22;

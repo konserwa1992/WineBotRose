@@ -14,8 +14,8 @@ namespace CodeInject.Actors
          float Z { get; set; }
 
         string Name { get; set; }
-        int MaxHp { get; set; }
-         int Hp { get; set; }
+        int MaxHp { get; }
+         int Hp { get; }
         int MaxMp { get; set; }
         int Mp { get; set; }
     }

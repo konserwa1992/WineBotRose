@@ -77,7 +77,7 @@ namespace CodeInject.MemoryTools
             Console.WriteLine($"GameActions Init");
 
 
-            SendPacketFunc = (PacketSendDelegate)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0xAF6300), typeof(PacketSendDelegate)); //MSG#INV4
+            SendPacketFunc = (PacketSendDelegate)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x55d670), typeof(PacketSendDelegate)); //MSG#INV4
 
         }
 
