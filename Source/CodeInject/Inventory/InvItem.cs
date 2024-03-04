@@ -99,6 +99,11 @@ namespace CodeInject
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
                         return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
+                case 0x07:
+                    {
+                        temp = DataBase.GameDataBase.AccesoriesItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
+                    }
                 default:
                     {
                         return $"Unknow type:{(*ItemType).ToString("X")} id:{(*ItemData).ToString("X")}";

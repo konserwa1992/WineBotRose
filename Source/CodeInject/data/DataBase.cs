@@ -174,7 +174,7 @@ namespace CodeInject
             LoadMaterialItemDataBase();
             LoadHeadDataBase();
             LoadMountDataBase();
-      //      LoadAccesoriesDataBase();
+            LoadAccesoriesDataBase();
             LoadGemDataBase();
         }
 

@@ -175,6 +175,11 @@ namespace CodeInject
             {
                 return DataBase.GameDataBase.GemItemsDatabase.FirstOrDefault(x => x.ID == int.Parse(line[1]));
             }
+            else
+            if (typeof(AccesoriesItemsInfo).ToString() == line[0])
+            {
+                return DataBase.GameDataBase.AccesoriesItemsDatabase.FirstOrDefault(x => x.ID == int.Parse(line[1]));
+            }
 
             return null;
         }
@@ -222,6 +227,11 @@ namespace CodeInject
         private void button11_Click(object sender, EventArgs e)
         {
             SetSearchList<GemItemsInfo>();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            SetSearchList<AccesoriesItemsInfo>();
         }
     }
 }

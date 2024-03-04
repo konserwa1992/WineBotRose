@@ -217,6 +217,9 @@
     <None Include="data\MountItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="data\AccesoriesItemList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="data\ShieldItemList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

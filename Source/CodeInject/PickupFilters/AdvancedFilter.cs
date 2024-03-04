@@ -34,6 +34,8 @@ namespace CodeInject.PickupFilters
                     return PickWeapon.Any(x => x.ID == item2Check.ItemData && x.GetType() == typeof(MountItemsInfo));
                 case ItemType.Gem:
                     return PickWeapon.Any(x => x.ID == item2Check.ItemData && x.GetType() == typeof(GemItemsInfo));
+                case ItemType.Accesories:
+                    return PickWeapon.Any(x => x.ID == item2Check.ItemData && x.GetType() == typeof(AccesoriesItemsInfo));
 
                 default: 
                     return false;

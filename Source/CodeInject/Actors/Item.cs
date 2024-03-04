@@ -110,7 +110,7 @@ namespace CodeInject.Actors
                     }
                 case 0x07:
                     {
-                        temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        temp = DataBase.GameDataBase.AccesoriesItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
                         return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
                 case 0x09:
