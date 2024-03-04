@@ -538,7 +538,10 @@ namespace CodeInject
         private void button3_Click_1(object sender, EventArgs e)
         {
             if (lHealSkills.SelectedItem != null)
+            {
+               // lHealSkills.Items.Remove(lHealSkills.SelectedItem);
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lHealSkills.SelectedItem);
+            }
         }
 
         private void comboBox1_DropDown(object sender, EventArgs e)
@@ -783,6 +786,11 @@ namespace CodeInject
         {
             listBox5.Items.Clear();
             listBox5.Items.AddRange(GameHackFunc.ClientData.GetAllItemsFromInventory(listBox5.Items.OfType<InvItem>().ToList()).ToArray());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            lPlayers2Heal.Items.Remove(lPlayers2Heal.SelectedItem);
         }
     }
 

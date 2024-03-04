@@ -17,6 +17,7 @@
         Gloves = 0x04,
         Shoes = 0x05,
         Material = 0x0C,
-        Mount = 0x0F
+        Mount = 0x0F,
+        Gem = 0x0B
     }
 }

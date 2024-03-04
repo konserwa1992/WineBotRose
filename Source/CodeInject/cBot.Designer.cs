@@ -562,6 +562,7 @@ namespace CodeInject
             this.button6.TabIndex = 16;
             this.button6.Text = "-";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -577,7 +578,7 @@ namespace CodeInject
             // 
             this.button5.Location = new System.Drawing.Point(192, 218);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(262, 23);
+            this.button5.Size = new System.Drawing.Size(128, 23);
             this.button5.TabIndex = 14;
             this.button5.Text = "Refresh";
             this.button5.UseVisualStyleBackColor = true;

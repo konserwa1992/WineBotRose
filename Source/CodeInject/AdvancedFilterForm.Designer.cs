@@ -48,6 +48,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox2
@@ -60,7 +61,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(138, 180);
+            this.button2.Location = new System.Drawing.Point(138, 269);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 9;
@@ -70,7 +71,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(138, 141);
+            this.button1.Location = new System.Drawing.Point(138, 240);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -81,18 +82,18 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(219, 122);
+            this.listBox2.Location = new System.Drawing.Point(219, 187);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 277);
+            this.listBox2.Size = new System.Drawing.Size(120, 212);
             this.listBox2.TabIndex = 7;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 122);
+            this.listBox1.Location = new System.Drawing.Point(12, 187);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(120, 277);
+            this.listBox1.Size = new System.Drawing.Size(120, 212);
             this.listBox1.TabIndex = 6;
             // 
             // label1
@@ -186,7 +187,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(138, 288);
+            this.button9.Location = new System.Drawing.Point(138, 358);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 19;
@@ -232,7 +233,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(258, 28);
+            this.button10.Location = new System.Drawing.Point(15, 115);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(75, 23);
             this.button10.TabIndex = 24;
@@ -240,11 +241,22 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(96, 115);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 25;
+            this.button11.Text = "Gems";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // AdvancedFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 487);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox1);
@@ -294,5 +306,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }

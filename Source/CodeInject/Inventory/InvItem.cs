@@ -88,6 +88,11 @@ namespace CodeInject
                         temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
                         return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
                     }
+                case 0x0B:
+                    {
+                        temp = DataBase.GameDataBase.GemItemsDatabase.FirstOrDefault(x => x.ID == *ItemData);
+                        return $"{(temp != null ? temp.ID + " " + temp.Name : "Unknow")}";
+                    }
 
                 case 0x0C:
                     {

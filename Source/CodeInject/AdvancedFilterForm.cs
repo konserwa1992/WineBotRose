@@ -165,6 +165,15 @@ namespace CodeInject
             else if (typeof(MaterialItemsInfo).ToString() == line[0])
             {
                 return DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == int.Parse(line[1]));
+            }else
+            if (typeof(MountItemsInfo).ToString() == line[0])
+            {
+                return DataBase.GameDataBase.MountItemsDatabase.FirstOrDefault(x => x.ID == int.Parse(line[1]));
+            }
+            else
+            if (typeof(GemItemsInfo).ToString() == line[0])
+            {
+                return DataBase.GameDataBase.GemItemsDatabase.FirstOrDefault(x => x.ID == int.Parse(line[1]));
             }
 
             return null;
@@ -208,6 +217,11 @@ namespace CodeInject
         private void button10_Click(object sender, EventArgs e)
         {
             SetSearchList<MountItemsInfo>();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            SetSearchList<GemItemsInfo>();
         }
     }
 }

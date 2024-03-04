@@ -92,6 +92,20 @@ namespace CodeInject
         public override string ToString() { return Name; }
     }
 
+    public class AccesoriesItemsInfo : IBasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
+    }
+
+    public class GemItemsInfo : IBasicInfo
+    {
+        public int ID { get; set; }
+        public string Name { get; set; } = "";
+        public override string ToString() { return Name; }
+    }
+
     public class DataBase
     {
         public static DataBase GameDataBase { get; private set; } = new DataBase();
@@ -102,11 +116,13 @@ namespace CodeInject
         public List<WeaponItemsInfo> WeaponItemsDatabase = new List<WeaponItemsInfo>();
         public List<BodyItemsInfo> BodyItemsDatabase = new List<BodyItemsInfo>();
         public List<ArmItemsInfo> ArmItemsDatabase = new List<ArmItemsInfo>();
+        public List<AccesoriesItemsInfo> AccesoriesItemsDatabase = new List<AccesoriesItemsInfo>();
         public List<FootItemsInfo> FootItemsDatabase = new List<FootItemsInfo>();
         public List<ShieldItemsInfo> SheildItemsDatabase = new List<ShieldItemsInfo>();
         public List<MaterialItemsInfo> MaterialItemsDatabase = new List<MaterialItemsInfo>();
         public List<HeadItemsInfo> HeadItemsDatabase = new List<HeadItemsInfo>();
         public List<MountItemsInfo> MountItemsDatabase = new List<MountItemsInfo>();
+        public List<GemItemsInfo> GemItemsDatabase = new List<GemItemsInfo>();
         public static string DataPath;
 
 
@@ -135,6 +151,10 @@ namespace CodeInject
                 return (HeadItemsDatabase as List<T>);
             if (typeof(T) == typeof(MountItemsInfo))
                 return (MountItemsDatabase as List<T>);
+            if (typeof(T) == typeof(AccesoriesItemsInfo))
+                return (AccesoriesItemsDatabase as List<T>);
+            if (typeof(T) == typeof(GemItemsInfo))
+                return (GemItemsDatabase as List<T>);
 
             return null;
         }
@@ -154,6 +174,16 @@ namespace CodeInject
             LoadMaterialItemDataBase();
             LoadHeadDataBase();
             LoadMountDataBase();
+      //      LoadAccesoriesDataBase();
+            LoadGemDataBase();
+        }
+
+        private void LoadGemDataBase()
+        {
+            if (!File.Exists(DataPath + "GemItemList.json")) GameHackFunc.Actions.Logger($"Missing file: GemItemList.json");
+            StreamReader dataRead = new StreamReader(DataPath + "GemItemList.json");
+            GemItemsDatabase = JsonConvert.DeserializeObject<List<GemItemsInfo>>(dataRead.ReadToEnd());
+            dataRead.Close();
         }
 
 
@@ -172,6 +202,15 @@ namespace CodeInject
             MaterialItemsDatabase = JsonConvert.DeserializeObject<List<MaterialItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
+
+        private void LoadAccesoriesDataBase()
+        {
+            if (!File.Exists(DataPath + "AccesoriesItemList.json")) GameHackFunc.Actions.Logger($"Missing file: AccesoriesItemList.json");
+            StreamReader dataRead = new StreamReader(DataPath + "AccesoriesItemList.json");
+            AccesoriesItemsDatabase = JsonConvert.DeserializeObject<List<AccesoriesItemsInfo>>(dataRead.ReadToEnd());
+            dataRead.Close();
+        }
+
         private void LoadHeadDataBase()
         {
             if (!File.Exists(DataPath + "HeadItemList.json")) GameHackFunc.Actions.Logger($"Missing file: HeadItemList.json");

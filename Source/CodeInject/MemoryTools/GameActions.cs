@@ -58,7 +58,7 @@ namespace CodeInject.MemoryTools
             Console.WriteLine($"BaseNetworkClass {BaseNetworkClass.ToString("X")}");
 
             //48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ?? e8 ?? ?? ?? ??
-            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x44bd30), typeof(Log));
+            LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x44bd30), typeof(Log));// IMG#45
           //  LoggerFunc = (Log)Marshal.GetDelegateForFunctionPointer(MemoryTools.GetCallAddress("48 8d 54 24 40 e8 ?? ?? ?? ?? 48 8b d0 45 33 c9 45 8d 41 05 48 8d 0d ?? ?? ?? ?? e8 ?? ?? ?? ??"), typeof(Log));
 
             UseItemFunc = (UseItemAction)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("40 53 48 83 ec 20 48 83 79 30 00 48 8b d9"), typeof(UseItemAction)); //MSG#INV5 

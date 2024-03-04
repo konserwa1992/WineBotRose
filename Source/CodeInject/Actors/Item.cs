@@ -24,8 +24,10 @@ namespace CodeInject.Actors
         /// 0xA - usable items potions etc
         /// 0x02 - hat
         /// 0x03 - chest armor
+        /// 0x07 - Accesories
         /// 0x04 - gloves
         /// 0x05 - shoes
+        /// 0x0B - Gems
         /// 0x0C - Material
         /// </summary>
         public short ItemType { get;set; }
@@ -106,12 +108,22 @@ namespace CodeInject.Actors
                         temp = DataBase.GameDataBase.ArmItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
                         return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
+                case 0x07:
+                    {
+                        temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
+                    }
                 case 0x09:
                     {
                         temp = DataBase.GameDataBase.SheildItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
                         return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
                     }
 
+                case 0x0B:
+                    {
+                        temp = DataBase.GameDataBase.GemItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
+                        return $"{ID} {(temp != null ? ((long)ObjectPointer).ToString("X") + temp.Name : "Unknow")}";
+                    }
                 case 0x0C:
                     {
                         temp = DataBase.GameDataBase.MaterialItemsDatabase.FirstOrDefault(x => x.ID == ItemData);
