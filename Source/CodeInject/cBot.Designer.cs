@@ -1243,7 +1243,6 @@ namespace CodeInject
             this.button22.TabIndex = 5;
             this.button22.Text = "button22";
             this.button22.UseVisualStyleBackColor = true;
-            this.button22.Visible = false;
             this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // listBox5
@@ -1253,7 +1252,6 @@ namespace CodeInject
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(216, 329);
             this.listBox5.TabIndex = 4;
-            this.listBox5.Visible = false;
             // 
             // comboBox4
             // 
@@ -1293,7 +1291,6 @@ namespace CodeInject
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(216, 394);
             this.listBox1.TabIndex = 0;
-            this.listBox1.Visible = false;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // timer2

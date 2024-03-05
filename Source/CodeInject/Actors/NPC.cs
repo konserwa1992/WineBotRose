@@ -15,7 +15,13 @@ namespace CodeInject.Actors
         public float X { get; set; }
         public float Y { get; set; }
         public float Z { get; set; }
-        public int Hp { get; set; }
+        public int Hp
+        {
+            get
+            {
+                return *(int*)(ObjectPointer + 0xF0);
+            }
+        }
         public int MaxHp { get; set; }
 
         public string* Name { get; set; }
@@ -30,7 +36,7 @@ namespace CodeInject.Actors
                 Z = *(float*)(*Entry + 0x18);
                 if ((long*)(*Entry + 0x28) != null)
                 ID = *(ushort*)(*((long*)(*Entry + 0x20)));//0x368
-                Hp = *(int*)(*Entry + 0xF0);
+              //  Hp = *(int*)(*Entry + 0xF0);
                 MaxHp = *(int*)(*Entry + 0xF8);
 
                 //Name = (string*)(*Entry + 0xbb0);
