@@ -33,12 +33,12 @@ namespace CodeInject.Actors
             Y = *(float*)(*Entry + 0x14);
             Z = *(float*)(*Entry + 0x18);
             ID = *(ushort*)(*((long*)(*Entry + 0x20)));
-            Hp = *(int*)(*Entry + 0x3B90);
-            MaxHp = *(int*)(*Entry + 0x3D3C);
-            Mp = *(int*)(*Entry + 0x3B94);
-            MaxMp = *(int*)(*Entry + 0x46CC);
+            Hp = *(int*)(*Entry + 0x3980);
+            MaxHp = *(int*)(*Entry + 0x3B2C);
+            Mp = *(int*)(*Entry + 0x3984);
+            MaxMp = *(int*)(*Entry + 0x3B38);
             BuffCount = *(short*)(*Entry + 0x858);
-            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB8)));
+            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0x9A8)));
         }
 
         public double CalcDistance(IObject targerObject)
@@ -78,7 +78,7 @@ namespace CodeInject.Actors
             List<ushort> list = new List<ushort>();
      
 
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.ClientData.BaseAddres + 0x014ab8b0, new short[] { 0x410 }); //#IMG12
+            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.Game.ClientData.BaseAddres + 0x014ab8b0, new short[] { 0x410 }); //#IMG12
             baseBuffAddres += 0x440;
 
 

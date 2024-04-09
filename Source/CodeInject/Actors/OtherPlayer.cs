@@ -44,7 +44,7 @@ namespace CodeInject.Actors
             Y = *(float*)(*Entry + 0x14);
             Z = *(float*)(*Entry + 0x18);
             ID = *(ushort*)(*((long*)(*Entry + 0x20)));
-            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0xBB8)));
+            Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0x9A8)));
         }
 
 

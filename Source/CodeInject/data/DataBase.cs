@@ -180,7 +180,7 @@ namespace CodeInject
 
         private void LoadGemDataBase()
         {
-            if (!File.Exists(DataPath + "GemItemList.json")) GameHackFunc.Actions.Logger($"Missing file: GemItemList.json");
+            if (!File.Exists(DataPath + "GemItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: GemItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "GemItemList.json");
             GemItemsDatabase = JsonConvert.DeserializeObject<List<GemItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
@@ -189,7 +189,7 @@ namespace CodeInject
 
         private void LoadMountDataBase()
         {
-            if (!File.Exists(DataPath + "MountItemList.json")) GameHackFunc.Actions.Logger($"Missing file: MaterialItemList.json");
+            if (!File.Exists(DataPath + "MountItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: MaterialItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "MountItemList.json");
             MountItemsDatabase = JsonConvert.DeserializeObject<List<MountItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
@@ -197,7 +197,7 @@ namespace CodeInject
 
         private void LoadMaterialItemDataBase()
         {
-            if (!File.Exists(DataPath+"MaterialItemList.json")) GameHackFunc.Actions.Logger($"Missing file: MaterialItemList.json");
+            if (!File.Exists(DataPath+"MaterialItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: MaterialItemList.json");
             StreamReader dataRead = new StreamReader(DataPath+"MaterialItemList.json");
             MaterialItemsDatabase = JsonConvert.DeserializeObject<List<MaterialItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
@@ -205,7 +205,7 @@ namespace CodeInject
 
         private void LoadAccesoriesDataBase()
         {
-            if (!File.Exists(DataPath + "AccesoriesItemList.json")) GameHackFunc.Actions.Logger($"Missing file: AccesoriesItemList.json");
+            if (!File.Exists(DataPath + "AccesoriesItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: AccesoriesItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "AccesoriesItemList.json");
             AccesoriesItemsDatabase = JsonConvert.DeserializeObject<List<AccesoriesItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
@@ -213,7 +213,7 @@ namespace CodeInject
 
         private void LoadHeadDataBase()
         {
-            if (!File.Exists(DataPath + "HeadItemList.json")) GameHackFunc.Actions.Logger($"Missing file: HeadItemList.json");
+            if (!File.Exists(DataPath + "HeadItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: HeadItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "HeadItemList.json");
             HeadItemsDatabase = JsonConvert.DeserializeObject<List<HeadItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
@@ -221,56 +221,56 @@ namespace CodeInject
 
         private void LoadBodyDataBase()
         {
-            if (!File.Exists(DataPath + "BodyItemList.json")) GameHackFunc.Actions.Logger($"Missing file: BodyItemList.json");
+            if (!File.Exists(DataPath + "BodyItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: BodyItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "BodyItemList.json");
             BodyItemsDatabase = JsonConvert.DeserializeObject<List<BodyItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadArmDataBase()
         {
-            if (!File.Exists(DataPath + "ArmItemList.json")) GameHackFunc.Actions.Logger($"Missing file: ArmItemList.json");
+            if (!File.Exists(DataPath + "ArmItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: ArmItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "ArmItemList.json");
             ArmItemsDatabase = JsonConvert.DeserializeObject<List<ArmItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadFootDataBase()
         {
-            if (!File.Exists(DataPath + "FootItemList.json")) GameHackFunc.Actions.Logger($"Missing file: FootItemList.json");
+            if (!File.Exists(DataPath + "FootItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: FootItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "FootItemList.json");
             FootItemsDatabase = JsonConvert.DeserializeObject<List<FootItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadWeaponDataBase()
         {
-            if (!File.Exists(DataPath + "WeaponItemList.json")) GameHackFunc.Actions.Logger($"Missing file: WeaponItemList.json");
+            if (!File.Exists(DataPath + "WeaponItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: WeaponItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "WeaponItemList.json");
             WeaponItemsDatabase = JsonConvert.DeserializeObject<List<WeaponItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadMonsterDataBase()
         {
-            if (!File.Exists(DataPath + "MonsterList.json")) GameHackFunc.Actions.Logger($"Missing file: MonsterList.json");
+            if (!File.Exists(DataPath + "MonsterList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: MonsterList.json");
             StreamReader dataRead = new StreamReader(DataPath + "MonsterList.json");
             MonsterDatabase = JsonConvert.DeserializeObject<List<MobInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadSkillDataBase()
         {
-            if (!File.Exists(DataPath + "SkillList.json")) GameHackFunc.Actions.Logger($"Missing file: SkillList.json");
+            if (!File.Exists(DataPath + "SkillList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: SkillList.json");
             StreamReader dataRead = new StreamReader(DataPath + "SkillList.json");
             SkillDatabase = JsonConvert.DeserializeObject<List<SkillInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadUsableItemDataBase()
         {
-            if (!File.Exists(DataPath + "UseItemList.json")) GameHackFunc.Actions.Logger($"Missing file: UseItemList.json");
+            if (!File.Exists(DataPath + "UseItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: UseItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "UseItemList.json");
             UsableItemsDatabase = JsonConvert.DeserializeObject<List<UsableItemsInfo>>(dataRead.ReadToEnd());
             dataRead.Close();
         }
         private void LoadShieldItemDataBase()
         {
-            if (!File.Exists(DataPath + "ShieldItemList.json")) GameHackFunc.Actions.Logger($"Missing file: ShieldItemList.json");
+            if (!File.Exists(DataPath + "ShieldItemList.json")) GameHackFunc.Game.Actions.Logger($"Missing file: ShieldItemList.json");
             StreamReader dataRead = new StreamReader(DataPath + "ShieldItemList.json");
 
             SheildItemsDatabase = JsonConvert.DeserializeObject<List<ShieldItemsInfo>>(dataRead.ReadToEnd());

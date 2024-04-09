@@ -50,7 +50,7 @@ namespace CodeInject.Hunt
         {
             if (Players2HealList.Count > 0)
             {
-                    IPlayer currentPlayerObj2Heal = (IPlayer)GameHackFunc.ClientData.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && Players2HealList.Contains(((IPlayer)x).Name))
+                    IPlayer currentPlayerObj2Heal = (IPlayer)GameHackFunc.Game.ClientData.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && Players2HealList.Contains(((IPlayer)x).Name))
                         .OrderBy(x => (((float)((IPlayer)x).Hp / (float)((IPlayer)x).MaxHp) * 100.0f))
                         .FirstOrDefault();
 
@@ -61,20 +61,21 @@ namespace CodeInject.Hunt
 
                         if (((currhp / maxhp) * 100.0f) < ProcHeal)
                         {
-                            GameHackFunc.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
+                            GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
                         }
                     }
             }
+
 
             base.Update();
         }
 
         private void GoToHuntingAreaCenter()
         {
-            if (((int)GameHackFunc.ClientData.GetPlayer().X) != (int)HuntingAreaCenter.X &&
-                 ((int)GameHackFunc.ClientData.GetPlayer().Y) != (int)HuntingAreaCenter.Y)
+            if (((int)GameHackFunc.Game.ClientData.GetPlayer().X) != (int)HuntingAreaCenter.X &&
+                 ((int)GameHackFunc.Game.ClientData.GetPlayer().Y) != (int)HuntingAreaCenter.Y)
             {
-                GameHackFunc.Actions.MoveToPoint(new Vector2(HuntingAreaCenter.X / 100, HuntingAreaCenter.Y / 100));
+                GameHackFunc.Game.Actions.MoveToPoint(new Vector2(HuntingAreaCenter.X / 100, HuntingAreaCenter.Y / 100));
             }
         }
     }

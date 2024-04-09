@@ -17,7 +17,7 @@ namespace CodeInject.Party
 
         public override string ToString()
         {
-            NPC npce = (NPC)GameHackFunc.ClientData.GetPartyMemberDetails(this);
+            NPC npce = (NPC)GameHackFunc.Game.ClientData.GetPartyMemberDetails(this);
             return (((NPC)PartyMemberObject).Hp) +" "+ MemberName;
         }
     }

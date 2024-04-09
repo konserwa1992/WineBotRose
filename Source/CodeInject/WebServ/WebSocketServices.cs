@@ -19,7 +19,7 @@ namespace CodeInject
         {
             protected override void OnMessage(MessageEventArgs e)
             {
-                Send($"{GameHackFunc.ClientData.GetPlayer().ToWSObject()}");
+                Send($"{GameHackFunc.Game.ClientData.GetPlayer().ToWSObject()}");
             }
 
         }
@@ -28,7 +28,7 @@ namespace CodeInject
         {
             protected override void OnMessage(MessageEventArgs e)
             {
-                List<IObject> list = GameHackFunc.ClientData.GetNPCs();
+                List<IObject> list = GameHackFunc.Game.ClientData.GetNPCs();
 
                 List<object> toSerialzie = new List<object>();
                 NPC last = null;
@@ -108,7 +108,7 @@ namespace CodeInject
         {
             protected override void OnOpen()
             {
-                List<IntPtr> items = GameHackFunc.ClientData.getInventoryItems();
+                List<IntPtr> items = GameHackFunc.Game.ClientData.getInventoryItems();
 
                 List<ItemModel> ItemToSend = new List<ItemModel>();
 
@@ -116,7 +116,7 @@ namespace CodeInject
                 {
                     if (item.ToInt64() != 0x0)
                     {
-                        InvItem inv = new InvItem((long*)GameHackFunc.ClientData.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
+                        InvItem inv = new InvItem((long*)GameHackFunc.Game.ClientData.GetInventoryItemDetails((item.ToInt64())), (long*)item.ToInt64());
 
                         if (*inv.ItemType == 0xA)
                         {
@@ -166,7 +166,7 @@ namespace CodeInject
                 if (e.Data.Contains("SetPotions"))
                 {
                     dynamic setPotion = JsonConvert.DeserializeObject<dynamic>(e.Data);
-                    InvItem[] items = GameHackFunc.ClientData.GetConsumableItemsFromInventory(new List<InvItem>()).ToArray();
+                    InvItem[] items = GameHackFunc.Game.ClientData.GetConsumableItemsFromInventory(new List<InvItem>()).ToArray();
 
                     //UNCOMMENT
                   //  WineBot.WineBot.Instance.SetAutoHPpotion((int)setPotion.procHelath, (int)setPotion.hpItemDurr, items[(int)setPotion.hpItemIndex]);

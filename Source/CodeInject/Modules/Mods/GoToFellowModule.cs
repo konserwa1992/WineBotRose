@@ -25,15 +25,15 @@ namespace CodeInject.Modules.Mods
 
         public unsafe void Update()
         {
-            IPlayer fPlayer = (IPlayer)GameHackFunc.ClientData.GetNPCs().FirstOrDefault(x => x.GetType() == typeof(OtherPlayer) && ((IPlayer)x).Name == FollowPlayerName);
+            IPlayer fPlayer = (IPlayer)GameHackFunc.Game.ClientData.GetNPCs().FirstOrDefault(x => x.GetType() == typeof(OtherPlayer) && ((IPlayer)x).Name == FollowPlayerName);
 
-            if (!GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
+            if (!GameHackFunc.Game.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                   .Where(x => base.MonstersToAttackList.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
                   .Where(x => ((NPC)x).CalcDistance(CenterPosition.X, CenterPosition.Y, CenterPosition.Z) < Radius).Any(x => (((NPC)x).Hp) > 0))
                         {
                             if (fPlayer != null)
                             {
-                                GameHackFunc.Actions.MoveToPoint(new System.Numerics.Vector2(fPlayer.X / 100 + new Random().Next(-2,2), fPlayer.Y / 100 + new Random().Next(-2, 2)));
+                                GameHackFunc.Game.Actions.MoveToPoint(new System.Numerics.Vector2(fPlayer.X / 100 + new Random().Next(-2,2), fPlayer.Y / 100 + new Random().Next(-2, 2)));
                             }
                       }
         }

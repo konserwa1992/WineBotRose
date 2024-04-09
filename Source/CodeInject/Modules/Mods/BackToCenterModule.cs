@@ -26,7 +26,7 @@ namespace CodeInject.Modules
 
         public  void Update()
         { 
-            if (!GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
+            if (!GameHackFunc.Game.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                 .Where(x => MonstersToAttackList.Cast<MobInfo>().Any(y => ((NPC) x).Info != null && y.ID == ((NPC)x).Info.ID))
                 .Where(x => ((NPC) x).CalcDistance(CenterPosition.X, CenterPosition.Y, CenterPosition.Z) < Radius).Any(x => (((NPC) x).Hp) > 0))
             {
@@ -36,10 +36,10 @@ namespace CodeInject.Modules
 
         private void GoToHuntingAreaCenter()
         {
-            if (((int)GameHackFunc.ClientData.GetPlayer().X) != (int)CenterPosition.X &&
-                 ((int)GameHackFunc.ClientData.GetPlayer().Y) != (int)CenterPosition.Y)
+            if (((int)GameHackFunc.Game.ClientData.GetPlayer().X) != (int)CenterPosition.X &&
+                 ((int)GameHackFunc.Game.ClientData.GetPlayer().Y) != (int)CenterPosition.Y)
             {
-                GameHackFunc.Actions.MoveToPoint(new Vector2(CenterPosition.X / 100, CenterPosition.Y / 100));
+                GameHackFunc.Game.Actions.MoveToPoint(new Vector2(CenterPosition.X / 100, CenterPosition.Y / 100));
             }
         }
 

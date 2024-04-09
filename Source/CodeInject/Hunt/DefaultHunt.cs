@@ -58,23 +58,23 @@ namespace CodeInject.Hunt
                 this.SkillIndex = 0;
             }
 
-            Player player = GameHackFunc.ClientData.GetPlayer();
-            List<ushort> buffs = player.GetBuffsIDs();
-            List<Skills> BotBuff2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
+            Player player = GameHackFunc.Game.ClientData.GetPlayer();
+          //  List<ushort> buffs = player.GetBuffsIDs();
+         //   List<Skills> BotBuff2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
 
-            if (BotBuff2Use.Count > 0)
-            {
-                GameHackFunc.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
+        //    if (BotBuff2Use.Count > 0)
+          //  {
+          //      GameHackFunc.Game.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
               //  GameHackFunc.Actions.Logger(BotBuff2Use.FirstOrDefault().skillInfo.ID.ToString());
-                Thread.Sleep(100);
-            }
-            else
+        //        Thread.Sleep(100);
+        //    }
+         //   else
             {
     
-                if (Target == null || !GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || ((NPC)Target).Hp <= 0)
+                if (Target == null || !GameHackFunc.Game.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || ((NPC)Target).Hp <= 0)
                 {
                   
-                    this.Target = GameHackFunc.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
+                    this.Target = GameHackFunc.Game.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC))
                     .Where(x => ListOfMonstersToAttack.Cast<MobInfo>().Any(y => ((NPC)x).Info != null && y.ID == ((NPC)x).Info.ID))
                     .Where(x => ((NPC)x).CalcDistance(HuntingAreaCenter.X, HuntingAreaCenter.Y, HuntingAreaCenter.Z) < Radius).FirstOrDefault(x => ((NPC)x).Hp > 0);
                 }
@@ -88,11 +88,11 @@ namespace CodeInject.Hunt
                         Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
                         if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
                         {
-                            GameHackFunc.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                            GameHackFunc.Game.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
                         }
                     }
                     if (NormalAttack == true)
-                        GameHackFunc.Actions.Attack(this.Target.ID);
+                        GameHackFunc.Game.Actions.Attack(this.Target.ID);
                 }
             }
             base.Update();

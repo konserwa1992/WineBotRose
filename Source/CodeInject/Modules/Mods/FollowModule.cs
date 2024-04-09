@@ -21,11 +21,11 @@ namespace CodeInject.Modules
 
         public void Update()
         {
-            IPlayer fPlayer = (IPlayer)GameHackFunc.ClientData.GetNPCs().FirstOrDefault(x => x.GetType() == typeof(OtherPlayer) && ((IPlayer)x).Name == FollowPlayerName);
+            IPlayer fPlayer = (IPlayer)GameHackFunc.Game.ClientData.GetNPCs().FirstOrDefault(x => x.GetType() == typeof(OtherPlayer) && ((IPlayer)x).Name == FollowPlayerName);
 
             if(fPlayer != null)
             {
-                GameHackFunc.Actions.MoveToPoint(new System.Numerics.Vector2(fPlayer.X/100, fPlayer.Y/100));
+                GameHackFunc.Game.Actions.MoveToPoint(new System.Numerics.Vector2(fPlayer.X/100, fPlayer.Y/100));
             }
         }
     }

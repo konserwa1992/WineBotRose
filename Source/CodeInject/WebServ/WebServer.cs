@@ -28,7 +28,7 @@ namespace CodeInject
 
         public void SendPlayerInformation()
         {
-            string characterJson = GameHackFunc.ClientData.GetPlayer().ToWSObject();
+            string characterJson = GameHackFunc.Game.ClientData.GetPlayer().ToWSObject();
             foreach (var session in server.WebSocketServices["/CharacterInfo"].Sessions.Sessions)
             {
                 server.WebSocketServices["/CharacterInfo"].Sessions.SendTo(characterJson, session.ID);
@@ -37,7 +37,7 @@ namespace CodeInject
 
         public void SendNPCsInformation()
         {
-            List<IObject> list = GameHackFunc.ClientData.GetNPCs();
+            List<IObject> list = GameHackFunc.Game.ClientData.GetNPCs();
 
             List<object> toSerialzie = new List<object>();
             NPC last = null;

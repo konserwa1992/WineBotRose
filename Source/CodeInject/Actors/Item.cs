@@ -56,7 +56,7 @@ namespace CodeInject.Actors
 
         public void Pickup()
         {
-              GameHackFunc.Actions.PickUp(this);
+              GameHackFunc.Game.Actions.PickUp(this);
         }
 
         public double CalcDistance(IObject targetObject)

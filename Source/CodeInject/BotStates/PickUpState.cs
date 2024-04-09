@@ -1,6 +1,7 @@
 ﻿using CodeInject.Actors;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace CodeInject.BotStates
 {
@@ -8,6 +9,7 @@ namespace CodeInject.BotStates
     {
         public PickUpState()
         {
+            
         }
 
         public void Work(BotContext context)

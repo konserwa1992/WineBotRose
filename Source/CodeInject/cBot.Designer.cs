@@ -1276,9 +1276,9 @@ namespace CodeInject
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(6, 455);
+            this.button12.Location = new System.Drawing.Point(6, 406);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.Size = new System.Drawing.Size(216, 23);
             this.button12.TabIndex = 1;
             this.button12.Text = "Player";
             this.button12.UseVisualStyleBackColor = true;

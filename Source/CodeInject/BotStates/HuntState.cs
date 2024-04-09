@@ -4,6 +4,7 @@ using CodeInject.MemoryTools;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Windows.Forms;
 
 namespace CodeInject.BotStates
 {
@@ -19,7 +20,7 @@ namespace CodeInject.BotStates
 
         public unsafe void Work(BotContext context)
         {
-            if(GameHackFunc.ClientData.GetPlayer().Hp <=0)
+            if(GameHackFunc.Game.ClientData.GetPlayer().Hp <=0)
             {
                 context.SetState("STANDBY");
             }
