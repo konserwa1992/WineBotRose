@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -36,23 +37,39 @@ namespace CodeInject.MemoryTools
         public long BaseAddres;
         private long GameBaseAddres;
 
+        private long SkillAddress;
+
+
+        private long[] Addreses = new long[3]; 
 
         public DataFetcher()
         {
             Init();
+
+
+            StreamReader reader = new StreamReader(DataBase.DataPath + "\\Addr.txt");
+
+            for(int i=0;i< Addreses.Length;i++)
+            {
+                Addreses[i] = long.Parse(reader.ReadLine());
+            }
         }
 
   
 
         private void Init()
         {
-            Process _proc = Process.GetCurrentProcess();
+           Process _proc = Process.GetCurrentProcess();
 
-            BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
+           BaseAddres = _proc.MainModule.BaseAddress.ToInt64();
      
 
            GameBaseAddres = MemoryTools.GetVariableAddres("83 f8 07 0f 8f ?? ?? ?? ?? 48 63 0f 48 8b 05 ?? ?? ?? ??").ToInt64(); //UOB#U6
            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("48 89 5c 24 08 57 48 83 ec ?? 48 8b f9 48 8d 59 50 e8 ?? ?? ?? ?? 83 f8 ?? 75 ?? 48 8b 0d ?? ?? ?? ??"), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
+
+            SkillAddress = MemoryTools.GetVariableAddres("74 ?? b0 ?? EB ?? 32 c0 45 84 f6 75 ?? 84 c0 75 ?? 48 8b 0d ?? ?? ?? ??").ToInt64();
+
+
            Console.WriteLine($"DataReader Init");
        
             //  getPartyMemberDetailsFunc = (GetPartyMemberDetailsAdr)Marshal.GetDelegateForFunctionPointer(new IntPtr(BaseAddres + 0x1b7c5), typeof(GetPartyMemberDetailsAdr));
@@ -165,7 +182,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(BaseAddres + 0x1578d10); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(SkillAddress); //2023.10.04
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xb68) != 0)//OBS#S2
@@ -201,15 +218,17 @@ namespace CodeInject.MemoryTools
       
 
             long ObjectTypeFuncTable = *(long*)*wskObj;
-           // MessageBox.Show(((long)wskObj).ToString("X"));
+            // MessageBox.Show(((long)wskObj).ToString("X"));
 
 
-
-            if (GameHackFunc.Game.ClientData.BaseAddres + 0x1058060 == ObjectTypeFuncTable)
+            //0x1059060
+            if (GameHackFunc.Game.ClientData.BaseAddres + Addreses[0]  == ObjectTypeFuncTable)
                     return new OtherPlayer(wskObj);
-            if (GameHackFunc.Game.ClientData.BaseAddres + 0x1059B00 == ObjectTypeFuncTable) // player avatar
+            //0x105AB00
+            if (GameHackFunc.Game.ClientData.BaseAddres + Addreses[1]  == ObjectTypeFuncTable) // player avatar
                    return new Player(wskObj);
-            if (GameHackFunc.Game.ClientData.BaseAddres + 0x1057130 == ObjectTypeFuncTable) // mobs and npcs
+            //0x1057130
+            if (GameHackFunc.Game.ClientData.BaseAddres + Addreses[2]  == ObjectTypeFuncTable) // mobs and npcs
                 return new NPC(wskObj);
 
             return new NPC(wskObj);

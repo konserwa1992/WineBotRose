@@ -248,6 +248,9 @@
     <None Include="Resources\Bez tytułu1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\Addr.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\Map\Bez tytułu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
