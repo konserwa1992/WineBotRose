@@ -37,7 +37,7 @@ namespace CodeInject.Actors
             MaxHp = *(int*)(*Entry + 0x3B2C);
             Mp = *(int*)(*Entry + 0x3984);
             MaxMp = *(int*)(*Entry + 0x3B38);
-            BuffCount = *(short*)(*Entry + 0x858);
+            BuffCount = *(short*)(*Entry + 0x648);
             Name = Marshal.PtrToStringAnsi(new IntPtr((*Entry + 0x9A8)));
         }
 
@@ -76,33 +76,19 @@ namespace CodeInject.Actors
         {
 
             List<ushort> list = new List<ushort>();
-     
 
-            long baseBuffAddres = MemoryTools.MemoryTools.GetInt64(GameHackFunc.Game.ClientData.BaseAddres + 0x014ab8b0, new short[] { 0x410 }); //#IMG12
-            baseBuffAddres += 0x440;
+            long baseBuffAddres = ObjectPointer + 0x410 + 0x230; 
 
-
-            long* buffAddr =(long*)*(long*)baseBuffAddres;  //RAX
-            int b = 0;
-
-
-            long* firstElement;
-            firstElement=(long*)*buffAddr; // (long*)(*(long*)(*buffAddr)) or (long*)(*buffAddr);
-
-            
-            while (b < BuffCount)
+            long* currentBuff= (long*)(*((long*)baseBuffAddres));
+            while (*currentBuff != *(long*)baseBuffAddres)
             {
-                    long* buffDetails = (long*)(*(long*)((long)firstElement + 0x18));
-                    if (*(long*)((long)buffDetails + 0x08) == (long)ObjectPointer)
-                    {
-                        ushort* buffID = (ushort*)((long)buffDetails + 0x18);
+                long* detailsPointer = (long*)(*currentBuff + 0x18);
 
-                        list.Add(*buffID);
-                        b++;
-                    }
-                    firstElement = (long*)(*firstElement);
-             } 
-       
+                ushort* buffID = (ushort*)(*detailsPointer + 0x18);
+                list.Add(*buffID);
+
+                currentBuff = (long*)*currentBuff;
+            }
 
             return list;
         }

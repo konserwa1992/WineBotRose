@@ -59,16 +59,16 @@ namespace CodeInject.Hunt
             }
 
             Player player = GameHackFunc.Game.ClientData.GetPlayer();
-          //  List<ushort> buffs = player.GetBuffsIDs();
-         //   List<Skills> BotBuff2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
+           List<ushort> buffs = player.GetBuffsIDs();
+            List<Skills> BotBuff2Use = BotSkills.Where(x => x.SkillType == SkillTypes.Buff && !buffs.Any(b => b == x.skillInfo.ID)).ToList();
 
-        //    if (BotBuff2Use.Count > 0)
-          //  {
-          //      GameHackFunc.Game.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
-              //  GameHackFunc.Actions.Logger(BotBuff2Use.FirstOrDefault().skillInfo.ID.ToString());
-        //        Thread.Sleep(100);
-        //    }
-         //   else
+            if (BotBuff2Use.Count > 0)
+            {
+                GameHackFunc.Game.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
+           //     GameHackFunc.Actions.Logger(BotBuff2Use.FirstOrDefault().skillInfo.ID.ToString());
+                Thread.Sleep(100);
+            }
+            else
             {
     
                 if (Target == null || !GameHackFunc.Game.ClientData.GetNPCs().Where(x => x.GetType() == typeof(NPC)).Any(x => (long)x.ObjectPointer == (long)Target.ObjectPointer) || ((NPC)Target).Hp <= 0)
