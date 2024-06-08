@@ -50,6 +50,9 @@ namespace CodeInject
         {
             lSkillList.Items.Clear();
             lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+
+            comboBox5.Items.Clear();
+            comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
         }
 
         private void bSkillAdd_Click(object sender, EventArgs e)
@@ -274,6 +277,10 @@ namespace CodeInject
                 List<Skills> SkillList = new List<Skills>();
                 SkillList.AddRange(lUseSkill.Items.Cast<Skills>().ToArray());
                 SkillList.AddRange(lHealSkills.Items.Cast<Skills>().ToArray());
+                if(comboBox5.SelectedIndex!=-1)
+                {
+                    SkillList.Add(comboBox5.SelectedItem as Skills);
+                }
                 SkillList.AddRange(lBuffs.Items.Cast<Skills>().ToArray());
 
                 if (cEnableHealParty.Checked)
@@ -787,6 +794,11 @@ namespace CodeInject
         private void button6_Click(object sender, EventArgs e)
         {
             lPlayers2Heal.Items.Remove(lPlayers2Heal.SelectedItem);
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            (comboBox5.SelectedItem as Skills).SkillType = SkillTypes.Revive;
         }
     }
 

@@ -64,7 +64,7 @@ namespace CodeInject.Hunt
 
             if (BotBuff2Use.Count > 0)
             {
-                GameHackFunc.Game.Actions.CastSpell(GetSkillIndex(BotBuff2Use.FirstOrDefault().skillInfo.ID));
+                GameHackFunc.Game.Actions.CastSpell(BotBuff2Use.FirstOrDefault().SkillIndex);
            //     GameHackFunc.Actions.Logger(BotBuff2Use.FirstOrDefault().skillInfo.ID.ToString());
                 Thread.Sleep(100);
             }
@@ -88,7 +88,7 @@ namespace CodeInject.Hunt
                         Skills Skill2Cast = PlayerCharacter.GetPlayerSkills.FirstOrDefault(x => x.skillInfo.ID == this.BotSkills[this.SkillIndex].skillInfo.ID);
                         if (this.BotSkills[this.SkillIndex].SkillType == SkillTypes.AttackSkill)
                         {
-                            GameHackFunc.Game.Actions.CastSpell(Target, GetSkillIndex(Skill2Cast.skillInfo.ID));
+                            GameHackFunc.Game.Actions.CastSpell(Target, Skill2Cast.SkillIndex);
                         }
                     }
                     if (NormalAttack == true)

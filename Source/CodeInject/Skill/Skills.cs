@@ -5,14 +5,14 @@ namespace CodeInject
 {
     public enum SkillTypes
     {
-        HealTarget,Buff,AttackSkill,Unknow
+        HealTarget,Buff,AttackSkill,Unknow,Revive
     }
 
     public class Skills
     {
         public SkillInfo skillInfo;
         public SkillTypes SkillType;
-
+        public int SkillIndex = 0;
 
         public Skills(SkillInfo skillInfo,SkillTypes type)
         {

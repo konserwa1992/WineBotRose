@@ -54,7 +54,13 @@ namespace CodeInject.Hunt
                         .OrderBy(x => (((float)((IPlayer)x).Hp / (float)((IPlayer)x).MaxHp) * 100.0f))
                         .FirstOrDefault();
 
-                    if (currentPlayerObj2Heal != null) 
+                if (currentPlayerObj2Heal.Hp <= 0)
+                {
+                    GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.Revive).skillInfo.ID));
+                }
+                else
+                {
+                    if (currentPlayerObj2Heal != null)
                     {
                         float currhp = (float)currentPlayerObj2Heal.Hp;
                         float maxhp = (float)currentPlayerObj2Heal.MaxHp;
@@ -64,6 +70,7 @@ namespace CodeInject.Hunt
                             GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
                         }
                     }
+                }
             }
 
 

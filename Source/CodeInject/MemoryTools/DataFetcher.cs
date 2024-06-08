@@ -185,6 +185,7 @@ namespace CodeInject.MemoryTools
             ulong* adrPtr1 = (ulong*)(PlayerAddres); //2023.10.04
 
             int s = 0;
+            int index = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xb68) != 0)//OBS#S2
             {
                 ushort skillID = *(ushort*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xb68);
@@ -198,14 +199,17 @@ namespace CodeInject.MemoryTools
                         Name = "Unknow"
                     };
                 }
-                skillList.Add(new Skills(skill,SkillTypes.Unknow));
-
+                skillList.Add(new Skills(skill, SkillTypes.Unknow) { SkillIndex = index});
+                index++;
                 s++;
             }
 
 
             ushort* uniqueSkill = (ushort*)(*adrPtr1 + 0xFC * 2 + 0xBB8);
-            while(*uniqueSkill!=0)
+
+            index = 0xFC;
+
+            while (*uniqueSkill!=0)
             {
                 SkillInfo skill = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == *uniqueSkill);
                 if (skill == null)
@@ -216,8 +220,8 @@ namespace CodeInject.MemoryTools
                         Name = "Unknow"
                     };
                 }
-                skillList.Add(new Skills(skill, SkillTypes.Unknow));
-
+                skillList.Add(new Skills(skill, SkillTypes.Unknow) { SkillIndex = index });
+                index++;
                 uniqueSkill++;
             }
 

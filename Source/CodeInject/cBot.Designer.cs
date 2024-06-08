@@ -144,6 +144,8 @@ namespace CodeInject
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -537,6 +539,8 @@ namespace CodeInject
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.comboBox5);
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.button7);
             this.groupBox4.Controls.Add(this.button5);
@@ -1304,6 +1308,24 @@ namespace CodeInject
             this.timer3.Interval = 250;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(326, 244);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 21);
+            this.comboBox5.TabIndex = 17;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(259, 247);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(64, 13);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "Revive skill:";
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1459,5 +1481,7 @@ namespace CodeInject
         private ComboBox comboBox4;
         private Button button22;
         private ListBox listBox5;
+        private Label label15;
+        private ComboBox comboBox5;
     }
 }

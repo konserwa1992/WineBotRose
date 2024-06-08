@@ -86,7 +86,7 @@ namespace CodeInject.Actors
 
                 ushort* buffID = (ushort*)(*detailsPointer + 0x18);
                 list.Add(*buffID);
-
+              //  MessageBox.Show((*buffID).ToString("X"));
                 currentBuff = (long*)*currentBuff;
             }
 
