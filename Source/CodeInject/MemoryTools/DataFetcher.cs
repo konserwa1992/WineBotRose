@@ -37,7 +37,7 @@ namespace CodeInject.MemoryTools
         public long BaseAddres;
         private long GameBaseAddres;
 
-        private long SkillAddress;
+        private long PlayerAddres;
 
 
         private long[] Addreses = new long[3]; 
@@ -67,7 +67,7 @@ namespace CodeInject.MemoryTools
            GameBaseAddres = MemoryTools.GetVariableAddres("83 f8 07 0f 8f ?? ?? ?? ?? 48 63 0f 48 8b 05 ?? ?? ?? ??").ToInt64(); //UOB#U6
            getInventoryItemDetailsFunc = (GetInventoryItemDetailsAdr)Marshal.GetDelegateForFunctionPointer((IntPtr)MemoryTools.GetFunctionAddress("48 89 5c 24 08 57 48 83 ec ?? 48 8b f9 48 8d 59 50 e8 ?? ?? ?? ?? 83 f8 ?? 75 ?? 48 8b 0d ?? ?? ?? ??"), typeof(GetInventoryItemDetailsAdr)); //MSG#INV8
 
-            SkillAddress = MemoryTools.GetVariableAddres("74 ?? b0 ?? EB ?? 32 c0 45 84 f6 75 ?? 84 c0 75 ?? 48 8b 0d ?? ?? ?? ??").ToInt64();
+            PlayerAddres = MemoryTools.GetVariableAddres("74 ?? b0 ?? EB ?? 32 c0 45 84 f6 75 ?? 84 c0 75 ?? 48 8b 0d ?? ?? ?? ??").ToInt64();
 
 
            Console.WriteLine($"DataReader Init");
@@ -182,7 +182,7 @@ namespace CodeInject.MemoryTools
         {
             List<Skills> skillList = new List<Skills>();
 
-            ulong* adrPtr1 = (ulong*)(SkillAddress); //2023.10.04
+            ulong* adrPtr1 = (ulong*)(PlayerAddres); //2023.10.04
 
             int s = 0;
             while (*(short*)(*adrPtr1 + ((ulong)s * 2) + 0x50 + 0xb68) != 0)//OBS#S2
@@ -202,6 +202,26 @@ namespace CodeInject.MemoryTools
 
                 s++;
             }
+
+
+            ushort* uniqueSkill = (ushort*)(*adrPtr1 + 0xFC * 2 + 0xBB8);
+            while(*uniqueSkill!=0)
+            {
+                SkillInfo skill = DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == *uniqueSkill);
+                if (skill == null)
+                {
+                    skill = new SkillInfo()
+                    {
+                        ID = *uniqueSkill,
+                        Name = "Unknow"
+                    };
+                }
+                skillList.Add(new Skills(skill, SkillTypes.Unknow));
+
+                uniqueSkill++;
+            }
+
+
             return skillList;
         }
 
