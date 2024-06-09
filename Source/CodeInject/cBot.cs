@@ -1008,7 +1008,6 @@ namespace CodeInject
         {
             lBuffs.Items.Clear();   
         }
-
     }
 }
 
