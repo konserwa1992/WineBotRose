@@ -56,7 +56,7 @@ namespace CodeInject.Hunt
 
                 if (currentPlayerObj2Heal.Hp <= 0)
                 {
-                    GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.Revive).skillInfo.ID));
+                    GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal, BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.Revive).SkillIndex);
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace CodeInject.Hunt
 
                         if (((currhp / maxhp) * 100.0f) < ProcHeal)
                         {
-                            GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal, GetSkillIndex(BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).skillInfo.ID));
+                            GameHackFunc.Game.Actions.CastSpell((IObject)currentPlayerObj2Heal,BotSkills.FirstOrDefault(x => x.SkillType == SkillTypes.HealTarget).SkillIndex);
                         }
                     }
                 }

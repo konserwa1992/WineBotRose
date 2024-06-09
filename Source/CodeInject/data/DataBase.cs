@@ -29,6 +29,8 @@ namespace CodeInject
     {
         public int ID { get; set; }
         public string Name { get; set; } = " ";
+        public string Type { get; set; } = "Unknow";
+
         public override string ToString() { return ID+" " + Name; }
     }
     public class WeaponItemsInfo: IBasicInfo
