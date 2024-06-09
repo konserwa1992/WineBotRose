@@ -847,7 +847,7 @@ namespace CodeInject
                 if (value < 0 || value > 100)
                 {
                     MessageBox.Show("Please enter a number between 0 and 100.");
-                    tHealWhenProc.Text = string.Empty;
+                    tHealWhenProc.Text = "90";
                 }
             }
             else
@@ -856,7 +856,8 @@ namespace CodeInject
                 if (!string.IsNullOrEmpty(tHealWhenProc.Text))
                 {
                     MessageBox.Show("Please enter a valid number.");
-                    tHealWhenProc.Text = string.Empty;
+                    tHealWhenProc.Text = "90";
+                   // tHealWhenProc.Text = string.Empty;
                 }
             }
         }
