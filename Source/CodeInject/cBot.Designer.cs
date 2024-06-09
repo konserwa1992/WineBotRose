@@ -61,6 +61,8 @@ namespace CodeInject
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.cNormalAttackEnable = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
@@ -117,7 +119,6 @@ namespace CodeInject
             this.label13 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tMpDurr = new System.Windows.Forms.TextBox();
@@ -156,8 +157,6 @@ namespace CodeInject
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Statustext = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -170,7 +169,6 @@ namespace CodeInject
             this.SimpleFilterGroup.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -485,6 +483,26 @@ namespace CodeInject
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Attack Skills";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(325, 357);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(120, 23);
+            this.button25.TabIndex = 19;
+            this.button25.Text = "Delete all Buffs";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(159, 357);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(120, 23);
+            this.button24.TabIndex = 18;
+            this.button24.Text = "Delete all Attack Skills";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // cNormalAttackEnable
             // 
@@ -887,6 +905,7 @@ namespace CodeInject
             this.cFilterShield.TabIndex = 14;
             this.cFilterShield.Text = "Shields";
             this.cFilterShield.UseVisualStyleBackColor = true;
+            this.cFilterShield.CheckedChanged += new System.EventHandler(this.cFilterShield_CheckedChanged);
             // 
             // cFilterShoes
             // 
@@ -897,6 +916,7 @@ namespace CodeInject
             this.cFilterShoes.TabIndex = 13;
             this.cFilterShoes.Text = "Shoes";
             this.cFilterShoes.UseVisualStyleBackColor = true;
+            this.cFilterShoes.CheckedChanged += new System.EventHandler(this.cFilterShoes_CheckedChanged);
             // 
             // cFilterUsable
             // 
@@ -907,6 +927,7 @@ namespace CodeInject
             this.cFilterUsable.TabIndex = 12;
             this.cFilterUsable.Text = "Consume";
             this.cFilterUsable.UseVisualStyleBackColor = true;
+            this.cFilterUsable.CheckedChanged += new System.EventHandler(this.cFilterUsable_CheckedChanged);
             // 
             // cFilterWeapon
             // 
@@ -917,6 +938,7 @@ namespace CodeInject
             this.cFilterWeapon.TabIndex = 11;
             this.cFilterWeapon.Text = "Weapons";
             this.cFilterWeapon.UseVisualStyleBackColor = true;
+            this.cFilterWeapon.CheckedChanged += new System.EventHandler(this.cFilterWeapon_CheckedChanged);
             // 
             // cFilterHat
             // 
@@ -927,6 +949,7 @@ namespace CodeInject
             this.cFilterHat.TabIndex = 10;
             this.cFilterHat.Text = "Hat";
             this.cFilterHat.UseVisualStyleBackColor = true;
+            this.cFilterHat.CheckedChanged += new System.EventHandler(this.cFilterHat_CheckedChanged);
             // 
             // cFilterGloves
             // 
@@ -937,6 +960,7 @@ namespace CodeInject
             this.cFilterGloves.TabIndex = 9;
             this.cFilterGloves.Text = "Gloves";
             this.cFilterGloves.UseVisualStyleBackColor = true;
+            this.cFilterGloves.CheckedChanged += new System.EventHandler(this.cFilterGloves_CheckedChanged);
             // 
             // cFilterArmor
             // 
@@ -947,6 +971,7 @@ namespace CodeInject
             this.cFilterArmor.TabIndex = 8;
             this.cFilterArmor.Text = "Armor";
             this.cFilterArmor.UseVisualStyleBackColor = true;
+            this.cFilterArmor.CheckedChanged += new System.EventHandler(this.cFilterArmor_CheckedChanged);
             // 
             // cFilterMaterials
             // 
@@ -957,6 +982,7 @@ namespace CodeInject
             this.cFilterMaterials.TabIndex = 7;
             this.cFilterMaterials.Text = "Materials";
             this.cFilterMaterials.UseVisualStyleBackColor = true;
+            this.cFilterMaterials.CheckedChanged += new System.EventHandler(this.cFilterMaterials_CheckedChanged);
             // 
             // cAdvanceEnable
             // 
@@ -967,6 +993,7 @@ namespace CodeInject
             this.cAdvanceEnable.TabIndex = 12;
             this.cAdvanceEnable.Text = "Enable advanced";
             this.cAdvanceEnable.UseVisualStyleBackColor = true;
+            this.cAdvanceEnable.CheckedChanged += new System.EventHandler(this.cAdvanceEnable_CheckedChanged);
             // 
             // bAdvancedFilter
             // 
@@ -1054,7 +1081,6 @@ namespace CodeInject
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.pictureBox1);
             this.tabPage6.Controls.Add(this.label11);
             this.tabPage6.Controls.Add(this.label10);
             this.tabPage6.Controls.Add(this.tMpDurr);
@@ -1072,17 +1098,6 @@ namespace CodeInject
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Auto-Potion";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::CodeInject.Properties.Resources.gluten_free;
-            this.pictureBox1.Location = new System.Drawing.Point(148, 157);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(354, 331);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
             // 
             // label11
             // 
@@ -1127,6 +1142,7 @@ namespace CodeInject
             this.cAutoPotionEnabled.TabIndex = 18;
             this.cAutoPotionEnabled.Text = "Enable Auto-potion";
             this.cAutoPotionEnabled.UseVisualStyleBackColor = true;
+            this.cAutoPotionEnabled.CheckedChanged += new System.EventHandler(this.cAutoPotionEnabled_CheckedChanged);
             // 
             // cbHealMPItem
             // 
@@ -1135,6 +1151,7 @@ namespace CodeInject
             this.cbHealMPItem.Name = "cbHealMPItem";
             this.cbHealMPItem.Size = new System.Drawing.Size(121, 21);
             this.cbHealMPItem.TabIndex = 17;
+            this.cbHealMPItem.DropDown += new System.EventHandler(this.cbHealMPItem_DropDown);
             // 
             // cbHealHPItem
             // 
@@ -1143,6 +1160,7 @@ namespace CodeInject
             this.cbHealHPItem.Name = "cbHealHPItem";
             this.cbHealHPItem.Size = new System.Drawing.Size(121, 21);
             this.cbHealHPItem.TabIndex = 16;
+            this.cbHealHPItem.DropDown += new System.EventHandler(this.cbHealHPItem_DropDown);
             // 
             // tMPPotionUseProc
             // 
@@ -1427,26 +1445,6 @@ namespace CodeInject
             this.Statustext.Name = "Statustext";
             this.Statustext.Size = new System.Drawing.Size(0, 17);
             // 
-            // button24
-            // 
-            this.button24.Location = new System.Drawing.Point(159, 357);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(120, 23);
-            this.button24.TabIndex = 18;
-            this.button24.Text = "Delete all Attack Skills";
-            this.button24.UseVisualStyleBackColor = true;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
-            // button25
-            // 
-            this.button25.Location = new System.Drawing.Point(325, 357);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(120, 23);
-            this.button25.TabIndex = 19;
-            this.button25.Text = "Delete all Buffs";
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
-            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1478,7 +1476,6 @@ namespace CodeInject
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1552,7 +1549,6 @@ namespace CodeInject
         private Button button21;
         private Button button12;
         private ListBox listBox1;
-        private PictureBox pictureBox1;
         private Label label11;
         private Label label10;
         private TextBox tMpDurr;

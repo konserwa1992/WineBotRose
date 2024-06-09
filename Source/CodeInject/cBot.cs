@@ -51,7 +51,7 @@ namespace CodeInject
         private void bSkillRefresh_Click(object sender, EventArgs e)
         {
             lSkillList.Items.Clear();
-            lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+            lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
 
             comboBox5.Items.Clear();
             comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
@@ -864,7 +864,7 @@ namespace CodeInject
         private void button23_Click(object sender, EventArgs e)
         {
             healskills.Items.Clear();
-            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
 
             comboBox5.Items.Clear();
             comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
@@ -1008,6 +1008,7 @@ namespace CodeInject
         {
             lBuffs.Items.Clear();   
         }
+
     }
 }
 
