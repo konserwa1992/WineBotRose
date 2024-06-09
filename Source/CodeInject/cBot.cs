@@ -18,6 +18,8 @@ using CodeInject.UIPanels.Module_Panels;
 
 using Point = AForge.Point;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Security;
 
 namespace CodeInject
 {
@@ -137,7 +139,7 @@ namespace CodeInject
         {
             string[] data = line.Split(';');
 
-            return new Skills(DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x=>x.ID == int.Parse(data[1])), (SkillTypes)int.Parse(data[0]));
+            return new Skills(DataBase.GameDataBase.SkillDatabase.FirstOrDefault(x => x.ID == int.Parse(data[1])), (SkillTypes)int.Parse(data[0]));
         }
 
         private void LoadConfig(string name)
@@ -152,10 +154,10 @@ namespace CodeInject
             {
                 Skills skill = GetSkillFromFile(config.ReadLine());
 
-                switch(skill.SkillType)
+                switch (skill.SkillType)
                 {
                     case SkillTypes.AttackSkill:
-                        BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(skill,SkillTypes.AttackSkill);
+                        BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(skill, SkillTypes.AttackSkill);
                         lUseSkill.Items.Add(skill);
                         break;
                     case SkillTypes.Buff:
@@ -168,7 +170,7 @@ namespace CodeInject
                         cEnableHealParty.Checked = true;
                         break;
 
-                 }
+                }
             }
             config.Close();
 
@@ -181,7 +183,7 @@ namespace CodeInject
             }
             config.Close();
 
-       
+
 
             if (File.Exists(name + ".AutoPotion.txt"))
             {
@@ -273,11 +275,11 @@ namespace CodeInject
         {
             if (BotState == false)
             {
- 
+
                 List<Skills> SkillList = new List<Skills>();
                 SkillList.AddRange(lUseSkill.Items.Cast<Skills>().ToArray());
                 SkillList.AddRange(lHealSkills.Items.Cast<Skills>().ToArray());
-                if(comboBox5.SelectedIndex!=-1)
+                if (comboBox5.SelectedIndex != -1)
                 {
                     SkillList.Add(comboBox5.SelectedItem as Skills);
                 }
@@ -298,8 +300,8 @@ namespace CodeInject
                             new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
                             float.Parse(tZHuntArea.Text)), int.Parse(tHuntRadius.Text), SkillList, cNormalAttackEnable.Checked, this);
 
-                    if(comboBox2.SelectedIndex!=-1)
-                     hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
+                    if (comboBox2.SelectedIndex != -1)
+                        hunt.AddModule((comboBox2.SelectedItem as IModuleUI).GetModule());
 
                     BotContext.Start(
                        new HuntState(hunt
@@ -475,10 +477,10 @@ namespace CodeInject
             this.Text = $"WineBot Character: {GameHackFunc.Game.ClientData.GetPlayer().Name}";
 
             comboBox2.Items.Add(new BackToCenterPanel(lMonster2Attack));
-            comboBox2.Items.Add(new GoToPlayerPanel(lMonster2Attack,tXHuntArea,tYHuntArea, tHuntRadius));
+            comboBox2.Items.Add(new GoToPlayerPanel(lMonster2Attack, tXHuntArea, tYHuntArea, tHuntRadius));
 
 
-            string[] configFiles = Directory.GetDirectories(DataBase.DataPath+"Profiles");
+            string[] configFiles = Directory.GetDirectories(DataBase.DataPath + "Profiles");
 
             foreach (var file in configFiles)
             {
@@ -541,7 +543,7 @@ namespace CodeInject
         {
             if (lHealSkills.SelectedItem != null)
             {
-               // lHealSkills.Items.Remove(lHealSkills.SelectedItem);
+                // lHealSkills.Items.Remove(lHealSkills.SelectedItem);
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lHealSkills.SelectedItem);
             }
         }
@@ -597,7 +599,7 @@ namespace CodeInject
 
 
 
- 
+
 
 
         Map map;
@@ -605,7 +607,7 @@ namespace CodeInject
         {
             MouseEventArgs me = (MouseEventArgs)e;
 
-            map = new Map("Bez tytułu1.png", "Bez tytułu.png", new double[,]{ { 5417, 5373 }, { 5651, 5368 }, { 5742, 5095 } },new double[,]{ { 162, 93 }, { 241, 97 }, { 272, 176 } });
+            map = new Map("Bez tytułu1.png", "Bez tytułu.png", new double[,] { { 5417, 5373 }, { 5651, 5368 }, { 5742, 5095 } }, new double[,] { { 162, 93 }, { 241, 97 }, { 272, 176 } });
 
 
             listBox4.Items.Clear();
@@ -615,7 +617,7 @@ namespace CodeInject
 
             Point pos = map.PlayerPositionOnMap();
 
-           List<Point> p = map.FindShortestPathOnMap(pos, new Point(me.X, me.Y));
+            List<Point> p = map.FindShortestPathOnMap(pos, new Point(me.X, me.Y));
 
 
             Bitmap bitmap = new Bitmap(map.RoadMap);
@@ -626,9 +628,9 @@ namespace CodeInject
             {
                 g.DrawEllipse(new Pen(Color.Blue, 4), pos.X, pos.Y, 4, 4);
                 int sizeC = 4;
-                for(int x=0;x< pictureBox3.Width- sizeC; x+= sizeC)
+                for (int x = 0; x < pictureBox3.Width - sizeC; x += sizeC)
                 {
-                    for (int y = 0; y < pictureBox3.Height- sizeC; y += sizeC)
+                    for (int y = 0; y < pictureBox3.Height - sizeC; y += sizeC)
                     {
 
                         Color pixelColor = bitmap.GetPixel(x + (sizeC / 2), y + (sizeC / 2));
@@ -654,7 +656,7 @@ namespace CodeInject
             pictureBox3.Refresh();
         }
 
-       
+
 
         private void button15_Click(object sender, EventArgs e)
         {
@@ -668,33 +670,33 @@ namespace CodeInject
 
         private void button16_Click(object sender, EventArgs e)
         {
-         
+
             listBox4.SelectedIndex = 0;
             timer3.Enabled = true;
-     
+
         }
 
 
         private void timer3_Tick(object sender, EventArgs e)
         {
 
-                if (listBox4.SelectedIndex == listBox4.Items.Count-1)
-                {
-                    timer3.Enabled = false;
-                    return;
-                }
+            if (listBox4.SelectedIndex == listBox4.Items.Count - 1)
+            {
+                timer3.Enabled = false;
+                return;
+            }
 
 
-        
+
 
             Point p = (Point)listBox4.SelectedItem;
-                Vector2 playerPos = new Vector2(GameHackFunc.Game.ClientData.GetPlayer().X, GameHackFunc.Game.ClientData.GetPlayer().Y);
-                Vector2 destination = map.CalculatePositionFromMap2World(p.X, p.Y);
+            Vector2 playerPos = new Vector2(GameHackFunc.Game.ClientData.GetPlayer().X, GameHackFunc.Game.ClientData.GetPlayer().Y);
+            Vector2 destination = map.CalculatePositionFromMap2World(p.X, p.Y);
 
-                if (Vector2.Distance(playerPos / 100, destination) < 3)
-                {
-                    listBox4.SelectedIndex = listBox4.SelectedIndex + 1;
-                }
+            if (Vector2.Distance(playerPos / 100, destination) < 3)
+            {
+                listBox4.SelectedIndex = listBox4.SelectedIndex + 1;
+            }
             GameHackFunc.Game.Actions.MoveToPoint(destination);
         }
 
@@ -710,7 +712,7 @@ namespace CodeInject
 
         private void button17_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void userControl11_Load(object sender, EventArgs e)
@@ -738,18 +740,18 @@ namespace CodeInject
         {
             if (Directory.Exists(DataBase.DataPath + tProfileName.Text))
             {
-                SaveConfig(DataBase.DataPath  + "\\Profiles\\" + tProfileName.Text);
+                SaveConfig(DataBase.DataPath + "\\Profiles\\" + tProfileName.Text);
             }
             else
             {
                 Directory.CreateDirectory(DataBase.DataPath + "\\Profiles\\" + tProfileName.Text);
-                SaveConfig(DataBase.DataPath + "\\Profiles\\" + tProfileName.Text+"\\" + tProfileName.Text);
+                SaveConfig(DataBase.DataPath + "\\Profiles\\" + tProfileName.Text + "\\" + tProfileName.Text);
             }
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
-            LoadConfig(DataBase.DataPath +"\\Profiles\\" + (string)comboBox3.SelectedItem +"\\"+(string)comboBox3.SelectedItem);
+            LoadConfig(DataBase.DataPath + "\\Profiles\\" + (string)comboBox3.SelectedItem + "\\" + (string)comboBox3.SelectedItem);
         }
 
         private void button20_Click(object sender, EventArgs e)
@@ -761,17 +763,17 @@ namespace CodeInject
         {
             byte[] packet = new byte[]
             {
-               0x0e ,0x00 ,0xa3 ,0x07 ,0xD1 ,0x58 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 
+               0x0e ,0x00 ,0xa3 ,0x07 ,0xD1 ,0x58 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00 ,0x00
             };
 
             //List<InvItem> items = new List<InvItem>();
-           InvItem item= comboBox4.SelectedItem as InvItem;
+            InvItem item = comboBox4.SelectedItem as InvItem;
 
             long itemServPacketId = *(long*)((long)item.ObjectPointer + 0x48);
             //  * (long*)((long)ObjectPointer + 0x48)
-            byte[] servIdArray= BitConverter.GetBytes(itemServPacketId);
+            byte[] servIdArray = BitConverter.GetBytes(itemServPacketId);
 
-            Array.Copy(servIdArray,0,packet,6, servIdArray.Length);
+            Array.Copy(servIdArray, 0, packet, 6, servIdArray.Length);
 
             fixed (byte* packetPointer = packet)
             {
@@ -800,8 +802,213 @@ namespace CodeInject
         {
             (comboBox5.SelectedItem as Skills).SkillType = SkillTypes.Revive;
         }
-    }
 
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SimpleFilterGroup_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tHealWhenProc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Controleer of de ingedrukte toets een cijfer is of een besturingsteken zoals backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Als de toets geen cijfer of besturingsteken is, annuleren we de invoer
+                e.Handled = true;
+            }
+        }
+
+        private void tHealWhenProc_TextChanged(object sender, EventArgs e)
+        {
+            // Probeer de waarde van de TextBox te parsen
+            if (int.TryParse(tHealWhenProc.Text, out int value))
+            {
+                // Controleer of de waarde tussen 0 en 100 ligt
+                if (value < 0 || value > 100)
+                {
+                    MessageBox.Show("Please enter a number between 0 and 100.");
+                    tHealWhenProc.Text = string.Empty;
+                }
+            }
+            else
+            {
+                // Als de waarde niet kan worden geparsed, leeg de TextBox
+                if (!string.IsNullOrEmpty(tHealWhenProc.Text))
+                {
+                    MessageBox.Show("Please enter a valid number.");
+                    tHealWhenProc.Text = string.Empty;
+                }
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            healskills.Items.Clear();
+            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+
+            comboBox5.Items.Clear();
+            comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            lPlayersList.Items.Clear();
+            lPlayersList.Items.AddRange(GameHackFunc.Game.ClientData.GetNPCs().Where(x => x.GetType() == typeof(Player) || x.GetType() == typeof(OtherPlayer)).ToArray());
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            lHealSkills.Items.Add(healskills.SelectedItem);
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            
+
+            lPlayers2Heal.Items.Add(lPlayersList.SelectedItem);
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            
+
+            lPlayers2Heal.Items.Remove(lPlayers2Heal.SelectedItem);
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            lHealSkills.Items.Remove(lHealSkills.SelectedItem);
+        }
+
+        private void healskills_MouseDown(object sender, MouseEventArgs e)
+        {
+            button23.Enabled = true;
+        }
+
+        private void healskills_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Controleer of er een item is geselecteerd
+            if (healskills.SelectedIndex != -1)
+            {
+                button1.Enabled = true;  // Zet de knop aan
+            }
+            else
+            {
+                button1.Enabled = false; // Zet de knop uit
+            }
+        }
+
+        private void lHealSkills_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Controleer of er een item is geselecteerd
+            if (lHealSkills.SelectedIndex != -1)
+            {
+                button3.Enabled = true;  // Zet de knop aan
+            }
+            else
+            {
+                button3.Enabled = false; // Zet de knop uit
+            }
+        }
+
+        private void lPlayersList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Controleer of er een item is geselecteerd
+            if (lPlayersList.SelectedIndex != -1)
+            {
+                button7.Enabled = true;  // Zet de knop aan
+            }
+            else
+            {
+                button7.Enabled = false; // Zet de knop uit
+            }
+        }
+
+        private void lPlayers2Heal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Controleer of er een item is geselecteerd
+            if (lPlayers2Heal.SelectedIndex != -1)
+            {
+                button6.Enabled = true;  // Zet de knop aan
+            }
+            else
+            {
+                button6.Enabled = false; // Zet de knop uit
+            }
+        }
+
+        private void button20_Click_1(object sender, EventArgs e)
+        {
+            lPlayers2Heal.Items.Clear();
+        }
+
+        private void healskills_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Available Skills";
+        }
+
+        private void lPlayersList_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Available Players";
+        }
+
+        private void lPlayers2Heal_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Players you sellected to Heal";
+        }
+
+        private void lHealSkills_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Healing Skills you sellected to use";
+        }
+
+        private void cEnableHealParty_MouseHover(object sender, EventArgs e)
+        {
+            if (cEnableHealParty.Checked != true)
+            {
+                Statustext.Text = "PartyHeal is Disabled";
+            }
+            else
+            {
+                Statustext.Text = "PartyHeal is Enabled";
+            }
+        }
+
+        private void lBuffs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            lUseSkill.Items.Clear();
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            lBuffs.Items.Clear();   
+        }
+    }
 }
 
 
