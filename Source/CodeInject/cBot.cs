@@ -47,11 +47,17 @@ namespace CodeInject
         }
 
 
+        
 
-        private void bSkillRefresh_Click(object sender, EventArgs e)
+
+    private void bSkillRefresh_Click(object sender, EventArgs e)
         {
+           // lSkillList.Items.Clear();
+           // lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
+
             lSkillList.Items.Clear();
-            lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
+            var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
+            lSkillList.Items.AddRange(activeSkills);
 
             comboBox5.Items.Clear();
             comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
@@ -68,6 +74,9 @@ namespace CodeInject
             if (lUseSkill.SelectedItem != null)
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lUseSkill.SelectedItem);
         }
+
+        
+
 
 
         public void SkillListUpdate()
@@ -866,7 +875,7 @@ namespace CodeInject
                 if (value < 0 || value > 100)
                 {
                     MessageBox.Show("Please enter a number between 0 and 100.");
-                    tHealWhenProc.Text = string.Empty;
+                    tHealWhenProc.Text = "90";
                 }
             }
             else
@@ -875,7 +884,8 @@ namespace CodeInject
                 if (!string.IsNullOrEmpty(tHealWhenProc.Text))
                 {
                     MessageBox.Show("Please enter a valid number.");
-                    tHealWhenProc.Text = string.Empty;
+                    tHealWhenProc.Text = "90";
+                   // tHealWhenProc.Text = string.Empty;
                 }
             }
         }
@@ -1026,11 +1036,6 @@ namespace CodeInject
         private void button25_Click(object sender, EventArgs e)
         {
             lBuffs.Items.Clear();   
-        }
-
-        private void button26_Click(object sender, EventArgs e)
-        {
-            GameActions.CastSkillById(494);
         }
     }
 }
