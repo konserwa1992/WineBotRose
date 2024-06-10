@@ -157,6 +157,7 @@ namespace CodeInject
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Statustext = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button26 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -462,6 +463,7 @@ namespace CodeInject
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button26);
             this.tabPage2.Controls.Add(this.button25);
             this.tabPage2.Controls.Add(this.button24);
             this.tabPage2.Controls.Add(this.cNormalAttackEnable);
@@ -1446,6 +1448,16 @@ namespace CodeInject
             this.Statustext.Name = "Statustext";
             this.Statustext.Size = new System.Drawing.Size(0, 17);
             // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(26, 429);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(75, 23);
+            this.button26.TabIndex = 20;
+            this.button26.Text = "Test Skill";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1618,5 +1630,6 @@ namespace CodeInject
         private ToolStripStatusLabel Statustext;
         private Button button24;
         private Button button25;
+        private Button button26;
     }
 }

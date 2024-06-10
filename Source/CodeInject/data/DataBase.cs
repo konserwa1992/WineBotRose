@@ -28,6 +28,7 @@ namespace CodeInject
     public class SkillInfo: IBasicInfo
     {
         public int ID { get; set; }
+        public int Id { get; internal set; }
         public string Name { get; set; } = " ";
         public string Type { get; set; } = "Unknow";
 
