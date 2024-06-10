@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace CodeInject.Actors
 {
-    public unsafe class  NPC: IObject
+    public unsafe class NPC : IObject
     {
         public long ObjectPointer { get; set; }
         public ushort ID { get; set; }
@@ -29,19 +29,19 @@ namespace CodeInject.Actors
         public NPC(long* Entry)
         {
 
-                ObjectPointer = (long)((long*)*Entry);
+            ObjectPointer = (long)((long*)*Entry);
 
-                X = *(float*)(*Entry + 0x10);
-                Y = *(float*)(*Entry + 0x14);
-                Z = *(float*)(*Entry + 0x18);
-                if ((long*)(*Entry + 0x28) != null)
+            X = *(float*)(*Entry + 0x10);
+            Y = *(float*)(*Entry + 0x14);
+            Z = *(float*)(*Entry + 0x18);
+            if ((long*)(*Entry + 0x28) != null)
                 ID = *(ushort*)(*((long*)(*Entry + 0x20)));//0x368
-              //  Hp = *(int*)(*Entry + 0xF0);
-                MaxHp = *(int*)(*Entry + 0xF8);
+                                                           //  Hp = *(int*)(*Entry + 0xF0);
+            MaxHp = *(int*)(*Entry + 0xF8);
 
-                //Name = (string*)(*Entry + 0xbb0);
+            //Name = (string*)(*Entry + 0xbb0);
 
-                Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x368)));
+            Info = DataBase.GameDataBase.MonsterDatabase.FirstOrDefault(x => x.ID == (*(short*)(*Entry + 0x368)));
 
         }
 
@@ -50,8 +50,10 @@ namespace CodeInject.Actors
             try//Walk around for error TODO:Fix it. Sometime getting null reference.
             {
                 return Math.Sqrt(Math.Pow((targetObject.X / 100) - (this.X / 100), 2) + Math.Pow((targetObject.Y / 100) - (this.Y / 100), 2) + Math.Pow((targetObject.Z / 100) - (this.Z / 100), 2));
-            }catch(Exception) {
-            
+            }
+            catch (Exception)
+            {
+
             }
             return 0;
         }
@@ -70,18 +72,18 @@ namespace CodeInject.Actors
         }
 
 
-        public double CalcDistance(float x,float y,float z)
+        public double CalcDistance(float x, float y, float z)
         {
             return Math.Sqrt(
-                  Math.Pow((x / 100) - (this.X / 100), 2) 
-                + Math.Pow((y / 100) - (this.Y / 100), 2) 
+                  Math.Pow((x / 100) - (this.X / 100), 2)
+                + Math.Pow((y / 100) - (this.Y / 100), 2)
                 + Math.Pow((z / 100) - (this.Z / 100), 2));
         }
 
         public override string ToString()
         {
-            if(Info != null)
-              return $"[{(ID).ToString("X")}] {((long)ObjectPointer).ToString("X")}  {Hp}/{MaxHp} {Info.Name}";
+            if (Info != null)
+                return $"[{(ID).ToString("X")}] {((long)ObjectPointer).ToString("X")}  {Hp}/{MaxHp} {Info.Name}";
 
             return $"[{(ID).ToString("X")}] {((long)ObjectPointer).ToString("X")} Unknow Object";
         }

@@ -1023,6 +1023,27 @@ namespace CodeInject
         {
             
         }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Add HealingSkills to Use";
+        }
+
+        private void button3_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Remove Healingskills";
+        }
+
+        private void tHealWhenProc_MouseHover(object sender, EventArgs e)
+        {
+            Statustext.Text = "Value when Healing Player";
+        }
+
+        private void bAdvancedFilter_Click(object sender, EventArgs e)
+        {
+            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(BotContext.Filter);
+            advFilterWindow.ShowDialog();
+        }
     }
 }
 
