@@ -480,6 +480,25 @@ namespace CodeInject
             }
         }
 
+        public class GameActions
+        {
+            public static void CastSkillById(int skillId)
+            {
+                var playerSkills = GameHackFunc.Game.ClientData.GetPlayerSkills();
+                var skill = playerSkills.FirstOrDefault(x => x.skillInfo.ID == skillId);
+
+                if (skill != null)
+                {
+                    GameHackFunc.Game.Actions.CastSpell(skill.SkillIndex);
+                    Console.WriteLine($"Skill with ID {skillId} cast successfully.");
+                }
+                else
+                {
+                    Console.WriteLine($"Skill with ID {skillId} not found.");
+                }
+            }
+        }
+
         private unsafe void cBot_Load(object sender, EventArgs e)
         {
 
@@ -1017,32 +1036,6 @@ namespace CodeInject
         private void button25_Click(object sender, EventArgs e)
         {
             lBuffs.Items.Clear();   
-        }
-
-        private void button26_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            Statustext.Text = "Add HealingSkills to Use";
-        }
-
-        private void button3_MouseHover(object sender, EventArgs e)
-        {
-            Statustext.Text = "Remove Healingskills";
-        }
-
-        private void tHealWhenProc_MouseHover(object sender, EventArgs e)
-        {
-            Statustext.Text = "Value when Healing Player";
-        }
-
-        private void bAdvancedFilter_Click(object sender, EventArgs e)
-        {
-            AdvancedFilterForm advFilterWindow = new AdvancedFilterForm(BotContext.Filter);
-            advFilterWindow.ShowDialog();
         }
     }
 }

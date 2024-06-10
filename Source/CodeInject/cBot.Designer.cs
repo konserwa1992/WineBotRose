@@ -61,7 +61,6 @@ namespace CodeInject
             this.tSearchMobTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button26 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.cNormalAttackEnable = new System.Windows.Forms.CheckBox();
@@ -77,7 +76,6 @@ namespace CodeInject
             this.bSkillRefresh = new System.Windows.Forms.Button();
             this.lSkillList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -464,7 +462,6 @@ namespace CodeInject
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button26);
             this.tabPage2.Controls.Add(this.button25);
             this.tabPage2.Controls.Add(this.button24);
             this.tabPage2.Controls.Add(this.cNormalAttackEnable);
@@ -486,16 +483,6 @@ namespace CodeInject
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Attack Skills";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button26
-            // 
-            this.button26.Location = new System.Drawing.Point(26, 429);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(75, 23);
-            this.button26.TabIndex = 20;
-            this.button26.Text = "Test Skill";
-            this.button26.UseVisualStyleBackColor = true;
-            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // button25
             // 
@@ -633,7 +620,6 @@ namespace CodeInject
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.label20);
             this.tabPage3.Controls.Add(this.label19);
             this.tabPage3.Controls.Add(this.label18);
@@ -654,15 +640,6 @@ namespace CodeInject
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Healing";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 457);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(244, 13);
-            this.label15.TabIndex = 37;
-            this.label15.Text = "this will automatic revive the player when HP is 0%";
             // 
             // label20
             // 
@@ -804,7 +781,6 @@ namespace CodeInject
             this.tHealWhenProc.Text = "90";
             this.tHealWhenProc.TextChanged += new System.EventHandler(this.tHealWhenProc_TextChanged);
             this.tHealWhenProc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tHealWhenProc_KeyPress);
-            this.tHealWhenProc.MouseHover += new System.EventHandler(this.tHealWhenProc_MouseHover);
             // 
             // cEnableHealParty
             // 
@@ -827,7 +803,6 @@ namespace CodeInject
             this.button3.Text = "↑";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_2);
-            this.button3.MouseHover += new System.EventHandler(this.button3_MouseHover);
             // 
             // button1
             // 
@@ -839,7 +814,6 @@ namespace CodeInject
             this.button1.Text = "↓";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
             // 
             // lHealSkills
             // 
@@ -1030,7 +1004,7 @@ namespace CodeInject
             this.bAdvancedFilter.TabIndex = 11;
             this.bAdvancedFilter.Text = "Advanced filter";
             this.bAdvancedFilter.UseVisualStyleBackColor = true;
-            this.bAdvancedFilter.Click += new System.EventHandler(this.bAdvancedFilter_Click);
+            this.bAdvancedFilter.Click += new System.EventHandler(this.button1_Click);
             // 
             // labCharName
             // 
@@ -1645,7 +1619,5 @@ namespace CodeInject
         private ToolStripStatusLabel Statustext;
         private Button button24;
         private Button button25;
-        private Button button26;
-        private Label label15;
     }
 }
