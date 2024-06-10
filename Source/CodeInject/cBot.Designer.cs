@@ -34,6 +34,7 @@ namespace CodeInject
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cBot));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button26 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.tProfileName = new System.Windows.Forms.TextBox();
@@ -195,6 +196,7 @@ namespace CodeInject
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button26);
             this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.button18);
             this.tabPage1.Controls.Add(this.tProfileName);
@@ -219,6 +221,16 @@ namespace CodeInject
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hunt";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(327, 439);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(75, 23);
+            this.button26.TabIndex = 18;
+            this.button26.Text = "button26";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // button19
             // 
@@ -1004,6 +1016,7 @@ namespace CodeInject
             this.bAdvancedFilter.TabIndex = 11;
             this.bAdvancedFilter.Text = "Advanced filter";
             this.bAdvancedFilter.UseVisualStyleBackColor = true;
+            this.bAdvancedFilter.Click += new System.EventHandler(this.button1_Click);
             // 
             // labCharName
             // 
@@ -1618,5 +1631,6 @@ namespace CodeInject
         private ToolStripStatusLabel Statustext;
         private Button button24;
         private Button button25;
+        private Button button26;
     }
 }
