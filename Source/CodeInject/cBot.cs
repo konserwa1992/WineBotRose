@@ -47,13 +47,13 @@ namespace CodeInject
         }
 
 
-        
 
 
-    private void bSkillRefresh_Click(object sender, EventArgs e)
+
+        private void bSkillRefresh_Click(object sender, EventArgs e)
         {
-           // lSkillList.Items.Clear();
-           // lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
+            // lSkillList.Items.Clear();
+            // lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
 
             lSkillList.Items.Clear();
             var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
@@ -75,7 +75,7 @@ namespace CodeInject
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lUseSkill.SelectedItem);
         }
 
-        
+
 
 
 
@@ -885,26 +885,36 @@ namespace CodeInject
                 {
                     MessageBox.Show("Please enter a valid number.");
                     tHealWhenProc.Text = "90";
-                   // tHealWhenProc.Text = string.Empty;
+                    // tHealWhenProc.Text = string.Empty;
                 }
             }
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
-            
+
 
             // Clear the items in the healskills ListBox and add the new items.
-            //Only Heal and Buff skills are in the healskills listbox (HealTab)
+            //Only Heal skills are in the healskills listbox (HealTab)
             healskills.Items.Clear();
             healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive" &&
                                                                            x.skillInfo.Type != "Unknow" &&
                                                                             x.skillInfo.Type != "Summon" &&
-                                                                           x.skillInfo.Type != "Offensive").ToArray());
+                                                                          x.skillInfo.Type != "Buff" &&
+                                                                            x.skillInfo.Type != "Offensive").ToArray());
 
             // Replace the items in comboBox5 with all player skills.
+            // comboBox5.Items.Clear();
+            // comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+
+
+            //only show revive skills in (Autorevive) (Combobox5)
             comboBox5.Items.Clear();
-            comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+            comboBox5.Items.AddRange(
+                PlayerCharacter.GetPlayerSkills
+                    .Where(skill => skill.skillInfo.Type == "Revive")
+                    .ToArray()
+            );
 
 
 
@@ -938,14 +948,14 @@ namespace CodeInject
         }
         private void button7_Click_1(object sender, EventArgs e)
         {
-            
+
 
             lPlayers2Heal.Items.Add(lPlayersList.SelectedItem);
         }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            
+
 
             lPlayers2Heal.Items.Remove(lPlayers2Heal.SelectedItem);
         }
@@ -1061,9 +1071,40 @@ namespace CodeInject
 
         private void button25_Click(object sender, EventArgs e)
         {
-            lBuffs.Items.Clear();   
+            lBuffs.Items.Clear();
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage3"])
+            {
+                healskills.Items.Clear();
+                healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive" &&
+                                                                               x.skillInfo.Type != "Unknow" &&
+                                                                                x.skillInfo.Type != "Summon" &&
+                                                                              x.skillInfo.Type != "Buff" &&
+                                                                                x.skillInfo.Type != "Offensive").ToArray());
+
+                comboBox5.Items.Clear();
+                comboBox5.Items.AddRange(
+                    PlayerCharacter.GetPlayerSkills
+                        .Where(skill => skill.skillInfo.Type == "Revive")
+                        .ToArray());
+
+            }
         }
     }
-}
+    }
+
 
 
