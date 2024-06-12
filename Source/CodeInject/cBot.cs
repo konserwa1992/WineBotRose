@@ -892,11 +892,25 @@ namespace CodeInject
 
         private void button23_Click(object sender, EventArgs e)
         {
-            healskills.Items.Clear();
-            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
+            
 
+            // Clear the items in the healskills ListBox and add the new items.
+            //Only Heal and Buff skills are in the healskills listbox (HealTab)
+            healskills.Items.Clear();
+            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive" &&
+                                                                           x.skillInfo.Type != "Unknow" &&
+                                                                            x.skillInfo.Type != "Summon" &&
+                                                                           x.skillInfo.Type != "Offensive").ToArray());
+
+            // Replace the items in comboBox5 with all player skills.
             comboBox5.Items.Clear();
             comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+
+
+
+
+
+
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -907,9 +921,21 @@ namespace CodeInject
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            lHealSkills.Items.Add(healskills.SelectedItem);
-        }
+            //foreach (var item in healskills.Items)
+            {
+                //  if (item is Skills skill)
+                //  {
+                //      skill.SkillType = SkillTypes.HealTarget;
+                //      lHealSkills.Items.Add(skill);
+                //  }
 
+                //lHealSkills.Items.Add(healskills.SelectedItem);
+                Skills skill = (Skills)healskills.SelectedItem;
+                skill.SkillType = SkillTypes.HealTarget;
+                lHealSkills.Items.Add((skill));
+
+            }
+        }
         private void button7_Click_1(object sender, EventArgs e)
         {
             
