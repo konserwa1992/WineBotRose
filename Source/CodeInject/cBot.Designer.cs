@@ -157,6 +157,11 @@ namespace CodeInject
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Statustext = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button26 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -175,6 +180,7 @@ namespace CodeInject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -198,6 +204,7 @@ namespace CodeInject
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button26);
             this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.button18);
             this.tabPage1.Controls.Add(this.tProfileName);
@@ -225,7 +232,7 @@ namespace CodeInject
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(404, 334);
+            this.button19.Location = new System.Drawing.Point(401, 366);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(52, 23);
             this.button19.TabIndex = 17;
@@ -235,7 +242,7 @@ namespace CodeInject
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(404, 307);
+            this.button18.Location = new System.Drawing.Point(401, 339);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(52, 23);
             this.button18.TabIndex = 16;
@@ -245,7 +252,7 @@ namespace CodeInject
             // 
             // tProfileName
             // 
-            this.tProfileName.Location = new System.Drawing.Point(287, 310);
+            this.tProfileName.Location = new System.Drawing.Point(284, 342);
             this.tProfileName.Name = "tProfileName";
             this.tProfileName.Size = new System.Drawing.Size(115, 20);
             this.tProfileName.TabIndex = 15;
@@ -253,7 +260,7 @@ namespace CodeInject
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(287, 336);
+            this.comboBox3.Location = new System.Drawing.Point(284, 368);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(115, 21);
             this.comboBox3.TabIndex = 14;
@@ -267,7 +274,7 @@ namespace CodeInject
             this.groupBox5.Size = new System.Drawing.Size(200, 277);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Whats do if no monsters";
+            this.groupBox5.Text = "What do if no monsters:";
             // 
             // comboBox2
             // 
@@ -288,11 +295,11 @@ namespace CodeInject
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(93, 146);
+            this.button2.Location = new System.Drawing.Point(147, 146);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
+            this.button2.Size = new System.Drawing.Size(119, 23);
             this.button2.TabIndex = 12;
-            this.button2.Text = "Add searched";
+            this.button2.Text = "Add All";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -317,7 +324,7 @@ namespace CodeInject
             // 
             // bHuntToggle
             // 
-            this.bHuntToggle.Location = new System.Drawing.Point(9, 405);
+            this.bHuntToggle.Location = new System.Drawing.Point(9, 437);
             this.bHuntToggle.Name = "bHuntToggle";
             this.bHuntToggle.Size = new System.Drawing.Size(269, 23);
             this.bHuntToggle.TabIndex = 11;
@@ -334,7 +341,7 @@ namespace CodeInject
             this.groupBox3.Controls.Add(this.tYHuntArea);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.tXHuntArea);
-            this.groupBox3.Location = new System.Drawing.Point(12, 302);
+            this.groupBox3.Location = new System.Drawing.Point(9, 334);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(269, 97);
             this.groupBox3.TabIndex = 8;
@@ -412,21 +419,21 @@ namespace CodeInject
             // 
             // bRemoveMonster2Attack
             // 
-            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(191, 146);
+            this.bRemoveMonster2Attack.Location = new System.Drawing.Point(9, 302);
             this.bRemoveMonster2Attack.Name = "bRemoveMonster2Attack";
-            this.bRemoveMonster2Attack.Size = new System.Drawing.Size(75, 23);
+            this.bRemoveMonster2Attack.Size = new System.Drawing.Size(119, 23);
             this.bRemoveMonster2Attack.TabIndex = 6;
-            this.bRemoveMonster2Attack.Text = "Remove";
+            this.bRemoveMonster2Attack.Text = "Remove Sellected";
             this.bRemoveMonster2Attack.UseVisualStyleBackColor = true;
             this.bRemoveMonster2Attack.Click += new System.EventHandler(this.bRemoveMonster2Attack_Click);
             // 
             // bAddMonster2Attack
             // 
-            this.bAddMonster2Attack.Location = new System.Drawing.Point(12, 146);
+            this.bAddMonster2Attack.Location = new System.Drawing.Point(9, 146);
             this.bAddMonster2Attack.Name = "bAddMonster2Attack";
-            this.bAddMonster2Attack.Size = new System.Drawing.Size(75, 23);
+            this.bAddMonster2Attack.Size = new System.Drawing.Size(119, 23);
             this.bAddMonster2Attack.TabIndex = 5;
-            this.bAddMonster2Attack.Text = "Add";
+            this.bAddMonster2Attack.Text = "Add Sellected";
             this.bAddMonster2Attack.UseVisualStyleBackColor = true;
             this.bAddMonster2Attack.Click += new System.EventHandler(this.bAddMonster2Attack_Click);
             // 
@@ -465,6 +472,7 @@ namespace CodeInject
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.button25);
             this.tabPage2.Controls.Add(this.button24);
             this.tabPage2.Controls.Add(this.cNormalAttackEnable);
@@ -512,7 +520,7 @@ namespace CodeInject
             this.cNormalAttackEnable.AutoSize = true;
             this.cNormalAttackEnable.Checked = true;
             this.cNormalAttackEnable.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cNormalAttackEnable.Location = new System.Drawing.Point(9, 256);
+            this.cNormalAttackEnable.Location = new System.Drawing.Point(9, 440);
             this.cNormalAttackEnable.Name = "cNormalAttackEnable";
             this.cNormalAttackEnable.Size = new System.Drawing.Size(93, 17);
             this.cNormalAttackEnable.TabIndex = 17;
@@ -702,7 +710,7 @@ namespace CodeInject
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(115, 23);
             this.button20.TabIndex = 29;
-            this.button20.Text = "Delete All Players";
+            this.button20.Text = "Remove All Players";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click_1);
             // 
@@ -1156,6 +1164,7 @@ namespace CodeInject
             this.cbHealMPItem.Size = new System.Drawing.Size(121, 21);
             this.cbHealMPItem.TabIndex = 17;
             this.cbHealMPItem.DropDown += new System.EventHandler(this.cbHealMPItem_DropDown);
+            this.cbHealMPItem.SelectedIndexChanged += new System.EventHandler(this.cbHealMPItem_SelectedIndexChanged);
             // 
             // cbHealHPItem
             // 
@@ -1450,6 +1459,64 @@ namespace CodeInject
             this.Statustext.Name = "Statustext";
             this.Statustext.Size = new System.Drawing.Size(0, 17);
             // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(147, 302);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(119, 23);
+            this.button26.TabIndex = 18;
+            this.button26.Text = "Remove All";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.radioButton3);
+            this.groupBox6.Controls.Add(this.radioButton2);
+            this.groupBox6.Controls.Add(this.radioButton1);
+            this.groupBox6.Location = new System.Drawing.Point(9, 216);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(120, 134);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Skill Filter:";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(7, 29);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(97, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.Text = "Offensive Skills";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(7, 53);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(71, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Buff Skills";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButton2.Click += new System.EventHandler(this.radioButton2_Click);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(7, 77);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(36, 17);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "All";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
             // cBot
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1490,6 +1557,8 @@ namespace CodeInject
             this.tabPage8.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1622,5 +1691,10 @@ namespace CodeInject
         private ToolStripStatusLabel Statustext;
         private Button button24;
         private Button button25;
+        private Button button26;
+        private GroupBox groupBox6;
+        private RadioButton radioButton3;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

@@ -56,8 +56,11 @@ namespace CodeInject
             // lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
 
             lSkillList.Items.Clear();
-            var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
+             var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
             lSkillList.Items.AddRange(activeSkills);
+
+            
+
 
             comboBox5.Items.Clear();
             comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
@@ -65,8 +68,27 @@ namespace CodeInject
 
         private void bSkillAdd_Click(object sender, EventArgs e)
         {
+            //if (lSkillList.SelectedIndex != -1)
+            //    BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.AttackSkill);
+
             if (lSkillList.SelectedIndex != -1)
-                BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.AttackSkill);
+            {
+                Skills selectedSkill = (Skills)lSkillList.SelectedItem;
+                if (selectedSkill.skillInfo.Type == "Offensive")
+                {
+                    // Voeg de skill toe aan de HuntInstance en lUseSkill
+                    BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(selectedSkill, SkillTypes.AttackSkill);
+                    lUseSkill.Items.Add(selectedSkill);
+
+                    // Verwijder de skill uit lSkillList
+                    lSkillList.Items.Remove(selectedSkill);
+                }
+                else
+                {
+                    MessageBox.Show("Only offensive skills can be added.", "Invalid Skill Type", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
         }
 
         private void bSkillRemove_Click(object sender, EventArgs e)
@@ -1103,8 +1125,59 @@ namespace CodeInject
 
             }
         }
+
+        private void cbHealMPItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            lMonster2Attack.Items.Clear();
+        }
+
+        private void checkBoxBuffs_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void checkBoxBuffs_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            lSkillList.Items.Clear();
+            var buffSkills = PlayerCharacter.GetPlayerSkills
+                                            .Where(x => x.skillInfo.Type == "Offensive")
+                                            .ToArray();
+            lSkillList.Items.AddRange(buffSkills);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            lSkillList.Items.Clear();
+            var buffSkills = PlayerCharacter.GetPlayerSkills
+                                            .Where(x => x.skillInfo.Type == "Buff")
+                                            .ToArray();
+            lSkillList.Items.AddRange(buffSkills);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            lSkillList.Items.Clear();
+            var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
+            lSkillList.Items.AddRange(activeSkills);
+        }
     }
     }
+
 
 
 
