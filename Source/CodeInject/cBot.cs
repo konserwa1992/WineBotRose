@@ -20,6 +20,7 @@ using Point = AForge.Point;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Security;
+using System.Windows.Forms.VisualStyles;
 
 namespace CodeInject
 {
@@ -287,6 +288,11 @@ namespace CodeInject
 
                 List<Skills> SkillList = new List<Skills>();
                 SkillList.AddRange(lUseSkill.Items.Cast<Skills>().ToArray());
+                if (comboBox5.SelectedIndex != -1)
+                {
+                    ((Skills)comboBox5.SelectedItem).SkillType = SkillTypes.Revive;
+                    SkillList.Add((Skills)comboBox5.SelectedItem);
+                }
                 SkillList.AddRange(lHealSkills.Items.Cast<Skills>().ToArray());
                 if (comboBox5.SelectedIndex != -1)
                 {
@@ -296,6 +302,9 @@ namespace CodeInject
 
                 if (cEnableHealParty.Checked)
                 {
+
+
+
                     BotContext.Start(new HuntState(
                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
@@ -907,7 +916,9 @@ namespace CodeInject
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            lHealSkills.Items.Add(healskills.SelectedItem);
+            Skills skill = (Skills)healskills.SelectedItem;
+            skill.SkillType = SkillTypes.HealTarget;
+            lHealSkills.Items.Add((skill));
         }
 
         private void button7_Click_1(object sender, EventArgs e)
@@ -1036,6 +1047,51 @@ namespace CodeInject
         private void button25_Click(object sender, EventArgs e)
         {
             lBuffs.Items.Clear();   
+        }
+
+        private void button21_Click_1(object sender, EventArgs e)
+        {
+            /*lMonster2Attack.Items.Clear();
+
+            // Controleer of PlayerInfo beschikbaar is
+            IObject player = PlayerCharacter.PlayerInfo;
+            if (player == null)
+            {
+                MessageBox.Show("Player information is not available.");
+                return;
+            }
+
+            // Hardcode de radius (bijvoorbeeld 100 eenheden)
+            float radius = 100.0f;
+
+
+                // Haal NPC's op die monsters zijn en zich binnen de radius bevinden
+                var nearbyMonsters = GameHackFunc.Game.ClientData.GetNPCs()
+                                        .OfType<NPC>() // Filter alleen NPC's
+                                        .Where(npc => player.CalcDistance(npc) < radius
+                                                   && npc.Info!=null && !npc.Info.Name.ToUpper().Contains("(NPC)")
+                                                   && !npc.Info.Name.ToUpper().Contains("(SUMMON)"))
+                                        .ToArray();
+
+                // Voeg monsters toe aan lMonster2Attack als ze nog niet zijn toegevoegd
+                foreach (var mob in nearbyMonsters)
+                {
+                    if (!lMonster2Attack.Items.Cast<MobInfo>().Any(x => x.ID == mob.Info.ID))
+                    {
+                        lMonster2Attack.Items.Add(mob.Info);
+                    }
+                }
+            */
+
+            IPlayer player2Revive = (IPlayer)GameHackFunc.Game.ClientData.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && ((IPlayer)x).Hp <= 1)
+              .FirstOrDefault();
+
+
+            if (player2Revive != null)
+            {
+                MessageBox.Show(((Skills)comboBox5.SelectedItem).skillInfo.Name);
+                GameHackFunc.Game.Actions.CastSpell((IObject)player2Revive, ((Skills)comboBox5.SelectedItem).SkillIndex);
+            }
         }
     }
 }
