@@ -5147,127 +5147,127 @@
   {
     "ID": 1030,
     "Name": "Cure",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1031,
     "Name": "Cure",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1032,
     "Name": "Cure",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1033,
     "Name": "Cure",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1034,
     "Name": "Cure",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1035,
     "Name": "Heal",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1036,
     "Name": "Heal",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1037,
     "Name": "Heal",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1038,
     "Name": "Heal",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1039,
     "Name": "Heal",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1040,
     "Name": "Heal (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1041,
     "Name": "Heal (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1042,
     "Name": "Heal (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1043,
     "Name": "Heal (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1044,
     "Name": "Heal (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1045,
     "Name": "Restore",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1046,
     "Name": "Restore",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1047,
     "Name": "Restore",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1048,
     "Name": "Restore",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1049,
     "Name": "Restore",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1050,
     "Name": "Restore (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1051,
     "Name": "Restore (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1052,
     "Name": "Restore (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1053,
     "Name": "Restore (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1054,
     "Name": "Restore (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1055,
@@ -6847,152 +6847,152 @@
   {
     "ID": 1370,
     "Name": "Recovery",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1371,
     "Name": "Recovery",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1372,
     "Name": "Recovery",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1373,
     "Name": "Recovery",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1374,
     "Name": "Recovery",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1375,
     "Name": "Recovery (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1376,
     "Name": "Recovery (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1377,
     "Name": "Recovery (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1378,
     "Name": "Recovery (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1379,
     "Name": "Recovery (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1380,
     "Name": "Integrity",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1381,
     "Name": "Integrity",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1382,
     "Name": "Integrity",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1383,
     "Name": "Integrity",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1384,
     "Name": "Integrity",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1385,
     "Name": "Integrity (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1386,
     "Name": "Integrity (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1387,
     "Name": "Integrity (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1388,
     "Name": "Integrity (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1389,
     "Name": "Integrity (Party)",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1390,
     "Name": "Heavenly Grace",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1391,
     "Name": "Heavenly Grace",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1392,
     "Name": "Heavenly Grace",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1393,
     "Name": "Heavenly Grace",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1394,
     "Name": "Heavenly Grace",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1395,
     "Name": "Purify",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1396,
     "Name": "Purify",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1397,
     "Name": "Purify",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1398,
     "Name": "Purify",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1399,
     "Name": "Purify",
-    "Type": "Buff"
+    "Type": "Heal"
   },
   {
     "ID": 1400,

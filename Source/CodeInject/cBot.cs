@@ -20,7 +20,6 @@ using Point = AForge.Point;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Security;
-using System.Windows.Forms.VisualStyles;
 
 namespace CodeInject
 {
@@ -48,17 +47,20 @@ namespace CodeInject
         }
 
 
-        
 
 
-    private void bSkillRefresh_Click(object sender, EventArgs e)
+
+        private void bSkillRefresh_Click(object sender, EventArgs e)
         {
-           // lSkillList.Items.Clear();
-           // lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
+            // lSkillList.Items.Clear();
+            // lSkillList.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
 
             lSkillList.Items.Clear();
             var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
             lSkillList.Items.AddRange(activeSkills);
+
+
+
 
             comboBox5.Items.Clear();
             comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
@@ -66,8 +68,27 @@ namespace CodeInject
 
         private void bSkillAdd_Click(object sender, EventArgs e)
         {
+            //if (lSkillList.SelectedIndex != -1)
+            //    BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.AttackSkill);
+
             if (lSkillList.SelectedIndex != -1)
-                BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill((Skills)lSkillList.SelectedItem, SkillTypes.AttackSkill);
+            {
+                Skills selectedSkill = (Skills)lSkillList.SelectedItem;
+                if (selectedSkill.skillInfo.Type == "Offensive")
+                {
+                    // add skill to HuntInstance and lUseSkill
+                    BotContext.GetState<HuntState>("HUNT").HuntInstance.AddSkill(selectedSkill, SkillTypes.AttackSkill);
+                    lUseSkill.Items.Add(selectedSkill);
+
+                    // Delete skill from lSkillList
+                    lSkillList.Items.Remove(selectedSkill);
+                }
+                else
+                {
+                    MessageBox.Show("Only offensive skills can be added.", "Invalid Skill Type", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
         }
 
         private void bSkillRemove_Click(object sender, EventArgs e)
@@ -76,7 +97,7 @@ namespace CodeInject
                 BotContext.GetState<HuntState>("HUNT").HuntInstance.RemoveSkill((Skills)lUseSkill.SelectedItem);
         }
 
-        
+
 
 
 
@@ -288,11 +309,6 @@ namespace CodeInject
 
                 List<Skills> SkillList = new List<Skills>();
                 SkillList.AddRange(lUseSkill.Items.Cast<Skills>().ToArray());
-                if (comboBox5.SelectedIndex != -1)
-                {
-                    ((Skills)comboBox5.SelectedItem).SkillType = SkillTypes.Revive;
-                    SkillList.Add((Skills)comboBox5.SelectedItem);
-                }
                 SkillList.AddRange(lHealSkills.Items.Cast<Skills>().ToArray());
                 if (comboBox5.SelectedIndex != -1)
                 {
@@ -302,9 +318,6 @@ namespace CodeInject
 
                 if (cEnableHealParty.Checked)
                 {
-
-
-
                     BotContext.Start(new HuntState(
                         new HealerHunt(lMonster2Attack.Items.Cast<MobInfo>().ToList(),
                         new Vector3(float.Parse(tXHuntArea.Text), float.Parse(tYHuntArea.Text),
@@ -640,6 +653,8 @@ namespace CodeInject
 
 
         Map map;
+        private NPC npc;
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
@@ -867,20 +882,20 @@ namespace CodeInject
 
         private void tHealWhenProc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Controleer of de ingedrukte toets een cijfer is of een besturingsteken zoals backspace
+            // Check if key press is a number
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Als de toets geen cijfer of besturingsteken is, annuleren we de invoer
+                // if key is no number cancel input
                 e.Handled = true;
             }
         }
 
         private void tHealWhenProc_TextChanged(object sender, EventArgs e)
         {
-            // Probeer de waarde van de TextBox te parsen
+            // Try to parse value in combobox
             if (int.TryParse(tHealWhenProc.Text, out int value))
             {
-                // Controleer of de waarde tussen 0 en 100 ligt
+                // check value between 0 and 100 
                 if (value < 0 || value > 100)
                 {
                     MessageBox.Show("Please enter a number between 0 and 100.");
@@ -889,23 +904,47 @@ namespace CodeInject
             }
             else
             {
-                // Als de waarde niet kan worden geparsed, leeg de TextBox
+                // if value can't be parse the empty Textbox
                 if (!string.IsNullOrEmpty(tHealWhenProc.Text))
                 {
                     MessageBox.Show("Please enter a valid number.");
                     tHealWhenProc.Text = "90";
-                   // tHealWhenProc.Text = string.Empty;
+                    // tHealWhenProc.Text = string.Empty;
                 }
             }
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
-            healskills.Items.Clear();
-            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x=>x.skillInfo.Type!="Passive").ToArray());
 
+
+            // Clear the items in the healskills ListBox and add the new items.
+            //Only Heal skills are in the healskills listbox (HealTab)
+            healskills.Items.Clear();
+            healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive" &&
+                                                                           x.skillInfo.Type != "Unknow" &&
+                                                                            x.skillInfo.Type != "Summon" &&
+                                                                          x.skillInfo.Type != "Buff" &&
+                                                                            x.skillInfo.Type != "Offensive").ToArray());
+
+            // Replace the items in comboBox5 with all player skills.
+            // comboBox5.Items.Clear();
+            // comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+
+
+            //only show revive skills in (Autorevive) (Combobox5)
             comboBox5.Items.Clear();
-            comboBox5.Items.AddRange(PlayerCharacter.GetPlayerSkills.ToArray());
+            comboBox5.Items.AddRange(
+                PlayerCharacter.GetPlayerSkills
+                    .Where(skill => skill.skillInfo.Type == "Revive")
+                    .ToArray()
+            );
+
+
+
+
+
+
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -916,21 +955,31 @@ namespace CodeInject
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            Skills skill = (Skills)healskills.SelectedItem;
-            skill.SkillType = SkillTypes.HealTarget;
-            lHealSkills.Items.Add((skill));
-        }
+            //foreach (var item in healskills.Items)
+            {
+                //  if (item is Skills skill)
+                //  {
+                //      skill.SkillType = SkillTypes.HealTarget;
+                //      lHealSkills.Items.Add(skill);
+                //  }
 
+                //lHealSkills.Items.Add(healskills.SelectedItem);
+                Skills skill = (Skills)healskills.SelectedItem;
+                skill.SkillType = SkillTypes.HealTarget;
+                lHealSkills.Items.Add((skill));
+
+            }
+        }
         private void button7_Click_1(object sender, EventArgs e)
         {
-            
+
 
             lPlayers2Heal.Items.Add(lPlayersList.SelectedItem);
         }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            
+
 
             lPlayers2Heal.Items.Remove(lPlayers2Heal.SelectedItem);
         }
@@ -947,27 +996,27 @@ namespace CodeInject
 
         private void healskills_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Controleer of er een item is geselecteerd
+            // Check if an item is sellected
             if (healskills.SelectedIndex != -1)
             {
-                button1.Enabled = true;  // Zet de knop aan
+                button1.Enabled = true;  // Turn Button on
             }
             else
             {
-                button1.Enabled = false; // Zet de knop uit
+                button1.Enabled = false; // Turn Button off
             }
         }
 
         private void lHealSkills_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Controleer of er een item is geselecteerd
+            // Check if an item is sellected
             if (lHealSkills.SelectedIndex != -1)
             {
-                button3.Enabled = true;  // Zet de knop aan
+                button3.Enabled = true;  // Turn Button on
             }
             else
             {
-                button3.Enabled = false; // Zet de knop uit
+                button3.Enabled = false; // Turn Button off
             }
         }
 
@@ -976,24 +1025,24 @@ namespace CodeInject
             // Controleer of er een item is geselecteerd
             if (lPlayersList.SelectedIndex != -1)
             {
-                button7.Enabled = true;  // Zet de knop aan
+                button7.Enabled = true;  // Turn Button off
             }
             else
             {
-                button7.Enabled = false; // Zet de knop uit
+                button7.Enabled = false; // Turn Button off
             }
         }
 
         private void lPlayers2Heal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Controleer of er een item is geselecteerd
+            // Check is a item is sellected
             if (lPlayers2Heal.SelectedIndex != -1)
             {
-                button6.Enabled = true;  // Zet de knop aan
+                button6.Enabled = true;  // Turn Button on
             }
             else
             {
-                button6.Enabled = false; // Zet de knop uit
+                button6.Enabled = false; // Turn Button off
             }
         }
 
@@ -1046,14 +1095,132 @@ namespace CodeInject
 
         private void button25_Click(object sender, EventArgs e)
         {
-            lBuffs.Items.Clear();   
+            lBuffs.Items.Clear();
         }
 
-        private void button21_Click_1(object sender, EventArgs e)
+        private void tabControl1_Click(object sender, EventArgs e)
         {
-            /*lMonster2Attack.Items.Clear();
 
-            // Controleer of PlayerInfo beschikbaar is
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage3"])
+            {
+                healskills.Items.Clear();
+                healskills.Items.AddRange(PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive" &&
+                                                                               x.skillInfo.Type != "Unknow" &&
+                                                                                x.skillInfo.Type != "Summon" &&
+                                                                              x.skillInfo.Type != "Buff" &&
+                                                                                x.skillInfo.Type != "Offensive").ToArray());
+
+                comboBox5.Items.Clear();
+                comboBox5.Items.AddRange(
+                    PlayerCharacter.GetPlayerSkills
+                        .Where(skill => skill.skillInfo.Type == "Revive")
+                        .ToArray());
+
+            }
+        }
+
+        private void cbHealMPItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            lMonster2Attack.Items.Clear();
+        }
+
+        private void checkBoxBuffs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxBuffs_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            lSkillList.Items.Clear();
+            var buffSkills = PlayerCharacter.GetPlayerSkills
+                                            .Where(x => x.skillInfo.Type == "Offensive")
+                                            .ToArray();
+            lSkillList.Items.AddRange(buffSkills);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            lSkillList.Items.Clear();
+            var buffSkills = PlayerCharacter.GetPlayerSkills
+                                            .Where(x => x.skillInfo.Type == "Buff")
+                                            .ToArray();
+            lSkillList.Items.AddRange(buffSkills);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            lSkillList.Items.Clear();
+            var activeSkills = PlayerCharacter.GetPlayerSkills.Where(x => x.skillInfo.Type != "Passive").ToArray();
+            lSkillList.Items.AddRange(activeSkills);
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            lMonster2Attack.Items.Clear();
+
+            IObject player = PlayerCharacter.PlayerInfo;
+            float radius;// = (tHuntRadius.Text);//100.0f;
+            if (!float.TryParse(tHuntRadius.Text, out radius)) ;
+
+
+            // var nearbyMonsters = GameHackFunc.Game.ClientData.GetNPCs()
+            //                     .Where(npc => npc.GetType() == typeof(NPC)) // only monsters (NPC's), no players
+            //                     .Where(npc => player.CalcDistance(npc) < radius
+            //                     && !((NPC)npc).Info.Name.ToUpper().Contains("(NPC)"))
+            //                     && !((NPC)npc).Info.Name.ToUpper().Contains("(SUMMON)"))
+            //                      .ToArray();
+
+            var nearbyMonsters = GameHackFunc.Game.ClientData.GetNPCs()
+        .Where(npc => npc.GetType() == typeof(NPC)) // only monsters (NPC's), no players
+        .Where(npc => player.CalcDistance(npc) < radius
+                   && !((NPC)npc).Info.Name.ToUpper().Contains("(NPC)")         // don't show NPC in lmonster2attack
+                   && !((NPC)npc).Info.Name.ToUpper().Contains("(SUMMON)"))   //don't show Summons in lmonster2attack
+        .ToArray();
+
+
+
+
+
+            foreach (NPC mob in nearbyMonsters)
+            {
+                if (!lFullMonsterList.Items.Cast<MobInfo>().Any(x => x.ID == mob.Info.ID))
+                {
+                    lFullMonsterList.Items.Add(mob.Info);
+                    ; return;
+
+                }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lMonster2Attack.Items.Clear();
+
+            // check if PlayerInfo is available 
             IObject player = PlayerCharacter.PlayerInfo;
             if (player == null)
             {
@@ -1061,19 +1228,34 @@ namespace CodeInject
                 return;
             }
 
-            // Hardcode de radius (bijvoorbeeld 100 eenheden)
+            // Hardcoded the radius (example 100 units)
             float radius = 100.0f;
 
-
-                // Haal NPC's op die monsters zijn en zich binnen de radius bevinden
+            try
+            {
+                // Catch NPC's what are who are Monsters in Radius
                 var nearbyMonsters = GameHackFunc.Game.ClientData.GetNPCs()
-                                        .OfType<NPC>() // Filter alleen NPC's
-                                        .Where(npc => player.CalcDistance(npc) < radius
-                                                   && npc.Info!=null && !npc.Info.Name.ToUpper().Contains("(NPC)")
-                                                   && !npc.Info.Name.ToUpper().Contains("(SUMMON)"))
+                                        .OfType<NPC>() // Filter only NPC's
+                                        .Where(npc =>
+                                        {
+                                            try
+                                            {
+                                                return player.CalcDistance(npc) < radius
+                                                       && npc.Info != null
+                                                       && !npc.Info.Name.ToUpper().Contains("(NPC)") //delete NPC's)
+                                                       && !npc.Info.Name.ToUpper().Contains("(SUMMON)"); //delete Summons
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                // Log or ignore specific NPC errors and continue
+                                                // Exceptions can be logged here if needed
+                                                Console.WriteLine($"Error processing NPC: {ex.Message}");
+                                                return false;
+                                            }
+                                        })
                                         .ToArray();
 
-                // Voeg monsters toe aan lMonster2Attack als ze nog niet zijn toegevoegd
+                // Add monsters to lMonster2Attack if they are not already added
                 foreach (var mob in nearbyMonsters)
                 {
                     if (!lMonster2Attack.Items.Cast<MobInfo>().Any(x => x.ID == mob.Info.ID))
@@ -1081,19 +1263,37 @@ namespace CodeInject
                         lMonster2Attack.Items.Add(mob.Info);
                     }
                 }
-            */
-
-            IPlayer player2Revive = (IPlayer)GameHackFunc.Game.ClientData.GetNPCs().Where(x => (typeof(Player) == x.GetType() || typeof(OtherPlayer) == x.GetType()) && ((IPlayer)x).Hp <= 1)
-              .FirstOrDefault();
-
-
-            if (player2Revive != null)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(((Skills)comboBox5.SelectedItem).skillInfo.Name);
-                GameHackFunc.Game.Actions.CastSpell((IObject)player2Revive, ((Skills)comboBox5.SelectedItem).SkillIndex);
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
+        }
+
+
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tHuntRadius_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Only Numbers input
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+
+                e.Handled = true;
             }
         }
     }
 }
+
+
+
+
+
 
 
