@@ -312,6 +312,7 @@ namespace CodeInject
                 SkillList.AddRange(lHealSkills.Items.Cast<Skills>().ToArray());
                 if (comboBox5.SelectedIndex != -1)
                 {
+                    (comboBox5.SelectedItem as Skills).SkillType  = SkillTypes.Revive;
                     SkillList.Add(comboBox5.SelectedItem as Skills);
                 }
                 SkillList.AddRange(lBuffs.Items.Cast<Skills>().ToArray());
